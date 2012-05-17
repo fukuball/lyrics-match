@@ -2,8 +2,16 @@
    <h1>Lyrics Match - Please Upload Your Music Work!</h1>
 </div>
 <br class="clearboth" />
-<div class="well" style="width: 300px; margin: 10px auto;">
-   <input id="fileupload" type="file" name="files[]" data-url="<?=SITE_HOST?>/p-library/blueimp/server/php/" multiple />
+<div class="row well" style="width: 400px; margin: 10px auto;">
+   <div class="pull-left">
+      <input id="fileupload" type="file" name="files[]" data-url="<?=SITE_HOST?>/p-library/blueimp/server/php/" multiple />
+   </div>
+   <div class="pull-right">
+      <button type="submit" class="btn btn-primary start">
+         <i class="icon-upload icon-white"></i>
+         <span>Start upload</span>
+      </button>
+   </div>
 </div>
 <br class="clearboth" />
 <div style="width: 800px; margin: 20px auto;">
