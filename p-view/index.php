@@ -1,7 +1,7 @@
-<div class="page-header">
+<div class="page-header padding-all">
    <h1>Lyrics Match - Please Upload Youre Music Work!</h1>
 </div>
-<blockquote>
+<blockquote class="padding-all">
    <p>
       File Upload widget with multiple file selection, drag&amp;drop support, progress bars and preview images for jQuery.<br/>
       Supports cross-domain, chunked and resumable file uploads and client-side image resizing.<br/>
@@ -9,7 +9,9 @@
    </p>
 </blockquote>
 <br/>
-<input id="fileupload" type="file" name="files[]" data-url="server/php/" multiple>
+<div class="well">
+   <input id="fileupload" type="file" name="files[]" data-url="<?=SITE_HOST?>/p-library/blueimp/server/php/" multiple />
+</div>
 <script>
 $(function () {
     $('#fileupload').fileupload({

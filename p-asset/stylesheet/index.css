@@ -168,7 +168,9 @@ ul.nav {
 .font-bold {
    font-weight: bold;
 }
-
+.padding-all {
+	padding: 10px;
+}
 /* fix style on bottom */
 .clearfix {
    display: inline-block;
