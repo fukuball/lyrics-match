@@ -1,0 +1,18 @@
+<?php
+/**
+ * lyrics.inc is p-class include file
+ * 
+ * PHP version 5
+ *
+ * @category PHP
+ * @package  /p-class/
+ * @author   Fukuball Lin <fukuball@gmail.com>
+ * @license  No Licence
+ * @version  Release: <1.0>
+ * @link     http://sarasti.cs.nccu.edu.tw
+ */
+ 
+// Helper
+require 'helper/LMHelper.php';
+
+?>
