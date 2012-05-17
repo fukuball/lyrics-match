@@ -16,7 +16,7 @@
 ini_set('display_errors', 1);
 ini_set('log_errors', 1);
 ini_set('error_log', dirname(__FILE__) . '/error.log');
-error_reporting(E_ALL);
+error_reporting(E_ERROR | E_WARNING | E_PARSE);
 
 // path and url constant define
 define("SITE_ROOT", "/var/www/html/lyrics-match");
