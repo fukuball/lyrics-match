@@ -5,7 +5,15 @@ body {
 	line-height: 1.5em;
 	text-transform: inherit;
 	background-color: #EEE;
-	background-image: url('/lyrics-match/iv-asset/image/ui-icon/bg.jpg');
+	background-image: url('/lyrics-match/p-asset/image/ui-icon/bg.jpg');
 	background-repeat: repeat;
 	min-width: 1040px;
+}
+footer, footer > p {
+	font-size: 1.1em;
+}
+footer {
+	clear: both;
+	text-align: center;
+	padding: 10px 0px 20px 0px;
 }
