@@ -43,7 +43,7 @@ case (preg_match('/music\/.*/', $current_page_path_url) ? true : false) :
             <span class="icon-bar"></span>
          </a>
          <div id="logo">
-            <a class="font-bolder brand" href="<?=SITE_HOST?>/" title="Lyrics Match">Lyrics Match</a>
+            <a class="brand" href="<?=SITE_HOST?>/" title="Lyrics Match">Lyrics Match</a>
          </div>
          <div id="p-nav-collapse" class="nav-collapse">
             <nav>

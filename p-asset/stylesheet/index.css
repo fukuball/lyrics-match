@@ -32,10 +32,8 @@ footer {
 #content {
    min-height: 500px;
 }
-#mail_content {
-   width: 350px;
-   min-width: 350px;
-   max-width: 350px;
+#logo .brand {
+	font-weight: 500;
 }
 
 /* overwrite nav style */
@@ -169,9 +167,6 @@ ul.nav {
 /* utility */
 .font-bold {
    font-weight: bold;
-}
-.font-bolder {
-   font-weight: bolder;
 }
 
 /* fix style on bottom */
