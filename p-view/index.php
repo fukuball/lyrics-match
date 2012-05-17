@@ -9,9 +9,10 @@
    </p>
 </blockquote>
 <br/>
-<div class="well">
+<div class="well" style="width: 300px; margin: 10px auto;">
    <input id="fileupload" type="file" name="files[]" data-url="<?=SITE_HOST?>/p-library/blueimp/server/php/" multiple />
 </div>
+<br class="clearboth" />
 <script>
 $(function () {
     $('#fileupload').fileupload({
