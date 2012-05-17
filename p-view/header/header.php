@@ -15,19 +15,17 @@
 $home_header_active = '';
 $music_header_active = '';
 
-echo $current_page_path_url;
 switch ($current_page_path_url) {
    
-case '/lyrics-match':
-case '/lyrics-match/':
-case '/lyrics-match/index.html':
+case '/':
+case '/index.html':
 
    $home_header_active = ' active';
 
    break;
 
-case '/lyrics-match/music':
-case (preg_match('/lyrics-match/music\/.*/', $current_page_path_url) ? true : false) :
+case '/music':
+case (preg_match('/music\/.*/', $current_page_path_url) ? true : false) :
 
    $music_header_active = ' active';
 
