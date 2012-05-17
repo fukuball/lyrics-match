@@ -15,6 +15,7 @@
 $home_header_active = '';
 $music_header_active = '';
 
+echo $current_page_path_url;
 switch ($current_page_path_url) {
    
 case '/lyrics-match':
