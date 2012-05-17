@@ -12,7 +12,7 @@
  * @link     http://sarasti.cs.nccu.edu.tw
  */
 ?>
-<link rel="shortcut icon" href="/iv-asset/image/favicon.ico?v1" />
-<link rel="apple-touch-icon" href="/iv-asset/image/index-touch-icon.png?v1" />
-<link rel="apple-touch-icon" sizes="72x72" href="/iv-asset/image/index-touch-icon-72x72.png?v1" />
-<link rel="apple-touch-icon" sizes="114x114" href="/iv-asset/image/index-touch-icon-114x114.png?v1" />
+<link rel="shortcut icon" href="<?=SITE_HOST?>/iv-asset/image/favicon.ico?v1" />
+<link rel="apple-touch-icon" href="<?=SITE_HOST?>/iv-asset/image/index-touch-icon.png?v1" />
+<link rel="apple-touch-icon" sizes="72x72" href="<?=SITE_HOST?>/iv-asset/image/index-touch-icon-72x72.png?v1" />
+<link rel="apple-touch-icon" sizes="114x114" href="<?=SITE_HOST?>/iv-asset/image/index-touch-icon-114x114.png?v1" />
