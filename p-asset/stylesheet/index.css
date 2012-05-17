@@ -1,0 +1,11 @@
+body {
+	color: #555;
+	font-family: 'Helvetica Neue', Arial, Helvetica, 'lucida grande', tahoma, verdana, arial, sans-serif;
+	font-size: 10px;
+	line-height: 1.5em;
+	text-transform: inherit;
+	background-color: #EEE;
+	background-image: url('/lyrics-match/iv-asset/image/ui-icon/bg.jpg');
+	background-repeat: repeat;
+	min-width: 1040px;
+}
