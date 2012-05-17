@@ -34,4 +34,7 @@ define("DEBUG_MODE", true);
 require_once SITE_ROOT.'/p-library/simplehtmldom_1_5/simple_html_dom.php';
 require_once SITE_ROOT."/p-class/lyrics.inc";
 
+$current_page_full_url = LMHelper::currentFullPageURL();
+$current_page_path_url = LMHelper::currentPageURLPath();
+
 ?>
