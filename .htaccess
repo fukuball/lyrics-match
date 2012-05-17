@@ -30,14 +30,10 @@ deny from all
 ErrorDocument 403 /403.html
 ErrorDocument 404 /404.html
 
-RedirectMatch permanent ^/ajax-action/BoxActionView/.*$ /page-not-found.html
-RedirectMatch permanent ^/ajax-action/CommercialActionView/.*$ /page-not-found.html
-RedirectMatch permanent ^/ajax-action/MemcacheActionView/.*$ /page-not-found.html
-RedirectMatch permanent ^/iv-class/.*$ /page-not-found.html
-RedirectMatch permanent ^/iv-config/.*$ /page-not-found.html
-RedirectMatch permanent ^/iv-layout/.*$ /page-not-found.html
-RedirectMatch permanent ^/iv-migration/.*$ /page-not-found.html
-RedirectMatch permanent ^/iv-view/.*$ /page-not-found.html
+RedirectMatch permanent ^/p-class/.*$ /page-not-found.html
+RedirectMatch permanent ^/p-config/.*$ /page-not-found.html
+RedirectMatch permanent ^/p-layout/.*$ /page-not-found.html
+RedirectMatch permanent ^/p-view/.*$ /page-not-found.html
 
 Options +FollowSymlinks
 RewriteEngine on
@@ -280,3 +276,8 @@ RewriteCond %{REQUEST_FILENAME} !-f
 # 如果文件存在就直接訪問文件不進行 RewriteRule
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteRule ^lyrics-match/ajax-action/(.*) /lyrics-match/ajax-action/index.php/$1
+
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+# html 就是 php
+RewriteRule ^(.*)\.html $1\.php

@@ -13,6 +13,8 @@
  */
 // hard code
 
+error_reporting(E_ALL);
+
 // path and url constant define
 define("SITE_ROOT", "/var/www/html/lyrics-match");
 define("SITE_HOST", "http://sarasti.cs.nccu.edu.tw/lyrics-match");
