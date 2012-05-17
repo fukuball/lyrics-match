@@ -15,13 +15,11 @@
 
 require_once $_SERVER["DOCUMENT_ROOT"]."/p-config/application-setter.php";
 
-//$yield_left_path = '/iv-view/sidebar/index-left.php';
-//$yield_main_path = '/iv-view/index.php';
-//$yield_right_path = '/iv-view/sidebar/index-right.php';
-//$page_title = 'iNDIEVOX - '.$lang['HomePageTitle'];
+$yield_path = '/p-view/index.php';
+$page_title = '詞曲搭配計畫首頁';
    
-//include SITE_ROOT."/iv-layout/three-column-layout.php";
+include SITE_ROOT."/iv-layout/home-layout.php";
 
-require_once SITE_ROOT."/o-config/application-unsetter.php";
+require_once SITE_ROOT."/p-config/application-unsetter.php";
    
 ?>

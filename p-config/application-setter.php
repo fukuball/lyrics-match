@@ -19,7 +19,9 @@ define("SITE_HOST", "http://sarasti.cs.nccu.edu.tw/lyrics-match");
 define("SITE_DOMAIN", "sarasti.cs.nccu.edu.tw");
 define("DATA_ROOT", "/var/www/html/lyrics-data");
 define("DATA_HOST", "http://sarasti.cs.nccu.edu.tw/lyrics-data");
-
+// facebook constant define
+define("FB_APP_ID", "");
+define("FB_ADMIN_ID", "");
 define("KEY_PREFIX", "stage_");
 define("DEBUG_MODE", true);
    
