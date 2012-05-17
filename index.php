@@ -18,7 +18,7 @@ require_once $_SERVER["DOCUMENT_ROOT"]."/p-config/application-setter.php";
 $yield_path = '/p-view/index.php';
 $page_title = '詞曲搭配計畫首頁';
    
-include SITE_ROOT."/iv-layout/home-layout.php";
+include SITE_ROOT."/p-layout/home-layout.php";
 
 require_once SITE_ROOT."/p-config/application-unsetter.php";
    
