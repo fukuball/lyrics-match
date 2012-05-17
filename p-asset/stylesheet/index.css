@@ -168,6 +168,15 @@ ul.nav {
 .font-bold {
    font-weight: bold;
 }
+.flow-right {
+   float: right;
+}
+.flow-left {
+   float: left;
+}
+.align-center {
+   text-align:center;
+}
 .padding-all {
 	padding: 10px;
 }
