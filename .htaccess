@@ -279,4 +279,4 @@ RewriteRule ^.* - [F,L]
 RewriteCond %{REQUEST_FILENAME} !-f
 # 如果文件存在就直接訪問文件不進行 RewriteRule
 RewriteCond %{REQUEST_FILENAME} !-d
-RewriteRule ^lyrics-match/p-ajax-action/(.*) /lyrics-match/p-ajax-action/index.php/$1
+RewriteRule ^lyrics-match/ajax-action/(.*) /lyrics-match/ajax-action/index.php/$1
