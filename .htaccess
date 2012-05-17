@@ -27,13 +27,13 @@ Header set Cache-Control "max-age=172800, proxy-revalidate"
 <Files ~ "^\.(htaccess|htpasswd)$">
 deny from all
 </Files>
-ErrorDocument 403 /403.html
-ErrorDocument 404 /404.html
+ErrorDocument 403 /lyrics-match/403.html
+ErrorDocument 404 /lyrics-match/404.html
 
-RedirectMatch permanent ^/p-class/.*$ /page-not-found.html
-RedirectMatch permanent ^/p-config/.*$ /page-not-found.html
-RedirectMatch permanent ^/p-layout/.*$ /page-not-found.html
-RedirectMatch permanent ^/p-view/.*$ /page-not-found.html
+RedirectMatch permanent ^/p-class/.*$ /lyrics-match/page-not-found.html
+RedirectMatch permanent ^/p-config/.*$ /lyrics-match/page-not-found.html
+RedirectMatch permanent ^/p-layout/.*$ /lyrics-match/page-not-found.html
+RedirectMatch permanent ^/p-view/.*$ /lyrics-match/page-not-found.html
 
 Options +FollowSymlinks
 RewriteEngine on
