@@ -19,4 +19,6 @@
 <link href="<?=SITE_HOST?>/p-asset/stylesheet/ui-darkness/jquery-ui-1.8.17.custom.css" type="text/css" rel="stylesheet">
 <link href="<?=SITE_HOST?>/p-asset/stylesheet/prettify.css" type="text/css" rel="stylesheet" />
 <link href="<?=SITE_HOST?>/p-asset/stylesheet/bootstrap/bootstrap.css" type="text/css" rel="stylesheet">
+<!-- CSS to style the file input field as button and adjust the Bootstrap progress bars -->
+<link href="<?=SITE_HOST?>/p-library/blueimp/css/jquery.fileupload-ui.css" type="text/css" rel="stylesheet">
 <link href="<?=SITE_HOST?>/p-asset/stylesheet/index.css" type="text/css" rel="stylesheet">
