@@ -16,7 +16,7 @@
 $og_title = $page_title;
 $og_type = "website";
 $og_url = $current_page_full_url;
-$og_image = "http://sarasti.cs.nccu.edu.tw/p-asset/image/index-touch-icon.png";
+$og_image = SITE_HOST."/p-asset/image/index-touch-icon.png";
 $og_description = "http://sarasti.cs.nccu.edu.tw/lyrics-match Lyrics Match Project";
 
 if (!empty($item_obj)) {
