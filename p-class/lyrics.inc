@@ -14,5 +14,8 @@
  
 // Helper
 require 'helper/LMHelper.php';
+// Database
+require 'database/LMActiveRecord.php';
+require 'database/LMDBAccess.php';
 
 ?>
