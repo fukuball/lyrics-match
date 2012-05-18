@@ -13,7 +13,7 @@
  * @link     http://sarasti.cs.nccu.edu.tw
  */
 
-require_once $_SERVER["DOCUMENT_ROOT"]."/lyrics-match/p-config/application-setter.php";
+require_once dirname(dirname(__FILE__))."/p-config/application-setter.php";
 
 $yield_path = '/p-view/music/index.php';
 $page_title = '音樂資料庫';

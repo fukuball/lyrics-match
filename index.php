@@ -13,7 +13,7 @@
  * @link     http://sarasti.cs.nccu.edu.tw
  */
 
-require_once $_SERVER["DOCUMENT_ROOT"]."/lyrics-match/p-config/application-setter.php";
+require_once dirname(__FILE__)."/p-config/application-setter.php";
 
 $yield_path = '/p-view/index.php';
 $page_title = '詞曲搭配計畫首頁';
