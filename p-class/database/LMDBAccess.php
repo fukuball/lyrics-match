@@ -89,7 +89,7 @@ class LMDBAccess
       
       if (!self::$db_obj || !isset(self::$db_obj) || empty(self::$db_obj)) {
          
-         self::$db_obj = new IndievoxDBAccess(); 
+         self::$db_obj = new LMDBAccess(); 
       
       }
       
