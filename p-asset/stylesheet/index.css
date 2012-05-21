@@ -181,6 +181,9 @@ ul.nav {
 .padding-all {
 	padding: 10px;
 }
+.margin-all {
+	margin: 10px;
+}
 /* fix style on bottom */
 .clearfix {
    display: inline-block;
