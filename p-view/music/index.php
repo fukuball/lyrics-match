@@ -20,18 +20,34 @@
          </tr>
       </thead>
       <tbody>
+         <?php
+         $song_god_obj = new LMSongGod();
+         $song_list = $song_god_obj->getList('all', 0, 20);
+
+         foreach ($song_list as $key => $song_id ) {
+            $song_obj = new LMSong($song_id);
+         ?>
          <tr>
             <td>
+               <?=$song_obj->title?>
             </td>
             <td>
+               <?=$song_obj->lyric?>
             </td>
             <td>
+               <?=$song_obj->genre?>
             </td>
             <td>
+               <?=$song_obj->release_date?>
             </td>
             <td>
+               <?=$song_obj->kkbox_url?>
             </td>
          </tr>
+         <?php
+         }
+         unset($song_god_obj);
+         ?>
       </tbody>
    </table>
 </div>
