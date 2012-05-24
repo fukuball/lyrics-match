@@ -25,5 +25,9 @@ require 'disc/LMDiscGod.php';
 require 'disc/LMDisc.php';
 require 'lyricist/LMLyricistGod.php';
 require 'lyricist/LMLyricist.php';
+require 'performer/LMPerformerGod.php';
+require 'performer/LMPerformer.php';
+require 'song/LMSongGod.php';
+require 'song/LMSong.php';
 
 ?>
