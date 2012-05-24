@@ -24,10 +24,9 @@
          $song_god_obj = new LMSongGod();
          $song_list = $song_god_obj->getList('all', 0, 20);
 
-         var_dump($song_list);
-
          foreach ($song_list as $key => $song_id ) {
-            $song_obj = new LMSong($song_id);
+            echo $song_id.'<br/>';
+            /*$song_obj = new LMSong($song_id);
          ?>
          <tr>
             <td>
@@ -47,6 +46,7 @@
             </td>
          </tr>
          <?php
+            unset($song_obj);*/
          }
          unset($song_god_obj);
          ?>
