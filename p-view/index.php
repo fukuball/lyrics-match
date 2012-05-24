@@ -3,10 +3,12 @@
 </div>
 <br class="clearboth" />
 <div class="row well" style="width: 400px; margin: 10px auto;">
-   <button type="submit" class="btn btn-primary start" style="margin: 0px auto;">
-      <i class="icon-upload icon-white"></i>
-      <span>Start upload</span>
-   </button>
+   <div style="width: 100px; margin: 0px auto;">
+      <button type="submit" class="btn btn-primary start">
+         <i class="icon-upload icon-white"></i>
+         <span>Start upload</span>
+      </button>
+   </div>
 </div>
 <br class="clearboth" />
 <div style="width: 800px; margin: 20px auto;">
