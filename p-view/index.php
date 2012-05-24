@@ -28,7 +28,7 @@
       flash_swf_url : '<?=SITE_HOST?>/p-library/plupload/js/plupload.flash.swf',
       silverlight_xap_url : '<?=SITE_HOST?>/p-library/plupload/js/plupload.silverlight.xap',
       filters : [
-         {title : "Midi files", extensions : "mid"}
+         { title : "audio (.mp3, .midi, .mid)", extensions : "mp3,midi,mid" }
       ]
    });
 
