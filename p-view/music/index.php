@@ -2,10 +2,10 @@
    <table class="table table-bordered table-striped">
       <thead>
          <tr>
-            <th width="20%">
+            <th width="15%">
                歌名
             </th>
-            <th width="30%">
+            <th width="35%">
                歌詞
             </th>
             <th width="10%">
@@ -34,7 +34,7 @@
                <?=$song_obj->title?>
             </td>
             <td>
-               <?=$song_obj->lyric?>
+               <?=nl2br($song_obj->lyric)?>
             </td>
             <td>
                <?=$song_obj->genre?>
