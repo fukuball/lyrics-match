@@ -1,8 +1,8 @@
 <?php
 /**
  * index.php is the page controller
- * to control site index page content 
- * 
+ * to control site index page content
+ *
  * PHP version 5
  *
  * @category PHP
@@ -16,10 +16,11 @@
 require_once dirname(dirname(__FILE__))."/p-config/application-setter.php";
 
 $yield_path = '/p-view/music/index.php';
+$yield_top_tab_path = '/p-view/tab/music-tab.php';
 $page_title = '音樂資料庫';
-   
-include SITE_ROOT."/p-layout/home-layout.php";
+
+include SITE_ROOT."/p-layout/top-tab-layout.php";
 
 require_once SITE_ROOT."/p-config/application-unsetter.php";
-   
+
 ?>
