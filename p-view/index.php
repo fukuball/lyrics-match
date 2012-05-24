@@ -3,15 +3,10 @@
 </div>
 <br class="clearboth" />
 <div class="row well" style="width: 400px; margin: 10px auto;">
-   <div class="pull-left">
-      <input id="fileupload" type="file" name="files[]" data-url="<?=SITE_HOST?>/p-library/blueimp/server/php/" multiple />
-   </div>
-   <div class="pull-right">
-      <button type="submit" class="btn btn-primary start">
-         <i class="icon-upload icon-white"></i>
-         <span>Start upload</span>
-      </button>
-   </div>
+   <button type="submit" class="btn btn-primary start" style="margin: 0px auto;">
+      <i class="icon-upload icon-white"></i>
+      <span>Start upload</span>
+   </button>
 </div>
 <br class="clearboth" />
 <div style="width: 800px; margin: 20px auto;">
@@ -19,14 +14,5 @@
 </div>
 <br class="clearboth" />
 <script>
-$(function () {
-    $('#fileupload').fileupload({
-        dataType: 'json',
-        done: function (e, data) {
-            $.each(data.result, function (index, file) {
-                $('<p/>').text(file.name).appendTo(document.body);
-            });
-        }
-    });
-});
+
 </script>

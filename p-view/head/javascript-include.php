@@ -1,7 +1,7 @@
 <?php
 /**
  * javascript-include.php is head include javascript
- * 
+ *
  * PHP version 5
  *
  * @category PHP
@@ -19,7 +19,4 @@
 <script src="<?=SITE_HOST?>/p-asset/javascript/jquery-ui-timepicker-addon.js" type="text/javascript"></script>
 <script src="<?=SITE_HOST?>/p-asset/javascript/jquery.form.js" type="text/javascript"></script>
 <script src="<?=SITE_HOST?>/p-asset/javascript/masonry/jquery.masonry.min.js" type="text/javascript"></script>
-<script src="<?=SITE_HOST?>/p-library/blureimp/js/vendor/jquery.ui.widget.js"></script>
-<script src="<?=SITE_HOST?>/p-library/blureimp/js/jquery.iframe-transport.js"></script>
-<script src="<?=SITE_HOST?>/p-library/blureimp/js/jquery.fileupload.js"></script>
 <script src="<?=SITE_HOST?>/p-asset/javascript/index.js" type="text/javascript"></script>

@@ -1,7 +1,7 @@
 <?php
 /**
  * style-include.php is head include style
- * 
+ *
  * PHP version 5
  *
  * @category PHP
@@ -20,5 +20,4 @@
 <link href="<?=SITE_HOST?>/p-asset/stylesheet/prettify.css" type="text/css" rel="stylesheet" />
 <link href="<?=SITE_HOST?>/p-asset/stylesheet/bootstrap/bootstrap.css" type="text/css" rel="stylesheet">
 <!-- CSS to style the file input field as button and adjust the Bootstrap progress bars -->
-<link href="<?=SITE_HOST?>/p-library/blueimp/css/jquery.fileupload-ui.css" type="text/css" rel="stylesheet">
 <link href="<?=SITE_HOST?>/p-asset/stylesheet/index.css" type="text/css" rel="stylesheet">
