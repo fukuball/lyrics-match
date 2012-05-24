@@ -1,7 +1,7 @@
 <?php
 /**
  * home-layout.php is home layout
- * 
+ *
  * PHP version 5
  *
  * @category PHP
@@ -29,7 +29,7 @@
       ?>
       <div id="main-board" class="container">
          <div id="content" class="row margin-all">
-            <section>
+            <section class="margin-v-1">
             <?php
             require SITE_ROOT.$yield_top_tab_path;
             ?>
@@ -40,7 +40,7 @@
             ?>
             </section>
          </div>
-         <?php 
+         <?php
          require SITE_ROOT."/p-view/footer/footer.php";
          ?>
       </div><!-- /container -->
