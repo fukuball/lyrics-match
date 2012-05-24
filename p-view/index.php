@@ -28,7 +28,7 @@
       flash_swf_url : '<?=SITE_HOST?>/p-library/plupload/js/plupload.flash.swf',
       silverlight_xap_url : '<?=SITE_HOST?>/p-library/plupload/js/plupload.silverlight.xap',
       filters : [
-         {title : "Image files", extensions : "jpg,gif,png"}
+         {title : "Midi files", extensions : "mid"}
       ]
    });
 
