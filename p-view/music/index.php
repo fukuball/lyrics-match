@@ -24,6 +24,10 @@
          $song_god_obj = new LMSongGod();
          $song_list = $song_god_obj->getList('all', 0, 20);
 
+         foreach ($song_list as $song_list_data) {
+            echo $song_list_data['id'].'<br/>';
+         }
+
          foreach ($song_list as $key => $song_id ) {
             echo $song_id.'<br/>';
             /*$song_obj = new LMSong($song_id);
