@@ -26,10 +26,10 @@
       max_file_size : '10mb',
       url : 'upload.php',
       flash_swf_url : '<?=SITE_HOST?>/p-library/plupload/js/plupload.flash.swf',
-      silverlight_xap_url : '<?=SITE_HOST?>/p-library/plupload/js/plupload.silverlight.xap',
-      filters : [
-         {title : "audio           (.mp3, .wav, .midi, .band, .oga)", extensions : "mp3,wav,midi,wave,mid,gsm,cda,cdda,band,aif,mka,mp1,mp2,oga,ogg"}
-      ]
+      silverlight_xap_url : '<?=SITE_HOST?>/p-library/plupload/js/plupload.silverlight.xap'
+      /*filters : [
+         {title : "Image files", extensions : "jpg,gif,png"}
+      ]*/
    });
 
    uploader.bind('Init', function(up, params) {
