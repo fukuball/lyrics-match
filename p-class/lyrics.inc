@@ -18,5 +18,7 @@ require 'helper/LMHelper.php';
 require 'database/LMActiveRecordGod.php';
 require 'database/LMActiveRecord.php';
 require 'database/LMDBAccess.php';
+// Model
+require 'composer/LMComposer.php';
 
 ?>
