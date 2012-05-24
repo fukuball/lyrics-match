@@ -42,7 +42,11 @@ class LMDisc extends LMActiveRecord
    // protected $modify_time;
    // protected $delete_time;
    // protected $modify_unix_time;
-   public $name;
+   public $title;
+   public $genre;
+   public $release_date;
+   public $cover_path;
+   public $kkbox_url;
 
    /**
     * Method __construct initialize instance
