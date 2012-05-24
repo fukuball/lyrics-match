@@ -28,9 +28,9 @@
   * @version  Release: <1.0>
   * @link     http://sarasti.cs.nccu.edu.tw
   */
-class LMComposer extends IndievoxActiveRecord
+class LMComposer extends LMActiveRecord
 {
-   // extends from IndievoxActiveRecord
+   // extends from LMActiveRecord
    //
    // protected $db_obj;
    // protected $memcache_obj;
