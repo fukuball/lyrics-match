@@ -43,10 +43,16 @@ class LMSong extends LMActiveRecord
    // protected $delete_time;
    // protected $modify_unix_time;
    public $title;
+   public $lyric;
    public $genre;
    public $release_date;
-   public $cover_path;
    public $kkbox_url;
+   public $audio_path;
+   public $midi_path;
+   public $performer_id;
+   public $composer_id;
+   public $lyricist_id;
+   public $disc_id;
 
    /**
     * Method __construct initialize instance
