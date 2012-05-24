@@ -22,7 +22,7 @@
   * </code>
   *
   * @category PHP
-  * @package  /p-class/composesr/
+  * @package  /p-class/composer/
   * @author   Fukuball Lin <fukuball@gmail.com>
   * @license  No Licence
   * @version  Release: <1.0>

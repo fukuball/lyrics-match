@@ -21,6 +21,7 @@ require 'database/LMDBAccess.php';
 // Model
 require 'composer/LMComposerGod.php';
 require 'composer/LMComposer.php';
+require 'disc/LMDiscGod.php';
 require 'disc/LMDisc.php';
 
 ?>
