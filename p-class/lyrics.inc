@@ -19,6 +19,8 @@ require 'database/LMActiveRecordGod.php';
 require 'database/LMActiveRecord.php';
 require 'database/LMDBAccess.php';
 // Model
+require 'composer/LMComposerGod.php';
 require 'composer/LMComposer.php';
+require 'composer/LMDisc.php';
 
 ?>
