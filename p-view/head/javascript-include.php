@@ -19,4 +19,12 @@
 <script src="<?=SITE_HOST?>/p-asset/javascript/jquery-ui-timepicker-addon.js" type="text/javascript"></script>
 <script src="<?=SITE_HOST?>/p-asset/javascript/jquery.form.js" type="text/javascript"></script>
 <script src="<?=SITE_HOST?>/p-asset/javascript/masonry/jquery.masonry.min.js" type="text/javascript"></script>
+<script src="http://bp.yahooapis.com/2.4.21/browserplus-min.js" type="text/javascript"></script>
+<script src="<?=SITE_HOST?>/p-library/plupload/js/plupload.js" type="text/javascript"></script>
+<script src="<?=SITE_HOST?>/p-library/plupload/js/plupload.gears.js" type="text/javascript"></script>
+<script src="<?=SITE_HOST?>/p-library/plupload/js/plupload.silverlight.js" type="text/javascript"></script>
+<script src="<?=SITE_HOST?>/p-library/plupload/js/plupload.flash.js" type="text/javascript"></script>
+<script src="<?=SITE_HOST?>/p-library/plupload/js/plupload.browserplus.js" type="text/javascript"></script>
+<script src="<?=SITE_HOST?>/p-library/plupload/js/plupload.html4.js" type="text/javascript"></script>
+<script src="<?=SITE_HOST?>/p-library/plupload/js/plupload.html5.js" type="text/javascript"></script>
 <script src="<?=SITE_HOST?>/p-asset/javascript/index.js" type="text/javascript"></script>
