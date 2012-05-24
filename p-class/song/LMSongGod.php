@@ -115,6 +115,7 @@ class LMSongGod extends LMActiveRecordGod
 
       }
 
+      echo $select_sql;
       $query_record = $this->db_obj->selectCommand($select_sql);
 
       return $query_record;
