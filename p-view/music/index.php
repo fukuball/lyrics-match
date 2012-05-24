@@ -2,19 +2,19 @@
    <table class="table table-bordered table-striped">
       <thead>
          <tr>
-            <th>
+            <th width="20%">
                歌名
             </th>
-            <th>
+            <th width="30%">
                歌詞
             </th>
-            <th>
+            <th width="10%">
                類型
             </th>
-            <th>
+            <th width="10%">
                發行日期
             </th>
-            <th>
+            <th width="30%">
                kkbox 網址
             </th>
          </tr>
