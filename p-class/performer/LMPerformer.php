@@ -43,6 +43,7 @@ class LMPerformer extends LMActiveRecord
    // protected $delete_time;
    // protected $modify_unix_time;
    public $name;
+   public $kkbox_url;
 
    /**
     * Method __construct initialize instance
