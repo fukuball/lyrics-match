@@ -23,5 +23,7 @@ require 'composer/LMComposerGod.php';
 require 'composer/LMComposer.php';
 require 'disc/LMDiscGod.php';
 require 'disc/LMDisc.php';
+require 'lyricist/LMLyricistGod.php';
+require 'lyricist/LMLyricist.php';
 
 ?>
