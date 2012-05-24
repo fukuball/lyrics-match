@@ -24,6 +24,8 @@
          $song_god_obj = new LMSongGod();
          $song_list = $song_god_obj->getList('all', 0, 20);
 
+         var_dump($song_list);
+
          foreach ($song_list as $key => $song_id ) {
             $song_obj = new LMSong($song_id);
          ?>
