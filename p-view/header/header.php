@@ -1,7 +1,7 @@
 <?php
 /**
  * header.php is the view of main header
- * 
+ *
  * PHP version 5
  *
  * @category PHP
@@ -16,9 +16,9 @@ $home_header_active = '';
 $music_header_active = '';
 
 switch ($current_page_path_url) {
-   
+
 case '/':
-case '/index.html':
+case '/index.php':
 
    $home_header_active = ' active';
 
@@ -30,9 +30,9 @@ case (preg_match('/music\/.*/', $current_page_path_url) ? true : false) :
    $music_header_active = ' active';
 
    break;
-      
+
 }
- 
+
 ?>
 <header id="top-bar" class="navbar navbar-fixed-top">
    <div class="navbar-inner">

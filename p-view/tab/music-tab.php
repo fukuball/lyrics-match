@@ -12,31 +12,73 @@
  * @link     http://sarasti.cs.nccu.edu.tw
  */
 
+$music_song_tab_active = '';
+$music_disc_tab_active = '';
+$music_performer_tab_active = '';
+$music_lyricist_tab_active = '';
+$music_composer_tab_active = '';
+
+switch ($current_page_path_url) {
+
+case '/music':
+case '/music/':
+case (preg_match('/music\/index.*/', $current_page_path_url) ? true : false) :
+
+ $music_song_tab_active = ' active';
+
+ break;
+
+case (preg_match('/music\/disc.*/', $current_page_path_url) ? true : false) :
+
+   $music_disc_tab_active = ' active';
+
+   break;
+
+case (preg_match('/music\/performer.*/', $current_page_path_url) ? true : false) :
+
+   $music_performer_tab_active = ' active';
+
+   break;
+
+case (preg_match('/music\/lyricist.*/', $current_page_path_url) ? true : false) :
+
+   $music_lyricist_tab_active = ' active';
+
+   break;
+
+case (preg_match('/music\/composer.*/', $current_page_path_url) ? true : false) :
+
+   $music_composer_tab_active = ' active';
+
+   break;
+
+}
+
 
 ?>
 <ul class="nav nav-tabs">
-   <li class="active">
-     <a href="#">
+   <li class="<?=$music_song_tab_active?>">
+     <a href="<?=SITE_HOST?>/music/">
         歌曲列表
      </a>
    </li>
-   <li>
-      <a href="#">
+   <li class="<?=$music_disc_tab_active?>">
+      <a href="<?=SITE_HOST?>/music/disc.php">
          專輯列表
       </a>
    </li>
-   <li>
-      <a href="#">
+   <li class="<?=$music_performer_tab_active?>">
+      <a href="<?=SITE_HOST?>/music/performer.php">
          藝人列表
       </a>
    </li>
-   <li>
-      <a href="#">
+   <li class="<?=$music_lyricist_tab_active?>">
+      <a href="<?=SITE_HOST?>/music/lyricist.php">
          作詞人列表
       </a>
    </li>
-   <li>
-      <a href="#">
+   <li class="<?=$music_composer_tab_active?>">
+      <a href="<?=SITE_HOST?>/music/composer.php">
          作曲人列表
       </a>
    </li>
