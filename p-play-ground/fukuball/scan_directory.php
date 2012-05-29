@@ -5,7 +5,16 @@ require_once dirname(dirname(dirname(__FILE__)))."/p-config/application-setter.p
 $female_dir = SITE_ROOT."/p-data/midi/female";
 $dir_handler  = opendir($female_dir);
 while (false !== ($filename = readdir($dir_handler))) {
-    echo $filename.'<br/>';
+
+   $files[] = $filename;
+
+}
+sort($files);
+
+foreach ($files as $key => $filename ) {
+
+   echo $filename."\n";
+
 }
 
 require_once SITE_ROOT."/p-config/application-unsetter.php";
