@@ -47,12 +47,12 @@ foreach ($query_result as $query_result_data) {
       $kk_disc_title = trim(strip_tags($process_string[2]));
       $kk_genre = trim(strip_tags($process_string[3]));
 
-      echo $kk_artist_title."\n";
-      echo $kk_song_title."\n";
-      echo $artist_title."\n";
-      echo $song_title."\n";
+      echo $kk_artist_title."<\n";
+      echo $kk_song_title."<\n";
+      echo $artist_title."<\n";
+      echo $song_title."<\n";
 
-      if ($song_title==$kk_song_title && $artist_title==$kk_song_title) {
+      if (strcmp($song_title, $kk_song_title) && strcmp($artist_title, $kk_song_title)) {
 
          $process_song_link = explode('href="',$process_string[6]);
          $process_song_link = explode('"',$process_song_link[1]);
