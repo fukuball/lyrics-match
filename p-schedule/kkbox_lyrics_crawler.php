@@ -35,12 +35,17 @@ foreach ($query_result as $query_result_data) {
 
    $search_resp = LMHelper::doGet("http://tw.kkbox.com/search.php?word=".urlencode($song_title)."&search=song&search_lang=");
    $process_string = explode('<div class="search-notice">', $search_resp);
-   $process_string = explode('</div>', $process_string[1]);
-   $process_string = explode('<strong>', $process_string[0]);
-   $song_result_song_num = explode('</strong>', $process_string[1]);
-
-
+   $process_string2 = explode('</div>', $process_string[1]);
+   $process_string3 = explode('<strong>', $process_string2[0]);
+   $song_result_song_num = explode('</strong>', $process_string3[1]);
    echo $song_result_song_num[0];
+
+   $process_string2 = explode('<td class="song-name">',$process_string2[1]);
+
+   print_r($process_string2);
+//<a href="/album/uvV-tx3Hpcub8Gs0FKXC008l-index.html#9"><strong class="keyword c1">悲傷的茱麗葉</strong></a></td>
+
+
    //$search_resp_html_dom = str_get_html($song_result_num_html);
    //print_r($search_resp_html_dom);
 
