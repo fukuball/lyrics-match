@@ -31,7 +31,10 @@
             <th width="10%">
                發行日期
             </th>
-            <th width="30%">
+            <th width="15%">
+               midi 網址
+            </th>
+            <th width="15%">
                kkbox 網址
             </th>
          </tr>
@@ -61,6 +64,9 @@
             </td>
             <td>
                <?=$song_obj->release_date?>
+            </td>
+            <td>
+               <?=$song_obj->getMidiUrl()?>
             </td>
             <td>
                <?=$song_obj->kkbox_url?>

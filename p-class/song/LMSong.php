@@ -142,6 +142,18 @@ class LMSong extends LMActiveRecord
 
    }// end function toJSON
 
+   /**
+    * Method getMidiUrl to get midi url
+    *
+    * @return string $midi_url
+    */
+   public function getMidiUrl()
+   {
+
+      $midi_url = str_replace(SITE_ROOT, SITE_HOST, $this->midi_path);
+
+   }// end function getMidiUrl
+
 
    /**
     * Method update to update some instance value
