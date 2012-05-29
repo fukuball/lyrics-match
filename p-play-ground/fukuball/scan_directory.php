@@ -52,9 +52,26 @@ foreach ($files as $key => $subdirectory ) {
             }
             if (empty($temp_midi_id)) {
 
-               echo $artist_title."\n";
-               echo $song_title."\n";
-               echo $midi_path."\n";
+               $insert_sql = "INSERT ".
+                             "INTO temp_midi ".
+                             "(".
+                             "artist_title, ".
+                             "song_title, ".
+                             "midi_path ".
+                             ") ".
+                             "VALUES ".
+                             "(".
+                             "'$artist_title', '$song_title', '$midi_path'".
+                             ")";
+
+               if ($db_obj->insertCommand($insert_sql)) {
+                  echo $artist_title."\n";
+                  echo $song_title."\n";
+                  echo $midi_path."\n";
+                  echo $insert_sql."\n";
+               } else {
+                  echo "fail \n";
+               }
 
             }
 
