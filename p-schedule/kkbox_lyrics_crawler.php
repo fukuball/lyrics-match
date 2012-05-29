@@ -41,8 +41,8 @@ foreach ($query_result as $query_result_data) {
    echo $song_result_num_html;
    echo "\n";
 
-   $search_resp_html_dom = str_get_html($song_result_num_html);
-   print_r($search_resp_html_dom);
+   //$search_resp_html_dom = str_get_html($song_result_num_html);
+   //print_r($search_resp_html_dom);
 
 
 
