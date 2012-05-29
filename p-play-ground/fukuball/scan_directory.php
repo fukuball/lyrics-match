@@ -16,28 +16,36 @@ while (false !== ($filename = readdir($dir_handler))) {
 }
 sort($files);
 
+$count = 0;
+
 foreach ($files as $key => $subdirectory ) {
 
    if ($subdirectory != '..' && $subdirectory != '.') {
 
-      $dir_handler  = opendir($female_dir.'/'.$subdirectory);
-      while (false !== ($filename = readdir($dir_handler))) {
+      $innerdir_handler  = opendir($female_dir.'/'.$subdirectory);
+      while (false !== ($midifilename = readdir($innerdir_handler))) {
 
-         $files[] = $filename;
+         $midifiles[] = $midifilename;
 
       }
-      sort($files);
+      sort($midifiles);
 
-      foreach ($files as $key => $midi_file ) {
+      foreach ($midifiles as $key => $midi_file ) {
 
          if ($midi_file != '..' && $midi_file != '.') {
 
+            $count++;
             $midi_file_name_array = explode('.', $midi_file);
             $midi_path = $female_dir.'/'.$subdirectory.'/'.$midi_file;
             $artist_title = $subdirectory;
             $song_title = $midi_file_name_array[0];
 
-            $select_sql = "SELECT ".
+            echo $artist_title."\n";
+            echo $song_title."\n";
+            echo $midi_path."\n";
+            echo $count."\n";
+
+            /*$select_sql = "SELECT ".
                           "id ".
                           "FROM temp_midi ".
                           "WHERE ".
@@ -73,7 +81,7 @@ foreach ($files as $key => $subdirectory ) {
                   echo "fail \n";
                }
 
-            }
+            }*/
 
 
          }
