@@ -121,6 +121,41 @@ abstract class LMActiveRecordGod
    }// end function getMaxId
 
    /**
+    * Method getList to get object list
+    *
+    * @param string $type   # list type
+    * @param string $offset # list offset
+    * @param string $length # list length
+    *
+    * @return pdo_list
+    */
+   public function getList($type='all', $offset='0', $length='20')
+   {
+
+      switch ($type) {
+
+      case 'all':
+      default:
+
+         $select_sql
+             = "SELECT ".
+               "id ".
+               "FROM ".$this->table_name." ".
+               "WHERE is_deleted = '0' ".
+               "ORDER BY id DESC ".
+               "LIMIT $offset,$length";
+
+         break;
+
+      }
+
+      $query_record = $this->db_obj->selectCommand($select_sql);
+
+      return $query_record;
+
+   }// end function getList
+
+   /**
     * Method create create one record in database
     *
     * @param array $parameter # the key value array of the instance
