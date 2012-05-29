@@ -28,7 +28,7 @@
 
          foreach ($disc_list as $disc_list_data) {
 
-            $disc_obj = new LMSong($disc_list_data['id']);
+            $disc_obj = new LMDisc($disc_list_data['id']);
          ?>
          <tr>
             <td>
