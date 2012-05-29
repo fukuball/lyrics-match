@@ -36,12 +36,13 @@ foreach ($query_result as $query_result_data) {
    $search_resp = LMHelper::doGet("http://tw.kkbox.com/search.php?word=".urlencode($song_title)."&search=song&search_lang=");
    $process_string = explode('<div class="search-notice">', $search_resp);
    $process_string = explode('</div>', $process_string[1]);
+   $song_result_num_html = str_replace (" ", "", $process_string[0]);
 
-   echo $process_string[0];
+   echo $song_result_num_html;
+   echo "\n";
 
-   //$search_resp_html_dom = str_get_html($search_resp);
-
-   //print_r($search_resp_html_dom);
+   $search_resp_html_dom = str_get_html($song_result_num_html);
+   print_r($search_resp_html_dom);
 
 
 
