@@ -14,7 +14,25 @@ sort($files);
 foreach ($files as $key => $subdirectory ) {
 
    if ($subdirectory != '..' && $subdirectory != '.') {
-      echo $subdirectory."\n";
+
+      $dir_handler  = opendir($female_dir.'/'.$subdirectory);
+      while (false !== ($filename = readdir($dir_handler))) {
+
+         $files[] = $filename;
+
+      }
+      sort($files);
+
+      foreach ($files as $key => $midi_file ) {
+
+         if ($midi_file != '..' && $midi_file != '.') {
+
+            echo $female_dir.'/'.$subdirectory.'/'.$midi_file."\n";
+
+         }
+
+      }
+
    }
 
 }
