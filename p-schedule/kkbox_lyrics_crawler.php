@@ -30,13 +30,18 @@ foreach ($query_result as $query_result_data) {
    $song_title = $query_result_data['song_title'];
    $midi_path = $query_result_data['midi_path'];
 
-   $search_resp_html_dom = file_get_html("http://tw.kkbox.com/search.php?word=".urlencode($song_title)."&search=song&search_lang=");
-   print_r($search_resp_html_dom);
+   //$search_resp_html_dom = file_get_html("http://tw.kkbox.com/search.php?word=".urlencode($song_title)."&search=song&search_lang=");
+   //print_r($search_resp_html_dom);
 
-   /*$search_resp = LMHelper::doGet("http://tw.kkbox.com/search.php?word=".urlencode($song_title)."&search=song&search_lang=");
-   $search_resp_html_dom = str_get_html($search_resp);
+   $search_resp = LMHelper::doGet("http://tw.kkbox.com/search.php?word=".urlencode($song_title)."&search=song&search_lang=");
+   $process_string = explode('<div class="search-notice">', $search_resp);
+   $process_string = explode('</div>', $process_string[1]);
 
-   print_r($search_resp_html_dom);*/
+   echo $process_string[0];
+
+   //$search_resp_html_dom = str_get_html($search_resp);
+
+   //print_r($search_resp_html_dom);
 
 
 
