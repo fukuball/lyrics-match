@@ -41,6 +41,7 @@ foreach ($query_result as $query_result_data) {
    echo $song_result_song_num[0];
 
    $process_string = explode('<td class="song-name">',$search_resp);
+   $process_string = explode('</td>',$process_string[2]);
 
    print_r($process_string);
 //<a href="/album/uvV-tx3Hpcub8Gs0FKXC008l-index.html#9"><strong class="keyword c1">悲傷的茱麗葉</strong></a></td>
