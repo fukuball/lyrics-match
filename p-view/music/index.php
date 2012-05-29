@@ -16,10 +16,13 @@
    <table class="table table-bordered table-striped">
       <thead>
          <tr>
+            <th width="5%">
+               id
+            </th>
             <th width="15%">
                歌名
             </th>
-            <th width="35%">
+            <th width="30%">
                歌詞
             </th>
             <th width="10%">
@@ -44,6 +47,9 @@
             $song_obj = new LMSong($song_list_data['id']);
          ?>
          <tr>
+            <td>
+               <?=$song_obj->getId()?>
+            </td>
             <td>
                <?=$song_obj->title?>
             </td>

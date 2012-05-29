@@ -16,7 +16,10 @@
    <table class="table table-bordered table-striped">
       <thead>
          <tr>
-            <th width="20%">
+            <th width="5%">
+               id
+            </th>
+            <th width="15%">
                專輯
             </th>
             <th width="10%">
@@ -44,6 +47,9 @@
             $disc_obj = new LMDisc($disc_list_data['id']);
          ?>
          <tr>
+            <td>
+               <?=$disc_obj->getId()?>
+            </td>
             <td>
                <?=$disc_obj->title?>
             </td>
