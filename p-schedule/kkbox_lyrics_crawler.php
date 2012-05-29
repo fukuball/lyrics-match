@@ -32,10 +32,6 @@ foreach ($query_result as $query_result_data) {
    $song_title = $query_result_data['song_title'];
    $midi_path = $query_result_data['midi_path'];
 
-   //$search_resp_html_dom = file_get_html("http://tw.kkbox.com/search.php?word=".urlencode($song_title)."&search=song&search_lang=");
-   //print_r($search_resp_html_dom);
-
-
    $search_resp = LMHelper::doGet($kkbox_link."/search.php?word=".urlencode($song_title)."&search=song&search_lang=");
    $process_string = explode('<div class="search-notice">', $search_resp);
    $process_string = explode('</div>', $process_string[1]);
@@ -46,37 +42,49 @@ foreach ($query_result as $query_result_data) {
 
       $process_string = explode('<td class="song-name">',$search_resp);
       $process_string = explode('</td>',$process_string[2]);
-      $song_title = trim(strip_tags($process_string[0]));
-      $artist_title = trim(strip_tags($process_string[1]));
-      $disc_title = trim(strip_tags($process_string[2]));
-      $genre = trim(strip_tags($process_string[3]));
+      $kk_song_title = trim(strip_tags($process_string[0]));
+      $kk_artist_title = trim(strip_tags($process_string[1]));
+      $kk_disc_title = trim(strip_tags($process_string[2]));
+      $kk_genre = trim(strip_tags($process_string[3]));
 
-      $process_song_link = explode('href="',$process_string[6]);
-      $process_song_link = explode('"',$process_song_link[1]);
-      $song_url = $kkbox_link.$process_song_link[0];
+      if ($song_title==$kk_song_title && $artist_title==$kk_song_title) {
 
-      print_r($process_string);
-      echo $artist_title."\n";
-      echo $song_title."\n";
-      echo $disc_title."\n";
-      echo $genre."\n";
-      echo $song_url."\n";
+         $process_song_link = explode('href="',$process_string[6]);
+         $process_song_link = explode('"',$process_song_link[1]);
+         $kk_song_url = $kkbox_link.$process_song_link[0];
+
+
+         // song
+         //title o
+         //lyric
+         //genre o
+         //release_date
+         //kkbox_url o
+         //audio_path
+         //midi_path o
+         //performer_id // other table o
+         //composer_id  // other table
+         //lyricist_id  // other table
+         //disc_id      // other table o
+
+         // performer
+         //name o
+         //kkbox_url o
+
+
+         echo $kk_artist_title."\n";
+         echo $kk_song_title."\n";
+         echo $kk_disc_title."\n";
+         echo $kk_genre."\n";
+         echo $kk_song_url."\n";
+
+         $search_resp = LMHelper::doGet($song_url);
+
+         print_r($search_resp);
+
+      }
 
    }
-
-//<a href="/album/uvV-tx3Hpcub8Gs0FKXC008l-index.html#9"><strong class="keyword c1">悲傷的茱麗葉</strong></a></td>
-
-
-   //$search_resp_html_dom = str_get_html($song_result_num_html);
-   //print_r($search_resp_html_dom);
-
-
-
-   /*
-   echo $artist_title."\n";
-   echo $song_title."\n";
-   echo $midi_path."\n";
-   */
 
 }
 
