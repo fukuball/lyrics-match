@@ -11,9 +11,11 @@ while (false !== ($filename = readdir($dir_handler))) {
 }
 sort($files);
 
-foreach ($files as $key => $filename ) {
+foreach ($files as $key => $subdirectory ) {
 
-   echo $filename."\n";
+   if ($subdirectory != '..' && $subdirectory != '.') {
+      echo $subdirectory."\n";
+   }
 
 }
 
