@@ -34,7 +34,7 @@ foreach ($query_result as $query_result_data) {
    $search_resp_html_dom = str_get_html($search_resp);
    echo $search_resp;
 
-   foreach($search_resp_html_dom->find('td.song-name a') as $e) {
+   foreach($search_resp_html_dom->find('td.song-name') as $e) {
        print_r($e);
        echo $e->outertext . '<br>';
    }
