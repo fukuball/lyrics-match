@@ -7,7 +7,7 @@ $db_obj = LMDBAccess::getInstance();
 
 
 
-$female_dir = SITE_ROOT."/p-data/midi/group";
+$female_dir = SITE_ROOT."/p-data/midi/female";
 $dir_handler  = opendir($female_dir);
 $files = array();
 while (false !== ($filename = readdir($dir_handler))) {
@@ -71,8 +71,8 @@ foreach ($files as $key => $subdirectory ) {
                           "id ".
                           "FROM temp_midi ".
                           "WHERE ".
-                          "artist_title='$artist_title' ".
-                          "AND song_title='$song_title'";
+                          "artist_title='".addslashes($artist_title)."' ".
+                          "AND song_title='".addslashes($song_title)."'";
 
             $query_result = $db_obj->selectCommand($select_sql);
             foreach ($query_result as $query_result_data) {
@@ -91,7 +91,7 @@ foreach ($files as $key => $subdirectory ) {
                              ") ".
                              "VALUES ".
                              "(".
-                             "'$artist_title', '$song_title', '$midi_path'".
+                             "'".addslashes($artist_title)."', '".addslashes($song_title)."', '".addslashes($midi_path)."'".
                              ")";
 
                if ($db_obj->insertCommand($insert_sql)) {
