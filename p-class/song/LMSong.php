@@ -151,6 +151,7 @@ class LMSong extends LMActiveRecord
    {
 
       $midi_url = str_replace(SITE_ROOT, SITE_HOST, $this->midi_path);
+      return $midi_url;
 
    }// end function getMidiUrl
 
