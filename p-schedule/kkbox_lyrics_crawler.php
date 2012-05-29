@@ -53,25 +53,6 @@ foreach ($query_result as $query_result_data) {
          $process_song_link = explode('"',$process_song_link[1]);
          $kk_song_url = $kkbox_link.$process_song_link[0];
 
-
-         // song
-         //title o
-         //lyric
-         //genre o
-         //release_date
-         //kkbox_url o
-         //audio_path
-         //midi_path o
-         //performer_id // other table o
-         //composer_id  // other table
-         //lyricist_id  // other table
-         //disc_id      // other table o
-
-         // performer
-         //name o
-         //kkbox_url o
-
-
          echo $kk_artist_title."\n";
          echo $kk_song_title."\n";
          echo $kk_disc_title."\n";
@@ -80,7 +61,47 @@ foreach ($query_result as $query_result_data) {
 
          $search_resp = LMHelper::doGet($kk_song_url);
 
-         echo $search_resp;
+
+         //echo $search_resp;
+
+
+         // song
+         //title o
+         //lyric o
+         //genre o
+         //release_date o
+         //kkbox_url o
+         //audio_path
+         //midi_path o
+         //performer_id // other table o
+         //composer_id  // other table o
+         //lyricist_id  // other table o
+         //disc_id      // other table o
+
+         // performer
+         //name o
+         //kkbox_url o
+
+         $process_string = explode('<ul class="breadcrumbs">',$search_resp);
+         $process_string = explode('</ul>',$process_string[1]);
+         $process_string = explode('<li>',$process_string[0]);
+         $process_string = explode('</li>',$process_string[1]);
+
+         print_r($process_string);
+
+         // composer
+         //name o
+
+         // lyricist
+         //name o
+
+         // disc
+         //title o
+         //genre o
+         //release_date o
+         //cover_path o
+         //kkbox_url o
+
 
       }
 
