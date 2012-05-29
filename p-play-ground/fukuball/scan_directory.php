@@ -4,7 +4,17 @@ require_once dirname(dirname(dirname(__FILE__)))."/p-config/application-setter.p
 
 $db_obj = LMDBAccess::init();
 
+$select_sql = "SELECT ".
+              "id ".
+              "FROM song ".
+              "WHERE ".
+              "id='1'";
 
+$query_result = $db_obj->selectCommand($select_sql);
+$num_rows = $query_result->rowCount();
+echo $num_rows;
+
+/*
 $female_dir = SITE_ROOT."/p-data/midi/female";
 $dir_handler  = opendir($female_dir);
 while (false !== ($filename = readdir($dir_handler))) {
@@ -39,6 +49,16 @@ foreach ($files as $key => $subdirectory ) {
             echo $song_title."\n";
             echo $midi_path."\n";
 
+            $select_sql = "SELECT ".
+                          "id ".
+                          "FROM temp_midi ".
+                          "WHERE ".
+                          "artist_title='$artist_title' ".
+                          "AND song_title='$song_title'";
+
+            $query_result = $db_obj->selectCommand($select_sql);
+            $query_result->rowCount();
+
             //$db_obj->selectCommand($select_sql);
 
          }
@@ -48,6 +68,7 @@ foreach ($files as $key => $subdirectory ) {
    }
 
 }
+*/
 
 require_once SITE_ROOT."/p-config/application-unsetter.php";
 
