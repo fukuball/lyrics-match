@@ -38,22 +38,25 @@ foreach ($query_result as $query_result_data) {
    $process_string = explode('</div>', $process_string[1]);
    $process_string = explode('<strong>', $process_string[0]);
    $song_result_song_num = explode('</strong>', $process_string[1]);
-   echo $song_result_song_num[0];
 
-   $process_string = explode('<td class="song-name">',$search_resp);
-   $process_string = explode('</td>',$process_string[2]);
-   $song_title = strip_tags($process_string[0]);
-   $artist_title = strip_tags($process_string[1]);
-   $disc_title = strip_tags($process_string[2]);
-   $genre = strip_tags($process_string[3]);
+   if ($song_result_song_num[0]>=1) {
+
+      $process_string = explode('<td class="song-name">',$search_resp);
+      $process_string = explode('</td>',$process_string[2]);
+      $song_title = trim(strip_tags($process_string[0]));
+      $artist_title = trim(strip_tags($process_string[1]));
+      $disc_title = trim(strip_tags($process_string[2]));
+      $genre = trim(strip_tags($process_string[3]));
 
 
-   print_r($process_string);
+      print_r($process_string);
+      echo $artist_title."\n";
+      echo $song_title."\n";
+      echo $disc_title."\n";
+      echo $genre."\n";
 
-   echo $artist_title."\n";
-   echo $song_title."\n";
-   echo $disc_title."\n";
-   echo $genre."\n";
+
+   }
 
 //<a href="/album/uvV-tx3Hpcub8Gs0FKXC008l-index.html#9"><strong class="keyword c1">悲傷的茱麗葉</strong></a></td>
 
