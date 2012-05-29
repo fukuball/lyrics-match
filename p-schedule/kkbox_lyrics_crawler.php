@@ -30,7 +30,7 @@ foreach ($query_result as $query_result_data) {
    $song_title = $query_result_data['song_title'];
    $midi_path = $query_result_data['midi_path'];
 
-   $search_resp = LMHelper::doGet("http://tw.kkbox.com/search.php?word=".$song_title."&search=song&search_lang=");
+   $search_resp = LMHelper::doGet("http://tw.kkbox.com/search.php?word=".urlencode($song_title)."&search=song&search_lang=");
    echo $search_resp;
 
    /*
