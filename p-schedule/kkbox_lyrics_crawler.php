@@ -47,11 +47,6 @@ foreach ($query_result as $query_result_data) {
       $kk_disc_title = trim(strip_tags($process_string[2]));
       $kk_genre = trim(strip_tags($process_string[3]));
 
-      echo utf8_encode($kk_artist_title)."<\n";
-      echo $kk_song_title."<\n";
-      echo utf8_encode($artist_title)."<\n";
-      echo $song_title."<\n";
-
       if ( utf8_encode($song_title) == utf8_encode($kk_song_title) && utf8_encode($artist_title) == utf8_encode($kk_artist_title) ) {
 
          $process_song_link = explode('href="',$process_string[6]);
@@ -83,9 +78,9 @@ foreach ($query_result as $query_result_data) {
          echo $kk_genre."\n";
          echo $kk_song_url."\n";
 
-         $search_resp = LMHelper::doGet($song_url);
+         $search_resp = LMHelper::doGet($kk_song_url);
 
-         print_r($search_resp);
+         echo $search_resp;
 
       }
 
