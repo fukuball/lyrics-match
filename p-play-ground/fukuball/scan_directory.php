@@ -17,28 +17,6 @@ while (false !== ($filename = readdir($dir_handler))) {
 }
 sort($files);
 
-/*$count = 0;
-$count_artist = 0;
-
-foreach ($files as $key => $subdirectory ) {
-
-   if ($subdirectory != '..' && $subdirectory != '.') {
-
-      $count_artist++;
-      echo $subdirectory."\n";
-      echo $count_artist."\n";
-
-      $innerdir_handler  = opendir($female_dir.'/'.$subdirectory);
-      while (false !== ($midifilename = readdir($innerdir_handler))) {
-
-         $midifiles[] = $midifilename;
-
-      }
-
-   }
-
-}*/
-
 foreach ($files as $key => $subdirectory ) {
 
    if ($subdirectory != '..' && $subdirectory != '.') {
