@@ -85,7 +85,6 @@ foreach ($query_result as $query_result_data) {
          $process_string = explode('<ul class="breadcrumbs">',$search_resp);
          $process_string = explode('</ul>',$process_string[1]);
          $process_string = explode('<li>',$process_string[0]);
-         $process_string = explode('</li>',$process_string[1]);
 
          print_r($process_string);
 
