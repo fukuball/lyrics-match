@@ -85,8 +85,19 @@ foreach ($query_result as $query_result_data) {
          $process_string = explode('<ul class="breadcrumbs">',$search_resp);
          $process_string = explode('</ul>',$process_string[1]);
          $process_string = explode('<li>',$process_string[0]);
-
          print_r($process_string);
+
+         $process_performer_link = explode('href="',$process_string[1]);
+         $process_performer_link = explode('"',$process_performer_link[1]);
+         $kk_performer_url = $kkbox_link.$process_performer_link[0];
+
+         echo "\n";
+         echo "\n";
+         echo 'performer_data:'."\n";
+         echo $kk_artist_title."\n";
+         echo $kk_performer_url."\n";
+         echo "\n";
+         echo "\n";
 
          // composer
          //name o
