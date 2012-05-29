@@ -38,6 +38,11 @@ foreach ($query_result as $query_result_data) {
    $process_string = explode('<strong>', $process_string[0]);
    $song_result_song_num = explode('</strong>', $process_string[1]);
 
+   echo $kk_artist_title."\n";
+   echo $kk_song_title."\n";
+   echo $artist_title."\n";
+   echo $song_title."\n";
+
    if ($song_result_song_num[0]>=1) {
 
       $process_string = explode('<td class="song-name">',$search_resp);
