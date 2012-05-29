@@ -7,7 +7,7 @@ $db_obj = LMDBAccess::getInstance();
 
 
 
-$female_dir = SITE_ROOT."/p-data/midi/man";
+$female_dir = SITE_ROOT."/p-data/midi/group";
 $dir_handler  = opendir($female_dir);
 $files = array();
 while (false !== ($filename = readdir($dir_handler))) {
