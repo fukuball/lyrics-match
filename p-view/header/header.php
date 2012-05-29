@@ -48,16 +48,19 @@ case (preg_match('/music\/.*/', $current_page_path_url) ? true : false) :
          <div id="p-nav-collapse" class="nav-collapse">
             <nav>
                <ul class="nav">
+                  <li class="divider-vertical"></li>
                   <li id="header-home-tab" class="main-nav<?php echo $home_header_active; ?>">
                      <a href="<?=SITE_HOST?>/" title="首頁">
                         首頁
                      </a>
                   </li>
+                  <li class="divider-vertical"></li>
                   <li id="header-music-tab" class="main-nav<?php echo $music_header_active; ?>">
                      <a href="<?=SITE_HOST?>/music/" title="音樂">
                         音樂
                      </a>
                   </li>
+                  <li class="divider-vertical"></li>
                </ul>
             </nav>
             <ul class="nav pull-right">
