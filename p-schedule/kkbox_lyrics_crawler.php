@@ -40,7 +40,7 @@ foreach ($query_result as $query_result_data) {
    $song_result_song_num = explode('</strong>', $process_string[1]);
 
 
-   echo $song_result_song_num;
+   echo $song_result_song_num[0];
    //$search_resp_html_dom = str_get_html($song_result_num_html);
    //print_r($search_resp_html_dom);
 
