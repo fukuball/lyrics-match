@@ -31,7 +31,15 @@ foreach ($query_result as $query_result_data) {
    $midi_path = $query_result_data['midi_path'];
 
    $search_resp = LMHelper::doGet("http://tw.kkbox.com/search.php?word=".urlencode($song_title)."&search=song&search_lang=");
+   $search_resp_html_dom = str_get_html($search_resp);
    echo $search_resp;
+
+   foreach($search_resp_html_dom->find('td.song-name a') as $e) {
+       print_r($e);
+       echo $e->outertext . '<br>';
+   }
+
+
 
    /*
    echo $artist_title."\n";
