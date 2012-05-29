@@ -39,9 +39,16 @@ foreach ($query_result as $query_result_data) {
    $song_result_num_html = str_replace (" ", "", $process_string[0]);
    $song_result_num_html = preg_replace(array('/\s{2,}/', '/[\t\n]/'), ' ', $song_result_num_html);
 
+$song_result_num_html = <<<HTML
+$song_result_num_html
+HTML;
 
-   echo $song_result_num_html;
-   echo "\n";
+$html = str_get_html($song_result_num_html);
+
+print_r($html);
+
+   //echo $song_result_num_html;
+   //echo "\n";
 
 
    //$search_resp_html_dom = str_get_html($song_result_num_html);
