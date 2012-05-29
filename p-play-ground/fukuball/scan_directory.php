@@ -2,7 +2,7 @@
 
 require_once dirname(dirname(dirname(__FILE__)))."/p-config/application-setter.php";
 
-$db_obj = LMDBAccess::init();
+$db_obj = LMDBAccess::getInstance();
 
 $select_sql = "SELECT ".
               "id ".
