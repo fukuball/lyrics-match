@@ -52,7 +52,7 @@ foreach ($query_result as $query_result_data) {
       echo utf8_encode($artist_title)."<\n";
       echo $song_title."<\n";
 
-      if (strcmp($song_title, $kk_song_title) && strcmp($artist_title, $kk_song_title)) {
+      if ( (utf8_encode($song_title) == utf8_encode($kk_song_title) && (utf8_encode($artist_title) == utf8_encode($kk_artist_title) ) {
 
          $process_song_link = explode('href="',$process_string[6]);
          $process_song_link = explode('"',$process_song_link[1]);
