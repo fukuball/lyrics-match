@@ -67,7 +67,7 @@ foreach ($files as $key => $subdirectory ) {
             echo $midi_path."\n";
             echo $count."\n";
 
-            /*$select_sql = "SELECT ".
+            $select_sql = "SELECT ".
                           "id ".
                           "FROM temp_midi ".
                           "WHERE ".
@@ -103,7 +103,7 @@ foreach ($files as $key => $subdirectory ) {
                   echo "fail \n";
                }
 
-            }*/
+            }
 
 
          }
