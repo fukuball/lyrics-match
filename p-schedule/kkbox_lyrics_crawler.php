@@ -83,17 +83,20 @@ foreach ($query_result as $query_result_data) {
          $in_lyric = implode("\n", $parse_lyric);
 
          // get performer info
-         $kk_performer_info = $song_page_dom->query->results->body->div[3]->div[0]->ul->li;
+         $in_performer_name = trim($song_page_dom->query->results->body->div[3]->div[0]->ul->li[1]->a->content);
+         $in_performer_url = $kkbox_link.$song_page_dom->query->results->body->div[3]->div[0]->ul->li[1]->a->href;
 
          // get disc info
          //$kk_disc_info = $song_page_dom->query->results->body->div[3]->div[1]->div[0]->div[0];
 
-         print_r($kk_performer_info);
+         print_r($song_page_dom->query->results->body->div[3]->div[0]->ul->li);
 
          $in_song_url = $kk_song_url;
 
          echo "lyricist_name:".$in_lyricist_name."\n";
          echo "composer_name:".$in_composer_name."\n";
+         echo "performer_name:".$in_performer_name."\n";
+         echo "performer_url:".$in_performer_url."\n";
          echo "lyric:".$in_lyric."\n";
          echo "song_url:".$in_song_url."\n";
 
