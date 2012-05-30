@@ -117,11 +117,8 @@ foreach ($query_result as $query_result_data) {
 
          // parse lyric
          $process_string = explode('<div class="content">',$song_resp);
-         $process_string = explode('</div>',$process_string[1]);
-
-
-
-         print_r($process_string);
+         //$process_string = explode('</div>',$process_string[1]);
+         echo $song_resp;
 
          //目前尚無相關歌詞
 
