@@ -87,18 +87,26 @@ foreach ($query_result as $query_result_data) {
          $in_performer_url = $kkbox_link.$song_page_dom->query->results->body->div[3]->div[0]->ul->li[1]->a->href;
 
          // get disc info
+         $in_disc_name = trim($song_page_dom->query->results->body->div[3]->div[0]->ul->li[2]->a->content);
+         $in_disc_url = $kkbox_link.$song_page_dom->query->results->body->div[3]->div[0]->ul->li[2]->a->href;
          //$kk_disc_info = $song_page_dom->query->results->body->div[3]->div[1]->div[0]->div[0];
 
-         print_r($song_page_dom->query->results->body->div[3]->div[0]->ul->li);
+         print_r($kk_disc_info);
 
-         $in_song_url = $kk_song_url;
+         // get song info
+         $in_song_name = trim($song_page_dom->query->results->body->div[3]->div[0]->ul->li[3]->a->content);
+         $in_song_url = $kkbox_link.$song_page_dom->query->results->body->div[3]->div[0]->ul->li[3]->a->href;
 
          echo "lyricist_name:".$in_lyricist_name."\n";
          echo "composer_name:".$in_composer_name."\n";
          echo "performer_name:".$in_performer_name."\n";
          echo "performer_url:".$in_performer_url."\n";
-         echo "lyric:".$in_lyric."\n";
+         echo "disc_name:".$in_disc_name."\n";
+         echo "disc_url:".$in_disc_url."\n";
+         echo "song_name:".$in_song_name."\n";
          echo "song_url:".$in_song_url."\n";
+         echo "lyric:".$in_lyric."\n";
+
 
          // lyricist
          //name
@@ -108,6 +116,13 @@ foreach ($query_result as $query_result_data) {
 
          // performer
          //name
+         //kkbox_url
+
+         // disc
+         //title
+         //genre
+         //release_date
+         //cover_path
          //kkbox_url
 
 
@@ -212,12 +227,7 @@ foreach ($query_result as $query_result_data) {
          echo "\n";
          echo "\n";*/
 
-         // disc
-         //title o
-         //genre o
-         //release_date o
-         //cover_path o
-         //kkbox_url o
+
 
 
 
