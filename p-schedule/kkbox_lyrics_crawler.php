@@ -112,9 +112,9 @@ foreach ($query_result as $query_result_data) {
 
          // parse release date
          $process_release_date = explode('<dd>',$process_string[7]);
-         print_r($process_release_date);
+         $kk_release_date = trim(strip_tags($process_release_date[3]));
 
-         echo $kk_cover_path."\n";
+         echo $kk_release_date."\n";
 
 
          print_r($process_string);
