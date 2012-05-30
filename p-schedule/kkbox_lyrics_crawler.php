@@ -58,14 +58,35 @@ foreach ($query_result as $query_result_data) {
       // confirm search result is correct
       if ( utf8_encode($song_title) == utf8_encode($kk_song_title) && utf8_encode($artist_title) == utf8_encode($kk_artist_title) ) {
 
+         // get song detail
          $yql_query = urlencode('SELECT * FROM html WHERE url="'.$kk_song_url.'"');
          $song_page_html = file_get_contents('http://query.yahooapis.com/v1/public/yql?q='.$yql_query.'&format=json');
          $song_page_dom = json_decode($song_page_html);
 
+         // get lyric
          $kk_lyric = $song_page_dom->query->results->body->div[3]->div[1]->div[0]->div[1]->p->content;
 
          // parse wrighter
          $kk_lyric_array = explode('：', $kk_lyric);
+
+         // parse lyricist
+         $parse_lyricist = explode(' ', $kk_lyric_array[1]);
+         $in_lyricist_name = trim($parse_lyricist[0]);
+
+         // parse lyricist
+         $parse_composer = explode(' ', $kk_lyric_array[2]);
+         $in_composer_name = trim($parse_composer[0]);
+
+         // parse lyric
+         $parse_lyric = explode("\n", $kk_lyric_array[4]);
+         $parse_lyric = array_slice($parse_lyric, 1);
+         $in_lyric = implode("\n", $parse_lyric);
+
+         echo "lyricist_name:".$in_lyricist_name."\n";
+         echo "composer_name:".$in_composer_name."\n";
+         echo "lyric:".$in_lyric."\n";
+
+
          print_r($kk_lyric_array);
 
 
