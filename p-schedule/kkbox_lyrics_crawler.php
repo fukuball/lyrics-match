@@ -128,6 +128,12 @@ foreach ($query_result as $query_result_data) {
          echo $test_resp;
          echo "\n";
          echo "\n";
+
+         $homepage = file_get_contents('http://tw.kkbox.com/m/tc/song/QNzCht803HWKlDCqnDCqn0P4-index.html');
+         echo $homepage;
+         echo "\n";
+         echo "\n";
+
          //目前尚無相關歌詞
 
          // get performer id
