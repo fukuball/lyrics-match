@@ -99,7 +99,7 @@ foreach ($query_result as $query_result_data) {
          // disc link
          $process_disc_link = explode('href="',$process_string[2]);
          $process_disc_link = explode('"',$process_disc_link[2]);
-         $kk_disc_url = $kkbox_link.$process_disc_link[0];
+         $kk_disc_url = $process_disc_link[0];
 
          // parse cover image
          $process_string = explode('<div class="five columns">',$song_resp);
@@ -109,6 +109,11 @@ foreach ($query_result as $query_result_data) {
          $process_cover_link = explode('src="',$process_string[0]);
          $process_cover_link = explode('"',$process_cover_link[1]);
          $kk_cover_path = $kkbox_link.$process_cover_link[0];
+
+         // parse release date
+         $process_release_date = explode('<dd>',$process_string[7]);
+         $process_release_date = explode('</dd>',$process_release_date[1]);
+         print_r($process_release_date);
 
          echo $kk_cover_path."\n";
 
