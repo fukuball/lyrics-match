@@ -121,6 +121,36 @@ class LMLyricistGod extends LMActiveRecordGod
    }// end function create
 
    /**
+    * Method findByName to find id by name
+    *
+    * @param string $name
+    *
+    * @return int $id
+    */
+   public function findByName($name)
+   {
+
+      $select_sql = "SELECT ".
+                    "id ".
+                    "FROM $this->table_name ".
+                    "WHERE ".
+                    "name='$name' ".
+                    "LIMIT 1";
+
+      $query_result = $this->db_obj->selectCommand($select_sql);
+      foreach ($query_result as $query_result_data) {
+         $instance_id = $query_result_data['id'];
+      }
+
+      if (!empty($instance_id)) {
+         return $instance_id;
+      } else {
+         return 0;
+      }
+
+   }// end function findByName
+
+   /**
     * Method __destruct unset instance value
     *
     * @return void

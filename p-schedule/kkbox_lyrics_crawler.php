@@ -82,80 +82,99 @@ foreach ($query_result as $query_result_data) {
          $parse_lyric = array_slice($parse_lyric, 1);
          $in_lyric = implode("\n", $parse_lyric);
 
-         // get performer info
-         $in_performer_name = trim($song_page_dom->query->results->body->div[3]->div[0]->ul->li[1]->a->content);
-         $in_performer_url = $kkbox_link.$song_page_dom->query->results->body->div[3]->div[0]->ul->li[1]->a->href;
+         if (!empty($in_lyric)) {
 
-         // get disc info
-         $in_disc_name = trim($song_page_dom->query->results->body->div[3]->div[0]->ul->li[2]->a->content);
-         $in_disc_url = $kkbox_link.$song_page_dom->query->results->body->div[3]->div[0]->ul->li[2]->a->href;
-         $in_disc_src = $song_page_dom->query->results->body->div[3]->div[1]->div[0]->div[0]->div->div[0]->img->src;
-         $in_disc_genre = $song_page_dom->query->results->body->div[3]->div[1]->div[0]->div[0]->div->div[1]->dl->dd[1]->p;
-         $in_disc_release = trim($song_page_dom->query->results->body->div[3]->div[1]->div[0]->div[0]->div->div[1]->dl->dd[2]->p).'-01';
+            // get performer info
+            $in_performer_name = trim($song_page_dom->query->results->body->div[3]->div[0]->ul->li[1]->a->content);
+            $in_performer_url = $kkbox_link.$song_page_dom->query->results->body->div[3]->div[0]->ul->li[1]->a->href;
 
-         // get song info
-         $in_song_name = trim($song_page_dom->query->results->body->div[3]->div[0]->ul->li[3]->a->content);
-         $in_song_url = $kkbox_link.$song_page_dom->query->results->body->div[3]->div[0]->ul->li[3]->a->href;
+            // get disc info
+            $in_disc_name = trim($song_page_dom->query->results->body->div[3]->div[0]->ul->li[2]->a->content);
+            $in_disc_url = $kkbox_link.$song_page_dom->query->results->body->div[3]->div[0]->ul->li[2]->a->href;
+            $in_disc_src = $song_page_dom->query->results->body->div[3]->div[1]->div[0]->div[0]->div->div[0]->img->src;
+            $in_disc_genre = $song_page_dom->query->results->body->div[3]->div[1]->div[0]->div[0]->div->div[1]->dl->dd[1]->p;
+            $in_disc_release = trim($song_page_dom->query->results->body->div[3]->div[1]->div[0]->div[0]->div->div[1]->dl->dd[2]->p).'-01';
 
-         echo "lyricist_name:".$in_lyricist_name."\n";
-         echo "composer_name:".$in_composer_name."\n";
-         echo "performer_name:".$in_performer_name."\n";
-         echo "performer_url:".$in_performer_url."\n";
-         echo "disc_name:".$in_disc_name."\n";
-         echo "disc_url:".$in_disc_url."\n";
-         echo "disc_src:".$in_disc_src."\n";
-         echo "disc_release:".$in_disc_release."\n";
-         echo "disc_genre:".$in_disc_genre."\n";
-         echo "song_name:".$in_song_name."\n";
-         echo "song_url:".$in_song_url."\n";
-         echo "song_release:".$in_disc_release."\n";
-         echo "song_genre:".$in_disc_genre."\n";
-         echo "lyric:".$in_lyric."\n";
-         echo "midi_path:".$midi_path."\n";
+            // get song info
+            $in_song_name = trim($song_page_dom->query->results->body->div[3]->div[0]->ul->li[3]->a->content);
+            $in_song_url = $kkbox_link.$song_page_dom->query->results->body->div[3]->div[0]->ul->li[3]->a->href;
+
+            echo "lyricist_name:".$in_lyricist_name."\n";
+            echo "composer_name:".$in_composer_name."\n";
+            echo "performer_name:".$in_performer_name."\n";
+            echo "performer_url:".$in_performer_url."\n";
+            echo "disc_name:".$in_disc_name."\n";
+            echo "disc_url:".$in_disc_url."\n";
+            echo "disc_src:".$in_disc_src."\n";
+            echo "disc_release:".$in_disc_release."\n";
+            echo "disc_genre:".$in_disc_genre."\n";
+            echo "song_name:".$in_song_name."\n";
+            echo "song_url:".$in_song_url."\n";
+            echo "song_release:".$in_disc_release."\n";
+            echo "song_genre:".$in_disc_genre."\n";
+            echo "midi_path:".$midi_path."\n";
+            echo "lyric:".$in_lyric."\n";
+
+            // get lyricist id
+            $lyricist_id = $lyricist_god_obj->findByName($in_lyricist_name);
+            if (empty($lyricist_id)) {
+
+               $parameter_array = array();
+               $parameter_array['name']
+                   = $in_lyricist_name;
+
+               $lyricist_id = $lyricist_god_obj->create($parameter_array);
+
+            }
+
+            // get composer id
+            $composer_id = $composer_god_obj->findByName($in_composer_name);
+            if (empty($composer_id)) {
+
+               $parameter_array = array();
+               $parameter_array['name']
+                   = $in_composer_name;
+
+               $composer_id = $composer_god_obj->create($parameter_array);
+
+            }
+
+            // get performer id
+            $performer_id = $performer_god_obj->findByName($in_performer_name);
+            if (empty($performer_id)) {
+
+               $parameter_array = array();
+               $parameter_array['name']
+                   = $kk_artist_title;
+               $parameter_array['kkbox_url']
+                   = $kk_performer_url;
+               $performer_id = $performer_god_obj->create($parameter_array);
+
+            }
+
+            // disc
+            //title
+            //genre
+            //release_date
+            //cover_path
+            //kkbox_url
+
+            // song
+            //title
+            //lyric
+            //genre
+            //release_date
+            //kkbox_url
+            //audio_path
+            //midi_path
+            //performer_id
+            //composer_id
+            //lyricist_id
+            //disc_id
+
+         }
 
 
-         // lyricist
-         //name
-
-         // composer
-         //name
-
-         // performer
-         //name
-         //kkbox_url
-
-         // get performer id
-         /*$performer_id = $performer_god_obj->findByName($kk_artist_title);
-         if (empty($performer_id)) {
-
-            $parameter_array = array();
-            $parameter_array['name']
-                = $kk_artist_title;
-            $parameter_array['kkbox_url']
-                = $kk_performer_url;
-            $performer_id = $performer_god_obj->create($parameter_array);
-
-         }*/
-
-         // disc
-         //title
-         //genre
-         //release_date
-         //cover_path
-         //kkbox_url
-
-         // song
-         //title
-         //lyric
-         //genre
-         //release_date
-         //kkbox_url
-         //audio_path
-         //midi_path
-         //performer_id
-         //composer_id
-         //lyricist_id
-         //disc_id
 
       }
 
