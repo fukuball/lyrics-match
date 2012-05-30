@@ -174,59 +174,18 @@ class LMHelper
    */
    public static function doGet($url)
    {
-      $ch = curl_init($url);
 
-      $header[0] = 'Accept: text/xml,application/xml,application/xhtml+xml,'
-                      . 'text/html;q=0.9,text/plain;q=0.8,image/png,*/*;q=0.5';
-      $header[] = 'Cache-Control: max-age=0';
-      $header[] = 'Connection: keep-alive';
-      $header[] = 'Keep-Alive: 300';
-      $header[] = 'Accept-Charset: ISO-8859-1,utf-8;q=0.7,*;q=0.7';
-      $header[] = 'Accept-Language: en-us,en;q=0.5';
-
-      $cookieFile = "cookie_china"; // I've changed this value and it seems to be working fine, I get the same results
-
-      $options = array(
-                  CURLOPT_RETURNTRANSFER => true,
-                  CURLOPT_HEADER => false,
-                  CURLOPT_FOLLOWLOCATION => true,
-                  CURLOPT_ENCODING => 'gzip,deflate',
-                  CURLOPT_USERAGENT => 'Mozilla/5.0 (Windows NT 6.1; WOW64; rv:6.0) Gecko/20100101 Firefox/6.0 FirePHP/0.6',
-                  CURLOPT_AUTOREFERER => true,
-                  CURLOPT_CONNECTTIMEOUT => 120,
-                  CURLOPT_TIMEOUT => 120,
-                  CURLOPT_MAXREDIRS => 10,
-                  CURLOPT_SSL_VERIFYHOST => 0,
-                  CURLOPT_SSL_VERIFYPEER => false,
-                  CURLOPT_VERBOSE => 1,
-                  CURLOPT_HTTPHEADER => $header,
-                  CURLOPT_COOKIEFILE => $cookieFile,
-                  CURLOPT_COOKIEJAR => $cookieFile,
-      );
-
-      curl_setopt_array($ch, $options);
-
-      $response = curl_exec($ch);
-
-      curl_close($ch);
-
-      return $response;
-
-      /*$ch = curl_init();
+      $ch = curl_init();
 
 
       curl_setopt($ch, CURLOPT_URL, $url);
       curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
       curl_setopt($ch, CURLOPT_FOLLOWLOCATION, true);
-      curl_setopt($ch, CURLOPT_USERAGENT, 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10.7; rv:12.0) Gecko/20100101 Firefox/12.0');
-      curl_setopt($ch, CURLOPT_COOKIE, 'BIGipServerTWWSs_main=855703562.20480.0000; __utma=129119753.1274697662.1338372832.1338372832.1338372832.1; __utmb=129119753.3.10.1338372832; __utmc=129119753; __utmz=129119753.1338372832.1.1.utmcsr=(direct)|utmccn=(direct)|utmcmd=(none); __atuvc=3|22');
-      curl_setopt($ch, CURLOPT_COOKIEJAR, "cookie.txt");
-      curl_setopt($ch, CURLOPT_COOKIEFILE, "cookie.txt");
 
       $response = curl_exec($ch);
       curl_close($ch);
 
-      return $response;*/
+      return $response;
    }// end function doGet
 
    /**
@@ -251,8 +210,6 @@ class LMHelper
       $ch = curl_init();
       curl_setopt($ch, CURLOPT_URL, $url);
       curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-      curl_setopt($ch, CURLOPT_USERAGENT, 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10.7; rv:12.0) Gecko/20100101 Firefox/12.0');
-      curl_setopt($ch, CURLOPT_COOKIE, 'BIGipServerTWWSs_main=855703562.20480.0000; __utma=129119753.1274697662.1338372832.1338372832.1338372832.1; __utmb=129119753.3.10.1338372832; __utmc=129119753; __utmz=129119753.1338372832.1.1.utmcsr=(direct)|utmccn=(direct)|utmcmd=(none); __atuvc=3|22');
       curl_setopt($ch, CURLOPT_POST, count($fields));
       curl_setopt($ch, CURLOPT_POSTFIELDS, $fields_string);
 
