@@ -28,7 +28,7 @@ $select_sql = "SELECT ".
               "FROM temp_midi ".
               "WHERE ".
               "is_moved='0' ".
-              "LIMIT 1";
+              "LIMIT 5";
 
 $query_result = $db_obj->selectCommand($select_sql);
 
@@ -256,7 +256,9 @@ foreach ($query_result as $query_result_data) {
 
    }
 
-}
+   sleep(3);
+
+}// end foreach ($query_result as $query_result_data) {
 
 
 require_once SITE_ROOT."/p-config/application-unsetter.php";
