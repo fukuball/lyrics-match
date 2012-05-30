@@ -80,3 +80,8 @@
       </tbody>
    </table>
 </div>
+<script>
+$.get("sarasti.cs.nccu.edu.tw/?url=www.google.com", function(response) {
+    alert(response)
+});
+</script>
