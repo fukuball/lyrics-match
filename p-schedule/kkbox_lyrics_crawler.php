@@ -89,7 +89,7 @@ foreach ($query_result as $query_result_data) {
          // get disc info
          $in_disc_name = trim($song_page_dom->query->results->body->div[3]->div[0]->ul->li[2]->a->content);
          $in_disc_url = $kkbox_link.$song_page_dom->query->results->body->div[3]->div[0]->ul->li[2]->a->href;
-         //$kk_disc_info = $song_page_dom->query->results->body->div[3]->div[1]->div[0]->div[0];
+         $kk_disc_info = $song_page_dom->query->results->body->div[3]->div[1]->div[0]->div[0]->div[0];
 
          print_r($kk_disc_info);
 
