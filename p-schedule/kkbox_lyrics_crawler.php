@@ -50,12 +50,19 @@ foreach ($query_result as $query_result_data) {
       $kk_artist_title = trim(strip_tags($process_string[1]));
       $kk_disc_title = trim(strip_tags($process_string[2]));
       $kk_genre = trim(strip_tags($process_string[3]));
+      // parse song link
+      $process_song_link = explode('href="',$process_string[6]);
+      $process_song_link = explode('"',$process_song_link[1]);
+      $kk_song_url = $kkbox_link.$process_song_link[0];
 
       // confirm search result is correct
       if ( utf8_encode($song_title) == utf8_encode($kk_song_title) && utf8_encode($artist_title) == utf8_encode($kk_artist_title) ) {
 
+         $yql_query = urlencode('SELECT * FROM html WHERE url="'.$kk_song_url.'"');
+         $song_page_html = file_get_contents('http://query.yahooapis.com/v1/public/yql?q='.$yql_query.'&format=json');
+         echo $song_page_html;
          // parse song link
-         $process_song_link = explode('href="',$process_string[6]);
+         /*$process_song_link = explode('href="',$process_string[6]);
          $process_song_link = explode('"',$process_song_link[1]);
          $kk_song_url = $kkbox_link.$process_song_link[0];
 
@@ -142,7 +149,7 @@ foreach ($query_result as $query_result_data) {
                 = $kk_performer_url;
             $performer_id = $performer_god_obj->create($parameter_array);
 
-         }
+         }*/
 
          /*echo "\n";
          echo "\n";
