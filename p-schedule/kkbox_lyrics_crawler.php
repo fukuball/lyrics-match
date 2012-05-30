@@ -82,9 +82,24 @@ foreach ($query_result as $query_result_data) {
          $parse_lyric = array_slice($parse_lyric, 1);
          $in_lyric = implode("\n", $parse_lyric);
 
+         // get disc info
+         $kk_disc_info = $song_page_dom->query->results->body->div[3]->div[1]->div[0]->div[0];
+
+         print_r($kk_disc_info);
+
          echo "lyricist_name:".$in_lyricist_name."\n";
          echo "composer_name:".$in_composer_name."\n";
          echo "lyric:".$in_lyric."\n";
+
+         // lyricist
+         //name
+
+         // composer
+         //name
+
+         // performer
+         //name
+         //kkbox_url
 
 
          print_r($kk_lyric_array);
@@ -197,14 +212,6 @@ foreach ($query_result as $query_result_data) {
          //release_date o
          //cover_path o
          //kkbox_url o
-
-
-
-         // composer
-         //name o
-
-         // lyricist
-         //name o
 
 
 
