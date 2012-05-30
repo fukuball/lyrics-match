@@ -47,6 +47,7 @@ class LMDisc extends LMActiveRecord
    public $release_date;
    public $cover_path;
    public $kkbox_url;
+   public $performer_id;
 
    /**
     * Method __construct initialize instance

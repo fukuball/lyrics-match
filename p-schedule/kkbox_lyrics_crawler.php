@@ -27,6 +27,8 @@ $select_sql = "SELECT ".
               "LIMIT 1";
 
 $query_result = $db_obj->selectCommand($select_sql);
+
+// get unprocess data
 foreach ($query_result as $query_result_data) {
 
    $artist_title = $query_result_data['artist_title'];
@@ -39,6 +41,7 @@ foreach ($query_result as $query_result_data) {
    $process_string = explode('<strong>', $process_string[0]);
    $song_result_song_num = explode('</strong>', $process_string[1]);
 
+   // has search result
    if ($song_result_song_num[0]>=1) {
 
       $process_string = explode('<td class="song-name">',$search_resp);
@@ -48,8 +51,10 @@ foreach ($query_result as $query_result_data) {
       $kk_disc_title = trim(strip_tags($process_string[2]));
       $kk_genre = trim(strip_tags($process_string[3]));
 
+      // confirm search result is correct
       if ( utf8_encode($song_title) == utf8_encode($kk_song_title) && utf8_encode($artist_title) == utf8_encode($kk_artist_title) ) {
 
+         // parse song link
          $process_song_link = explode('href="',$process_string[6]);
          $process_song_link = explode('"',$process_song_link[1]);
          $kk_song_url = $kkbox_link.$process_song_link[0];
@@ -60,7 +65,8 @@ foreach ($query_result as $query_result_data) {
          echo $kk_genre."\n";
          echo $kk_song_url."\n";
 
-         $search_resp = LMHelper::doGet($kk_song_url);
+         // get song page data
+         $song_resp = LMHelper::doGet($kk_song_url);
 
 
          //echo $search_resp;
@@ -79,19 +85,32 @@ foreach ($query_result as $query_result_data) {
          //lyricist_id  // other table o
          //disc_id      // other table o
 
-         // performer
-         //name o
-         //kkbox_url o
 
-         $process_string = explode('<ul class="breadcrumbs">',$search_resp);
+         // parse link
+         $process_string = explode('<ul class="breadcrumbs">',$song_resp);
          $process_string = explode('</ul>',$process_string[1]);
          $process_string = explode('<li>',$process_string[0]);
-         print_r($process_string);
 
+         // performer link
          $process_performer_link = explode('href="',$process_string[1]);
          $process_performer_link = explode('"',$process_performer_link[1]);
          $kk_performer_url = $kkbox_link.$process_performer_link[0];
 
+         // disc link
+         $process_disc_link = explode('href="',$process_string[2]);
+         $process_disc_link = explode('"',$process_disc_link[2]);
+         $kk_disc_url = $kkbox_link.$process_disc_link[0];
+
+         // parse cover image
+         $process_string = explode('<div class="five columns">',$song_resp);
+         $process_string = explode('</div>',$process_string[1]);
+         print_r($process_string);
+
+                             //<img src="http://i.eimg.com.tw/d/alb/44/84044.300.jpg?ver=0" alt="悲傷的茱麗葉 專輯封面" class="figure">
+
+
+
+         // get performer id
          $performer_id = $performer_god_obj->findByName($kk_artist_title);
          if (empty($performer_id)) {
 
@@ -104,20 +123,16 @@ foreach ($query_result as $query_result_data) {
 
          }
 
+         /*echo "\n";
          echo "\n";
+         echo 'disc_data:'."\n";
+         echo $kk_disc_title."\n";
+         echo $kk_genre."\n";
+         echo $kk_release_date."\n";
+         echo $kk_cover_path."\n";
+         echo $kk_disc_url."\n";
          echo "\n";
-         echo 'performer_data:'."\n";
-         echo $performer_id."\n";
-         echo $kk_artist_title."\n";
-         echo $kk_performer_url."\n";
-         echo "\n";
-         echo "\n";
-
-         // composer
-         //name o
-
-         // lyricist
-         //name o
+         echo "\n";*/
 
          // disc
          //title o
@@ -125,6 +140,16 @@ foreach ($query_result as $query_result_data) {
          //release_date o
          //cover_path o
          //kkbox_url o
+
+
+
+         // composer
+         //name o
+
+         // lyricist
+         //name o
+
+
 
 
       }
