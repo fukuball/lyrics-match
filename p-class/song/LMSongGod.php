@@ -105,6 +105,38 @@ class LMSongGod extends LMActiveRecordGod
    }// end function getList
 
    /**
+    * Method findByTitleNPerformerId to find id by title and performer_id
+    *
+    * @param string $title
+    * @param int    $performer_id
+    *
+    * @return int $id
+    */
+   public function findByTitleNPerformerId($title, $performer_id)
+   {
+
+      $select_sql = "SELECT ".
+                    "id ".
+                    "FROM $this->table_name ".
+                    "WHERE ".
+                    "title='$title' ".
+                    "AND performer_id='$performer_id' ".
+                    "LIMIT 1";
+
+      $query_result = $this->db_obj->selectCommand($select_sql);
+      foreach ($query_result as $query_result_data) {
+         $instance_id = $query_result_data['id'];
+      }
+
+      if (!empty($instance_id)) {
+         return $instance_id;
+      } else {
+         return 0;
+      }
+
+   }// end function findByTitleNPerformerId
+
+   /**
     * Method create create one record in database
     *
     * @param array $parameter # the key value array of the instance
