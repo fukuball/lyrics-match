@@ -124,6 +124,19 @@ foreach ($query_result as $query_result_data) {
          //name
          //kkbox_url
 
+         // get performer id
+         /*$performer_id = $performer_god_obj->findByName($kk_artist_title);
+         if (empty($performer_id)) {
+
+            $parameter_array = array();
+            $parameter_array['name']
+                = $kk_artist_title;
+            $parameter_array['kkbox_url']
+                = $kk_performer_url;
+            $performer_id = $performer_god_obj->create($parameter_array);
+
+         }*/
+
          // disc
          //title
          //genre
@@ -143,6 +156,8 @@ foreach ($query_result as $query_result_data) {
          //composer_id
          //lyricist_id
          //disc_id
+
+      }
 
    }
 
