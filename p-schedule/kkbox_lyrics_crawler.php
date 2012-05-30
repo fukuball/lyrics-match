@@ -27,8 +27,7 @@ $select_sql = "SELECT ".
               "* ".
               "FROM temp_midi ".
               "WHERE ".
-              "id='2135' ".
-              "LIMIT 1";
+              "is_moved='0' ";
 
 $query_result = $db_obj->selectCommand($select_sql);
 
@@ -255,8 +254,6 @@ foreach ($query_result as $query_result_data) {
       }
 
    }
-
-   sleep(3);
 
 }// end foreach ($query_result as $query_result_data) {
 
