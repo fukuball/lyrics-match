@@ -90,9 +90,8 @@ foreach ($query_result as $query_result_data) {
          $in_disc_name = trim($song_page_dom->query->results->body->div[3]->div[0]->ul->li[2]->a->content);
          $in_disc_url = $kkbox_link.$song_page_dom->query->results->body->div[3]->div[0]->ul->li[2]->a->href;
          $in_disc_src = $song_page_dom->query->results->body->div[3]->div[1]->div[0]->div[0]->div->div[0]->img->src;
-         $kk_disc_info = $song_page_dom->query->results->body->div[3]->div[1]->div[0]->div[0]->div->div[1]->dl->dd;
-
-         print_r($kk_disc_info);
+         $in_disc_genre = $song_page_dom->query->results->body->div[3]->div[1]->div[0]->div[0]->div->div[1]->dl->dd[1]->p;
+         $in_disc_release = trim($song_page_dom->query->results->body->div[3]->div[1]->div[0]->div[0]->div->div[1]->dl->dd[2]->p).'-01';
 
          // get song info
          $in_song_name = trim($song_page_dom->query->results->body->div[3]->div[0]->ul->li[3]->a->content);
@@ -105,9 +104,14 @@ foreach ($query_result as $query_result_data) {
          echo "disc_name:".$in_disc_name."\n";
          echo "disc_url:".$in_disc_url."\n";
          echo "disc_src:".$in_disc_src."\n";
+         echo "disc_release:".$in_disc_release."\n";
+         echo "disc_genre:".$in_disc_genre."\n";
          echo "song_name:".$in_song_name."\n";
          echo "song_url:".$in_song_url."\n";
+         echo "song_release:".$in_disc_release."\n";
+         echo "song_genre:".$in_disc_genre."\n";
          echo "lyric:".$in_lyric."\n";
+         echo "midi_path:".$midi_path."\n";
 
 
          // lyricist
@@ -127,114 +131,18 @@ foreach ($query_result as $query_result_data) {
          //cover_path
          //kkbox_url
 
-
-         // parse song link
-         /*$process_song_link = explode('href="',$process_string[6]);
-         $process_song_link = explode('"',$process_song_link[1]);
-         $kk_song_url = $kkbox_link.$process_song_link[0];
-
-         echo $kk_artist_title."\n";
-         echo $kk_song_title."\n";
-         echo $kk_disc_title."\n";
-         echo $kk_genre."\n";
-         echo $kk_song_url."\n";
-
-         // get song page data
-         $song_resp = LMHelper::doGet($kk_song_url);
-
-
-         //echo $search_resp;
-
-
          // song
-         //title o
-         //lyric o
-         //genre o
-         //release_date o
-         //kkbox_url o
+         //title
+         //lyric
+         //genre
+         //release_date
+         //kkbox_url
          //audio_path
-         //midi_path o
-         //performer_id // other table o
-         //composer_id  // other table o
-         //lyricist_id  // other table o
-         //disc_id      // other table o
-
-
-         // parse link
-         $process_string = explode('<ul class="breadcrumbs">',$song_resp);
-         $process_string = explode('</ul>',$process_string[1]);
-         $process_string = explode('<li>',$process_string[0]);
-
-         // performer link
-         $process_performer_link = explode('href="',$process_string[1]);
-         $process_performer_link = explode('"',$process_performer_link[1]);
-         $kk_performer_url = $kkbox_link.$process_performer_link[0];
-
-         // disc link
-         $process_disc_link = explode('href="',$process_string[2]);
-         $process_disc_link = explode('"',$process_disc_link[2]);
-         $kk_disc_url = $process_disc_link[0];
-
-         // parse cover image
-         $process_string = explode('<div class="five columns">',$song_resp);
-         $process_string = explode('</div>',$process_string[1]);
-
-         // image url link
-         $process_cover_link = explode('src="',$process_string[0]);
-         $process_cover_link = explode('"',$process_cover_link[1]);
-         $kk_cover_path = $kkbox_link.$process_cover_link[0];
-
-         // parse release date
-         $process_release_date = explode('<dd>',$process_string[7]);
-         $kk_release_date = trim(strip_tags($process_release_date[3]));
-         $kk_release_date = $kk_release_date.'-01';
-
-         // parse lyric
-         $process_string = explode('<div class="content">',$song_resp);
-         //$process_string = explode('</div>',$process_string[1]);
-         echo "\n";
-         echo "\n";
-         echo $song_resp;
-         echo "\n";
-         echo "\n";
-
-         $test_resp = LMHelper::doGet('http://tw.kkbox.com/m/tc/song/QNzCht803HWKlDCqnDCqn0P4-index.html');
-         echo $test_resp;
-         echo "\n";
-         echo "\n";
-
-         //目前尚無相關歌詞
-
-         // get performer id
-         $performer_id = $performer_god_obj->findByName($kk_artist_title);
-         if (empty($performer_id)) {
-
-            $parameter_array = array();
-            $parameter_array['name']
-                = $kk_artist_title;
-            $parameter_array['kkbox_url']
-                = $kk_performer_url;
-            $performer_id = $performer_god_obj->create($parameter_array);
-
-         }*/
-
-         /*echo "\n";
-         echo "\n";
-         echo 'disc_data:'."\n";
-         echo $kk_disc_title."\n";
-         echo $kk_genre."\n";
-         echo $kk_release_date."\n";
-         echo $kk_cover_path."\n";
-         echo $kk_disc_url."\n";
-         echo "\n";
-         echo "\n";*/
-
-
-
-
-
-
-      }
+         //midi_path
+         //performer_id
+         //composer_id
+         //lyricist_id
+         //disc_id
 
    }
 
