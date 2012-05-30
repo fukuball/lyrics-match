@@ -104,6 +104,15 @@ foreach ($query_result as $query_result_data) {
          // parse cover image
          $process_string = explode('<div class="five columns">',$song_resp);
          $process_string = explode('</div>',$process_string[1]);
+
+         // image url link
+         $process_cover_link = explode('src="',$process_string[0]);
+         $process_cover_link = explode('"',$process_cover_link[1]);
+         $kk_cover_path = $kkbox_link.$process_cover_link[0];
+
+         echo $kk_cover_path."\n";
+
+
          print_r($process_string);
 
                              //<img src="http://i.eimg.com.tw/d/alb/44/84044.300.jpg?ver=0" alt="悲傷的茱麗葉 專輯封面" class="figure">
