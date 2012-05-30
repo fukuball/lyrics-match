@@ -62,7 +62,7 @@ foreach ($query_result as $query_result_data) {
          $song_page_html = file_get_contents('http://query.yahooapis.com/v1/public/yql?q='.$yql_query.'&format=json');
          $song_page_dom = json_decode($song_page_html);
 
-         print_r($song_page_dom->query->results);
+         print_r($song_page_dom->query->results->body->div->3);
          // parse song link
          /*$process_song_link = explode('href="',$process_string[6]);
          $process_song_link = explode('"',$process_song_link[1]);
