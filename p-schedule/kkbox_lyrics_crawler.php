@@ -70,7 +70,7 @@ foreach ($query_result as $query_result_data) {
          $kk_lyric_array = explode('：', $kk_lyric);
 
          // parse lyricist
-         $parse_lyricist = explode(' ', $kk_lyric_array[1]);
+         $parse_lyricist = explode('   ', $kk_lyric_array[1]);
          $in_lyricist_name = trim($parse_lyricist[0]);
 
          // parse lyricist
