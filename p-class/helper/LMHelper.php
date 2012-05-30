@@ -176,9 +176,10 @@ class LMHelper
    {
       $ch = curl_init();
       curl_setopt($ch, CURLOPT_URL, $url);
-      curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-      curl_setopt($ch, CURLOPT_FOLLOWLOCATION, true);
+      //curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+      //curl_setopt($ch, CURLOPT_FOLLOWLOCATION, true);
       curl_setopt($ch, CURLOPT_USERAGENT, 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10.7; rv:12.0) Gecko/20100101 Firefox/12.0');
+      curl_setopt($ch, CURLOPT_COOKIE, 'BIGipServerTWWSs_main=855703562.20480.0000; __utma=129119753.1274697662.1338372832.1338372832.1338372832.1; __utmb=129119753.3.10.1338372832; __utmc=129119753; __utmz=129119753.1338372832.1.1.utmcsr=(direct)|utmccn=(direct)|utmcmd=(none); __atuvc=3|22');
 
       $response = curl_exec($ch);
       curl_close($ch);
@@ -209,8 +210,10 @@ class LMHelper
       curl_setopt($ch, CURLOPT_URL, $url);
       curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
       curl_setopt($ch, CURLOPT_USERAGENT, 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10.7; rv:12.0) Gecko/20100101 Firefox/12.0');
+      curl_setopt($ch, CURLOPT_COOKIE, 'BIGipServerTWWSs_main=855703562.20480.0000; __utma=129119753.1274697662.1338372832.1338372832.1338372832.1; __utmb=129119753.3.10.1338372832; __utmc=129119753; __utmz=129119753.1338372832.1.1.utmcsr=(direct)|utmccn=(direct)|utmcmd=(none); __atuvc=3|22');
       curl_setopt($ch, CURLOPT_POST, count($fields));
       curl_setopt($ch, CURLOPT_POSTFIELDS, $fields_string);
+
       $response = curl_exec($ch);
       curl_close($ch);
 
