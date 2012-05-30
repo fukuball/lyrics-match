@@ -89,7 +89,8 @@ foreach ($query_result as $query_result_data) {
          // get disc info
          $in_disc_name = trim($song_page_dom->query->results->body->div[3]->div[0]->ul->li[2]->a->content);
          $in_disc_url = $kkbox_link.$song_page_dom->query->results->body->div[3]->div[0]->ul->li[2]->a->href;
-         $kk_disc_info = $song_page_dom->query->results->body->div[3]->div[1]->div[0]->div[0];
+         $in_disc_src = $song_page_dom->query->results->body->div[3]->div[1]->div[0]->div[0]->div->div[0]->img->src;
+         $kk_disc_info = $song_page_dom->query->results->body->div[3]->div[1]->div[0]->div[0]->div->div[1];
 
          print_r($kk_disc_info);
 
@@ -103,6 +104,7 @@ foreach ($query_result as $query_result_data) {
          echo "performer_url:".$in_performer_url."\n";
          echo "disc_name:".$in_disc_name."\n";
          echo "disc_url:".$in_disc_url."\n";
+         echo "disc_src:".$in_disc_src."\n";
          echo "song_name:".$in_song_name."\n";
          echo "song_url:".$in_song_url."\n";
          echo "lyric:".$in_lyric."\n";
