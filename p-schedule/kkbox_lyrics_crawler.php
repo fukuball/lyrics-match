@@ -27,7 +27,8 @@ $select_sql = "SELECT ".
               "* ".
               "FROM temp_midi ".
               "WHERE ".
-              "is_moved='0' ";
+              "is_moved='0' ".
+              "LIMIT 5";
 
 $query_result = $db_obj->selectCommand($select_sql);
 
