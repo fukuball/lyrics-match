@@ -18,6 +18,8 @@ $kkbox_link = 'http://tw.kkbox.com';
 
 $db_obj = LMDBAccess::getInstance();
 $performer_god_obj = new LMPerformerGod();
+$composer_god_obj = new LMComposerGod();
+$lyricist_god_obj = new LMLyricistGod();
 
 $select_sql = "SELECT ".
               "* ".
