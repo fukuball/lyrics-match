@@ -181,6 +181,8 @@ foreach ($query_result as $query_result_data) {
                    = $in_disc_src;
                $parameter_array['genre']
                    = $in_disc_genre;
+               $parameter_array['performer_id']
+                   = $performer_id;
 
                $disc_id = $disc_god_obj->create($parameter_array);
 
