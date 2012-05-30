@@ -113,15 +113,17 @@ foreach ($query_result as $query_result_data) {
          // parse release date
          $process_release_date = explode('<dd>',$process_string[7]);
          $kk_release_date = trim(strip_tags($process_release_date[3]));
+         $kk_release_date = $kk_release_date.'-01';
 
-         echo $kk_release_date."\n";
+         // parse lyric
+         $process_string = explode('<div class="content">',$song_resp);
+         $process_string = explode('</div>',$process_string[1]);
+
 
 
          print_r($process_string);
 
-                             //<img src="http://i.eimg.com.tw/d/alb/44/84044.300.jpg?ver=0" alt="悲傷的茱麗葉 專輯封面" class="figure">
-
-
+         //目前尚無相關歌詞
 
          // get performer id
          $performer_id = $performer_god_obj->findByName($kk_artist_title);
