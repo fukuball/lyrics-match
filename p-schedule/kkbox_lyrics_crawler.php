@@ -20,6 +20,8 @@ $db_obj = LMDBAccess::getInstance();
 $performer_god_obj = new LMPerformerGod();
 $composer_god_obj = new LMComposerGod();
 $lyricist_god_obj = new LMLyricistGod();
+$disc_god_obj = new LMDiscGod();
+$song_god_obj = new LMSongGod();
 
 $select_sql = "SELECT ".
               "* ".
@@ -33,6 +35,7 @@ $query_result = $db_obj->selectCommand($select_sql);
 // get unprocess data
 foreach ($query_result as $query_result_data) {
 
+   $midi_id = $query_result_data['id'];
    $artist_title = $query_result_data['artist_title'];
    $song_title = $query_result_data['song_title'];
    $midi_path = $query_result_data['midi_path'];
@@ -101,6 +104,7 @@ foreach ($query_result as $query_result_data) {
             $in_song_name = trim($song_page_dom->query->results->body->div[3]->div[0]->ul->li[3]->a->content);
             $in_song_url = $kkbox_link.$song_page_dom->query->results->body->div[3]->div[0]->ul->li[3]->a->href;
 
+            /*
             echo "lyricist_name:".$in_lyricist_name."\n";
             echo "composer_name:".$in_composer_name."\n";
             echo "performer_name:".$in_performer_name."\n";
@@ -116,6 +120,7 @@ foreach ($query_result as $query_result_data) {
             echo "song_genre:".$in_disc_genre."\n";
             echo "midi_path:".$midi_path."\n";
             echo "lyric:".$in_lyric."\n";
+            */
 
             // get lyricist id
             $lyricist_id = $lyricist_god_obj->findByName($in_lyricist_name);
@@ -126,6 +131,8 @@ foreach ($query_result as $query_result_data) {
                    = $in_lyricist_name;
 
                $lyricist_id = $lyricist_god_obj->create($parameter_array);
+
+               echo "create lyricist $lyricist_id \n";
 
             }
 
@@ -139,6 +146,8 @@ foreach ($query_result as $query_result_data) {
 
                $composer_id = $composer_god_obj->create($parameter_array);
 
+               echo "create composer $composer_id \n";
+
             }
 
             // get performer id
@@ -147,35 +156,98 @@ foreach ($query_result as $query_result_data) {
 
                $parameter_array = array();
                $parameter_array['name']
-                   = $kk_artist_title;
+                   = $in_performer_name;
                $parameter_array['kkbox_url']
-                   = $kk_performer_url;
+                   = $in_performer_url;
+
                $performer_id = $performer_god_obj->create($parameter_array);
+
+               echo "create performer $performer_id \n";
 
             }
 
-            // disc
-            //title
-            //genre
-            //release_date
-            //cover_path
-            //kkbox_url
+            // get disc id
+            $disc_id = $disc_god_obj->findByTitleNPerformerId($in_disc_name, $performer_id);
+            if (empty($disc_id)) {
 
-            // song
-            //title
-            //lyric
-            //genre
-            //release_date
-            //kkbox_url
-            //audio_path
-            //midi_path
-            //performer_id
-            //composer_id
-            //lyricist_id
-            //disc_id
+               $parameter_array = array();
+               $parameter_array['title']
+                   = $in_disc_name;
+               $parameter_array['kkbox_url']
+                   = $in_disc_url;
+               $parameter_array['release_date']
+                   = $in_disc_release;
+               $parameter_array['cover_path']
+                   = $in_disc_src;
+               $parameter_array['genre']
+                   = $in_disc_genre;
+
+               $disc_id = $disc_god_obj->create($parameter_array);
+
+               echo "create disc $disc_id \n";
+
+            }
+
+            // get song id
+            $song_id = $song_god_obj->findByTitleNPerformerId($in_song_name, $performer_id);
+
+            if (empty($song_id)) {
+
+               $song_id = $song_god_obj->getMaxId()+1;
+               $new_midi_path = "/var/www/html/lyrics-match/p-data/midi/all/".$song_id.".mid";
+
+               if (!copy($midi_path, $new_midi_path)) {
+
+                  echo "failed to copy $midi_path...\n";
+
+               } else {
+
+                  $parameter_array = array();
+                  $parameter_array['id']
+                      = $song_id;
+                  $parameter_array['title']
+                      = $in_song_name;
+                  $parameter_array['lyric']
+                      = $in_lyric;
+                  $parameter_array['kkbox_url']
+                      = $in_song_url;
+                  $parameter_array['release_date']
+                      = $in_disc_release;
+                  $parameter_array['genre']
+                      = $in_disc_genre;
+                  $parameter_array['midi_path']
+                      = $new_midi_path;
+                  $parameter_array['performer_id']
+                      = $performer_id;
+                  $parameter_array['composer_id']
+                      = $composer_id;
+                  $parameter_array['lyricist_id']
+                      = $lyricist_id;
+                  $parameter_array['disc_id']
+                      = $disc_id;
+
+                  if ($song_god_obj->create($parameter_array)) {
+
+                     $update_sql = "UPDATE ".
+                                   "temp_midi ".
+                                   "SET is_moved='1' ".
+                                   "WHERE ".
+                                   "id='$midi_id' ".
+                                   "LIMIT 1";
+
+                     $query_result = $db_obj->updateCommand($update_sql);
+
+                     echo "create song $song_id \n";
+
+                  }// end if ($song_god_obj->create($parameter_array))
+
+               }// end else (!copy($midi_path, $new_midi_path))
+
+
+
+            }
 
          }
-
 
 
       }
