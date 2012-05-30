@@ -63,7 +63,7 @@ foreach ($query_result as $query_result_data) {
          $song_page_html = file_get_contents('http://query.yahooapis.com/v1/public/yql?q='.$yql_query.'&format=json');
          $song_page_dom = json_decode($song_page_html);
 
-         // get lyric
+         // get lyric info
          $kk_lyric = $song_page_dom->query->results->body->div[3]->div[1]->div[0]->div[1]->p->content;
 
          // parse wrighter
@@ -82,14 +82,20 @@ foreach ($query_result as $query_result_data) {
          $parse_lyric = array_slice($parse_lyric, 1);
          $in_lyric = implode("\n", $parse_lyric);
 
-         // get disc info
-         $kk_disc_info = $song_page_dom->query->results->body->div[3]->div[1]->div[0]->div[0];
+         // get performer info
+         $kk_performer_info = $song_page_dom->query->results->body->div[3]->div[0]->ul->li;
 
-         print_r($kk_disc_info);
+         // get disc info
+         //$kk_disc_info = $song_page_dom->query->results->body->div[3]->div[1]->div[0]->div[0];
+
+         print_r($kk_performer_info);
+
+         $in_song_url = $kk_song_url;
 
          echo "lyricist_name:".$in_lyricist_name."\n";
          echo "composer_name:".$in_composer_name."\n";
          echo "lyric:".$in_lyric."\n";
+         echo "song_url:".$in_song_url."\n";
 
          // lyricist
          //name
@@ -100,9 +106,6 @@ foreach ($query_result as $query_result_data) {
          // performer
          //name
          //kkbox_url
-
-
-         print_r($kk_lyric_array);
 
 
          // parse song link
