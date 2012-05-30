@@ -17,6 +17,7 @@ require_once dirname(dirname(__FILE__))."/p-config/application-setter.php";
 $kkbox_link = 'http://tw.kkbox.com';
 
 $db_obj = LMDBAccess::getInstance();
+$performer_god_obj = new LMPerformerGod();
 
 $select_sql = "SELECT ".
               "* ".
@@ -91,9 +92,22 @@ foreach ($query_result as $query_result_data) {
          $process_performer_link = explode('"',$process_performer_link[1]);
          $kk_performer_url = $kkbox_link.$process_performer_link[0];
 
+         $performer_id = $performer_god_obj->findByName($kk_artist_title);
+         if (empty($performer_id)) {
+
+            $parameter_array = array();
+            $parameter_array['name']
+                = $kk_artist_title;
+            $parameter_array['kkbox_url']
+                = $kk_performer_url;
+            $performer_id = $performer_god_obj->create($parameter_array);
+
+         }
+
          echo "\n";
          echo "\n";
          echo 'performer_data:'."\n";
+         echo $performer_id."\n";
          echo $kk_artist_title."\n";
          echo $kk_performer_url."\n";
          echo "\n";
