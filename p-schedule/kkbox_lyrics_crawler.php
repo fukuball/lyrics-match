@@ -118,8 +118,16 @@ foreach ($query_result as $query_result_data) {
          // parse lyric
          $process_string = explode('<div class="content">',$song_resp);
          //$process_string = explode('</div>',$process_string[1]);
+         echo "\n";
+         echo "\n";
          echo $song_resp;
+         echo "\n";
+         echo "\n";
 
+         $test_resp = LMHelper::doGet('http://tw.kkbox.com/m/tc/song/QNzCht803HWKlDCqnDCqn0P4-index.html');
+         echo $test_resp;
+         echo "\n";
+         echo "\n";
          //目前尚無相關歌詞
 
          // get performer id
