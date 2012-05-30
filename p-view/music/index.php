@@ -80,13 +80,3 @@
       </tbody>
    </table>
 </div>
-<script>
-   $.ajax({
-       url: 'http://tw.kkbox.com/m/tc/song/QNzCht803HWKlDCqnDCqn0P4-index.html',
-       type: 'GET',
-       success: function(res) {
-           //var headline = $(res.responseText).find('a.tsh').text();
-           alert(res);
-       }
-   });
-</script>
