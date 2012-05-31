@@ -20,25 +20,25 @@ foreach ($song_list as $song_list_data) {
    $song_obj = new LMSong($song_list_data['id']);
 ?>
 <tr>
-   <td>
+   <td width="5%">
       <?=$song_obj->getId()?>
    </td>
-   <td>
+   <td width="15%">
       <?=$song_obj->title?>
    </td>
-   <td>
+   <td width="30%">
       <?=nl2br($song_obj->lyric)?>
    </td>
-   <td>
+   <td width="10%">
       <?=$song_obj->genre?>
    </td>
-   <td>
+   <td width="10%">
       <?=$song_obj->release_date?>
    </td>
-   <td>
+   <td width="15%">
       <a href="<?=$song_obj->getMidiUrl()?>" target="_blank"><?=$song_obj->getMidiUrl()?></a>
    </td>
-   <td>
+   <td width="15%">
       <a href="<?=$song_obj->kkbox_url?>" target="_blank"><?=$song_obj->kkbox_url?></a>
    </td>
 </tr>
