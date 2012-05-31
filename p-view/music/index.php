@@ -16,25 +16,25 @@
    <table class="table table-bordered table-striped">
       <thead>
          <tr>
-            <th width="20px">
+            <th style="width:20px">
                id
             </th>
-            <th width="100px">
+            <th style="width:100px">
                歌名
             </th>
-            <th width="200px">
+            <th style="width:100px">
                歌詞
             </th>
-            <th width="20px">
+            <th style="width:20px">
                類型
             </th>
-            <th width="20px">
+            <th style="width:20px">
                發行日期
             </th>
-            <th width="100px">
+            <th style="width:100px">
                midi 網址
             </th>
-            <th width="100px">
+            <th style="width:100px">
                kkbox 網址
             </th>
          </tr>
