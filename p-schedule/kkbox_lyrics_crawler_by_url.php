@@ -48,10 +48,11 @@ foreach ($query_result as $query_result_data) {
 
    // get lyric info
    $kk_lyric = $song_page_dom->query->results->body->div[3]->div[1]->div[0]->div[1]->p->content;
-   print_r($kk_lyric);
+   //print_r($kk_lyric);
 
    // parse wrighter
    $kk_lyric_array = explode('：', $kk_lyric);
+   print_r($kk_lyric_array);
 
    // parse lyricist
    $parse_lyricist = explode('   ', $kk_lyric_array[1]);
