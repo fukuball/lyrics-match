@@ -44,7 +44,7 @@
          $offset = 0;
          $length = 30;
 
-         require SITE_ROOT."/ajax-action/SongAction/SongActionView/song-list.php";
+         require SITE_ROOT."/ajax-action/SongActionView/song-list.php";
 
          ?>
       </tbody>
