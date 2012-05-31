@@ -63,7 +63,7 @@
                <?=$disc_obj->cover_path?>
             </td>
             <td>
-               <?=$disc_obj->kkbox_url?>
+               <a href="<?=$disc_obj->kkbox_url?>" target="_blank"><?=$disc_obj->kkbox_url?></a>
             </td>
          </tr>
          <?php

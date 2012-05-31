@@ -66,10 +66,10 @@
                <?=$song_obj->release_date?>
             </td>
             <td>
-               <?=$song_obj->getMidiUrl()?>
+               <a href="<?=$song_obj->getMidiUrl()?>" target="_blank"><?=$song_obj->getMidiUrl()?></a>
             </td>
             <td>
-               <?=$song_obj->kkbox_url?>
+               <a href="<?=$song_obj->kkbox_url?>" target="_blank"><?=$song_obj->kkbox_url?></a>
             </td>
          </tr>
          <?php

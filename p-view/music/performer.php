@@ -45,7 +45,7 @@
                <?=$performer_obj->name?>
             </td>
             <td>
-               <?=$performer_obj->kkbox_url?>
+               <a href="<?=$performer_obj->kkbox_url?>" target="_blank"><?=$performer_obj->kkbox_url?></a>
             </td>
          </tr>
          <?php
