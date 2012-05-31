@@ -14,6 +14,7 @@
 
 // Helper
 require 'helper/LMHelper.php';
+require 'helper/LMValidateHelper.php';
 // Database
 require 'database/LMActiveRecordGod.php';
 require 'database/LMActiveRecord.php';
