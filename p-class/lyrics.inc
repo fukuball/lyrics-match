@@ -21,6 +21,7 @@ require 'database/LMDBAccess.php';
 // REST
 require 'rest/LMRESTControl.php';
 require 'rest/LMRESTfulInterface.php';
+require 'message/LMErrorMessenger.php';
 // Model
 require 'composer/LMComposerGod.php';
 require 'composer/LMComposer.php';
