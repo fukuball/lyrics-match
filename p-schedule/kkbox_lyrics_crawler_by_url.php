@@ -52,18 +52,20 @@ foreach ($query_result as $query_result_data) {
 
    // parse wrighter
    $kk_lyric_array = explode('：', $kk_lyric);
-   print_r($kk_lyric_array);
+   //print_r($kk_lyric_array);
 
    // parse lyricist
    $parse_lyricist = explode('   ', $kk_lyric_array[1]);
    $in_lyricist_name = trim($parse_lyricist[0]);
 
    // parse lyricist
-   $parse_composer = explode(' ', $kk_lyric_array[2]);
+   //$parse_composer = explode(' ', $kk_lyric_array[2]);
+   $parse_composer = explode("\n", $kk_lyric_array[2]);
    $in_composer_name = trim($parse_composer[0]);
 
    // parse lyric
-   $parse_lyric = explode("\n", $kk_lyric_array[4]);
+   //$parse_lyric = explode("\n", $kk_lyric_array[4]);
+   $parse_lyric = explode("\n", $kk_lyric_array[2]);
    $parse_lyric = array_slice($parse_lyric, 1);
    print_r($parse_lyric);
    $normalize_lyric_array = array();
