@@ -5,10 +5,7 @@
       var action_url = '<?=SITE_HOST?>/ajax-action/index.php/song-action/song-list';
       song_offset = song_offset+30;
 
-      alert(action_url);
-      alert(song_offset);
-
-      /*if ($('#song-show-more').length != 0) {
+      if ($('#song-show-more').length != 0) {
          $.ajax({
             url: action_url,
             type: "GET",
@@ -30,7 +27,7 @@
                });
             }
          });
-      }*/
+      }
    }
 
    $('#song-show-more').live('click.song_show_more', function() {
