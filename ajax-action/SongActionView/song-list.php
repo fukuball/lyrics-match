@@ -11,7 +11,7 @@
  * @version  Release: <1.0>
  * @link     http://sarasti.cs.nccu.edu.tw
  */
-?>
+
 $song_god_obj = new LMSongGod();
 $song_list = $song_god_obj->getList('all', $offset, $length);
 foreach ($song_list as $song_list_data) {
