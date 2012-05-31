@@ -87,7 +87,7 @@ foreach ($query_result as $query_result_data) {
          //$parse_lyric = explode("\n", $kk_lyric_array[4]);
          $parse_lyric = explode("\n", $kk_lyric_array[2]);
          $parse_lyric = array_slice($parse_lyric, 1);
-         print_r($parse_lyric);
+         //print_r($parse_lyric);
          $normalize_lyric_array = array();
          foreach ($parse_lyric as $key => $value) {
             if ($value!=$parse_lyric[0]) {
