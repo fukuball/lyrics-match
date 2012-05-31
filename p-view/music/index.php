@@ -39,7 +39,7 @@
             </th>
          </tr>
       </thead>
-      <tbody>
+      <tbody id="song-list-tbody">
          <?php
          $offset = 0;
          $length = 30;
@@ -49,8 +49,8 @@
          ?>
       </tbody>
    </table>
-   <div class="show-more margin-top-1">
-      <a data-url="<?=SITE_HOST?>/ajax-action/index.php/song-action/song-list" data-length="30">
+   <div id="song-show-more" class="show-more margin-top-1">
+      <a data-length="30">
          顯示更多
       </a>
    </div>
