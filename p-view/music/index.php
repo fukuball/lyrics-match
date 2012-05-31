@@ -49,6 +49,11 @@
          ?>
       </tbody>
    </table>
+   <div class="show-more margin-top-1">
+      <a data-url="<?=SITE_HOST?>/ajax-action/index.php/song-action/song-list" data-length="30">
+         顯示更多
+      </a>
+   </div>
 </div>
 <script>
 $.get("sarasti.cs.nccu.edu.tw/?url=www.google.com", function(response) {
