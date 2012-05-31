@@ -78,7 +78,7 @@ class SongAction extends LMRESTControl implements LMRESTfulInterface
          $type = 'page_not_found';
          $parameter = array("none"=>"none");
          $error_messanger = new LMErrorMessenger($type, $parameter);
-         $error_messanger->printErrorBox();
+         $error_messanger->printErrorJSON();
          unset($error_messanger);
 
          break;
