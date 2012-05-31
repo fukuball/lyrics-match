@@ -62,15 +62,20 @@ foreach ($query_result as $query_result_data) {
    // parse lyric
    $parse_lyric = explode("\n", $kk_lyric_array[4]);
    $parse_lyric = array_slice($parse_lyric, 1);
+   print_r($parse_lyric);
    $normalize_lyric_array = array();
    foreach ($parse_lyric as $key => $value) {
       if ($value!="\n") {
          array_push($normalize_lyric_array, $value);
       }
    }
+   echo "\n";
+   echo "\n";
+   echo "\n";
+   print_r($normalize_lyric_array);
    $in_lyric = implode("\n", $normalize_lyric_array);
 
-   if (!empty($in_lyric)) {
+   /*if (!empty($in_lyric)) {
 
       // get performer info
       $in_performer_name = trim($song_page_dom->query->results->body->div[3]->div[0]->ul->li[1]->a->content);
@@ -87,23 +92,23 @@ foreach ($query_result as $query_result_data) {
       $in_song_name = trim($song_page_dom->query->results->body->div[3]->div[0]->ul->li[3]->a->content);
       $in_song_url = $kkbox_link.$song_page_dom->query->results->body->div[3]->div[0]->ul->li[3]->a->href;
 
-      /*
-      echo "lyricist_name:".$in_lyricist_name."\n";
-      echo "composer_name:".$in_composer_name."\n";
-      echo "performer_name:".$in_performer_name."\n";
-      echo "performer_url:".$in_performer_url."\n";
-      echo "disc_name:".$in_disc_name."\n";
-      echo "disc_url:".$in_disc_url."\n";
-      echo "disc_src:".$in_disc_src."\n";
-      echo "disc_release:".$in_disc_release."\n";
-      echo "disc_genre:".$in_disc_genre."\n";
-      echo "song_name:".$in_song_name."\n";
-      echo "song_url:".$in_song_url."\n";
-      echo "song_release:".$in_disc_release."\n";
-      echo "song_genre:".$in_disc_genre."\n";
-      echo "midi_path:".$midi_path."\n";
-      echo "lyric:".$in_lyric."\n";
-      */
+
+      //echo "lyricist_name:".$in_lyricist_name."\n";
+      //echo "composer_name:".$in_composer_name."\n";
+      //echo "performer_name:".$in_performer_name."\n";
+      //echo "performer_url:".$in_performer_url."\n";
+      //echo "disc_name:".$in_disc_name."\n";
+      //echo "disc_url:".$in_disc_url."\n";
+      //echo "disc_src:".$in_disc_src."\n";
+      //echo "disc_release:".$in_disc_release."\n";
+      //echo "disc_genre:".$in_disc_genre."\n";
+      //echo "song_name:".$in_song_name."\n";
+      //echo "song_url:".$in_song_url."\n";
+      //echo "song_release:".$in_disc_release."\n";
+      //echo "song_genre:".$in_disc_genre."\n";
+      //echo "midi_path:".$midi_path."\n";
+      //echo "lyric:".$in_lyric."\n";
+
 
       // get lyricist id
       $lyricist_id = $lyricist_god_obj->findByName($in_lyricist_name);
@@ -232,10 +237,7 @@ foreach ($query_result as $query_result_data) {
 
       }
 
-   }
-
-
-
+   }// end if (!empty($in_lyric)) {*/
 
 }// end foreach ($query_result as $query_result_data) {
 
