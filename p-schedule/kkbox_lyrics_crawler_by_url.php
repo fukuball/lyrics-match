@@ -41,7 +41,7 @@ foreach ($query_result as $query_result_data) {
    $temp_kkbox_url = $query_result_data['kkbox_url'];
 
    // get song detail
-   $yql_query = urlencode('SELECT * FROM html WHERE url="'.$kk_song_url.'"');
+   $yql_query = urlencode('SELECT * FROM html WHERE url="'.$temp_kkbox_url.'"');
    $song_page_html = file_get_contents('http://query.yahooapis.com/v1/public/yql?q='.$yql_query.'&format=json');
    $song_page_dom = json_decode($song_page_html);
 
