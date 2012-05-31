@@ -73,6 +73,21 @@ class SongAction extends LMRESTControl implements LMRESTfulInterface
 
       switch ($action_id) {
 
+      case 'song-list':
+
+         $offset = $_GET['offset'];
+         if (!LMValidateHelper::validateNoEmpty($offset)) {
+            $offset = 0;
+         }
+         $length = $_GET['length'];
+         if (!LMValidateHelper::validateNoEmpty($length)) {
+            $length = 33;
+         }
+
+         require SITE_ROOT."/ajax-action/SongActionView/song-list.php";
+
+         break;
+
       default:
 
          $type = 'page_not_found';
