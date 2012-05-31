@@ -21,7 +21,7 @@ $song_god_obj = new LMSongGod();
 
 $select_sql = "SELECT ".
               "* ".
-              "FROM song LIMIT 1";
+              "FROM song WHERE id='101'";
 
 $query_result = $db_obj->selectCommand($select_sql);
 
