@@ -67,20 +67,17 @@ foreach ($query_result as $query_result_data) {
    //$parse_lyric = explode("\n", $kk_lyric_array[4]);
    $parse_lyric = explode("\n", $kk_lyric_array[2]);
    $parse_lyric = array_slice($parse_lyric, 1);
-   print_r($parse_lyric);
+   //print_r($parse_lyric);
    $normalize_lyric_array = array();
    foreach ($parse_lyric as $key => $value) {
       if ($value!=$parse_lyric[0]) {
-         array_push($normalize_lyric_array, $value);
+         array_push($normalize_lyric_array, trim($value));
       }
    }
-   echo "\n";
-   echo "\n";
-   echo "\n";
-   print_r($normalize_lyric_array);
+   //print_r($normalize_lyric_array);
    $in_lyric = implode("\n", $normalize_lyric_array);
 
-   /*if (!empty($in_lyric)) {
+   if (!empty($in_lyric)) {
 
       // get performer info
       $in_performer_name = trim($song_page_dom->query->results->body->div[3]->div[0]->ul->li[1]->a->content);
@@ -242,7 +239,7 @@ foreach ($query_result as $query_result_data) {
 
       }
 
-   }// end if (!empty($in_lyric)) {*/
+   }// end if (!empty($in_lyric)) {
 
 }// end foreach ($query_result as $query_result_data) {
 
