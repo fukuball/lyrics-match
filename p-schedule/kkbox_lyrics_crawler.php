@@ -90,7 +90,11 @@ foreach ($query_result as $query_result_data) {
          //print_r($parse_lyric);
          $normalize_lyric_array = array();
          foreach ($parse_lyric as $key => $value) {
-            if ($value!=$parse_lyric[0]) {
+            $normal_value = nl2br(trim($value));
+            $normal_value = str_replace('<br />', '', $normal_value);
+            $normal_value = str_replace('<br/>', '', $normal_value);
+            $normal_value = str_replace('<br>', '', $normal_value);
+            if ($normal_value!='') {
                array_push($normalize_lyric_array, trim($value));
             }
          }
