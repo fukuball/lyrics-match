@@ -41,41 +41,11 @@
       </thead>
       <tbody>
          <?php
-         $song_god_obj = new LMSongGod();
-         $song_list = $song_god_obj->getList('all', 0, 20);
+         $offset = 0;
+         $length = 30;
 
+         require SITE_ROOT."/ajax-action/SongAction/SongActionView/song-list.php";
 
-         foreach ($song_list as $song_list_data) {
-
-            $song_obj = new LMSong($song_list_data['id']);
-         ?>
-         <tr>
-            <td>
-               <?=$song_obj->getId()?>
-            </td>
-            <td>
-               <?=$song_obj->title?>
-            </td>
-            <td>
-               <?=nl2br($song_obj->lyric)?>
-            </td>
-            <td>
-               <?=$song_obj->genre?>
-            </td>
-            <td>
-               <?=$song_obj->release_date?>
-            </td>
-            <td>
-               <a href="<?=$song_obj->getMidiUrl()?>" target="_blank"><?=$song_obj->getMidiUrl()?></a>
-            </td>
-            <td>
-               <a href="<?=$song_obj->kkbox_url?>" target="_blank"><?=$song_obj->kkbox_url?></a>
-            </td>
-         </tr>
-         <?php
-            unset($song_obj);
-         }
-         unset($song_god_obj);
          ?>
       </tbody>
    </table>
