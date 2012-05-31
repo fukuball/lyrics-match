@@ -178,6 +178,13 @@ ul.nav {
 .ui-timepicker-div td { font-size: 0.9em; }
 .ui-tpicker-grid-label { background: none; border: none; margin: 0; padding: 0; }
 
+/* show more */
+.show-more {
+   border: 1px solid #DDD;
+   background-color: #EEE;
+   padding: 5px 10px;
+}
+
 /* utility */
 .font-bold {
    font-weight: bold;
@@ -196,6 +203,9 @@ ul.nav {
 }
 .margin-all {
   margin: 1em;
+}
+.margin-top-1 {
+   margin-top: 1em;
 }
 .margin-v-1 {
    margin-top: 1em;

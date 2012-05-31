@@ -14,8 +14,9 @@
 
 $song_god_obj = new LMSongGod();
 $song_list = $song_god_obj->getList('all', $offset, $length);
+$song_num = 0;
 foreach ($song_list as $song_list_data) {
-
+   $song_num++;
    $song_obj = new LMSong($song_list_data['id']);
 ?>
 <tr>
@@ -45,4 +46,5 @@ foreach ($song_list as $song_list_data) {
    unset($song_obj);
 }
 unset($song_god_obj);
+
 ?>
