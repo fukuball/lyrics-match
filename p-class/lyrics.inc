@@ -18,6 +18,9 @@ require 'helper/LMHelper.php';
 require 'database/LMActiveRecordGod.php';
 require 'database/LMActiveRecord.php';
 require 'database/LMDBAccess.php';
+// REST
+require 'rest/LMRESTControl.php';
+require 'rest/LMRESTfulInterface.php';
 // Model
 require 'composer/LMComposerGod.php';
 require 'composer/LMComposer.php';
