@@ -70,8 +70,7 @@ foreach ($query_result as $query_result_data) {
    print_r($parse_lyric);
    $normalize_lyric_array = array();
    foreach ($parse_lyric as $key => $value) {
-      if ($value!='
-') {
+      if ($value!="\n") {
          array_push($normalize_lyric_array, $value);
       }
    }
