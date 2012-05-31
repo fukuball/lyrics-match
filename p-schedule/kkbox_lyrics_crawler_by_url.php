@@ -70,7 +70,7 @@ foreach ($query_result as $query_result_data) {
    //print_r($parse_lyric);
    $normalize_lyric_array = array();
    foreach ($parse_lyric as $key => $value) {
-      if ($value!=$parse_lyric[0]) {
+      if (nl2br(trim($value))!='<br />' && nl2br(trim($value))!='<br>') {
          array_push($normalize_lyric_array, trim($value));
       }
    }
