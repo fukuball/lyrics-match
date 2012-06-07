@@ -27,7 +27,7 @@ $select_sql = "SELECT ".
               "* ".
               "FROM temp_midi ".
               "WHERE ".
-              "is_moved='0' AND kkbox_url != ''";
+              "is_moved='0' AND kkbox_url != '' AND memo=''";
 
 $query_result = $db_obj->selectCommand($select_sql);
 
