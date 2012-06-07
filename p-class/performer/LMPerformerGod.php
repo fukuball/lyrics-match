@@ -134,7 +134,7 @@ class LMPerformerGod extends LMActiveRecordGod
                     "id ".
                     "FROM $this->table_name ".
                     "WHERE ".
-                    "name='".addslashes($name)."' ".
+                    "name='".mysql_escape_string($name)."' ".
                     "LIMIT 1";
 
       $query_result = $this->db_obj->selectCommand($select_sql);
