@@ -119,7 +119,7 @@ class LMDiscGod extends LMActiveRecordGod
                     "id ".
                     "FROM $this->table_name ".
                     "WHERE ".
-                    "title='$title' ".
+                    "title='".addslashes($title)."' ".
                     "AND performer_id='$performer_id' ".
                     "LIMIT 1";
 
