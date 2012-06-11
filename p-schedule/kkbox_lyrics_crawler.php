@@ -27,7 +27,7 @@ $select_sql = "SELECT ".
               "* ".
               "FROM temp_midi ".
               "WHERE ".
-              "is_moved='0' AND id>'828' ";
+              "is_moved='0' AND id>'1085' ";
 
 $query_result = $db_obj->selectCommand($select_sql);
 
