@@ -59,8 +59,14 @@ foreach ($query_result as $query_result_data) {
       $process_song_link = explode('"',$process_song_link[1]);
       $kk_song_url = $kkbox_link.$process_song_link[0];
 
+      $artist_title_len = mb_strlen($artist_title,'UTF-8');
+      $short_kk_artist_title = mb_substr($kk_artist_title, 0, $artist_title_len, 'UTF-8');
+
+      $song_title_len = mb_strlen($song_title,'UTF-8');
+      $short_kk_song_title = mb_substr($kk_song_title, 0, $song_title_len, 'UTF-8');
+
       // confirm search result is correct
-      if ( utf8_encode($song_title) == utf8_encode($kk_song_title) && utf8_encode($artist_title) == utf8_encode($kk_artist_title) ) {
+      if ( utf8_encode($song_title) == utf8_encode($short_kk_song_title) && utf8_encode($artist_title) == utf8_encode($short_kk_artist_title) ) {
 
          // get song detail
          $yql_query = urlencode('SELECT * FROM html WHERE url="'.$kk_song_url.'"');
