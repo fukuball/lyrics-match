@@ -35,6 +35,7 @@ $query_result = $db_obj->selectCommand($select_sql);
 foreach ($query_result as $query_result_data) {
 
    $midi_id = $query_result_data['id'];
+   echo "create midi_id $midi_id \n";
    $artist_title = $query_result_data['artist_title'];
    $song_title = $query_result_data['song_title'];
    $midi_path = $query_result_data['midi_path'];
