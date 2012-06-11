@@ -39,7 +39,7 @@ foreach ($query_result as $query_result_data) {
    $artist_title = $query_result_data['artist_title'];
    $song_title = $query_result_data['song_title'];
    $midi_path = $query_result_data['midi_path'];
-   $search_resp = LMHelper::doGet($kkbox_link."/search.php?word=".urlencode($song_title)."+".urlencode($artist_title)."&search=song&search_lang=");
+   $search_resp = LMHelper::doGet($kkbox_link."/search.php?word=".urlencode($song_title)."&search=song&search_lang=");
    $process_string = explode('<div class="search-notice">', $search_resp);
    $process_string = explode('</div>', $process_string[1]);
    $process_string = explode('<strong>', $process_string[0]);
