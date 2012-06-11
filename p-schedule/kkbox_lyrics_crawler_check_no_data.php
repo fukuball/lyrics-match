@@ -23,11 +23,7 @@ $lyricist_god_obj = new LMLyricistGod();
 $disc_god_obj = new LMDiscGod();
 $song_god_obj = new LMSongGod();
 
-$select_sql = "SELECT ".
-              "* ".
-              "FROM temp_midi ".
-              "WHERE ".
-              "is_moved='0' ";
+$select_sql = "SELECT * FROM  temp_midi WHERE is_moved =  '0' AND memo !=  'kkbox 沒有資料' AND memo !=  '暫時抓不到資料' AND memo !=  '暫時抓不到' ";
 
 $query_result = $db_obj->selectCommand($select_sql);
 
@@ -39,7 +35,7 @@ foreach ($query_result as $query_result_data) {
    $artist_title = $query_result_data['artist_title'];
    $song_title = $query_result_data['song_title'];
    $midi_path = $query_result_data['midi_path'];
-   $search_resp = LMHelper::doGet($kkbox_link."/search.php?word=".urlencode($song_title)."&search=song&search_lang=");
+   $search_resp = LMHelper::doGet($kkbox_link."/search.php?word=".urlencode($song_title)."+".urlencode($artist_title)."&search=song&search_lang=");
    $process_string = explode('<div class="search-notice">', $search_resp);
    $process_string = explode('</div>', $process_string[1]);
    $process_string = explode('<strong>', $process_string[0]);
@@ -55,7 +51,7 @@ foreach ($query_result as $query_result_data) {
 
       $query_result = $db_obj->updateCommand($update_sql);
 
-      echo "mark song $song_id no data \n";
+      echo "mark midi $midi_id no data \n";
    }
 
 }// end foreach ($query_result as $query_result_data) {
