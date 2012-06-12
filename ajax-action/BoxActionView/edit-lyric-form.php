@@ -82,7 +82,7 @@
 
          if(responseText.response.status.code==0){
 
-            $('#song-lyric-<?=$song_obj->getId()?>').html($('#edit-lyric-content').val());
+            $('#song-lyric-<?=$song_obj->getId()?>').html(nl2br($('#edit-lyric-content').val()));
             $('#p-modal').modal('hide');
 
             $('#system-message').html('Success');

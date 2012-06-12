@@ -1,4 +1,10 @@
 <script>
+
+   function nl2br( str ) {
+      return str.replace(/([^>])\n/g, '$1<br/>\n');
+   }
+
+
    // start song load more
    var song_offset = 0;
    function moreSong() {
