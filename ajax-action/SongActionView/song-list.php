@@ -30,7 +30,7 @@ foreach ($song_list as $song_list_data) {
    <td width="100px">
       <?=$song_obj->title?>
    </td>
-   <td width="500px">
+   <td width="550px">
       <?=nl2br($song_obj->lyric)?>
    </td>
    <td width="50px">
@@ -39,14 +39,21 @@ foreach ($song_list as $song_list_data) {
    <td width="50px">
       <?=$song_obj->release_date?>
    </td>
-   <td width="100px">
-      <a href="<?=$song_obj->getMidiUrl()?>" target="_blank"><?=$song_obj->getMidiUrl()?></a>
+   <td width="50px">
+      <a href="<?=$song_obj->getMidiUrl()?>" target="_blank">連結</a>
    </td>
-   <td width="100px">
-      <a href="<?=$song_obj->getAudioUrl()?>" target="_blank"><?=$song_obj->getAudioUrl()?></a>
+   <td width="50px">
+      <a href="<?=$song_obj->getAudioUrl()?>" target="_blank">連結</a>
+      <br/>
+      <a class="upload-audio" href="javascript:;">
+         <button type="button" class="btn btn-primary start">
+            <i class="icon-upload icon-white"></i>
+            <span>Upload</span>
+         </button>
+      </a>
    </td>
-   <td width="100px">
-      <a href="<?=$song_obj->kkbox_url?>" target="_blank"><?=$song_obj->kkbox_url?></a>
+   <td width="50px">
+      <a href="<?=$song_obj->kkbox_url?>" target="_blank">連結</a>
    </td>
 </tr>
 <?php
