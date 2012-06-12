@@ -13,31 +13,31 @@
  */
 ?>
 <div id='song-list-block'>
-   <table class="table table-bordered table-striped">
+   <table width="1000px" class="table table-bordered table-striped">
       <thead>
          <tr>
-            <th width="5%">
+            <th width="50px">
                id
             </th>
-            <th width="15%">
+            <th width="50px">
                藝人
             </th>
-            <th width="15%">
+            <th width="100px">
                歌名
             </th>
-            <th width="30%">
+            <th width="500px">
                歌詞
             </th>
-            <th width="10%">
+            <th width="50px">
                類型
             </th>
-            <th width="10%">
+            <th width="50px">
                發行日期
             </th>
-            <th width="15%">
+            <th width="100px">
                midi 網址
             </th>
-            <th width="15%">
+            <th width="100px">
                kkbox 網址
             </th>
          </tr>

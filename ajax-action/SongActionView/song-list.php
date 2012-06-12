@@ -21,28 +21,28 @@ foreach ($song_list as $song_list_data) {
    $artist_obj = new LMPerformer($song_obj->performer_id);
 ?>
 <tr>
-   <td width="5%">
+   <td width="50px">
       <?=$song_obj->getId()?>
    </td>
-   <td width="15%">
+   <td width="50px">
       <?=$artist_obj->name?>
    </td>
-   <td width="15%">
+   <td width="100px">
       <?=$song_obj->title?>
    </td>
-   <td width="30%">
+   <td width="500px">
       <?=nl2br($song_obj->lyric)?>
    </td>
-   <td width="10%">
+   <td width="50px">
       <?=$song_obj->genre?>
    </td>
-   <td width="10%">
+   <td width="50px">
       <?=$song_obj->release_date?>
    </td>
-   <td width="15%">
+   <td width="100px">
       <a href="<?=$song_obj->getMidiUrl()?>" target="_blank"><?=$song_obj->getMidiUrl()?></a>
    </td>
-   <td width="15%">
+   <td width="100px">
       <a href="<?=$song_obj->kkbox_url?>" target="_blank"><?=$song_obj->kkbox_url?></a>
    </td>
 </tr>
