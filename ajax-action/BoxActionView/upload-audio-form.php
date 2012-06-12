@@ -18,25 +18,23 @@
          Upload Audio File
       </h3>
    </div>
-   <form id="upload-audio-form" name="upload_audio_form" action="/ajax-action/song-action/upload-audio" method="post">
-      <div class="modal-body">
-         <a id="upload-audio-button" href="javascript:;">
-            <button type="button" class="btn btn-primary start">
-               <i class="icon-upload icon-white"></i>
-               <span>Start Upload</span>
-            </button>
-         </a>
-         <br/>
-         <div class="progress progress-success progress-striped margin-all hide" style="width: 450px;">
-            <div class="bar" style="width: 0%"></div>
-         </div>
-      </div>
-      <div class="modal-footer align-center">
-         <button id="upload-audio-cancel" type="button" class="btn" data-dismiss="modal">
-            Cancel
+   <div class="modal-body">
+      <a id="upload-audio-button" href="javascript:;">
+         <button type="button" class="btn btn-primary start">
+            <i class="icon-upload icon-white"></i>
+            <span>Start Upload</span>
          </button>
+      </a>
+      <br/>
+      <div class="progress progress-success progress-striped margin-all hide" style="width: 450px;">
+         <div class="bar" style="width: 0%"></div>
       </div>
-   </form>
+   </div>
+   <div class="modal-footer align-center">
+      <button id="upload-audio-cancel" type="button" class="btn" data-dismiss="modal">
+         Cancel
+      </button>
+   </div>
 </div>
 <script>
    $('#p-modal').ready(function() {
@@ -49,10 +47,10 @@
 
       });
 
-      var audio_uploader = new plupload.Uploader({
+      /*var audio_uploader = new plupload.Uploader({
          runtimes : 'html5,flash,gears,silverlight,browserplus',
          browse_button : 'upload-audio-button',
-         container: 'upload-audio-form',
+         container: 'p-modal',
          max_file_size : '10mb',
          chunk_size : '1mb',
          url : '<?=SITE_HOST?>/ajax-action/song-action/upload-audio',
@@ -106,7 +104,7 @@
          }
       });
 
-      audio_uploader.init();
+      audio_uploader.init();*/
 
    });// end $('#p-modal').ready
 </script>
