@@ -50,7 +50,28 @@
          $offset = 0;
          $length = 30;
 
+         switch ($_GET['song_list_type']) {
+
+         case 'no-audio':
+
+            $song_list_type = 'no-audio';
+
+            break;
+
+         case 'all':
+         default:
+
+            $song_list_type = 'all';
+
+            break;
+         }
+
+         $song_god_obj = new LMSongGod();
+         $song_list = $song_god_obj->getList($song_list_type, $offset, $length);
+
          require SITE_ROOT."/ajax-action/SongActionView/song-list.php";
+
+         unset($song_god_obj);
 
          ?>
       </tbody>
