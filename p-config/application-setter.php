@@ -1,7 +1,7 @@
 <?php
 /**
- * application-setter.php initialize application settings 
- * 
+ * application-setter.php initialize application settings
+ *
  * PHP version 5
  *
  * @category PHP
@@ -24,12 +24,14 @@ define("SITE_HOST", "http://sarasti.cs.nccu.edu.tw/lyrics-match");
 define("SITE_DOMAIN", "sarasti.cs.nccu.edu.tw");
 define("DATA_ROOT", "/var/www/html/lyrics-data");
 define("DATA_HOST", "http://sarasti.cs.nccu.edu.tw/lyrics-data");
+define("AUDIO_ROOT", "/var/www/html/lyrics-match/p-data/mp3");
+define("AUDIO_HOST", "http://sarasti.cs.nccu.edu.tw/lyrics-match/p-data/mp3");
 // facebook constant define
 define("FB_APP_ID", "");
 define("FB_ADMIN_ID", "");
 define("KEY_PREFIX", "stage_");
 define("DEBUG_MODE", true);
-   
+
 // Library
 require_once SITE_ROOT.'/p-library/simplehtmldom_1_5/simple_html_dom.php';
 require_once SITE_ROOT."/p-class/lyrics.inc";

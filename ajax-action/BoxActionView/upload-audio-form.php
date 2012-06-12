@@ -88,7 +88,7 @@
                console.log(responseText);
                if(responseText.response.status.code==0){
 
-                  //$("#pick-ivboard-banner>img").attr("src", responseText.response.status.parameter.ivbanner_url);
+                  $('#p-modal').modal('hide');
 
                   $('#system-message').html('完成');
                   $('#system-message').fadeOut();
