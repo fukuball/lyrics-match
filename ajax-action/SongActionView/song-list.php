@@ -31,7 +31,10 @@ foreach ($song_list as $song_list_data) {
       <?=$song_obj->title?>
    </td>
    <td width="400px">
-      <div style="height:400px; width:300px; overflow:auto;">
+      <div>
+         <a class="edit-lyric-link" data-songid="<?=$song_obj->getId()?>">連結</a>
+      </div>
+      <div id="song-lyric-<?=$song_obj->getId()?>" style="height:300px; width:400px; overflow:auto;">
          <?=nl2br($song_obj->lyric)?>
       </div>
    </td>
