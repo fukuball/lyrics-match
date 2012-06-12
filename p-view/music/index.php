@@ -14,8 +14,8 @@
 ?>
 <div id='song-list-block'>
    <table width="1000px" class="table table-bordered table-striped">
-      <thead>
-         <tr>
+      <thead width="1000px">
+         <tr width="1000px">
             <th width="50px">
                id
             </th>
@@ -25,7 +25,7 @@
             <th width="100px">
                歌名
             </th>
-            <th width="500px">
+            <th width="400px">
                歌詞
             </th>
             <th width="50px">
@@ -38,11 +38,14 @@
                midi 網址
             </th>
             <th width="100px">
+               mp3 網址
+            </th>
+            <th width="100px">
                kkbox 網址
             </th>
          </tr>
       </thead>
-      <tbody id="song-list-tbody">
+      <tbody width="1000px" id="song-list-tbody">
          <?php
          $offset = 0;
          $length = 30;

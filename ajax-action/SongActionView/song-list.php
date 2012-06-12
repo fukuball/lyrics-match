@@ -20,7 +20,7 @@ foreach ($song_list as $song_list_data) {
    $song_obj = new LMSong($song_list_data['id']);
    $artist_obj = new LMPerformer($song_obj->performer_id);
 ?>
-<tr>
+<tr width="1000px">
    <td width="50px">
       <?=$song_obj->getId()?>
    </td>
@@ -41,6 +41,9 @@ foreach ($song_list as $song_list_data) {
    </td>
    <td width="100px">
       <a href="<?=$song_obj->getMidiUrl()?>" target="_blank"><?=$song_obj->getMidiUrl()?></a>
+   </td>
+   <td width="100px">
+      <a href="<?=$song_obj->getAudioUrl()?>" target="_blank"><?=$song_obj->getAudioUrl()?></a>
    </td>
    <td width="100px">
       <a href="<?=$song_obj->kkbox_url?>" target="_blank"><?=$song_obj->kkbox_url?></a>

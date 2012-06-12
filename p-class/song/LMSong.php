@@ -155,6 +155,19 @@ class LMSong extends LMActiveRecord
 
    }// end function getMidiUrl
 
+   /**
+    * Method getAudioUrl to get audio url
+    *
+    * @return string $audio_url
+    */
+   public function getAudioUrl()
+   {
+
+      $audio_url = str_replace(SITE_ROOT, SITE_HOST, $this->audio_path);
+      return $audio_url;
+
+   }// end function getAudioUrl
+
 
    /**
     * Method update to update some instance value
