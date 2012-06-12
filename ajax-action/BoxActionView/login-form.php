@@ -21,25 +21,17 @@
    </div>
    <form id="login-form" name="login_form" action="<?=SITE_HOST?>/ajax-action/auth-action/login" method="post">
       <div class="modal-body">
-         <div id="login-error-msg" class="control-group error">
-         </div>
          <div class="control-group">
             <label>
                Account
             </label>
             <input id="login-username" name="login_username" type="text" class="span4" placeholder="username..." />
-            <span class="help-inline">
-               Empty!
-            </span>
          </div>
          <div class="control-group">
             <label>
                Password
             </label>
             <input id="login-password" name="login_password" type="password" class="span4" placeholder="password..." />
-            <span class="help-inline">
-               Empty!
-            </span>
          </div>
       </div>
       <div class="modal-footer align-center">
@@ -77,36 +69,7 @@
 
          var is_validated = true;
 
-         if (!$('#login-username').val()) {
-
-            $('#login-username').parent().attr('class', 'control-group error');
-            $('#login-username').parent().find( $('.help-inline') ).css('display','inline');
-            is_validated = false;
-
-         } else {
-
-            $('#login-username').parent().attr('class', 'control-group');
-            $('#login-username').parent().find( $('.help-inline') ).css('display','none');
-
-         }
-
-         if(!$('#login-password').val()){
-
-            $('#login-password').parent().attr('class', 'control-group error');
-            $('#login-password').parent().find( $('.help-inline') ).css('display','inline');
-            is_validated = false;
-
-         } else {
-
-            $('#login-password').parent().attr('class', 'control-group');
-            $('#login-password').parent().find( $('.help-inline') ).css('display','none');
-
-         }
-
-
          if(is_validated){
-
-            $('#login-error-msg').empty();
 
             $('#login-submit').attr("disabled", "disabled");
             $('#login-cancel').attr("disabled", "disabled");
@@ -141,12 +104,6 @@
             ?>
 
          } else {
-
-            var msg = '<span class="help-inline" style="display:inline;">'+
-                      'Login fail, please try again.'+
-                      '</span>';
-
-            $('#login-error-msg').html(msg);
 
             $('#login-submit').removeAttr("disabled");
             $('#login-cancel').removeAttr("disabled");
