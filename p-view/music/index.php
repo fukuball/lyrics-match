@@ -61,21 +61,3 @@
       </a>
    </div>
 </div>
-<script>
-   $('a.upload-audio-link').live('click.upload_audio_box', function() {
-
-      var song_id = $(this).attr("data-songid");
-      $.ajax({
-         url: '<?=SITE_HOST?>/ajax-action/box-action/upload-audio-form',
-         type: "POST",
-         data: {song_id : song_id},
-         dataType: "html",
-         beforeSend: function( xhr ) {
-         },
-         success: function( html_block ) {
-            $('#p-modal-block').html(html_block);
-         }
-      });
-
-   });
-</script>
