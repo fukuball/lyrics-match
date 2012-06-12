@@ -1,6 +1,6 @@
 <?php
 /**
- * BoxAction.php is the controller to dispatch box actions with box view
+ * AuthAction.php is the controller to dispatch auth actions with auth view
  *
  * PHP version 5
  *
@@ -13,9 +13,9 @@
  */
 
 /**
- * BoxAction is the controller to dispatch box actions with box view
+ * AuthAction is the controller to dispatch auth actions with auth view
  *
- * An example of a BoxAction is:
+ * An example of a AuthAction is:
  *
  * <code>
  *  # This will done by rest request
@@ -28,7 +28,7 @@
  * @version  Release: <1.0>
  * @link     http://sarasti.cs.nccu.edu.tw
  */
-class BoxAction extends LMRESTControl implements LMRESTfulInterface
+class AuthAction extends LMRESTControl implements LMRESTfulInterface
 {
 
    /**
