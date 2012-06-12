@@ -39,7 +39,7 @@
       <tbody>
          <?php
          $disc_god_obj = new LMDiscGod();
-         $disc_list = $disc_god_obj->getList('all', 0, 20);
+         $disc_list = $disc_god_obj->getList('all', 0, 1000);
 
 
          foreach ($disc_list as $disc_list_data) {
@@ -60,10 +60,10 @@
                <?=$disc_obj->release_date?>
             </td>
             <td>
-               <?=$disc_obj->cover_path?>
+               <a href="<?=$disc_obj->cover_path?>" target="_blank">連結</a>
             </td>
             <td>
-               <a href="<?=$disc_obj->kkbox_url?>" target="_blank"><?=$disc_obj->kkbox_url?></a>
+               <a href="<?=$disc_obj->kkbox_url?>" target="_blank">連結</a>
             </td>
          </tr>
          <?php

@@ -27,7 +27,7 @@
       <tbody>
          <?php
          $composer_god_obj = new LMComposerGod();
-         $composer_list = $composer_god_obj->getList('all', 0, 20);
+         $composer_list = $composer_god_obj->getList('all', 0, 1000);
 
 
          foreach ($composer_list as $composer_list_data) {

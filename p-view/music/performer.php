@@ -30,7 +30,7 @@
       <tbody>
          <?php
          $performer_god_obj = new LMPerformerGod();
-         $performer_list = $performer_god_obj->getList('all', 0, 20);
+         $performer_list = $performer_god_obj->getList('all', 0, 1000);
 
 
          foreach ($performer_list as $performer_list_data) {
@@ -45,7 +45,7 @@
                <?=$performer_obj->name?>
             </td>
             <td>
-               <a href="<?=$performer_obj->kkbox_url?>" target="_blank"><?=$performer_obj->kkbox_url?></a>
+               <a href="<?=$performer_obj->kkbox_url?>" target="_blank">連結</a>
             </td>
          </tr>
          <?php

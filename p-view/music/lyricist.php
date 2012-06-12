@@ -27,7 +27,7 @@
       <tbody>
          <?php
          $lyricist_god_obj = new LMLyricistGod();
-         $lyricist_list = $lyricist_god_obj->getList('all', 0, 20);
+         $lyricist_list = $lyricist_god_obj->getList('all', 0, 1000);
 
 
          foreach ($lyricist_list as $lyricist_list_data) {

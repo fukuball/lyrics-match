@@ -51,7 +51,7 @@
          runtimes : 'html5,flash,gears,silverlight,browserplus',
          browse_button : 'upload-audio-button',
          container: 'p-modal',
-         max_file_size : '10mb',
+         max_file_size : '100mb',
          chunk_size : '1mb',
          url : '<?=SITE_HOST?>/ajax-action/song-action/upload-audio',
          flash_swf_url : '<?=SITE_HOST?>/p-library/plupload/js/plupload.flash.swf',
