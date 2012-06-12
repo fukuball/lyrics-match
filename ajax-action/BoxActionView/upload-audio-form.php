@@ -18,8 +18,8 @@
          Upload Audio File
       </h3>
    </div>
-   <div class="modal-body">
-      <a id="upload-audio-button" href="javascript:;">
+   <div class="modal-body align-center">
+      <a id="upload-audio-button" href="javascript:;" style="width: 100px;">
          <button type="button" class="btn btn-primary start">
             <i class="icon-upload icon-white"></i>
             <span>Start Upload</span>
@@ -47,7 +47,7 @@
 
       });
 
-      /*var audio_uploader = new plupload.Uploader({
+      var audio_uploader = new plupload.Uploader({
          runtimes : 'html5,flash,gears,silverlight,browserplus',
          browse_button : 'upload-audio-button',
          container: 'p-modal',
@@ -55,7 +55,7 @@
          chunk_size : '1mb',
          url : '<?=SITE_HOST?>/ajax-action/song-action/upload-audio',
          flash_swf_url : '<?=SITE_HOST?>/p-library/plupload/js/plupload.flash.swf',
-         silverlight_xap_url : '<?=SITE_HOST?>/p-library/plupload/js/plupload.silverlight.xap'
+         silverlight_xap_url : '<?=SITE_HOST?>/p-library/plupload/js/plupload.silverlight.xap',
          multiple_queues : false,
          multi_selection : false,
          max_file_count : 1,
@@ -104,7 +104,7 @@
          }
       });
 
-      audio_uploader.init();*/
+      audio_uploader.init();
 
    });// end $('#p-modal').ready
 </script>
