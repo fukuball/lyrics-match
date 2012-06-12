@@ -31,7 +31,7 @@ foreach ($song_list as $song_list_data) {
       <?=$song_obj->title?>
    </td>
    <td width="400px">
-      <div style="height:400px; width:400px; overflow:auto;">
+      <div style="height:400px; width:300px; overflow:auto;">
          <?=nl2br($song_obj->lyric)?>
       </div>
    </td>
