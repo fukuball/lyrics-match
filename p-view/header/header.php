@@ -65,11 +65,25 @@ case (preg_match('/music\/.*/', $current_page_path_url) ? true : false) :
             </nav>
             <ul class="nav pull-right">
                <li class="divider-vertical"></li>
+               <?php
+               if (LMAuthHelper::isLogin()) {
+               ?>
+               <li>
+                  <a id="header-logout" title="登出">
+                     登出
+                  </a>
+               </li>
+               <?php
+               } else {// end if (IndievoxAuthHelper::isLogin())
+               ?>
                <li>
                   <a id="header-login" title="登入">
                      登入
                   </a>
                </li>
+               <?php
+               }// end else
+               ?>
                <li class="divider-vertical"></li>
             </ul>
          </div><!--/.nav-collapse -->

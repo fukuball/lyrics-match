@@ -73,6 +73,12 @@ class BoxAction extends LMRESTControl implements LMRESTfulInterface
 
       switch ($action_id) {
 
+      case 'login-form':
+
+         include SITE_ROOT.'/ajax-action/BoxActionView/login-form.php';
+
+         break;
+
       case 'edit-lyric-form':
 
          $song_id = $_GET['song_id'];
