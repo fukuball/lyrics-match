@@ -3,7 +3,7 @@
    var song_offset = 0;
    function moreSong() {
 
-      var action_url = '<?=SITE_HOST?>/ajax-action/index.php/song-action/song-list';
+      var action_url = '<?=SITE_HOST?>/ajax-action/song-action/song-list';
       song_offset = song_offset+30;
 
       if ($('#song-show-more').length != 0) {
