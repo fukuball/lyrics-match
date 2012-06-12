@@ -16,7 +16,7 @@
          $.ajax({
             url: action_url,
             type: "GET",
-            data: {offset : song_offset, length : $("#song-show-more").attr("data-length"), song_list_type : $("#song-show-more").attr("data-list-type")},
+            data: {offset : song_offset, length : $("#song-show-more > a").attr("data-length"), song_list_type : $("#song-show-more > a").attr("data-list-type")},
             dataType: "html",
             beforeSend: function( xhr ) {
                $('#system-message').html('處理中...');
