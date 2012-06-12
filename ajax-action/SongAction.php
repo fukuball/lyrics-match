@@ -136,6 +136,27 @@ class SongAction extends LMRESTControl implements LMRESTfulInterface
 
       switch ($action_id) {
 
+      case 'get-song-audio-td':
+
+         $validate_song_id
+             = LMValidateHelper::
+                  validateNoEmpty($_GET['song_id']);
+
+         if (!$validate_song_id) {
+            $type = 'not_exist_value';
+            $parameter = array("none"=>"none");
+            $error_messanger = new LMErrorMessenger($type, $parameter);
+            $error_messanger->printErrorJSON();
+            unset($error_messanger);
+         } else {
+
+            $song_id = $_GET['song_id'];
+            require SITE_ROOT."/ajax-action/SongActionView/song-audio-td.php";
+
+         }
+
+         break;
+
       case 'song-list':
 
          $offset = $_GET['offset'];

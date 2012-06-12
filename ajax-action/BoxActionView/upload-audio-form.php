@@ -88,6 +88,18 @@
                console.log(responseText);
                if(responseText.response.status.code==0){
 
+                  $.ajax({
+                     url: '<?=SITE_HOST?>/ajax-action/song-action/get-song-audio-td',
+                     type: "GET",
+                     data: {song_id : '<?php echo $song_id; ?>'},
+                     dataType: "html",
+                     beforeSend: function( xhr ) {
+                     },
+                     success: function( html_block ) {
+                        $('#song-td-audio-<?php echo $song_id; ?>').html(html_block);
+                     }
+                  });
+
                   $('#p-modal').modal('hide');
 
                   $('#system-message').html('完成');
