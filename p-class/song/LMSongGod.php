@@ -98,9 +98,39 @@ class LMSongGod extends LMActiveRecordGod
    public function getList($type='all', $offset='0', $length='20')
    {
 
-      $result = parent::getList($type, $offset, $length);
+      switch ($type) {
 
-      return $result;
+      case 'no-audio':
+
+         $select_sql
+             = "SELECT ".
+               "id ".
+               "FROM ".$this->table_name." ".
+               "WHERE is_deleted = '0' ".
+               "AND audio_path='' ".
+               "ORDER BY id DESC ".
+               "LIMIT $offset,$length";
+
+         break;
+
+      case 'all':
+      default:
+
+         $select_sql
+             = "SELECT ".
+               "id ".
+               "FROM ".$this->table_name." ".
+               "WHERE is_deleted = '0' ".
+               "ORDER BY id DESC ".
+               "LIMIT $offset,$length";
+
+         break;
+
+      }
+
+      $query_record = $this->db_obj->selectCommand($select_sql);
+
+      return $query_record;
 
    }// end function getList
 

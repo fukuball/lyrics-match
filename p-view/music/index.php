@@ -77,7 +77,7 @@
       </tbody>
    </table>
    <div id="song-show-more" class="show-more margin-top-1">
-      <a data-length="30">
+      <a data-length="30" data-list-type="<?=$song_list_type?>">
          顯示更多
       </a>
    </div>

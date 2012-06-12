@@ -211,6 +211,23 @@ class SongAction extends LMRESTControl implements LMRESTfulInterface
             $length = 33;
          }
 
+         switch ($_GET['song_list_type']) {
+
+         case 'no-audio':
+
+            $song_list_type = 'no-audio';
+
+            break;
+
+         case 'all':
+         default:
+
+            $song_list_type = 'all';
+
+            break;
+         }
+
+
          require SITE_ROOT."/ajax-action/SongActionView/song-list.php";
 
          break;
