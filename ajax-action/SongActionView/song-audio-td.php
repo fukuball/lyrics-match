@@ -17,7 +17,7 @@ $song_obj = new LMSong($song_id);
 <?php
 if (!empty($song_obj->audio_path)) {
 ?>
-<a href="<?=$song_obj->getAudioUrl()?>" target="_blank">連結</a>
+<a href="<?=$song_obj->getAudioUrl()?>" target="_blank">試聽</a>
 &nbsp;|&nbsp;
 <?php
 }
