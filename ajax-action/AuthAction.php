@@ -94,7 +94,7 @@ class AuthAction extends LMRESTControl implements LMRESTfulInterface
 
       case 'logout':
 
-         LMAuthHelper::ivLogout();
+         LMAuthHelper::logout();
 
          $type = 'success';
          $parameter = array("none"=>"none");
