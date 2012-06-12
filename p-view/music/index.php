@@ -13,6 +13,9 @@
  */
 ?>
 <div id='song-list-block'>
+   <?php
+   if (LMAuthHelper::isLogin()) {
+   ?>
    <table width="1000px" class="table table-bordered table-striped">
       <thead width="1000px">
          <tr width="1000px">
@@ -81,4 +84,11 @@
          顯示更多
       </a>
    </div>
+   <?php
+   } else {
+   ?>
+   <h2>Please Login To Use This Page!</h2>
+   <?php
+   }
+   ?>
 </div>
