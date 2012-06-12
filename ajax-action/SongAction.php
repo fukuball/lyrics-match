@@ -45,6 +45,49 @@ class SongAction extends LMRESTControl implements LMRESTfulInterface
 
       switch ($action_id) {
 
+      case 'edit-lyric':
+
+         $validate_song_id
+             = LMValidateHelper::
+                  validateNoEmpty($_POST['edit_lyric_song_id']);
+
+         if (!$validate_song_id) {
+            $type = 'not_exist_value';
+            $parameter = array("none"=>"none");
+            $error_messanger = new LMErrorMessenger($type, $parameter);
+            $error_messanger->printErrorJSON();
+            unset($error_messanger);
+         } else {
+
+            $song_id = $_POST['edit_lyric_song_id'];
+            $song_lyric = $_POST['edit_lyric_content'];
+
+            $song_obj = new LMSong($song_id);
+            $song_obj->lyric = $song_lyric;
+
+            if ($song_obj->save()) {
+
+               $type = 'success';
+               $parameter = array("none"=>"none");
+               $error_messanger = new LMErrorMessenger($type, $parameter);
+               $error_messanger->printErrorJSON();
+               unset($error_messanger);
+
+            } else {
+
+               $type = 'unknow_error';
+               $parameter = array("none"=>"none");
+               $error_messanger = new LMErrorMessenger($type, $parameter);
+               $error_messanger->printErrorJSON();
+               unset($error_messanger);
+
+            }
+
+            unset($song_obj);
+         }
+
+         break;
+
       case 'upload-audio':
 
          // 5 minutes execution time

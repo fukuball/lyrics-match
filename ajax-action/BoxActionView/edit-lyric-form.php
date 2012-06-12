@@ -25,7 +25,7 @@
          <div class="control-group">
             <label class="control-label" for="textarea">Lyric</label>
             <div class="controls">
-               <textarea class="input-xlarge" id="edit-lyric-content" name="edit_lyric_content" style="width:400px; height:300px; overflow-height:auto;">
+               <textarea class="input-xlarge" id="edit-lyric-content" name="edit_lyric_content" style="width:450px; height:300px; overflow-y:auto;">
                   <?=$song_obj->lyric?>
                </textarea>
             </div>
