@@ -227,8 +227,12 @@ class SongAction extends LMRESTControl implements LMRESTfulInterface
             break;
          }
 
+         $song_god_obj = new LMSongGod();
+         $song_list = $song_god_obj->getList($song_list_type, $offset, $length);
 
          require SITE_ROOT."/ajax-action/SongActionView/song-list.php";
+
+         unset($song_god_obj);
 
          break;
 
