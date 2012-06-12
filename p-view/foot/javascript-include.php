@@ -87,7 +87,7 @@
    // end upload audio box
 
    // start header login logout
-   $('a.header-login').live('click.login_box', function() {
+   $('#header-login').live('click.login_box', function() {
 
       $.ajax({
          url: '<?=SITE_HOST?>/ajax-action/box-action/login-form',
@@ -103,7 +103,7 @@
 
    });
 
-   $('a.header-logout').live('click.logout', function() {
+   $('#header-logout').live('click.logout', function() {
 
       $.ajax({
          url: '<?=SITE_HOST?>/ajax-action/auth-action/logout',
