@@ -75,7 +75,8 @@ class BoxAction extends LMRESTControl implements LMRESTfulInterface
 
       case 'upload-audio-form':
 
-         $song_id = $_POST['song_id'];
+         $song_id = $_GET['song_id'];
+         $size = $_GET['size'];
          if (empty($size)) {
             $size = "500px";
          }
