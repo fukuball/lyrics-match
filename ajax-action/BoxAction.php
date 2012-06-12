@@ -73,6 +73,22 @@ class BoxAction extends LMRESTControl implements LMRESTfulInterface
 
       switch ($action_id) {
 
+      case 'edit-lyric-form':
+
+         $song_id = $_GET['song_id'];
+         $size = $_GET['size'];
+         if (empty($size)) {
+            $size = "500px";
+         }
+
+         $song_obj = new LMSong($song_id);
+
+         include SITE_ROOT.'/ajax-action/BoxActionView/edit-lyric-form.php';
+
+         unset($song_obj);
+
+         break;
+
       case 'upload-audio-form':
 
          $song_id = $_GET['song_id'];
