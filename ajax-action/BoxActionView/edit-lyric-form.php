@@ -20,14 +20,12 @@
       </h3>
    </div>
    <form id="edit-lyric-form" name="edit_lyric_form" action="<?=SITE_HOST?>/ajax-action/song-action/edit-lyric" method="post">
-      <input id="edit-lyric-song-id" name="edit_lyric_song_id" type="hidden" />
+      <input id="edit-lyric-song-id" value="<?=$song_obj->getId()?>" name="edit_lyric_song_id" type="hidden" />
       <div class="modal-body">
          <div class="control-group">
             <label class="control-label" for="textarea">Lyric</label>
             <div class="controls">
-               <textarea class="input-xlarge" id="edit-lyric-content" name="edit_lyric_content" style="width:450px; height:300px; overflow-y:auto;">
-                  <?=$song_obj->lyric?>
-               </textarea>
+               <textarea class="input-xlarge" id="edit-lyric-content" name="edit_lyric_content" style="width:450px; height:300px; overflow-y:auto;"><?=$song_obj->lyric?></textarea>
             </div>
          </div>
       </div>
