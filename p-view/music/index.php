@@ -25,7 +25,7 @@
             <th width="100px">
                歌名
             </th>
-            <th width="550px">
+            <th width="400px">
                歌詞
             </th>
             <th width="50px">
@@ -34,13 +34,13 @@
             <th width="50px">
                發行日期
             </th>
-            <th width="50px">
+            <th width="100px">
                midi 網址
             </th>
-            <th width="50px">
+            <th width="100px">
                mp3 網址
             </th>
-            <th width="50px">
+            <th width="100px">
                kkbox 網址
             </th>
          </tr>
