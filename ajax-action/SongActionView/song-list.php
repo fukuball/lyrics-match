@@ -44,20 +44,17 @@ foreach ($song_list as $song_list_data) {
    <td width="100px">
       <a href="<?=$song_obj->getMidiUrl()?>" target="_blank">連結</a>
    </td>
-   <td width="100px">
+   <td id="song-td-<?=$song_obj->getId()?>" width="100px">
       <?php
       if (!empty($song_obj->audio_path)) {
       ?>
       <a href="<?=$song_obj->getAudioUrl()?>" target="_blank">連結</a>
-      <br/>
+      &nbps;|&nbps;
       <?php
       }
       ?>
-      <a class="upload-audio" href="javascript:;">
-         <button type="button" class="btn btn-primary start">
-            <i class="icon-upload icon-white"></i>
-            <span>Upload</span>
-         </button>
+      <a class="upload-audio-link" data-songid="<?=$song_obj->getId()?>">
+         上傳
       </a>
    </td>
    <td width="100px">
