@@ -92,6 +92,18 @@ class AuthAction extends LMRESTControl implements LMRESTfulInterface
 
          break;
 
+      case 'logout':
+
+         IndievoxAuthHelper::ivLogout();
+
+         $type = 'success';
+         $parameter = array("none"=>"none");
+         $error_messanger = new LMErrorMessenger($type, $parameter);
+         $error_messanger->printErrorJSON();
+         unset($error_messanger);
+
+         break;
+
       default:
 
          $type = 'page_not_found';

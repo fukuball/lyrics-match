@@ -107,13 +107,15 @@
 
       $.ajax({
          url: '<?=SITE_HOST?>/ajax-action/auth-action/logout',
-         type: "GET",
+         type: "POST",
          data: {},
-         dataType: "html",
+         dataType: "json",
          beforeSend: function( xhr ) {
          },
-         success: function( html_block ) {
-            window.location.reload();
+         success: function( responseText ) {
+            if(responseText.response.status.code==0){
+               window.location.reload();
+            }
          }
       });
 
