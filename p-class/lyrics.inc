@@ -36,5 +36,6 @@ require 'performer/LMPerformerGod.php';
 require 'performer/LMPerformer.php';
 require 'song/LMSongGod.php';
 require 'song/LMSong.php';
+require 'user/LMUserGod.php';
 
 ?>

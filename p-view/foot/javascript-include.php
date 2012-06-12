@@ -103,17 +103,17 @@
 
    });
 
-   $('a.header-out').live('click.logout', function() {
+   $('a.header-logout').live('click.logout', function() {
 
       $.ajax({
-         url: '<?=SITE_HOST?>/ajax-action/box-action/login-form',
+         url: '<?=SITE_HOST?>/ajax-action/auth-action/logout',
          type: "GET",
          data: {},
          dataType: "html",
          beforeSend: function( xhr ) {
          },
          success: function( html_block ) {
-            $('#p-modal-block').html(html_block);
+            window.location.reload();
          }
       });
 
