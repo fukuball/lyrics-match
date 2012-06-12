@@ -22,6 +22,9 @@
             <th width="15%">
                歌名
             </th>
+            <th width="15%">
+               歌名
+            </th>
             <th width="30%">
                歌詞
             </th>
