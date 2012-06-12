@@ -20,7 +20,7 @@
                id
             </th>
             <th width="15%">
-               歌名
+               藝人
             </th>
             <th width="15%">
                歌名

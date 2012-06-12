@@ -18,10 +18,14 @@ $song_num = 0;
 foreach ($song_list as $song_list_data) {
    $song_num++;
    $song_obj = new LMSong($song_list_data['id']);
+   $artist_obj = new LMPerformer($song_obj->performer_id);
 ?>
 <tr>
    <td width="5%">
       <?=$song_obj->getId()?>
+   </td>
+   <td width="15%">
+      <?=$artist_obj->name?>
    </td>
    <td width="15%">
       <?=$song_obj->title?>
