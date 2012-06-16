@@ -100,6 +100,19 @@ class LMSongGod extends LMActiveRecordGod
 
       switch ($type) {
 
+      case 'audio':
+
+         $select_sql
+             = "SELECT ".
+               "id ".
+               "FROM ".$this->table_name." ".
+               "WHERE is_deleted = '0' ".
+               "AND audio_path!='' ".
+               "ORDER BY id DESC ".
+               "LIMIT $offset,$length";
+
+         break;
+
       case 'no-audio':
 
          $select_sql
