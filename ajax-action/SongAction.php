@@ -213,6 +213,12 @@ class SongAction extends LMRESTControl implements LMRESTfulInterface
 
          switch ($_GET['song_list_type']) {
 
+         case 'audio':
+
+            $song_list_type = 'audio';
+
+            break;
+
          case 'no-audio':
 
             $song_list_type = 'no-audio';
