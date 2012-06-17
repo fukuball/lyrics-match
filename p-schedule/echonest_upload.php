@@ -22,7 +22,7 @@ $select_sql = "SELECT ".
               "FROM song ".
               "WHERE is_deleted = '0' ".
               "AND audio_path!='' ".
-              "AND echonest_track_id=='' ".
+              "AND echonest_track_id='' ".
               "AND retrieval_status='queue' ".
               "ORDER BY id DESC ".
               "LIMIT 1";
