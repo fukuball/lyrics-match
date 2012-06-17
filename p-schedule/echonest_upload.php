@@ -55,8 +55,6 @@ foreach ($query_result as $query_result_data) {
       );
       $echonest_analyze_return_jdecode = json_decode($echonest_analyze_return);
 
-      print_r($echonest_analyze_return_jdecode);
-
       if ($echonest_analyze_return_jdecode->response->status->message == "Success") {
 
          echo "analyze ".$song_obj->getId()." success. \n";
