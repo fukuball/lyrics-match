@@ -34,7 +34,7 @@ foreach ($query_result as $query_result_data) {
 
    $song_obj = new LMSong($query_result_data['id']);
 
-   echo "upload ".$song_id." \n";
+   echo "upload ".$song_obj->getId." \n";
    $echonest_upload_return = shell_exec(
       'curl -X POST -H "Content-Type:application/octet-stream" '.
       '"http://developer.echonest.com/api/v4/track/upload?api_key='.ECHONEST_KEY.'&filetype=mp3" '.
@@ -45,8 +45,8 @@ foreach ($query_result as $query_result_data) {
 
    if ($echonest_upload_return_jdecode->response->status->message == "Success") {
 
-      echo "upload ".$song_id." success. \n";
-      echo "analyze ".$song_id." \n";
+      echo "upload ".$song_obj->getId." success. \n";
+      echo "analyze ".$song_obj->getId." \n";
       $echonest_track_id = $echonest_upload_return_jdecode->response->track->id;
       $echonest_analyze_return = shell_exec(
          'curl -F "api_key='.ECHONEST_KEY.'" '.
@@ -55,9 +55,11 @@ foreach ($query_result as $query_result_data) {
       );
       $echonest_analyze_return_jdecode = json_decode($echonest_analyze_return);
 
+      print_r($echonest_analyze_return_jdecode);
+
       if ($echonest_analyze_return_jdecode->response->status->message == "Success") {
 
-         echo "analyze ".$song_id." success. \n";
+         echo "analyze ".$song_obj->getId." success. \n";
 
          $key = $echonest_analyze_return_jdecode->response->track->audio_summary->key;
          $mode = $echonest_analyze_return_jdecode->response->track->audio_summary->mode;
