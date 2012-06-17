@@ -53,6 +53,8 @@ class LMSong extends LMActiveRecord
    public $composer_id;
    public $lyricist_id;
    public $disc_id;
+   public $echonest_track_id;
+   public $retrieval_status;
 
    /**
     * Method __construct initialize instance

@@ -26,6 +26,7 @@ define("DATA_ROOT", "/var/www/html/lyrics-data");
 define("DATA_HOST", "http://sarasti.cs.nccu.edu.tw/lyrics-data");
 define("AUDIO_ROOT", "/var/www/html/lyrics-match/p-data/mp3");
 define("AUDIO_HOST", "http://sarasti.cs.nccu.edu.tw/lyrics-match/p-data/mp3");
+define("ECHONEST_KEY", "LSPUPAL5CD1NGVRUL");
 // facebook constant define
 define("FB_APP_ID", "");
 define("FB_ADMIN_ID", "");
