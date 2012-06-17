@@ -256,7 +256,7 @@ abstract class LMActiveRecord
          default:
 
             $this->$property_key = $property_value;
-            $sql = $sql.$property_key."='".addslashes($property_value)."', ";
+            $sql = $sql.$this->table_name.".".$property_key."='".addslashes($property_value)."', ";
 
             break;
 
@@ -266,8 +266,8 @@ abstract class LMActiveRecord
 
       $this->modify_time = $now;
       $this->modify_unix_time = strtotime($now);
-      $sql = $sql."modify_time='$now' ";
-      $sql = $sql."WHERE id='".addslashes($this->id)."' LIMIT 1";
+      $sql = $sql.$this->table_name.".modify_time='$now' ";
+      $sql = $sql."WHERE ".$this->table_name.".id='".addslashes($this->id)."' LIMIT 1";
 
       $result = $this->db_obj->updateCommand($sql);
 
@@ -311,7 +311,7 @@ abstract class LMActiveRecord
 
          default:
 
-            $sql = $sql.$property_key."='".addslashes($this->$property_key)."', ";
+            $sql = $sql.$this->table_name.".".$property_key."='".addslashes($this->$property_key)."', ";
 
             break;
 
@@ -319,8 +319,8 @@ abstract class LMActiveRecord
 
       }// end foreach
 
-      $sql = $sql."modify_time='$now' ";
-      $sql = $sql."WHERE id='".addslashes($this->id)."' LIMIT 1";
+      $sql = $sql.$this->table_name.".modify_time='$now' ";
+      $sql = $sql."WHERE ".$this->table_name.".id='".addslashes($this->id)."' LIMIT 1";
 
       $result = $this->db_obj->updateCommand($sql);
 

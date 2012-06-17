@@ -185,7 +185,7 @@ abstract class LMActiveRecordGod
 
          default:
 
-            $key_sql = $key_sql.$property_key.", ";
+            $key_sql = $key_sql.$this->table_name.".".$property_key.", ";
             $value_sql = $value_sql."'".addslashes($property_value)."', ";
 
             break;
