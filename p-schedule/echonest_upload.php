@@ -31,7 +31,8 @@ $query_result = $db_obj->selectCommand($select_sql);
 
 // get unprocess data
 foreach ($query_result as $query_result_data) {
-   $song_obj = new LMSong($song_list_data['id']);
+
+   $song_obj = new LMSong($query_result_data['id']);
 
    echo "upload ".$song_id." \n";
    $echonest_upload_return = shell_exec(
@@ -44,6 +45,7 @@ foreach ($query_result as $query_result_data) {
 
    if ($echonest_upload_return_jdecode->response->status->message == "Success") {
 
+      echo "upload ".$song_id." success. \n";
       echo "analyze ".$song_id." \n";
       $echonest_track_id = $echonest_upload_return_jdecode->response->track->id;
       $echonest_analyze_return = shell_exec(
@@ -55,28 +57,31 @@ foreach ($query_result as $query_result_data) {
 
       if ($echonest_analyze_return_jdecode->response->status->message == "Success") {
 
-        $key = $echonest_analyze_return_jdecode->response->track->audio_summary->key;
-        $mode = $echonest_analyze_return_jdecode->response->track->audio_summary->mode;
-        $tempo = $echonest_analyze_return_jdecode->response->track->audio_summary->tempo;
-        $time_signature = $echonest_analyze_return_jdecode->response->track->audio_summary->time_signature;
-        $energy = $echonest_analyze_return_jdecode->response->track->audio_summary->energy;
-        $danceability = $echonest_analyze_return_jdecode->response->track->audio_summary->danceability;
-        $loudness = $echonest_analyze_return_jdecode->response->track->audio_summary->loudness;
-        $analysis_url = $echonest_analyze_return_jdecode->response->track->audio_summary->analysis_url;
+         echo "analyze ".$song_id." success. \n";
 
-        echo $key."\n";
-        echo $mode."\n";
-        echo $tempo."\n";
-        echo $time_signature."\n";
-        echo $energy."\n";
-        echo $danceability."\n";
-        echo $loudness."\n";
-        echo $analysis_url."\n";
+         $key = $echonest_analyze_return_jdecode->response->track->audio_summary->key;
+         $mode = $echonest_analyze_return_jdecode->response->track->audio_summary->mode;
+         $tempo = $echonest_analyze_return_jdecode->response->track->audio_summary->tempo;
+         $time_signature = $echonest_analyze_return_jdecode->response->track->audio_summary->time_signature;
+         $energy = $echonest_analyze_return_jdecode->response->track->audio_summary->energy;
+         $danceability = $echonest_analyze_return_jdecode->response->track->audio_summary->danceability;
+         $loudness = $echonest_analyze_return_jdecode->response->track->audio_summary->loudness;
+         $analysis_url = $echonest_analyze_return_jdecode->response->track->audio_summary->analysis_url;
 
+         echo $key."\n";
+         echo $mode."\n";
+         echo $tempo."\n";
+         echo $time_signature."\n";
+         echo $energy."\n";
+         echo $danceability."\n";
+         echo $loudness."\n";
+         echo $analysis_url."\n";
 
       }
 
    }
+
+   unset($song_obj);
 
 }
 
