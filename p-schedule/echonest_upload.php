@@ -67,6 +67,7 @@ foreach ($query_result as $query_result_data) {
          $time_signature = $echonest_analyze_return_jdecode->response->track->audio_summary->time_signature;
          $energy = $echonest_analyze_return_jdecode->response->track->audio_summary->energy;
          $danceability = $echonest_analyze_return_jdecode->response->track->audio_summary->danceability;
+         $speechiness = $echonest_analyze_return_jdecode->response->track->audio_summary->speechiness;
          $loudness = $echonest_analyze_return_jdecode->response->track->audio_summary->loudness;
          $analysis_url = $echonest_analyze_return_jdecode->response->track->audio_summary->analysis_url;
 
@@ -76,6 +77,7 @@ foreach ($query_result as $query_result_data) {
          //echo $time_signature."\n";
          //echo $energy."\n";
          //echo $danceability."\n";
+         //echo $speechiness."\n";
          //echo $loudness."\n";
          //echo $analysis_url."\n";
 
@@ -86,6 +88,7 @@ foreach ($query_result as $query_result_data) {
          $song_obj->time_signature = $time_signature;
          $song_obj->energy = $energy;
          $song_obj->danceability = $danceability;
+         $song_obj->speechiness = $speechiness;
          $song_obj->loudness = $loudness;
          $song_obj->retrieval_status = 'success';
          $song_obj->save();

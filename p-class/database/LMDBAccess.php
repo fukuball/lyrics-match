@@ -222,6 +222,7 @@ class LMDBAccess
 
       if (!$query_result) {
          echo "<h2>".get_class($this)."</h2>";
+         echo "<p>$select_sql</p>";
          var_dump($this->db_connection->errorInfo());
          exit;
       }
@@ -244,6 +245,7 @@ class LMDBAccess
 
       if (!$query_result) {
          echo "<h2>".get_class($this)."</h2>";
+         echo "<p>$update_sql</p>";
          var_dump($this->db_connection->errorInfo());
          exit;
       }
@@ -266,6 +268,7 @@ class LMDBAccess
 
       if (!$query_result) {
          echo "<h2>".get_class($this)."</h2>";
+         echo "<p>$delete_sql</p>";
          var_dump($this->db_connection->errorInfo());
          exit;
       }

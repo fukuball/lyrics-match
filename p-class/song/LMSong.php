@@ -60,6 +60,7 @@ class LMSong extends LMActiveRecord
    public $time_signature;
    public $energy;
    public $danceability;
+   public $speechiness;
    public $loudness;
    public $retrieval_status;
 
