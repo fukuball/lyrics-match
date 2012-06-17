@@ -34,7 +34,7 @@ foreach ($query_result as $query_result_data) {
 
    $song_obj = new LMSong($query_result_data['id']);
 
-   echo "upload ".$song_obj->getId." \n";
+   echo "upload ".$song_obj->getId()." \n";
    $echonest_upload_return = shell_exec(
       'curl -X POST -H "Content-Type:application/octet-stream" '.
       '"http://developer.echonest.com/api/v4/track/upload?api_key='.ECHONEST_KEY.'&filetype=mp3" '.
@@ -45,8 +45,8 @@ foreach ($query_result as $query_result_data) {
 
    if ($echonest_upload_return_jdecode->response->status->message == "Success") {
 
-      echo "upload ".$song_obj->getId." success. \n";
-      echo "analyze ".$song_obj->getId." \n";
+      echo "upload ".$song_obj->getId()." success. \n";
+      echo "analyze ".$song_obj->getId()." \n";
       $echonest_track_id = $echonest_upload_return_jdecode->response->track->id;
       $echonest_analyze_return = shell_exec(
          'curl -F "api_key='.ECHONEST_KEY.'" '.
@@ -59,7 +59,7 @@ foreach ($query_result as $query_result_data) {
 
       if ($echonest_analyze_return_jdecode->response->status->message == "Success") {
 
-         echo "analyze ".$song_obj->getId." success. \n";
+         echo "analyze ".$song_obj->getId()." success. \n";
 
          $key = $echonest_analyze_return_jdecode->response->track->audio_summary->key;
          $mode = $echonest_analyze_return_jdecode->response->track->audio_summary->mode;
@@ -70,16 +70,50 @@ foreach ($query_result as $query_result_data) {
          $loudness = $echonest_analyze_return_jdecode->response->track->audio_summary->loudness;
          $analysis_url = $echonest_analyze_return_jdecode->response->track->audio_summary->analysis_url;
 
-         echo $key."\n";
-         echo $mode."\n";
-         echo $tempo."\n";
-         echo $time_signature."\n";
-         echo $energy."\n";
-         echo $danceability."\n";
-         echo $loudness."\n";
-         echo $analysis_url."\n";
+         //echo $key."\n";
+         //echo $mode."\n";
+         //echo $tempo."\n";
+         //echo $time_signature."\n";
+         //echo $energy."\n";
+         //echo $danceability."\n";
+         //echo $loudness."\n";
+         //echo $analysis_url."\n";
+
+         $song_obj->echonest_track_id = $echonest_track_id;
+         $song_obj->key = $key;
+         $song_obj->mode = $mode;
+         $song_obj->tempo = $tempo;
+         $song_obj->time_signature = $time_signature;
+         $song_obj->energy = $energy;
+         $song_obj->danceability = $danceability;
+         $song_obj->loudness = $loudness;
+         $song_obj->retrieval_status = 'success';
+         $song_obj->save();
+
+         $echonest_analysis = file_get_contents($analysis_url);
+         $echonest_analysis_file = AUDIO_ROOT.'/'.$song_obj->getId().'.json';
+         $handle = fopen($echonest_analysis_file, 'w');
+         fwrite($handle, $echonest_analysis);
+         fclose($handle);
+
+         echo $song_obj->getId()." Echonest Analyze Success. \n";
+
+      } else {
+
+         $song_obj->echonest_track_id = $echonest_track_id;
+         $song_obj->retrieval_status = 'fail';
+         $song_obj->save();
+
+         echo $song_obj->getId()." Echonest Analyze Fail. \n";
 
       }
+
+   } else {
+
+      $song_obj->retrieval_status = 'fail';
+      $song_obj->save();
+
+      echo $song_obj->getId()." Upload To Echonest Fail. \n";
 
    }
 

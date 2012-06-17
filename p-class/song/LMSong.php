@@ -54,6 +54,13 @@ class LMSong extends LMActiveRecord
    public $lyricist_id;
    public $disc_id;
    public $echonest_track_id;
+   public $key;
+   public $mode;
+   public $tempo;
+   public $time_signature;
+   public $energy;
+   public $danceability;
+   public $loudness;
    public $retrieval_status;
 
    /**
