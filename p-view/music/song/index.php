@@ -25,23 +25,30 @@ if (!empty($_GET['song_id'])) {
    $song_obj = new LMSong($_GET['song_id']);
    $disc_obj = new LMDisc($song_obj->disc_id);
    $performer_obj = new LMPerformer($song_obj->performer_id);
+   $lyricist_obj = new LMLyricist($song_obj->lyricist_id);
+   $composer_obj = new LMComposer($song_obj->composer_id);
 ?>
 <div id='song-item-block'>
    <div class="row">
-      <div style="width:300px;">
+      <div class="flow-left" style="width:300px;">
          <a href="#" class="thumbnail">
             <img src="<?=$disc_obj->cover_path?>" alt="cover">
          </a>
       </div>
-      <div style="width:700px;">
+      <div class="flow-left" style="width:700px;">
          <h2><?=$song_obj->title?></h2>
-         <h3><?=$performer_obj->name?></h3>
-         <h3><?=$disc_obj->title?></h3>
+         <h3>音樂人：<?=$performer_obj->name?></h3>
+         <h3>專輯：<?=$disc_obj->title?></h3>
+         <h3>作詞：<?=$lyricist_obj->title?></h3>
+         <h3>作曲：<?=$composer_obj->title?></h3>
       </div>
    </div>
 </div>
 <?php
    unset($song_obj);
    unset($disc_obj);
+   unset($performer_obj);
+   unset($lyricist_obj);
+   unset($composer_obj);
 }
 ?>
