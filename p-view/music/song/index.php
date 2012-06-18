@@ -22,8 +22,8 @@ if (!empty($_GET['song_id'])) {
    </li>
 </ul>
 <?php
-   $song_obj = new IndievoxSong($_GET['song_id']);
-   $disc_obj = new IndievoxDisc($song_obj->disc_id);
+   $song_obj = new LMSong($_GET['song_id']);
+   $disc_obj = new LMDisc($song_obj->disc_id);
 ?>
 <div id='song-item-block'>
    <div class="row">
