@@ -41,8 +41,8 @@ if (!empty($_GET['song_id'])) {
          <h3>專輯：<?=$disc_obj->title?></h3>
          <h3>作詞：<?=$lyricist_obj->name?></h3>
          <h3>作曲：<?=$composer_obj->name?></h3>
-         <h3><?=$song_obj->genre?></h3>
-         <h3><?=$song_obj->release_date?></h3>
+         <h3>類型：<?=$song_obj->genre?></h3>
+         <h3>發行：<?=$song_obj->release_date?></h3>
       </div>
       <div class="flow-left" style="width:340px;margin-left:30px;">
          <h3>歌詞</h3>
