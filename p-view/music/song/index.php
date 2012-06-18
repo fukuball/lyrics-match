@@ -43,6 +43,21 @@ if (!empty($_GET['song_id'])) {
          <h3>作曲：<?=$composer_obj->name?></h3>
          <h3>類型：<?=$song_obj->genre?></h3>
          <h3>發行：<?=$song_obj->release_date?></h3>
+         <?php
+         if (!empty($song_obj->audio_path)) {
+         ?>
+         <p id="audioplayer">Load Song</p>
+         <script type="text/javascript">
+         AudioPlayer.embed("audioplayer", {
+             soundFile: "<?=$song_obj->getAudioUrl()?>",
+             titles: "<?=$song_obj->title?>",
+             artists: "<?=$performer_obj->name?>",
+             autostart: "no"
+         });
+         </script>
+         <?php
+         }
+         ?>
       </div>
       <div class="flow-left" style="width:340px;margin-left:30px;">
          <h3>歌詞</h3>
