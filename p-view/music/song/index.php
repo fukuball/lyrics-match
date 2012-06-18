@@ -46,9 +46,9 @@ if (!empty($_GET['song_id'])) {
          <?php
          if (!empty($song_obj->audio_path)) {
          ?>
-         <p id="audioplayer_1">Load Song</p>
+         <p id="audioplayer"style="margin-top:10px;" >Load Song</p>
          <script type="text/javascript">
-         AudioPlayer.embed("audioplayer_1", {
+         AudioPlayer.embed("audioplayer", {
              soundFile: "<?=$song_obj->getAudioUrl()?>",
              titles: "<?=$song_obj->title?>",
              artists: "<?=$performer_obj->name?>",
@@ -74,8 +74,40 @@ if (!empty($_GET['song_id'])) {
       </thead>
       <tbody>
          <tr>
-            <td></td>
-            <td></td>
+            <td>echonest_track_id</td>
+            <td><?=$song_obj->echonest_track_id?></td>
+         </tr>
+         <tr>
+            <td>key</td>
+            <td><?=$song_obj->key?></td>
+         </tr>
+         <tr>
+            <td>mode</td>
+            <td><?=$song_obj->mode?></td>
+         </tr>
+         <tr>
+            <td>tempo</td>
+            <td><?=$song_obj->tempo?></td>
+         </tr>
+         <tr>
+            <td>time_signature</td>
+            <td><?=$song_obj->time_signature?></td>
+         </tr>
+         <tr>
+            <td>energy</td>
+            <td><?=$song_obj->energy?></td>
+         </tr>
+         <tr>
+            <td>danceability</td>
+            <td><?=$song_obj->danceability?></td>
+         </tr>
+         <tr>
+            <td>speechiness</td>
+            <td><?=$song_obj->speechiness?></td>
+         </tr>
+         <tr>
+            <td>loudness</td>
+            <td><?=$song_obj->loudness?></td>
          </tr>
       </tbody>
    </table>
