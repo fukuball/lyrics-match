@@ -63,6 +63,9 @@ case (preg_match('/music\/.*/', $current_page_path_url) ? true : false) :
                   <li class="divider-vertical"></li>
                </ul>
             </nav>
+            <form class="navbar-search pull-left">
+              <input type="text" class="search-query" placeholder="Search">
+            </form>
             <ul class="nav pull-right">
                <li class="divider-vertical"></li>
                <?php

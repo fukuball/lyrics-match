@@ -65,6 +65,7 @@ if (!empty($_GET['song_id'])) {
          <p><?=nl2br($song_obj->lyric)?></p>
       </div>
    </div>
+   <hr />
    <h2>音樂特徵值</h2>
    <table class="table table-bordered table-striped">
       <thead>
