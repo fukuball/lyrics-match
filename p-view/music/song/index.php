@@ -43,10 +43,11 @@ if (!empty($_GET['song_id'])) {
          <h3>作曲：<?=$composer_obj->name?></h3>
          <h3>類型：<?=$song_obj->genre?></h3>
          <h3>發行：<?=$song_obj->release_date?></h3>
+         <hr />
          <?php
          if (!empty($song_obj->audio_path)) {
          ?>
-         <p id="audioplayer"style="margin-top:10px;" >Load Song</p>
+         <p id="audioplayer">Load Song</p>
          <script type="text/javascript">
          AudioPlayer.embed("audioplayer", {
              soundFile: "<?=$song_obj->getAudioUrl()?>",
