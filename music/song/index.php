@@ -13,7 +13,7 @@
  * @link     http://sarasti.cs.nccu.edu.tw
  */
 
-require_once dirname(dirname(__FILE__))."/p-config/application-setter.php";
+require_once dirname(dirname(dirname(__FILE__)))."/p-config/application-setter.php";
 
 $yield_path = '/p-view/music/song/index.php';
 $yield_top_tab_path = '/p-view/tab/music-tab.php';
