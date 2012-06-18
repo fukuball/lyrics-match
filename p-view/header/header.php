@@ -64,7 +64,7 @@ case (preg_match('/music\/.*/', $current_page_path_url) ? true : false) :
                </ul>
             </nav>
             <form id="search-form" class="navbar-search pull-left">
-              <input id="search-query" type="text" class="search-query" placeholder="Search">
+              <input id="search-query" value="<?=$_GET['search_query']?>" type="text" class="search-query" placeholder="Search">
             </form>
             <ul class="nav pull-right">
                <li class="divider-vertical"></li>
