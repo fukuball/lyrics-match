@@ -12,6 +12,14 @@
  * @link     http://sarasti.cs.nccu.edu.tw
  */
 ?>
+<ul class="breadcrumb">
+   <li>
+      <a href="<?=SITE_HOST?>/lyrics-match/music">歌曲列表</a> <span class="divider">/</span>
+   </li>
+   <li class="active">
+      歌曲資料
+   </li>
+</ul>
 <div id='song-item-block'>
 
 </div>
