@@ -197,15 +197,8 @@ class LMSongGod extends LMActiveRecordGod
                     "GROUP BY s.id ";
 
       $query_result = $this->db_obj->selectCommand($select_sql);
-      foreach ($query_result as $query_result_data) {
-         $instance_id = $query_result_data['id'];
-      }
 
-      if (!empty($instance_id)) {
-         return $instance_id;
-      } else {
-         return 0;
-      }
+      return $query_result;
 
    }// end function search
 
