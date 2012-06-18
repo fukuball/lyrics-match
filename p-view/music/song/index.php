@@ -39,8 +39,8 @@ if (!empty($_GET['song_id'])) {
          <h2><?=$song_obj->title?></h2>
          <h3>音樂人：<?=$performer_obj->name?></h3>
          <h3>專輯：<?=$disc_obj->title?></h3>
-         <h3>作詞：<?=$lyricist_obj->title?></h3>
-         <h3>作曲：<?=$composer_obj->title?></h3>
+         <h3>作詞：<?=$lyricist_obj->name?></h3>
+         <h3>作曲：<?=$composer_obj->name?></h3>
       </div>
    </div>
 </div>
