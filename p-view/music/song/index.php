@@ -35,7 +35,7 @@ if (!empty($_GET['song_id'])) {
             <img src="<?=$disc_obj->cover_path?>" alt="cover">
          </a>
       </div>
-      <div class="flow-left" style="width:700px;">
+      <div class="flow-left" style="width:650px;margin-left:30px;">
          <h2><?=$song_obj->title?></h2>
          <h3>音樂人：<?=$performer_obj->name?></h3>
          <h3>專輯：<?=$disc_obj->title?></h3>
