@@ -37,8 +37,8 @@ if (!empty($_GET['song_id'])) {
       </div>
       <div class="flow-left" style="width:300px;margin-left:30px;">
          <h2><?=$song_obj->title?></h2>
-         <h3>音樂人：<?=$performer_obj->name?></h3>
          <h3>專輯：<?=$disc_obj->title?></h3>
+         <h3>音樂人：<?=$performer_obj->name?></h3>
          <h3>作詞：<?=$lyricist_obj->name?></h3>
          <h3>作曲：<?=$composer_obj->name?></h3>
          <h3>類型：<?=$song_obj->genre?></h3>
@@ -49,6 +49,21 @@ if (!empty($_GET['song_id'])) {
          <p><?=nl2br($song_obj->lyric)?></p>
       </div>
    </div>
+   <h2>音樂特徵值</h2>
+   <table class="table table-bordered table-striped">
+      <thead>
+         <tr>
+            <th>Feature</th>
+            <th>Value</th>
+         </tr>
+      </thead>
+      <tbody>
+         <tr>
+            <td></td>
+            <td></td>
+         </tr>
+      </tbody>
+   </table>
 </div>
 <?php
    unset($song_obj);
