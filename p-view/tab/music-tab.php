@@ -23,6 +23,7 @@ switch ($current_page_path_url) {
 case '/music':
 case '/music/':
 case (preg_match('/music\/index.*/', $current_page_path_url) ? true : false) :
+case (preg_match('/music\/song\/.*/', $current_page_path_url) ? true : false) :
 
  $music_song_tab_active = ' active';
 
