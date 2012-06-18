@@ -19,7 +19,7 @@ foreach ($song_list as $song_list_data) {
 ?>
 <tr width="1000px">
    <td width="50px">
-      <?=$song_obj->getId()?>
+      <a href="<?=SITE_HOST?>/music/song/index.php?song_id=<?=$song_obj->getId()?>"><?=$song_obj->getId()?></a>
    </td>
    <td width="50px">
       <?=$artist_obj->name?>
