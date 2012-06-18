@@ -180,6 +180,36 @@ class LMSongGod extends LMActiveRecordGod
    }// end function findByTitleNPerformerId
 
    /**
+    * Method search to search song
+    *
+    * @param string $query
+    *
+    * @return int $id
+    */
+   public function search($query) {
+
+      $select_sql = "SELECT s.id ".
+                    "FROM song s ".
+                    "INNER JOIN performer p ".
+                    "ON (s.performer_id=p.id) ".
+                    "WHERE s.title LIKE '%".$query."%' ".
+                    "OR p.name LIKE '%".$query."%' ".
+                    "GROUP BY s.id ";
+
+      $query_result = $this->db_obj->selectCommand($select_sql);
+      foreach ($query_result as $query_result_data) {
+         $instance_id = $query_result_data['id'];
+      }
+
+      if (!empty($instance_id)) {
+         return $instance_id;
+      } else {
+         return 0;
+      }
+
+   }// end function search
+
+   /**
     * Method create create one record in database
     *
     * @param array $parameter # the key value array of the instance

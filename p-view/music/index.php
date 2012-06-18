@@ -77,7 +77,15 @@
          }
 
          $song_god_obj = new LMSongGod();
-         $song_list = $song_god_obj->getList($song_list_type, $offset, $length);
+
+
+         if (isset($_GET['search_query']) && !empty($_GET['search_query'])) {
+            $song_list = $song_god_obj->search($_GET['search_query']);
+         } else {
+            $song_list = $song_god_obj->getList($song_list_type, $offset, $length);
+         }
+
+
 
          require SITE_ROOT."/ajax-action/SongActionView/song-list.php";
 
@@ -86,11 +94,17 @@
          ?>
       </tbody>
    </table>
+      <?php
+      if (!isset($_GET['search_query']) || empty($_GET['search_query'])) {
+      ?>
    <div id="song-show-more" class="show-more margin-top-1">
       <a data-length="30" data-list-type="<?=$song_list_type?>">
          顯示更多
       </a>
    </div>
+      <?
+      }
+      ?>
    <?php
    } else {
    ?>
