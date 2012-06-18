@@ -63,8 +63,8 @@ case (preg_match('/music\/.*/', $current_page_path_url) ? true : false) :
                   <li class="divider-vertical"></li>
                </ul>
             </nav>
-            <form class="navbar-search pull-left">
-              <input type="text" class="search-query" placeholder="Search">
+            <form id="search-form" class="navbar-search pull-left">
+              <input id="search-query" type="text" class="search-query" placeholder="Search">
             </form>
             <ul class="nav pull-right">
                <li class="divider-vertical"></li>
@@ -93,6 +93,12 @@ case (preg_match('/music\/.*/', $current_page_path_url) ? true : false) :
       </div>
    </div>
 </header>
+<script>
+   $('#search-form').submit( function() {
+      window.location="<?=SITE_HOST?>/music/index.php?search_query="+$('#search-query').val();
+      return false;
+   });
+</script>
 <div class="align-center">
    <span id="system-message"> 處理中 ... </span>
 </div>
