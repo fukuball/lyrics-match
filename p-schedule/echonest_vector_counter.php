@@ -50,7 +50,6 @@ foreach ($query_result as $query_result_data) {
    echo "section_count: $section_count \n";
    echo "segment_count: $segment_count \n";
 
-   /*
    $music_feature_id = $music_feature_god->findBySongId($song_obj->getId());
    if ($music_feature_id) {
       $music_feature_obj = new LMMusicFeature($music_feature_id);
@@ -86,7 +85,7 @@ foreach ($query_result as $query_result_data) {
          echo "create music feature fail \n";
       }
 
-   }*/
+   }
 
 
 }
