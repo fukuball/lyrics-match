@@ -154,16 +154,16 @@ if (!empty($_GET['song_id'])) {
             <td>ratio of avg tatum length to avg bar length</td>
             <td><?=($music_feature_obj->tatum_avg_second/$music_feature_obj->bar_avg_second)?></td>
          </tr>
-         <!--
          <tr>
             <td rowspan="2">音高及音程</td>
             <td>average pitch vector</td>
-            <td><?=($music_feature_obj->pitch_avg_vector)?></td>
+            <td><?=$music_feature_obj->pitch_avg_vector?></td>
          </tr>
          <tr>
             <td>variance of pitch vector</td>
-            <td><?=($music_feature_obj->pitch_std_vector)?></td>
+            <td><?=$music_feature_obj->pitch_std_vector?></td>
          </tr>
+         <!--
          <tr>
             <td rowspan="3">音色</td>
             <td>speechiness</td>
