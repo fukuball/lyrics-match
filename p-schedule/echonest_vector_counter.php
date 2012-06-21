@@ -191,32 +191,133 @@ foreach ($query_result as $query_result_data) {
       }// end foreach ($segments_data->pitches as $pitches_data)
 
    }// end foreach ($echonest_data->segments as $segments_data)
-   $segment_avg_second = $segment_duration_sum/$segment_count;
-   $pitch_avg_vector = ($pitch_d1/$segment_count).','.
-                       ($pitch_d2/$segment_count).','.
-                       ($pitch_d3/$segment_count).','.
-                       ($pitch_d4/$segment_count).','.
-                       ($pitch_d5/$segment_count).','.
-                       ($pitch_d6/$segment_count).','.
-                       ($pitch_d7/$segment_count).','.
-                       ($pitch_d8/$segment_count).','.
-                       ($pitch_d9/$segment_count).','.
-                       ($pitch_d10/$segment_count).','.
-                       ($pitch_d11/$segment_count).','.
-                       ($pitch_d12/$segment_count);
 
-   $timbre_avg_vector = ($timbre_d1/$segment_count).','.
-                        ($timbre_d2/$segment_count).','.
-                        ($timbre_d3/$segment_count).','.
-                        ($timbre_d4/$segment_count).','.
-                        ($timbre_d5/$segment_count).','.
-                        ($timbre_d6/$segment_count).','.
-                        ($timbre_d7/$segment_count).','.
-                        ($timbre_d8/$segment_count).','.
-                        ($timbre_d9/$segment_count).','.
-                        ($timbre_d10/$segment_count).','.
-                        ($timbre_d11/$segment_count).','.
-                        ($timbre_d12/$segment_count);
+   $pitch_a1  = ($pitch_d1/$segment_count);
+   $pitch_a2  = ($pitch_d2/$segment_count);
+   $pitch_a3  = ($pitch_d3/$segment_count);
+   $pitch_a4  = ($pitch_d4/$segment_count);
+   $pitch_a5  = ($pitch_d5/$segment_count);
+   $pitch_a6  = ($pitch_d6/$segment_count);
+   $pitch_a7  = ($pitch_d7/$segment_count);
+   $pitch_a8  = ($pitch_d8/$segment_count);
+   $pitch_a9  = ($pitch_d9/$segment_count);
+   $pitch_a10 = ($pitch_d10/$segment_count);
+   $pitch_a11 = ($pitch_d11/$segment_count);
+   $pitch_a12 = ($pitch_d12/$segment_count);
+
+   $timbre_a1  = ($timbre_d1/$segment_count);
+   $timbre_a2  = ($timbre_d2/$segment_count);
+   $timbre_a3  = ($timbre_d3/$segment_count);
+   $timbre_a4  = ($timbre_d4/$segment_count);
+   $timbre_a5  = ($timbre_d5/$segment_count);
+   $timbre_a6  = ($timbre_d6/$segment_count);
+   $timbre_a7  = ($timbre_d7/$segment_count);
+   $timbre_a8  = ($timbre_d8/$segment_count);
+   $timbre_a9  = ($timbre_d9/$segment_count);
+   $timbre_a10 = ($timbre_d10/$segment_count);
+   $timbre_a11 = ($timbre_d11/$segment_count);
+   $timbre_a12 = ($timbre_d12/$segment_count);
+
+   $pitch2_d1  = 0;
+   $pitch2_d2  = 0;
+   $pitch2_d3  = 0;
+   $pitch2_d4  = 0;
+   $pitch2_d5  = 0;
+   $pitch2_d6  = 0;
+   $pitch2_d7  = 0;
+   $pitch2_d8  = 0;
+   $pitch2_d9  = 0;
+   $pitch2_d10 = 0;
+   $pitch2_d11 = 0;
+   $pitch2_d12 = 0;
+   foreach ($echonest_data->segments as $segments_data) {
+
+      $count_pitch_d = 1;
+      foreach ($segments_data->pitches as $pitches_data) {
+
+         switch ($count_pitch_d) {
+         case '1':
+            $pitch2_d1 = $pitch2_d1+pow($pitches_data-$pitch_a1,2);
+            break;
+         case '2':
+            $pitch2_d2 = $pitch2_d2+pow($pitches_data-$pitch_a2,2);
+            break;
+         case '3':
+            $pitch2_d3 = $pitch2_d3+pow($pitches_data-$pitch_a3,2);
+         break;
+         case '4':
+            $pitch2_d4 = $pitch2_d4+pow($pitches_data-$pitch_a4,2);
+            break;
+         case '5':
+            $pitch2_d5 = $pitch2_d5+pow($pitches_data-$pitch_a5,2);
+            break;
+         case '6':
+            $pitch2_d6 = $pitch2_d6+pow($pitches_data-$pitch_a6,2);
+            break;
+         case '7':
+            $pitch2_d7 = $pitch2_d7+pow($pitches_data-$pitch_a7,2);
+            break;
+         case '8':
+            $pitch2_d8 = $pitch2_d8+pow($pitches_data-$pitch_a8,2);
+            break;
+         case '9':
+            $pitch2_d9 = $pitch2_d9+pow($pitches_data-$pitch_a9,2);
+            break;
+         case '10':
+            $pitch2_d10 = $pitch2_d10+pow($pitches_data-$pitch_a10,2);
+            break;
+         case '11':
+            $pitch2_d11 = $pitch2_d11+pow($pitches_data-$pitch_a11,2);
+            break;
+         case '12':
+            $pitch2_d12 = $pitch2_d12+pow($pitches_data-$pitch_a12,2);
+            break;
+         }// end switch ($count_pitch_d)
+
+         $count_pitch_d++;
+      }// end foreach ($segments_data->pitches as $pitches_data)
+
+   }// end foreach ($echonest_data->segments as $segments_data)
+
+   $segment_avg_second = $segment_duration_sum/$segment_count;
+   $pitch_avg_vector = $pitch_a1.','.
+                       $pitch_a2.','.
+                       $pitch_a3.','.
+                       $pitch_a4.','.
+                       $pitch_a5.','.
+                       $pitch_a6.','.
+                       $pitch_a7.','.
+                       $pitch_a8.','.
+                       $pitch_a9.','.
+                       $pitch_a10.','.
+                       $pitch_a11.','.
+                       $pitch_a12;
+
+   $timbre_avg_vector = $timbre_a1.','.
+                        $timbre_a2.','.
+                        $timbre_a3.','.
+                        $timbre_a4.','.
+                        $timbre_a5.','.
+                        $timbre_a6.','.
+                        $timbre_a7.','.
+                        $timbre_a8.','.
+                        $timbre_a9.','.
+                        $timbre_a10.','.
+                        $timbre_a11.','.
+                        $timbre_a12;
+
+   $pitch_std_vector = sqrt($pitch2_d1/$segment_count-1).','.
+                       sqrt($pitch2_d2/$segment_count-1).','.
+                       sqrt($pitch2_d3/$segment_count-1).','.
+                       sqrt($pitch2_d4/$segment_count-1).','.
+                       sqrt($pitch2_d5/$segment_count-1).','.
+                       sqrt($pitch2_d6/$segment_count-1).','.
+                       sqrt($pitch2_d7/$segment_count-1).','.
+                       sqrt($pitch2_d8/$segment_count-1).','.
+                       sqrt($pitch2_d9/$segment_count-1).','.
+                       sqrt($pitch2_d10/$segment_count-1).','.
+                       sqrt($pitch2_d11/$segment_count-1).','.
+                       sqrt($pitch2_d12/$segment_count-1);
 
    echo "second: $second \n";
    echo "bar_count: $bar_count \n";
@@ -231,6 +332,7 @@ foreach ($query_result as $query_result_data) {
    echo "segment_avg_second: $segment_avg_second \n";
    echo "pitch_avg_vector: $pitch_avg_vector \n";
    echo "timbre_avg_vector: $timbre_avg_vector \n";
+   echo "pitch_std_vector: $pitch_std_vector \n";
 
    $music_feature_id = $music_feature_god->findBySongId($song_obj->getId());
    if ($music_feature_id) {
@@ -249,6 +351,7 @@ foreach ($query_result as $query_result_data) {
       $music_feature_obj->segment_avg_second = $segment_avg_second;
       $music_feature_obj->pitch_avg_vector = $pitch_avg_vector;
       $music_feature_obj->timbre_avg_vector = $timbre_avg_vector;
+      $music_feature_obj->pitch_std_vector = $pitch_std_vector;
       if ($music_feature_obj->save()) {
          echo "update music feature success \n";
       } else {
@@ -286,6 +389,8 @@ foreach ($query_result as $query_result_data) {
           = $pitch_avg_vector;
       $parameter_array['timbre_avg_vector']
           = $timbre_avg_vector;
+      $parameter_array['pitch_std_vector']
+          = $pitch_std_vector;
 
       if ($music_feature_god->create($parameter_array)) {
          echo "create music feature success \n";
