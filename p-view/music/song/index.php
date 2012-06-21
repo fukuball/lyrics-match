@@ -97,13 +97,17 @@ if (!empty($_GET['song_id'])) {
             <td><?=$song_obj->mode?></td>
          </tr>
          <tr>
-            <td rowspan="4">力度</td>
+            <td rowspan="5">力度</td>
             <td>energy</td>
             <td><?=$song_obj->energy?></td>
          </tr>
          <tr>
             <td>loudness</td>
             <td><?=$song_obj->loudness?></td>
+         </tr>
+         <tr>
+            <td>ratio of beat count to bar count</td>
+            <td><?=($music_feature_obj->beat_count/$music_feature_obj->bar_count)?></td>
          </tr>
          <tr>
             <td>ratio of tatum count to beat count</td>
@@ -142,6 +146,21 @@ if (!empty($_GET['song_id'])) {
             <td>節奏及速度</td>
             <td>bars per second</td>
             <td><?=(1/$music_feature_obj->bar_avg_second)?></td>
+         </tr>
+         <tr>
+            <td>節奏及速度</td>
+            <td>average tatum length</td>
+            <td><?=$music_feature_obj->tatum_avg_second?></td>
+         </tr>
+         <tr>
+            <td>節奏及速度</td>
+            <td>average beat length</td>
+            <td><?=$music_feature_obj->beat_avg_second?></td>
+         </tr>
+         <tr>
+            <td>節奏及速度</td>
+            <td>average bar length</td>
+            <td><?=$music_feature_obj->bar_avg_second?></td>
          </tr>
          <tr>
             <td>音色</td>
