@@ -148,16 +148,33 @@ if (!empty($_GET['song_id'])) {
          </tr>
          <tr>
             <td>ratio of avg tatum length to avg beat length</td>
-            <td><?=($music_feature_obj->tatum_avg_second/$music_feature_obj->beat_avg_second)?>
+            <td><?=($music_feature_obj->tatum_avg_second/$music_feature_obj->beat_avg_second)?></td>
          </tr>
          <tr>
             <td>ratio of avg tatum length to avg bar length</td>
-            <td><?=($music_feature_obj->tatum_avg_second/$music_feature_obj->bar_avg_second)?>
+            <td><?=($music_feature_obj->tatum_avg_second/$music_feature_obj->bar_avg_second)?></td>
          </tr>
          <tr>
+            <td rowspan="2">音高及音程</td>
+            <td>average pitch vector</td>
+            <td><?=($music_feature_obj->pitch_avg_vector)?></td>
+         </tr>
+         <tr>
+            <td>variance of pitch vector</td>
+            <td><?=($music_feature_obj->pitch_std_vector)?></td>
+         </tr>
+         <tr rowspan="3">
             <td>音色</td>
             <td>speechiness</td>
             <td><?=$song_obj->speechiness?></td>
+         </tr>
+         <tr>
+            <td>average timbre vector</td>
+            <td><?=$song_obj->timbre_avg_vector?></td>
+         </tr>
+         <tr>
+            <td>variance of timbre vector</td>
+            <td><?=$song_obj->timbre_std_vector?></td>
          </tr>
       </tbody>
    </table>
