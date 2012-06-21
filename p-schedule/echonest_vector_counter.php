@@ -38,11 +38,11 @@ foreach ($query_result as $query_result_data) {
    $echonest_analysis = file_get_contents($echonest_analysis_file);
    $echonest_data = json_decode($echonest_analysis);
 
-   $bar_count = $echonest_data->bars;
-   $beat_count = $echonest_data->bears;
-   $tatum_count = $echonest_data->tatums;
-   $section_count = $echonest_data->sections;
-   $segment_count = $echonest_data->segments;
+   $bar_count = count($echonest_data->bars);
+   $beat_count = count($echonest_data->beats);
+   $tatum_count = count($echonest_data->tatums);
+   $section_count = count($echonest_data->sections);
+   $segment_count = count($echonest_data->segments);
 
    echo "bar_count: $bar_count \n";
    echo "beat_count: $beat_count \n";
