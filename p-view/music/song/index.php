@@ -118,49 +118,41 @@ if (!empty($_GET['song_id'])) {
             <td><?=($music_feature_obj->tatum_count/$music_feature_obj->bar_count)?></td>
          </tr>
          <tr>
-            <td>節奏及速度</td>
+            <td rowspan="9">節奏及速度</td>
             <td>tempo</td>
             <td><?=$song_obj->tempo?></td>
          </tr>
          <tr>
-            <td>節奏及速度</td>
             <td>danceability</td>
             <td><?=$song_obj->danceability?></td>
          </tr>
          <tr>
-            <td>節奏及速度</td>
             <td>time_signature</td>
             <td><?=$song_obj->time_signature?></td>
          </tr>
          <tr>
-            <td>節奏及速度</td>
             <td>tatums per second</td>
             <td><?=(1/$music_feature_obj->tatum_avg_second)?></td>
          </tr>
          <tr>
-            <td>節奏及速度</td>
             <td>beats per second</td>
             <td><?=(1/$music_feature_obj->beat_avg_second)?></td>
          </tr>
          <tr>
-            <td>節奏及速度</td>
             <td>bars per second</td>
             <td><?=(1/$music_feature_obj->bar_avg_second)?></td>
          </tr>
          <tr>
-            <td>節奏及速度</td>
-            <td>average tatum length</td>
-            <td><?=$music_feature_obj->tatum_avg_second?></td>
+            <td>ratio of avg beat length to avg bar length</td>
+            <td><?=($music_feature_obj->beat_avg_second/$music_feature_obj->bar_avg_second)?></td>
          </tr>
          <tr>
-            <td>節奏及速度</td>
-            <td>average beat length</td>
-            <td><?=$music_feature_obj->beat_avg_second?></td>
+            <td>ratio of avg tatum length to avg beat length</td>
+            <td><?=($music_feature_obj->tatum_avg_second/$music_feature_obj->beat_avg_second)?>
          </tr>
          <tr>
-            <td>節奏及速度</td>
-            <td>average bar length</td>
-            <td><?=$music_feature_obj->bar_avg_second?></td>
+            <td>ratio of avg tatum length to avg bar length</td>
+            <td><?=($music_feature_obj->tatum_avg_second/$music_feature_obj->bar_avg_second)?>
          </tr>
          <tr>
             <td>音色</td>
