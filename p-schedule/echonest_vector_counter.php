@@ -64,7 +64,7 @@ foreach ($query_result as $query_result_data) {
    $tatum_avg_second = $tatum_duration_sum/$tatum_count;
 
    $section_duration_sum = 0;
-   foreach ($echonest_data->sections as $sections_data){
+   foreach ($echonest_data->sections as $sections_data) {
       $section_duration_sum = $section_duration_sum+$sections_data->duration;
    }
    $section_avg_second = $section_duration_sum/$section_count;
