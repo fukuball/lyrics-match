@@ -24,7 +24,7 @@ $select_sql = "SELECT ".
               "AND audio_path!='' ".
               "AND echonest_track_id!='' ".
               "AND retrieval_status='success' ".
-              "ORDER BY id";
+              "ORDER BY id LIMIT 1";
 
 $query_result = $db_obj->selectCommand($select_sql);
 
@@ -237,40 +237,40 @@ foreach ($query_result as $query_result_data) {
 
          switch ($count_pitch_d) {
          case '1':
-            $pitch2_d1 = $pitch2_d1+pow($pitches_data-$pitch_a1,2);
+            $pitch2_d1 = $pitch2_d1+pow(($pitches_data-$pitch_a1),2);
             break;
          case '2':
-            $pitch2_d2 = $pitch2_d2+pow($pitches_data-$pitch_a2,2);
+            $pitch2_d2 = $pitch2_d2+pow(($pitches_data-$pitch_a2),2);
             break;
          case '3':
-            $pitch2_d3 = $pitch2_d3+pow($pitches_data-$pitch_a3,2);
+            $pitch2_d3 = $pitch2_d3+pow(($pitches_data-$pitch_a3),2);
          break;
          case '4':
-            $pitch2_d4 = $pitch2_d4+pow($pitches_data-$pitch_a4,2);
+            $pitch2_d4 = $pitch2_d4+pow(($pitches_data-$pitch_a4),2);
             break;
          case '5':
-            $pitch2_d5 = $pitch2_d5+pow($pitches_data-$pitch_a5,2);
+            $pitch2_d5 = $pitch2_d5+pow(($pitches_data-$pitch_a5),2);
             break;
          case '6':
-            $pitch2_d6 = $pitch2_d6+pow($pitches_data-$pitch_a6,2);
+            $pitch2_d6 = $pitch2_d6+pow(($pitches_data-$pitch_a6),2);
             break;
          case '7':
-            $pitch2_d7 = $pitch2_d7+pow($pitches_data-$pitch_a7,2);
+            $pitch2_d7 = $pitch2_d7+pow(($pitches_data-$pitch_a7),2);
             break;
          case '8':
-            $pitch2_d8 = $pitch2_d8+pow($pitches_data-$pitch_a8,2);
+            $pitch2_d8 = $pitch2_d8+pow(($pitches_data-$pitch_a8),2);
             break;
          case '9':
-            $pitch2_d9 = $pitch2_d9+pow($pitches_data-$pitch_a9,2);
+            $pitch2_d9 = $pitch2_d9+pow(($pitches_data-$pitch_a9),2);
             break;
          case '10':
-            $pitch2_d10 = $pitch2_d10+pow($pitches_data-$pitch_a10,2);
+            $pitch2_d10 = $pitch2_d10+pow(($pitches_data-$pitch_a10),2);
             break;
          case '11':
-            $pitch2_d11 = $pitch2_d11+pow($pitches_data-$pitch_a11,2);
+            $pitch2_d11 = $pitch2_d11+pow(($pitches_data-$pitch_a11),2);
             break;
          case '12':
-            $pitch2_d12 = $pitch2_d12+pow($pitches_data-$pitch_a12,2);
+            $pitch2_d12 = $pitch2_d12+pow(($pitches_data-$pitch_a12),2);
             break;
          }// end switch ($count_pitch_d)
 
@@ -306,18 +306,18 @@ foreach ($query_result as $query_result_data) {
                         $timbre_a11.','.
                         $timbre_a12;
 
-   $pitch_std_vector = sqrt($pitch2_d1/$segment_count-1).','.
-                       sqrt($pitch2_d2/$segment_count-1).','.
-                       sqrt($pitch2_d3/$segment_count-1).','.
-                       sqrt($pitch2_d4/$segment_count-1).','.
-                       sqrt($pitch2_d5/$segment_count-1).','.
-                       sqrt($pitch2_d6/$segment_count-1).','.
-                       sqrt($pitch2_d7/$segment_count-1).','.
-                       sqrt($pitch2_d8/$segment_count-1).','.
-                       sqrt($pitch2_d9/$segment_count-1).','.
-                       sqrt($pitch2_d10/$segment_count-1).','.
-                       sqrt($pitch2_d11/$segment_count-1).','.
-                       sqrt($pitch2_d12/$segment_count-1);
+   $pitch_std_vector = sqrt($pitch2_d1/($segment_count-1)).','.
+                       sqrt($pitch2_d2/($segment_count-1)).','.
+                       sqrt($pitch2_d3/($segment_count-1)).','.
+                       sqrt($pitch2_d4/($segment_count-1)).','.
+                       sqrt($pitch2_d5/($segment_count-1)).','.
+                       sqrt($pitch2_d6/($segment_count-1)).','.
+                       sqrt($pitch2_d7/($segment_count-1)).','.
+                       sqrt($pitch2_d8/($segment_count-1)).','.
+                       sqrt($pitch2_d9/($segment_count-1)).','.
+                       sqrt($pitch2_d10/($segment_count-1)).','.
+                       sqrt($pitch2_d11/($segment_count-1)).','.
+                       sqrt($pitch2_d12/($segment_count-1));
 
    echo "second: $second \n";
    echo "bar_count: $bar_count \n";
