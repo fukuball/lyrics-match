@@ -117,6 +117,15 @@ if (!empty($_GET['song_id'])) {
             <td>ratio of tatum count to bar count</td>
             <td><?=($music_feature_obj->tatum_count/$music_feature_obj->bar_count)?></td>
          </tr>
+         <tr>
+            <td rowspan="2">節奏及速度</td>
+            <td>tempo</td>
+            <td><?=$song_obj->tempo?></td>
+         </tr>
+         <tr>
+            <td>danceability</td>
+            <td><?=$song_obj->danceability?></td>
+         </tr>
          <!--<tr>
             <td rowspan="9">節奏及速度</td>
             <td>tempo</td>
@@ -153,7 +162,7 @@ if (!empty($_GET['song_id'])) {
          <tr>
             <td>ratio of avg tatum length to avg bar length</td>
             <td><?=($music_feature_obj->tatum_avg_second/$music_feature_obj->bar_avg_second)?></td>
-         </tr>-->
+         </tr>
          <tr>
             <td rowspan="2">音高及音程</td>
             <td>average pitch vector</td>
