@@ -28,7 +28,7 @@ $select_sql = "SELECT ".
 
 $query_result = $db_obj->selectCommand($select_sql);
 
-$music_feature_god = new LMMusicFeature();
+$music_feature_god = new LMMusicFeatureGod();
 
 // get unprocess data
 foreach ($query_result as $query_result_data) {
