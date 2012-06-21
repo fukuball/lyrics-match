@@ -157,11 +157,23 @@ if (!empty($_GET['song_id'])) {
          <tr>
             <td rowspan="2">音高及音程</td>
             <td>average pitch vector</td>
-            <td><?=$music_feature_obj->pitch_avg_vector?></td>
+            <td>
+               <?php
+               $pitch_array = explode(',',$music_feature_obj->pitch_avg_vector);
+               $pitch_avg_vector = implode('<br/>', $pitch_array);
+               echo $pitch_avg_vector;
+               ?>
+            </td>
          </tr>
          <tr>
             <td>variance of pitch vector</td>
-            <td><?=$music_feature_obj->pitch_std_vector?></td>
+            <td>
+            <?php
+            $pitch_array = explode(',',$music_feature_obj->pitch_std_vector);
+            $pitch_std_vector = implode('<br/>', $pitch_array);
+            echo $pitch_std_vector;
+            ?>
+            </td>
          </tr>
          <!--
          <tr>
