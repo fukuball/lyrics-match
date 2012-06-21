@@ -24,7 +24,7 @@ $select_sql = "SELECT ".
               "AND audio_path!='' ".
               "AND echonest_track_id='' ".
               "AND retrieval_status='queue' ".
-              "ORDER BY id DESC ";
+              "ORDER BY id";
 
 $query_result = $db_obj->selectCommand($select_sql);
 
