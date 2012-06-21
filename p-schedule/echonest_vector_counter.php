@@ -230,6 +230,20 @@ foreach ($query_result as $query_result_data) {
    $pitch2_d10 = 0;
    $pitch2_d11 = 0;
    $pitch2_d12 = 0;
+
+   $timbre2_d1  = 0;
+   $timbre2_d2  = 0;
+   $timbre2_d3  = 0;
+   $timbre2_d4  = 0;
+   $timbre2_d5  = 0;
+   $timbre2_d6  = 0;
+   $timbre2_d7  = 0;
+   $timbre2_d8  = 0;
+   $timbre2_d9  = 0;
+   $timbre2_d10 = 0;
+   $timbre2_d11 = 0;
+   $timbre2_d12 = 0;
+
    foreach ($echonest_data->segments as $segments_data) {
 
       $count_pitch_d = 1;
@@ -277,6 +291,51 @@ foreach ($query_result as $query_result_data) {
          $count_pitch_d++;
       }// end foreach ($segments_data->pitches as $pitches_data)
 
+      $count_timbre_d = 1;
+      foreach ($segments_data->timbre as $timbre_data) {
+
+         switch ($count_timbre_d) {
+         case '1':
+            $timbre2_d1 = $timbre2_d1+pow(($timbre_data-$timbre_a1),2);
+            break;
+         case '2':
+            $timbre2_d2 = $timbre2_d2+pow(($timbre_data-$timbre_a2),2);
+            break;
+         case '3':
+            $timbre2_d3 = $timbre2_d3+pow(($timbre_data-$timbre_a3),2);
+         break;
+         case '4':
+            $timbre2_d4 = $timbre2_d4+pow(($timbre_data-$timbre_a4),2);
+            break;
+         case '5':
+            $timbre2_d5 = $timbre2_d5+pow(($timbre_data-$timbre_a5),2);
+            break;
+         case '6':
+            $timbre2_d6 = $timbre2_d6+pow(($timbre_data-$timbre_a6),2);
+            break;
+         case '7':
+            $timbre2_d7 = $timbre2_d7+pow(($timbre_data-$timbre_a7),2);
+            break;
+         case '8':
+            $timbre2_d8 = $timbre2_d8+pow(($timbre_data-$timbre_a8),2);
+            break;
+         case '9':
+            $timbre2_d9 = $timbre2_d9+pow(($timbre_data-$timbre_a9),2);
+            break;
+         case '10':
+            $timbre2_d10 = $timbre2_d10+pow(($timbre_data-$timbre_a10),2);
+            break;
+         case '11':
+            $timbre2_d11 = $timbre2_d11+pow(($timbre_data-$timbre_a11),2);
+            break;
+         case '12':
+            $timbre2_d12 = $timbre2_d12+pow(($timbre_data-$timbre_a12),2);
+            break;
+         }// end switch ($count_timbre_d)
+
+         $count_timbre_d++;
+      }// end foreach ($segments_data->timbre as $timbre_data)
+
    }// end foreach ($echonest_data->segments as $segments_data)
 
    $segment_avg_second = $segment_duration_sum/$segment_count;
@@ -319,6 +378,19 @@ foreach ($query_result as $query_result_data) {
                        sqrt($pitch2_d11/($segment_count-1)).','.
                        sqrt($pitch2_d12/($segment_count-1));
 
+   $timbre_std_vector = sqrt($timbre2_d1/($segment_count-1)).','.
+                        sqrt($timbre2_d2/($segment_count-1)).','.
+                        sqrt($timbre2_d3/($segment_count-1)).','.
+                        sqrt($timbre2_d4/($segment_count-1)).','.
+                        sqrt($timbre2_d5/($segment_count-1)).','.
+                        sqrt($timbre2_d6/($segment_count-1)).','.
+                        sqrt($timbre2_d7/($segment_count-1)).','.
+                        sqrt($timbre2_d8/($segment_count-1)).','.
+                        sqrt($timbre2_d9/($segment_count-1)).','.
+                        sqrt($timbre2_d10/($segment_count-1)).','.
+                        sqrt($timbre2_d11/($segment_count-1)).','.
+                        sqrt($timbre2_d12/($segment_count-1));
+
    echo "second: $second \n";
    echo "bar_count: $bar_count \n";
    echo "beat_count: $beat_count \n";
@@ -333,6 +405,7 @@ foreach ($query_result as $query_result_data) {
    echo "pitch_avg_vector: $pitch_avg_vector \n";
    echo "timbre_avg_vector: $timbre_avg_vector \n";
    echo "pitch_std_vector: $pitch_std_vector \n";
+   echo "timbre_std_vector: $timbre_std_vector \n";
 
    $music_feature_id = $music_feature_god->findBySongId($song_obj->getId());
    if ($music_feature_id) {
@@ -352,6 +425,7 @@ foreach ($query_result as $query_result_data) {
       $music_feature_obj->pitch_avg_vector = $pitch_avg_vector;
       $music_feature_obj->timbre_avg_vector = $timbre_avg_vector;
       $music_feature_obj->pitch_std_vector = $pitch_std_vector;
+      $music_feature_obj->timbre_std_vector = $timbre_std_vector;
       if ($music_feature_obj->save()) {
          echo "update music feature success \n";
       } else {
@@ -391,6 +465,8 @@ foreach ($query_result as $query_result_data) {
           = $timbre_avg_vector;
       $parameter_array['pitch_std_vector']
           = $pitch_std_vector;
+      $parameter_array['timbre_std_vector']
+          = $timbre_std_vector;
 
       if ($music_feature_god->create($parameter_array)) {
          echo "create music feature success \n";
