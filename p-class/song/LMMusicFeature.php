@@ -43,6 +43,7 @@ class LMMusicFeature extends LMActiveRecord
    // protected $delete_time;
    // protected $modify_unix_time;
    public $song_id;
+   public $second;
    public $bar_count;
    public $beat_count;
    public $tatum_count;

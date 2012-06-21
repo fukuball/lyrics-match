@@ -38,12 +38,14 @@ foreach ($query_result as $query_result_data) {
    $echonest_analysis = file_get_contents($echonest_analysis_file);
    $echonest_data = json_decode($echonest_analysis);
 
+   $second = $echonest_data->meta->seconds;
    $bar_count = count($echonest_data->bars);
    $beat_count = count($echonest_data->beats);
    $tatum_count = count($echonest_data->tatums);
    $section_count = count($echonest_data->sections);
    $segment_count = count($echonest_data->segments);
 
+   echo "second: $second \n";
    echo "bar_count: $bar_count \n";
    echo "beat_count: $beat_count \n";
    echo "tatum_count: $tatum_count \n";
@@ -54,6 +56,7 @@ foreach ($query_result as $query_result_data) {
    if ($music_feature_id) {
       $music_feature_obj = new LMMusicFeature($music_feature_id);
 
+      $music_feature_obj->second = $second;
       $music_feature_obj->bar_count = $bar_count;
       $music_feature_obj->beat_count = $beat_count;
       $music_feature_obj->tatum_count = $tatum_count;
@@ -70,6 +73,8 @@ foreach ($query_result as $query_result_data) {
       $parameter_array = array();
       $parameter_array['song_id']
           = $song_obj->getId();
+      $parameter_array['second']
+          = $second;
       $parameter_array['bar_count']
           = $bar_count;
       $parameter_array['beat_count']
