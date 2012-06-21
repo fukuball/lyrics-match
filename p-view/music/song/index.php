@@ -163,8 +163,8 @@ if (!empty($_GET['song_id'])) {
             <td>variance of pitch vector</td>
             <td><?=($music_feature_obj->pitch_std_vector)?></td>
          </tr>
-         <tr rowspan="3">
-            <td>音色</td>
+         <tr>
+            <td rowspan="3">音色</td>
             <td>speechiness</td>
             <td><?=$song_obj->speechiness?></td>
          </tr>
