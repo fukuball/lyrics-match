@@ -175,7 +175,6 @@ if (!empty($_GET['song_id'])) {
             ?>
             </td>
          </tr>
-         <!--
          <tr>
             <td rowspan="3">音色</td>
             <td>speechiness</td>
@@ -183,12 +182,24 @@ if (!empty($_GET['song_id'])) {
          </tr>
          <tr>
             <td>average timbre vector</td>
-            <td><?=$song_obj->timbre_avg_vector?></td>
+            <td>
+               <?php
+               $timbre_array = explode(',',$music_feature_obj->timbre_avg_vector);
+               $timbre_avg_vector = implode('<br/>', $timbre_array);
+               echo $timbre_avg_vector;
+               ?>
+            </td>
          </tr>
          <tr>
             <td>variance of timbre vector</td>
-            <td><?=$song_obj->timbre_std_vector?></td>
-         </tr>-->
+            <td>
+               <?php
+               $timbre_array = explode(',',$music_feature_obj->timbre_std_vector);
+               $timbre_std_vector = implode('<br/>', $timbre_array);
+               echo $timbre_std_vector;
+               ?>
+            </td>
+         </tr>
       </tbody>
    </table>
    <?php
