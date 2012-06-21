@@ -68,6 +68,8 @@ foreach ($query_result as $query_result_data) {
    } else {
 
       $parameter_array = array();
+      $parameter_array['song_id']
+          = $song_obj->getId();
       $parameter_array['bar_count']
           = $bar_count;
       $parameter_array['beat_count']
@@ -87,7 +89,7 @@ foreach ($query_result as $query_result_data) {
 
    }
 
-
+   unset($song_obj);
 }
 
 unset($music_feature_god);
