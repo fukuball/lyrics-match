@@ -129,6 +129,21 @@ if (!empty($_GET['song_id'])) {
             <td><?=$song_obj->time_signature?></td>
          </tr>
          <tr>
+            <td>節奏及速度</td>
+            <td>tatums per second</td>
+            <td><?=(1/$music_feature_obj->tatum_avg_second)?></td>
+         </tr>
+         <tr>
+            <td>節奏及速度</td>
+            <td>beats per second</td>
+            <td><?=(1/$music_feature_obj->beat_avg_second)?></td>
+         </tr>
+         <tr>
+            <td>節奏及速度</td>
+            <td>bars per second</td>
+            <td><?=(1/$music_feature_obj->bar_avg_second)?></td>
+         </tr>
+         <tr>
             <td>音色</td>
             <td>speechiness</td>
             <td><?=$song_obj->speechiness?></td>
