@@ -83,12 +83,11 @@ if (!empty($_GET['song_id'])) {
       </thead>
       <tbody>
          <tr>
-            <td></td>
+            <td rowspan="2"></td>
             <td>echonest_track_id</td>
             <td><?=$song_obj->echonest_track_id?></td>
          </tr>
          <tr>
-            <td></td>
             <td>key</td>
             <td><?=$song_obj->key?></td>
          </tr>
