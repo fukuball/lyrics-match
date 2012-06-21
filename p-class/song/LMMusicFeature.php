@@ -47,8 +47,8 @@ class LMMusicFeature extends LMActiveRecord
    public $bar_count;
    public $beat_count;
    public $tatum_count;
-   public $section;
-   public $segment;
+   public $section_count;
+   public $segment_count;
 
    /**
     * Method __construct initialize instance
