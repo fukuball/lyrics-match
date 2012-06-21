@@ -88,7 +88,6 @@ if (!empty($_GET['song_id'])) {
             <td><?=$song_obj->echonest_track_id?></td>
          </tr>
          <tr>
-            <td></td>
             <td>key</td>
             <td><?=$song_obj->key?></td>
          </tr>
@@ -98,22 +97,19 @@ if (!empty($_GET['song_id'])) {
             <td><?=$song_obj->mode?></td>
          </tr>
          <tr>
-            <td>力度</td>
+            <td rowspan="4">力度</td>
             <td>energy</td>
             <td><?=$song_obj->energy?></td>
          </tr>
          <tr>
-            <td>力度</td>
             <td>loudness</td>
             <td><?=$song_obj->loudness?></td>
          </tr>
          <tr>
-            <td>力度</td>
             <td>ratio of tatum count to beat count</td>
             <td><?=($music_feature_obj->tatum_count/$music_feature_obj->beat_count)?></td>
          </tr>
          <tr>
-            <td>力度</td>
             <td>ratio of tatum count to bar count</td>
             <td><?=($music_feature_obj->tatum_count/$music_feature_obj->bar_count)?></td>
          </tr>
