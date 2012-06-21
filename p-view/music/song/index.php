@@ -66,53 +66,83 @@ if (!empty($_GET['song_id'])) {
       </div>
    </div>
    <hr />
+   <?php
+   $music_feature_god = new LMMusicFeatureGod();
+   $music_feature_id = $music_feature_god->findBySongId($song_obj->getId());
+   if ($music_feature_id) {
+      $music_feature_obj = new LMMusicFeature($music_feature_id);
+   ?>
    <h2>音樂特徵值</h2>
    <table class="table table-bordered table-striped">
       <thead>
          <tr>
+            <th>種類</th>
             <th>Feature</th>
             <th>Value</th>
          </tr>
       </thead>
       <tbody>
          <tr>
+            <td></td>
             <td>echonest_track_id</td>
             <td><?=$song_obj->echonest_track_id?></td>
          </tr>
          <tr>
+            <td></td>
             <td>key</td>
             <td><?=$song_obj->key?></td>
          </tr>
          <tr>
+            <td>調性</td>
             <td>mode</td>
             <td><?=$song_obj->mode?></td>
          </tr>
          <tr>
-            <td>tempo</td>
-            <td><?=$song_obj->tempo?></td>
-         </tr>
-         <tr>
-            <td>time_signature</td>
-            <td><?=$song_obj->time_signature?></td>
-         </tr>
-         <tr>
+            <td>力度</td>
             <td>energy</td>
             <td><?=$song_obj->energy?></td>
          </tr>
          <tr>
+            <td>力度</td>
+            <td>loudness</td>
+            <td><?=$song_obj->loudness?></td>
+         </tr>
+         <tr>
+            <td>力度</td>
+            <td>ratio of tatum count to beat count</td>
+            <td><?=($music_feature_obj->tatum_count/$music_feature_obj->beat_count)?></td>
+         </tr>
+         <tr>
+            <td>力度</td>
+            <td>ratio of tatum count to bar count</td>
+            <td><?=($music_feature_obj->tatum_count/$music_feature_obj->bar_count)?></td>
+         </tr>
+         <tr>
+            <td>節奏及速度</td>
+            <td>tempo</td>
+            <td><?=$song_obj->tempo?></td>
+         </tr>
+         <tr>
+            <td>節奏及速度</td>
             <td>danceability</td>
             <td><?=$song_obj->danceability?></td>
          </tr>
          <tr>
+            <td>節奏及速度</td>
+            <td>time_signature</td>
+            <td><?=$song_obj->time_signature?></td>
+         </tr>
+         <tr>
+            <td>音色</td>
             <td>speechiness</td>
             <td><?=$song_obj->speechiness?></td>
          </tr>
-         <tr>
-            <td>loudness</td>
-            <td><?=$song_obj->loudness?></td>
-         </tr>
       </tbody>
    </table>
+   <?php
+      unset($music_feature_obj);
+   }
+   ?>
 </div>
 <?php
    unset($song_obj);
