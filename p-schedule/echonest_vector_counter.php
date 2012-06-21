@@ -69,11 +69,81 @@ foreach ($query_result as $query_result_data) {
    }
    $section_avg_second = $section_duration_sum/$section_count;
 
+
    $segment_duration_sum = 0;
-   foreach ($echonest_data->segments as $segments_data){
+   $pitch_d1  = 0;
+   $pitch_d2  = 0;
+   $pitch_d3  = 0;
+   $pitch_d4  = 0;
+   $pitch_d5  = 0;
+   $pitch_d6  = 0;
+   $pitch_d7  = 0;
+   $pitch_d8  = 0;
+   $pitch_d9  = 0;
+   $pitch_d10 = 0;
+   $pitch_d11 = 0;
+   $pitch_d12 = 0;
+   foreach ($echonest_data->segments as $segments_data) {
       $segment_duration_sum = $segment_duration_sum+$segments_data->duration;
-   }
+
+      $count_pitch_d = 1;
+      foreach ($segments_data->pitches as $pitches_data) {
+
+         switch ($count_pitch_d) {
+         case '1':
+            $pitch_d1 = $pitch_d1+$pitches_data;
+            break;
+         case '2':
+            $pitch_d2 = $pitch_d2+$pitches_data;
+            break;
+         case '3':
+            $pitch_d3 = $pitch_d3+$pitches_data;
+         break;
+         case '4':
+            $pitch_d4 = $pitch_d4+$pitches_data;
+            break;
+         case '5':
+            $pitch_d5 = $pitch_d5+$pitches_data;
+            break;
+         case '6':
+            $pitch_d6 = $pitch_d6+$pitches_data;
+            break;
+         case '7':
+            $pitch_d7 = $pitch_d7+$pitches_data;
+            break;
+         case '8':
+            $pitch_d8 = $pitch_d8+$pitches_data;
+            break;
+         case '9':
+            $pitch_d9 = $pitch_d9+$pitches_data;
+            break;
+         case '10':
+            $pitch_d10 = $pitch_d10+$pitches_data;
+            break;
+         case '11':
+            $pitch_d11 = $pitch_d11+$pitches_data;
+            break;
+         case '12':
+            $pitch_d12 = $pitch_d12+$pitches_data;
+            break;
+         }// end switch ($count_pitch_d)
+
+         $count_pitch_d++;
+      }// end foreach ($segments_data->pitches as $pitches_data)
+   }// end foreach ($echonest_data->segments as $segments_data)
    $segment_avg_second = $segment_duration_sum/$segment_count;
+   $pitch_avg_vector = ($pitch_d1/$segment_count).','.
+                       ($pitch_d2/$segment_count).','.
+                       ($pitch_d3/$segment_count).','.
+                       ($pitch_d4/$segment_count).','.
+                       ($pitch_d5/$segment_count).','.
+                       ($pitch_d6/$segment_count).','.
+                       ($pitch_d7/$segment_count).','.
+                       ($pitch_d8/$segment_count).','.
+                       ($pitch_d9/$segment_count).','.
+                       ($pitch_d10/$segment_count).','.
+                       ($pitch_d11/$segment_count).','.
+                       ($pitch_d12/$segment_count);
 
    echo "second: $second \n";
    echo "bar_count: $bar_count \n";
@@ -86,6 +156,7 @@ foreach ($query_result as $query_result_data) {
    echo "tatum_avg_second: $tatum_avg_second \n";
    echo "section_avg_second: $section_avg_second \n";
    echo "segment_avg_second: $segment_avg_second \n";
+   echo "pitch_avg_vector: $pitch_avg_vector \n";
 
    $music_feature_id = $music_feature_god->findBySongId($song_obj->getId());
    if ($music_feature_id) {
@@ -102,6 +173,7 @@ foreach ($query_result as $query_result_data) {
       $music_feature_obj->tatum_avg_second = $tatum_avg_second;
       $music_feature_obj->section_avg_second = $section_avg_second;
       $music_feature_obj->segment_avg_second = $segment_avg_second;
+      $music_feature_obj->pitch_avg_vector = $pitch_avg_vector;
       if ($music_feature_obj->save()) {
          echo "update music feature success \n";
       } else {
@@ -133,7 +205,9 @@ foreach ($query_result as $query_result_data) {
           = $tatum_avg_second;
       $parameter_array['section_avg_second']
           = $section_avg_second;
-      $parameter_array['segment_avg_second']
+      $parameter_array['pitch_avg_vector']
+          = $segment_avg_second;
+      $parameter_array['pitch_avg_vector']
           = $segment_avg_second;
 
       if ($music_feature_god->create($parameter_array)) {

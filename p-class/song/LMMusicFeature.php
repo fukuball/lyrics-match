@@ -54,6 +54,8 @@ class LMMusicFeature extends LMActiveRecord
    public $tatum_avg_second;
    public $section_avg_second;
    public $segment_avg_second;
+   public $pitch_avg_vector;
+   public $timbre_avg_vector
 
    /**
     * Method __construct initialize instance
