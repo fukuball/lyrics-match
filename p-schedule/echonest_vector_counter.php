@@ -45,12 +45,19 @@ foreach ($query_result as $query_result_data) {
    $section_count = count($echonest_data->sections);
    $segment_count = count($echonest_data->segments);
 
+   $bar_duration_sum = 0;
+   foreach ($echonest_data->bars as $bars_data){
+      $bar_duration_sum = $bar_duration_sum+$bars_data->duration;
+   }
+   $bar_avg_second = $bar_duration_sum/$bar_count;
+
    echo "second: $second \n";
    echo "bar_count: $bar_count \n";
    echo "beat_count: $beat_count \n";
    echo "tatum_count: $tatum_count \n";
    echo "section_count: $section_count \n";
    echo "segment_count: $segment_count \n";
+   echo "bar_avg_second: $bar_avg_second \n";
 
    $music_feature_id = $music_feature_god->findBySongId($song_obj->getId());
    if ($music_feature_id) {
@@ -62,6 +69,7 @@ foreach ($query_result as $query_result_data) {
       $music_feature_obj->tatum_count = $tatum_count;
       $music_feature_obj->section_count = $section_count;
       $music_feature_obj->segment_count = $segment_count;
+      $music_feature_obj->bar_avg_second = $bar_avg_second;
       if ($music_feature_obj->save()) {
          echo "update music feature success \n";
       } else {
@@ -85,6 +93,8 @@ foreach ($query_result as $query_result_data) {
           = $section_count;
       $parameter_array['segment_count']
           = $segment_count;
+      $parameter_array['bar_avg_second']
+          = $bar_avg_second;
 
       if ($music_feature_god->create($parameter_array)) {
          echo "create music feature success \n";
