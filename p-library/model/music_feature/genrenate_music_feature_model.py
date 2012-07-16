@@ -24,7 +24,7 @@ cur.execute("SELECT * FROM music_feature_matrix WHERE id=1")
 
 music_feature_matrix = "";
 
-for row in rows:
+for row in cur.fetchall() :
    print "%s" % (row["matrix"])
 
 #for row in cur.fetchall() :
