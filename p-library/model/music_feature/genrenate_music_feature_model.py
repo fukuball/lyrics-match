@@ -50,5 +50,5 @@ A_bar_music_feature_matrix = np.dot(music_feature_U,np.dot(music_feature_s,music
 print A_bar_music_feature_matrix
 print( "matrix shape --> %d rows x %d columns" % A_bar_music_feature_matrix.shape )
 
-music_feature_matrix_subtract = np.subtract(A_music_feature_matrix, A_bar_music_feature_matrix)
-print np.extract(music_feature_matrix_subtract>10, music_feature_matrix_subtract)
+#music_feature_matrix_subtract = np.subtract(A_music_feature_matrix, A_bar_music_feature_matrix)
+#print np.extract(music_feature_matrix_subtract>10, music_feature_matrix_subtract)
