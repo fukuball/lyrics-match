@@ -68,7 +68,7 @@ $parameter_array['column_music_feature']
 $parameter_array['type']
     = 'matrix';
 
-if ($music_feature_god->create($parameter_array)) {
+if ($music_feature_matrix_god->create($parameter_array)) {
    echo "create music feature matrix success \n";
 } else {
    echo "create music feature matrix fail \n";
