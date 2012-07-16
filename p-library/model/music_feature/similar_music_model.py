@@ -98,9 +98,14 @@ if (has_feature_data=="true" and has_model_data=="true") :
    #print similar_music_model
    #print( "matrix shape --> %d rows x %d columns" % similar_music_model.shape )
 
-   dist = (similar_music_model - input_song_matrix)**2
-   #dist = np.sum(dist, axis=1)
-   #dist = np.sqrt(dist)
+   single_point = [3, 4]
+   print single_point
+   points = np.arange(20).reshape((10,2))
+   print points
+
+   dist = (points - single_point)**2
+   dist = np.sum(dist, axis=1)
+   dist = np.sqrt(dist)
 
    print dist
 
