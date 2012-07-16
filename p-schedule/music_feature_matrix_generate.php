@@ -40,7 +40,7 @@ $select_sql = "SELECT ".
               "s.speechiness, ".
               "s.loudness ".
               "FROM music_feature mf ".
-              "INNER JOIN song s ON (mf.song_id = s.id)".
+              "INNER JOIN song s ON (mf.song_id = s.id) ".
               "WHERE mf.is_deleted = '0' ".
               "AND s.is_deleted ='0' ".
               "ORDER BY mf.id";

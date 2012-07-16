@@ -46,7 +46,7 @@ class LMMusicFeatureMatrix extends LMActiveRecord
    public $row_song_id;
    public $column_music_feature;
    public $augment_music_feature;
-   public $augment_matrix
+   public $augment_matrix;
    public $type;
 
    /**
