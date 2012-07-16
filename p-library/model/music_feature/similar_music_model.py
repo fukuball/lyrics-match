@@ -68,9 +68,6 @@ cur = db.cursor()
 #   song_music_feature_str += row[20].replace(","," ")
 #   has_feature_data = "true"
 
-song_id_array = row_song_id.split(',')
-input_song_feature_key = song_id_array.index(song_id)
-
 cur.execute("""SELECT * FROM music_feature_matrix WHERE id=%s""", (model_id))
 
 has_model_data = "false"
@@ -79,6 +76,7 @@ row_song_id = "";
 column_music_feature = "";
 augment_music_feature = "";
 augment_matrix = "";
+
 
 for row in cur.fetchall() :
    music_feature_matrix = row[1];
@@ -89,6 +87,9 @@ for row in cur.fetchall() :
    has_model_data = "true"
 
 if (has_model_data=="true") :
+
+   song_id_array = row_song_id.split(',')
+   input_song_feature_key = song_id_array.index(song_id)
    #input_song_matrix = np.matrix(song_music_feature_str)
 
    # model
