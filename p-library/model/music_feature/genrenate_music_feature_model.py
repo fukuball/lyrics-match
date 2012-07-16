@@ -43,10 +43,10 @@ print U
 print( "shape --> %d rows x %d columns" % U.shape )
 
 print s
-print( "shape --> %d rows x %d columns" % s.shape )
+#print( "shape --> %d rows x %d columns" % s.shape )
 
 print V
-print( "shape --> %d rows x %d columns" % V.shape )
+#print( "shape --> %d rows x %d columns" % V.shape )
 
 #
 #
