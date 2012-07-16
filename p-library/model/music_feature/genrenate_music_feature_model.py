@@ -1,5 +1,18 @@
 #!/usr/bin/python26
 # -*- coding:utf-8 -*-
+#
+# generate_music_feature_model.py to generate music feature model
+#
+# Python version 2.6.8
+#
+# @category Python
+# @package  /p-library/model/
+# @author   Fukuball Lin <fukuball@gmail.com>
+# @license  No Licence
+# @version  Release: <1.0>
+# @link     http://sarasti.cs.nccu.edu.tw
+#
+# hard code
 
 import sys
 import numpy as np
