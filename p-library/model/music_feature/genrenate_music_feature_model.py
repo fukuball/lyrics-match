@@ -4,6 +4,7 @@
 import sys
 import numpy as np
 import MySQLdb as mysql
+import json
 
 sys.path.append("/var/www/html/lyrics-match/p-library/model")
 import ImportPath
@@ -63,6 +64,11 @@ print( "matrix shape --> %d rows x %d columns" % A_bar_music_feature_matrix.shap
 #print np.extract(music_feature_matrix_subtract>10, music_feature_matrix_subtract)
 
 A_bar_string = A_bar_music_feature_matrix.tostring()
+
+
+
+A_bar_string = json.dumps(A_bar_music_feature_matrix)
+print A_bar_string
 
 #try:
 #   cur.execute("""INSERT INTO music_feature_matrix (matrix,row_song_id,column_music_feature,augment_music_feature,augment_matrix,type,create_time,modify_time) VALUES (%s, %s, %s, %s, %s, %s, %s, %s)""",(A_bar_string, row_song_id, column_music_feature, augment_music_feature, augment_matrix, "model", create_time, modify_time))
