@@ -105,11 +105,14 @@ if (has_feature_data=="true" and has_model_data=="true") :
    print single_point
    points = np.arange(20).reshape((10,2))
    print points
-
    dist = (points - single_point)**2
    dist = np.sum(dist, axis=1)
    dist = np.sqrt(dist)
+   print dist
 
+   dist = (input_song_matrix_array - similar_music_model)**2
+   dist = np.sum(dist, axis=1)
+   dist = np.sqrt(dist)
    print dist
 
 
