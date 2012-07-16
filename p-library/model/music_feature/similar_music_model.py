@@ -100,15 +100,15 @@ if (has_model_data=="true") :
    augment_matrix = np.matrix(augment_matrix)
 
    similar_music_model = np.concatenate((music_feature_matrix, augment_matrix), axis=1)
-   print similar_music_model
+   #print similar_music_model
    #print( "matrix shape --> %d rows x %d columns" % similar_music_model.shape )
 
    normalize_min = similar_music_model.getA().min(axis=0)
    normalize_range = similar_music_model.getA().ptp(axis=0)
    input_song_matrix = similar_music_model.getA()[0]
-   print input_song_matrix
+   #print input_song_matrix
 
-   input_song_matrix_normalized = (input_song_matrix.getA() - normalize_min) / normalize_range
+   input_song_matrix_normalized = (input_song_matrix - normalize_min) / normalize_range
    print input_song_matrix_normalized;
    similar_music_model_normalized = (similar_music_model.getA() - normalize_min) / normalize_range
    print similar_music_model_normalized;
