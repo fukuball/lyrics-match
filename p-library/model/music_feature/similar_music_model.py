@@ -110,7 +110,7 @@ if (has_feature_data=="true" and has_model_data=="true") :
    dist = np.sqrt(dist)
    print dist
 
-   dist = (similar_music_model - input_song_matrix_array)**2
+   dist = (similar_music_model.tolist() - input_song_matrix_array)**2
    dist = np.sum(dist, axis=1)
    dist = np.sqrt(dist)
    print dist
