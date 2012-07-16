@@ -106,12 +106,12 @@ if (has_model_data=="true") :
    normalize_min = similar_music_model.getA().min(axis=0)
    normalize_range = similar_music_model.getA().ptp(axis=0)
    input_song_matrix = similar_music_model.getA()[0]
-   #print input_song_matrix
+   #print input_song_matrixdebugg
 
    input_song_matrix_normalized = (input_song_matrix - normalize_min) / normalize_range
-   print input_song_matrix_normalized;
+   #print input_song_matrix_normalized;
    similar_music_model_normalized = (similar_music_model.getA() - normalize_min) / normalize_range
-   print similar_music_model_normalized;
+   #print similar_music_model_normalized;
 
 
    dist = (similar_music_model_normalized - input_song_matrix_normalized)**2
