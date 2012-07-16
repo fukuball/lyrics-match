@@ -63,11 +63,8 @@ print( "matrix shape --> %d rows x %d columns" % A_bar_music_feature_matrix.shap
 #music_feature_matrix_subtract = np.subtract(A_music_feature_matrix, A_bar_music_feature_matrix)
 #print np.extract(music_feature_matrix_subtract>10, music_feature_matrix_subtract)
 
-A_bar_string = A_bar_music_feature_matrix.tostring()
-
-
-
-A_bar_string = json.dumps(A_bar_music_feature_matrix)
+A_bar_list = A_bar_music_feature_matrix.tolist()
+A_bar_string = json.dumps(A_bar_list)
 print A_bar_string
 
 #try:
