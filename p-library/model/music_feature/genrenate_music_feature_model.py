@@ -25,11 +25,19 @@ cur.execute("SELECT * FROM music_feature_matrix WHERE id=1")
 music_feature_matrix = "";
 row_song_id = "";
 column_music_feature = "";
+augment_music_feature = "";
+augment_matrix = "";
+create_time = "";
+modify_time = "";
 
 for row in cur.fetchall() :
    music_feature_matrix = row[1];
    row_song_id = row[2];
    column_music_feature = row[3];
+   augment_music_feature = row[4];
+   augment_matrix = row[5];
+   create_time = row[7];
+   modify_time = row[8];
 
 # music feature matrix
 A_music_feature_matrix = np.matrix(music_feature_matrix)
@@ -55,4 +63,11 @@ A_bar_music_feature_matrix = np.dot(music_feature_U,np.dot(music_feature_s,music
 #print np.extract(music_feature_matrix_subtract>10, music_feature_matrix_subtract)
 
 A_bar_list = A_bar_music_feature_matrix.tolist()
-print A_bar_list
+
+try:
+   cur.execute("""INSERT INTO music_feature_matrix (matrix,row_song_id,column_music_feature,augment_music_feature,augment_matrix,type,create_time,modify_time) VALUES (%s, %s, %s, %s, %s, %s, %s, %s)""",(A_bar_list, row_song_id, column_music_feature, augment_music_feature, augment_matrix, "model", create_time, modify_time))
+   db.commit()
+   print "success";
+except:
+   db.rollback()
+   print "fail";
