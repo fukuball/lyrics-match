@@ -209,10 +209,45 @@ if (!empty($_GET['song_id'])) {
    <h2>
       相似音樂
    </h2>
+   <table class="table table-bordered table-striped">
+        <thead>
+           <tr>
+              <th>
+               song_id
+              </th>
+              <th>
+               歌名
+              </th>
+              <th>
+               距離
+              </th>
+           </tr>
+        </thead>
+        <tbody>
    <?php
-      $similar_song = shell_exec("python26 ".SITE_ROOT."/p-library/model/music_feature/similar_music_model.py 1 2");
-      echo $similar_song;
+      $similar_song = shell_exec("python26 ".SITE_ROOT."/p-library/model/music_feature/similar_music_model.py ".$_GET['song_id']." 2");
+      $similar_song_array = explode(",", $similar_song);
+      foreach ($similar_song_array as $skey => $svalue) {
+         $similar_song_value_array = explode(":", $svalue);
+         $similar_song_obj = new LMSong($similar_song_value_array[0]);
+         ?>
+         <tr>
+            <td>
+               <?php echo $similar_song_obj->getId(); ?>
+            </td>
+            <td>
+               <?php echo $similar_song_obj->title; ?>
+            </td>
+            <td>
+               <?php echo $similar_song_value_array[1]; ?>
+            </td>
+         </tr>
+         <?php
+         unset($similar_song_obj);
+      }
    ?>
+      </tbody>
+   </table>
 </div>
 <?php
    unset($song_obj);
