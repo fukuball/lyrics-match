@@ -12,6 +12,11 @@ ImportPath.Import()
 import db_stage
 CONST = db_stage._Const()
 
+A = np.array([[2,0,0,0],[0,0,0,0]])
+U,s,V=np.linalg.svd(A,full_matrices=False)
+S=np.diag(s)
+print np.dot(U,np.dot(S,V))
+
 
 # connect to db
 db = mysql.connect(host    = CONST.DBHOST,
