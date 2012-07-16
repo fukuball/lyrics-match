@@ -44,7 +44,7 @@ foreach ($query_result as $query_result_data) {
                //$query_result_data['timbre_avg_vector']." ".
                //$query_result_data['pitch_std_vector']." ".
                //$query_result_data['timbre_std_vector']." "
-               "; "
+               "; ";
 
 }
 
