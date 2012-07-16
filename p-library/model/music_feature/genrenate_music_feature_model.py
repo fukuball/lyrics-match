@@ -51,4 +51,4 @@ print A_bar_music_feature_matrix
 print( "matrix shape --> %d rows x %d columns" % A_bar_music_feature_matrix.shape )
 
 music_feature_matrix_subtract = np.subtract(A_music_feature_matrix, A_bar_music_feature_matrix)
-print np.extract(music_feature_matrix_subtract>100, music_feature_matrix_subtract)
+print np.extract(music_feature_matrix_subtract>10, music_feature_matrix_subtract)
