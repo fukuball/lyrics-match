@@ -59,6 +59,7 @@ for row in cur.fetchall() :
    song_music_feature_str += str(row[14])+" "
    song_music_feature_str += str(row[15])+" "
    song_music_feature_str += str(row[16])+" "
+   song_music_feature_str += row[17].replace(","," ")
 
    #print row[0]
    #if ($query_result_data['mode']==1) {
