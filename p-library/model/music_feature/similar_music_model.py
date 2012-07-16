@@ -95,5 +95,8 @@ if (has_feature_data=="true" and has_model_data=="true") :
    augment_matrix = np.matrix(augment_matrix)
 
    similar_music_model = np.concatenate((music_feature_matrix, augment_matrix), axis=1)
-   print similar_music_model
-   print( "matrix shape --> %d rows x %d columns" % similar_music_model.shape )
+   #print similar_music_model
+   #print( "matrix shape --> %d rows x %d columns" % similar_music_model.shape )
+
+   similar_music_result = np.dot(similar_music_model, np.transpose(input_song_matrix))
+   print similar_music_result
