@@ -25,25 +25,31 @@ $select_sql = "SELECT ".
 
 $query_result = $db_obj->selectCommand($select_sql);
 
-// get unprocess data
+$matirx = "";
+
 foreach ($query_result as $query_result_data) {
 
-   echo  $query_result_data['bar_count'].", ".
-         $query_result_data['beat_count'].", ".
-         $query_result_data['tatum_count'].", ".
-         $query_result_data['section_count'].", ".
-         $query_result_data['segment_count'].", ".
-         $query_result_data['bar_avg_second'].", ".
-         $query_result_data['beat_avg_second'].", ".
-         $query_result_data['tatum_avg_second'].", ".
-         $query_result_data['section_avg_second'].", ".
-         $query_result_data['segment_avg_second'].", ".
-         $query_result_data['pitch_avg_vector'].", ".
-         $query_result_data['timbre_avg_vector'].", ".
-         $query_result_data['pitch_std_vector'].", ".
-         $query_result_data['timbre_std_vector']."<br/>";
+   $matirx =   $matirx.
+               $query_result_data['bar_count']." ".
+               $query_result_data['beat_count']." ".
+               $query_result_data['tatum_count']." ".
+               $query_result_data['section_count']." ".
+               $query_result_data['segment_count']." ".
+               $query_result_data['bar_avg_second']." ".
+               $query_result_data['beat_avg_second']." ".
+               $query_result_data['tatum_avg_second']." ".
+               $query_result_data['section_avg_second']." ".
+               $query_result_data['segment_avg_second']." ".
+               //$query_result_data['pitch_avg_vector']." ".
+               //$query_result_data['timbre_avg_vector']." ".
+               //$query_result_data['pitch_std_vector']." ".
+               //$query_result_data['timbre_std_vector']." "
+               "; "
 
 }
+
+$matrix = substr ($matirx, 0, -2);
+echo $matrix;
 
 require_once SITE_ROOT."/p-config/application-unsetter.php";
 
