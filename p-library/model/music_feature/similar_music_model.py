@@ -99,6 +99,9 @@ if (has_feature_data=="true" and has_model_data=="true") :
    #print( "matrix shape --> %d rows x %d columns" % similar_music_model.shape )
    similar_music_model_normalized = (similar_music_model.getA() - similar_music_model.getA().min(axis=0)) / similar_music_model.getA().ptp(axis=0)
 
+   normalized = input_song_matrix.getA() / similar_music_model.getA().ptp(axis=0)
+   print normalized;
+
    dist = (similar_music_model_normalized - input_song_matrix.getA())**2
    dist = np.sum(dist, axis=1)
    dist = np.sqrt(dist)
