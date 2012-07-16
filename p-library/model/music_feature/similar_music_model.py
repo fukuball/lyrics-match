@@ -112,7 +112,7 @@ if (has_feature_data=="true" and has_model_data=="true") :
 
    similar_song_string = ""
    for similar_song_id in similar_music_sort_dic[:30]:
-      similar_song_string += similar_song_id+":"+similar_music_dic[similar_song_id]+","
+      similar_song_string += similar_song_id+":"+str(similar_music_dic[similar_song_id])+","
 
    print similar_song_string
 
