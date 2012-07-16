@@ -34,7 +34,7 @@ for row in cur.fetchall() :
 
 A_music_feature_matrix = np.matrix(music_feature_matrix)
 
-print A
+print A_music_feature_matrix
 
 U,s,V = np.linalg.svd(A_music_feature_matrix) # SVD decomposition
 
