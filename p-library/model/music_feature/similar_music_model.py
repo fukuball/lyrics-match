@@ -87,6 +87,7 @@ for row in cur.fetchall() :
 if (has_feature_data=="true" and has_model_data=="true") :
    input_song_matrix = np.matrix(song_music_feature_str)
 
+
    # model
    music_feature_matrix = json.loads(music_feature_matrix)
    music_feature_matrix = np.matrix(music_feature_matrix)
@@ -97,12 +98,14 @@ if (has_feature_data=="true" and has_model_data=="true") :
    similar_music_model = np.concatenate((music_feature_matrix, augment_matrix), axis=1)
    #print similar_music_model
    #print( "matrix shape --> %d rows x %d columns" % similar_music_model.shape )
+
+   input_song_matrix_normalized = input_song_matrix.getA() / similar_music_model.getA().ptp(axis=0)
+   print input_song_matrix_normalized;
    similar_music_model_normalized = (similar_music_model.getA() - similar_music_model.getA().min(axis=0)) / similar_music_model.getA().ptp(axis=0)
+   print similar_music_model_normalized;
 
-   normalized = input_song_matrix.getA() / similar_music_model.getA().ptp(axis=0)
-   print normalized;
 
-   dist = (similar_music_model_normalized - input_song_matrix.getA())**2
+   dist = (similar_music_model_normalized - input_song_matrix_normalized)**2
    dist = np.sum(dist, axis=1)
    dist = np.sqrt(dist)
    #print dist
