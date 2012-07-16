@@ -30,6 +30,7 @@ augment_music_feature = "";
 augment_matrix = "";
 create_time = "";
 modify_time = "";
+delete_time = "";
 
 for row in cur.fetchall() :
    music_feature_matrix = row[1];
@@ -39,6 +40,7 @@ for row in cur.fetchall() :
    augment_matrix = row[5];
    create_time = row[7];
    modify_time = row[8];
+   delete_time = row[9];
 
 # music feature matrix
 A_music_feature_matrix = np.matrix(music_feature_matrix)
@@ -57,8 +59,8 @@ for s_index, s_item in enumerate(music_feature_s) :
 music_feature_s = np.diag(music_feature_s)
 
 A_bar_music_feature_matrix = np.dot(music_feature_U,np.dot(music_feature_s,music_feature_V))
-print A_bar_music_feature_matrix
-print( "matrix shape --> %d rows x %d columns" % A_bar_music_feature_matrix.shape )
+#print A_bar_music_feature_matrix
+#print( "matrix shape --> %d rows x %d columns" % A_bar_music_feature_matrix.shape )
 
 #music_feature_matrix_subtract = np.subtract(A_music_feature_matrix, A_bar_music_feature_matrix)
 #print np.extract(music_feature_matrix_subtract>10, music_feature_matrix_subtract)
@@ -67,7 +69,7 @@ A_bar_list = A_bar_music_feature_matrix.tolist()
 A_bar_string = json.dumps(A_bar_list)
 
 try:
-   cur.execute("""INSERT INTO music_feature_matrix (matrix,row_song_id,column_music_feature,augment_music_feature,augment_matrix,type,create_time,modify_time) VALUES (%s, %s, %s, %s, %s, %s, %s, %s)""",(A_bar_string, row_song_id, column_music_feature, augment_music_feature, augment_matrix, "model", create_time, modify_time))
+   cur.execute("""INSERT INTO music_feature_matrix (matrix,row_song_id,column_music_feature,augment_music_feature,augment_matrix,type,create_time,modify_time,delete_time) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s)""",(A_bar_string, row_song_id, column_music_feature, augment_music_feature, augment_matrix, "model", create_time, modify_time, delete_time))
    db.commit()
    print "success"
 except mysql.Error, e:
