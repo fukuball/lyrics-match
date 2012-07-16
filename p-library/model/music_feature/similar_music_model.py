@@ -35,7 +35,44 @@ db = mysql.connect(host    = CONST.DBHOST,
 song_id = sys.argv[1];
 
 cur = db.cursor()
-cur.execute("""SELECT mf.song_id, mf.bar_count, mf.beat_count, mf.tatum_count, mf.section_count, mf.segment_count, mf.bar_avg_second, mf.beat_avg_second, mf.tatum_avg_second, mf.section_avg_second, mf.segment_avg_second, mf.pitch_avg_vector, mf.timbre_avg_vector, mf.pitch_std_vector, mf.timbre_std_vector, s.mode, s.tempo, s.time_signature, s.energy, s.danceability, s.speechiness, s.loudness FROM music_feature mf INNER JOIN song s ON (mf.song_id = s.id) WHERE mf.is_deleted = '0' AND s.is_deleted ='0' AND mf.song_id=%s ORDER BY mf.id""", (song_id))
+cur.execute("""SELECT s.mode, s.tempo, s.time_signature, s.energy, s.danceability, s.speechiness, s.loudness, mf.bar_count, mf.beat_count, mf.tatum_count, mf.section_count, mf.segment_count, mf.bar_avg_second, mf.beat_avg_second, mf.tatum_avg_second, mf.section_avg_second, mf.segment_avg_second, mf.pitch_avg_vector, mf.timbre_avg_vector, mf.pitch_std_vector, mf.timbre_std_vector FROM music_feature mf INNER JOIN song s ON (mf.song_id = s.id) WHERE mf.is_deleted = '0' AND s.is_deleted ='0' AND mf.song_id=%s ORDER BY mf.id""", (song_id))
 
+song_music_feature_str = ""
 for row in cur.fetchall() :
-   print row[0]
+   song_music_feature_str += row[0]
+
+   #print row[0]
+   #if ($query_result_data['mode']==1) {
+   #   $mode = 10;
+   #} else {
+   #   $mode = -10;
+   #}
+   #
+   #$matirx =   $matirx.
+   #            $mode." ".
+   #            $query_result_data['tempo']." ".
+   #            $query_result_data['time_signature']." ".
+   #            $query_result_data['energy']." ".
+   #            $query_result_data['danceability']." ".
+   #            $query_result_data['speechiness']." ".
+   #            $query_result_data['loudness']." ".
+   #            $query_result_data['bar_count']." ".
+   #            $query_result_data['beat_count']." ".
+   #            $query_result_data['tatum_count']." ".
+   #            $query_result_data['section_count']." ".
+   #            $query_result_data['segment_count']." ".
+   #            $query_result_data['bar_avg_second']." ".
+   #            $query_result_data['beat_avg_second']." ".
+   #            $query_result_data['tatum_avg_second']." ".
+   #            $query_result_data['section_avg_second']." ".
+   #            $query_result_data['segment_avg_second'].
+   #            "; ";
+   #
+   #$augment_matrix = $augment_matrix.
+   #                  str_replace(",", " ", $query_result_data['pitch_avg_vector'])." ".
+   #                  str_replace(",", " ", $query_result_data['timbre_avg_vector'])." ".
+   #                  str_replace(",", " ", $query_result_data['pitch_std_vector'])." ".
+   #                  str_replace(",", " ", $query_result_data['timbre_std_vector']).
+   #                  "; ";
+
+print song_music_feature_str
