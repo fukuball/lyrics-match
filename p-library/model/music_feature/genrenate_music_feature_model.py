@@ -6,6 +6,7 @@ import numpy as np
 import MySQLdb as mysql
 
 sys.path.append("/var/www/html/lyrics-match/p-config")
+import db_stage
 
 CONST = db_stage._Const()
 
