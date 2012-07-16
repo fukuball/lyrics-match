@@ -22,6 +22,10 @@ if (!empty($_GET['song_id'])) {
    </li>
 </ul>
 <?php
+   $model_id = 2;
+   if (!empty($_GET['model_id'])) {
+      $model_id = $_GET['model_id'];
+   }
    $song_obj = new LMSong($_GET['song_id']);
    $disc_obj = new LMDisc($song_obj->disc_id);
    $performer_obj = new LMPerformer($song_obj->performer_id);
@@ -228,7 +232,7 @@ if (!empty($_GET['song_id'])) {
         </thead>
         <tbody>
    <?php
-      $similar_song = shell_exec("python26 ".SITE_ROOT."/p-library/model/music_feature/similar_music_model.py ".$_GET['song_id']." 2");
+      $similar_song = shell_exec("python26 ".SITE_ROOT."/p-library/model/music_feature/similar_music_model.py ".$_GET['song_id']." ".$model_id);
       $similar_song_array = explode(",", $similar_song);
       foreach ($similar_song_array as $skey => $svalue) {
          $similar_song_value_array = explode(":", $svalue);
