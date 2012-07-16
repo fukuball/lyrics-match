@@ -216,6 +216,9 @@ if (!empty($_GET['song_id'])) {
                song_id
               </th>
               <th>
+               藝人
+              </th>
+              <th>
                歌名
               </th>
               <th>
@@ -230,12 +233,16 @@ if (!empty($_GET['song_id'])) {
       foreach ($similar_song_array as $skey => $svalue) {
          $similar_song_value_array = explode(":", $svalue);
          $similar_song_obj = new LMSong($similar_song_value_array[0]);
+         $artist_obj = new LMPerformer($similar_song_obj->performer_id);
          ?>
          <tr>
             <td>
                <a href="<?=SITE_HOST?>/music/song/index.php?song_id=<?=$similar_song_obj->getId()?>">
                   <?php echo $similar_song_obj->getId(); ?>
                </a>
+            </td>
+            <td>
+               <?php echo $artist_obj->name; ?>
             </td>
             <td>
                <a href="<?=SITE_HOST?>/music/song/index.php?song_id=<?=$similar_song_obj->getId()?>">
@@ -248,6 +255,7 @@ if (!empty($_GET['song_id'])) {
          </tr>
          <?php
          unset($similar_song_obj);
+         unset($artist_obj);
       }
    ?>
       </tbody>
