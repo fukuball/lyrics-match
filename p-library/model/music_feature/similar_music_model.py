@@ -32,5 +32,5 @@ db = mysql.connect(host    = CONST.DBHOST,
                    passwd  = CONST.DBPASS,
                    db      = CONST.DBNAME)
 
-$song_id = sys.argv[1];
-print $song_id
+song_id = sys.argv[1];
+print song_id
