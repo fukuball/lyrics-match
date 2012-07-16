@@ -101,15 +101,14 @@ if (has_feature_data=="true" and has_model_data=="true") :
 
    normalize_min = similar_music_model.getA().min(axis=0)
    normalize_range = similar_music_model.getA().ptp(axis=0)
-   print normalize_min
-   print normalize_range
-   input_song_matrix_normalized = (input_song_matrix.getA() - similar_music_model.getA().min(axis=0)) / similar_music_model.getA().ptp(axis=0)
+
+   input_song_matrix_normalized = (input_song_matrix.getA() - normalize_min) / normalize_range
    print input_song_matrix_normalized;
-   similar_music_model_normalized = (similar_music_model.getA() - similar_music_model.getA().min(axis=0)) / similar_music_model.getA().ptp(axis=0)
+   similar_music_model_normalized = (similar_music_model.getA() - normalize_min) / normalize_range
    print similar_music_model_normalized;
 
 
-   dist = (similar_music_model.getA() - input_song_matrix.getA())**2
+   dist = (similar_music_model_normalized - input_song_matrix_normalized)**2
    dist = np.sum(dist, axis=1)
    dist = np.sqrt(dist)
    #print dist
