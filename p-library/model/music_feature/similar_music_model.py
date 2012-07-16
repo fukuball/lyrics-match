@@ -37,6 +37,7 @@ song_id = sys.argv[1];
 cur = db.cursor()
 cur.execute("""SELECT s.mode, s.tempo, s.time_signature, s.energy, s.danceability, s.speechiness, s.loudness, mf.bar_count, mf.beat_count, mf.tatum_count, mf.section_count, mf.segment_count, mf.bar_avg_second, mf.beat_avg_second, mf.tatum_avg_second, mf.section_avg_second, mf.segment_avg_second, mf.pitch_avg_vector, mf.timbre_avg_vector, mf.pitch_std_vector, mf.timbre_std_vector FROM music_feature mf INNER JOIN song s ON (mf.song_id = s.id) WHERE mf.is_deleted = '0' AND s.is_deleted ='0' AND mf.song_id=%s ORDER BY mf.id""", (song_id))
 
+has_feature_data = "false"
 song_music_feature_str = ""
 for row in cur.fetchall() :
    if (row[0]==1) :
@@ -63,5 +64,8 @@ for row in cur.fetchall() :
    song_music_feature_str += row[18].replace(","," ")
    song_music_feature_str += row[19].replace(","," ")
    song_music_feature_str += row[20].replace(","," ")+";"
+   has_feature_data = "true"
 
-print song_music_feature_str
+if (has_feature_data=="true") :
+   input_song_matrix = np.matrix(song_music_feature_str)
+   print input_song_matrix
