@@ -67,5 +67,6 @@ for row in cur.fetchall() :
    has_feature_data = "true"
 
 if (has_feature_data=="true") :
+   print song_music_feature_str
    input_song_matrix = np.matrix(song_music_feature_str)
    print input_song_matrix
