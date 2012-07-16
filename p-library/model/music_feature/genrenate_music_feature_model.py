@@ -65,9 +65,11 @@ A_bar_music_feature_matrix = np.dot(music_feature_U,np.dot(music_feature_s,music
 A_bar_list = A_bar_music_feature_matrix.tolist()
 
 try:
-   cur.execute("""INSERT INTO music_feature_matrix (matrix,row_song_id,column_music_feature,augment_music_feature,augment_matrix,type,create_time,modify_time) VALUES (%s, %s, %s, %s, %s, %s, %s, %s)""",(A_bar_list, row_song_id, column_music_feature, augment_music_feature, augment_matrix, "model", create_time, modify_time))
+   cur.execute("""INSERT INTO music_feature_matrix (matrix) VALUES (%s)""", (A_bar_list) )
    db.commit()
    print "success";
 except:
    db.rollback()
    print "fail";
+
+db.close()
