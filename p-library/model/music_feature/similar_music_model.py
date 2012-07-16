@@ -86,6 +86,7 @@ for row in cur.fetchall() :
 
 if (has_feature_data=="true" and has_model_data=="true") :
    input_song_matrix = np.matrix(song_music_feature_str)
+   print input_song_matrix
 
    # model
    music_feature_matrix = json.loads(music_feature_matrix)
@@ -95,8 +96,9 @@ if (has_feature_data=="true" and has_model_data=="true") :
    augment_matrix = np.matrix(augment_matrix)
 
    similar_music_model = np.concatenate((music_feature_matrix, augment_matrix), axis=1)
-   #print similar_music_model
+   print similar_music_model
    #print( "matrix shape --> %d rows x %d columns" % similar_music_model.shape )
+
 
    single_point = [3, 4]
    print single_point
