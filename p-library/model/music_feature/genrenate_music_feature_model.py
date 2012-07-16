@@ -39,6 +39,7 @@ print( "matrix shape --> %d rows x %d columns" % A_music_feature_matrix.shape )
 # SVD decomposition
 music_feature_U,music_feature_s,music_feature_V = np.linalg.svd(A_music_feature_matrix, full_matrices=False)
 
+print music_feature_s;
 # 降維
 for s_index, s_item in enumerate(music_feature_s) :
    if (s_item<1000) :
