@@ -143,6 +143,7 @@ foreach ($query_result as $query_result_data) {
 
 $song_id = substr ($song_id, 0, -1);
 $matrix = substr ($matirx, 0, -2);
+$augment_matrix = substr ($augment_matrix, 0, -2);
 
 $music_feature_matrix_god = new LMMusicFeatureMatrixGod();
 
