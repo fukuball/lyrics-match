@@ -60,13 +60,12 @@ for row in cur.fetchall() :
    song_music_feature_str += str(row[14])+" "
    song_music_feature_str += str(row[15])+" "
    song_music_feature_str += str(row[16])+" "
-   song_music_feature_str += row[17].replace(","," ")
-   song_music_feature_str += row[18].replace(","," ")
-   song_music_feature_str += row[19].replace(","," ")
+   song_music_feature_str += row[17].replace(","," ")+" "
+   song_music_feature_str += row[18].replace(","," ")+" "
+   song_music_feature_str += row[19].replace(","," ")+" "
    song_music_feature_str += row[20].replace(","," ")+";"
    has_feature_data = "true"
 
 if (has_feature_data=="true") :
-   print song_music_feature_str
    input_song_matrix = np.matrix(song_music_feature_str)
    print input_song_matrix
