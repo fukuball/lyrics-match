@@ -65,12 +65,11 @@ print( "matrix shape --> %d rows x %d columns" % A_bar_music_feature_matrix.shap
 
 A_bar_list = A_bar_music_feature_matrix.tolist()
 A_bar_string = json.dumps(A_bar_list)
-print A_bar_string
 
-#try:
-#   cur.execute("""INSERT INTO music_feature_matrix (matrix,row_song_id,column_music_feature,augment_music_feature,augment_matrix,type,create_time,modify_time) VALUES (%s, %s, %s, %s, %s, %s, %s, %s)""",(A_bar_string, row_song_id, column_music_feature, augment_music_feature, augment_matrix, "model", create_time, modify_time))
-#   db.commit()
-#   print "success"
-#except mysql.Error, e:
-#   db.rollback()
-#   print "An error has been passed. %s" %e
+try:
+   cur.execute("""INSERT INTO music_feature_matrix (matrix,row_song_id,column_music_feature,augment_music_feature,augment_matrix,type,create_time,modify_time) VALUES (%s, %s, %s, %s, %s, %s, %s, %s)""",(A_bar_string, row_song_id, column_music_feature, augment_music_feature, augment_matrix, "model", create_time, modify_time))
+   db.commit()
+   print "success"
+except mysql.Error, e:
+   db.rollback()
+   print "An error has been passed. %s" %e
