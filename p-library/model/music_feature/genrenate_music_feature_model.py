@@ -68,10 +68,8 @@ try:
    cur.execute("""INSERT INTO music_feature_matrix (matrix) VALUES (%s)""", (A_bar_list) )
    db.commit()
    print "success"
-except:
-   db.rollback()
-   print "fail";
 except MySQLdb.Error, e:
+   db.rollback()
    print "An error has been passed. %s" %e
 
 db.close()
