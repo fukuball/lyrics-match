@@ -41,7 +41,7 @@ music_feature_U,music_feature_s,music_feature_V = np.linalg.svd(A_music_feature_
 
 # 降維
 for s_index, s_item in enumerate(music_feature_s) :
-   if (s_item<100) :
+   if (s_item<1000) :
       music_feature_s[s_index] = 0.0
 
 # music feature model matrix
