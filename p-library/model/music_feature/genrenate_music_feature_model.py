@@ -56,19 +56,13 @@ for s_index, s_item in enumerate(music_feature_s) :
 music_feature_s = np.diag(music_feature_s)
 
 A_bar_music_feature_matrix = np.dot(music_feature_U,np.dot(music_feature_s,music_feature_V))
-#print A_bar_music_feature_matrix
-#print( "matrix shape --> %d rows x %d columns" % A_bar_music_feature_matrix.shape )
+print A_bar_music_feature_matrix
+print( "matrix shape --> %d rows x %d columns" % A_bar_music_feature_matrix.shape )
 
 #music_feature_matrix_subtract = np.subtract(A_music_feature_matrix, A_bar_music_feature_matrix)
 #print np.extract(music_feature_matrix_subtract>10, music_feature_matrix_subtract)
 
 A_bar_string = A_bar_music_feature_matrix.tostring()
-
-A_bar_string2 = ""
-for A_bar_row_index, A_bar_row_item in enumerate(A_bar_music_feature_matrix):
-   for A_bar_e_index, A_bar_e_item in enumerate(A_bar_row_item):
-      print A_bar_e_item
-      print ";"
 
 #try:
 #   cur.execute("""INSERT INTO music_feature_matrix (matrix,row_song_id,column_music_feature,augment_music_feature,augment_matrix,type,create_time,modify_time) VALUES (%s, %s, %s, %s, %s, %s, %s, %s)""",(A_bar_string, row_song_id, column_music_feature, augment_music_feature, augment_matrix, "model", create_time, modify_time))
