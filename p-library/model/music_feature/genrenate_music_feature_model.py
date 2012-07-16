@@ -32,8 +32,9 @@ for row in cur.fetchall() :
    row_song_id = row[2];
    column_music_feature = row[3];
 
+A_music_feature_matrix = np.matrix(music_feature_matrix)
 
-U,s,V = np.linalg.svd(music_feature_matrix) # SVD decomposition
+U,s,V = np.linalg.svd(A_music_feature_matrix) # SVD decomposition
 
 print U
 
