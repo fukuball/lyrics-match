@@ -38,9 +38,10 @@ A_music_feature_matrix = np.matrix(music_feature_matrix)
 # print( "shape --> %d rows x %d columns" % A_music_feature_matrix.shape )
 
 # SVD decomposition
-music_feature_U,music_feature_s,music_feature_V = np.linalg.svd(A_music_feature_matrix, full_matrices=1)
+music_feature_U,music_feature_s,music_feature_V = np.linalg.svd(A_music_feature_matrix)
 
-print music_feature_s
+Sig = np.linalg.diagsvd(music_feature_s, *A_music_feature_matrix.shape)
+print Sig
 
 #u,s,v = np.linalg.svd(x, full_matrices=1)
 
