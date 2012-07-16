@@ -63,7 +63,7 @@ for row in cur.fetchall() :
    song_music_feature_str += row[17].replace(","," ")+" "
    song_music_feature_str += row[18].replace(","," ")+" "
    song_music_feature_str += row[19].replace(","," ")+" "
-   song_music_feature_str += row[20].replace(","," ")+";"
+   song_music_feature_str += row[20].replace(","," ")
    has_feature_data = "true"
 
 if (has_feature_data=="true") :
