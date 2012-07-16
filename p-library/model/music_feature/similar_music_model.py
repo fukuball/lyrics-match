@@ -109,3 +109,5 @@ if (has_feature_data=="true" and has_model_data=="true") :
 
    similar_music_sort_dic = list(sorted(similar_music_dic, key=similar_music_dic.__getitem__, reverse=True))
    print similar_music_sort_dic
+   print similar_music_dic['588']
+   print similar_music_dic['701']
