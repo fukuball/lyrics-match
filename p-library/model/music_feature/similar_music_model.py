@@ -102,5 +102,6 @@ if (has_feature_data=="true" and has_model_data=="true") :
    similar_music_result_list = np.transpose(similar_music_result).tolist()
 
    for s_index, s_item in enumerate(similar_music_result_list):
-      print s_item
-      print ";"
+      for ss_index, ss_item in enumerate(s_item):
+         print ss_item
+         print ";"
