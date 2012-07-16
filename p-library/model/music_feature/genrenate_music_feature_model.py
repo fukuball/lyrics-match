@@ -35,10 +35,12 @@ for row in cur.fetchall() :
 A_music_feature_matrix = np.matrix(music_feature_matrix)
 
 print A_music_feature_matrix
+print( "shape --> %d rows x %d columns" % A_music_feature_matrix.shape )
 
 U,s,V = np.linalg.svd(A_music_feature_matrix) # SVD decomposition
 
 print U
+print( "shape --> %d rows x %d columns" % U.shape )
 
 #
 #
