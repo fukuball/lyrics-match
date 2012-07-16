@@ -103,6 +103,7 @@ if (has_feature_data=="true" and has_model_data=="true") :
    dist = np.sqrt(dist)
    #print dist
 
+   song_id_array = row_song_id.split(',')
    similar_music_dic = {}
    for dist_index, dist_value in enumerate(dist):
       similar_music_dic[song_id_array[dist_index]] = dist_value
