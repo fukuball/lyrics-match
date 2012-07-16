@@ -102,14 +102,10 @@ if (has_feature_data=="true" and has_model_data=="true") :
    similar_music_result_list = np.transpose(similar_music_result).tolist()
 
    song_id_array = row_song_id.split(',')
-   print song_id_array
    similar_music_dic = {}
    for s_index, s_item in enumerate(similar_music_result_list):
       for ss_index, ss_item in enumerate(s_item):
-         print ss_index
-         print ss_item
          similar_music_dic[song_id_array[ss_index]] = ss_item
 
-   print similar_music_dic['1']
-   print similar_music_dic['3']
-   print similar_music_dic
+   similar_music_sort_dic = list(sorted(similar_music_dic, key=similar_music_dic.__getitem__, reverse=True))
+   print similar_music_sort_dic
