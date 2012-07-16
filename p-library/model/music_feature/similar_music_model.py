@@ -86,8 +86,6 @@ for row in cur.fetchall() :
 
 if (has_feature_data=="true" and has_model_data=="true") :
    input_song_matrix = np.matrix(song_music_feature_str)
-   input_song_matrix_array = song_music_feature_str.split(' ')
-   print input_song_matrix_array
 
    # model
    music_feature_matrix = json.loads(music_feature_matrix)
@@ -97,35 +95,29 @@ if (has_feature_data=="true" and has_model_data=="true") :
    augment_matrix = np.matrix(augment_matrix)
 
    similar_music_model = np.concatenate((music_feature_matrix, augment_matrix), axis=1)
-   print similar_music_model
+   #print similar_music_model
    #print( "matrix shape --> %d rows x %d columns" % similar_music_model.shape )
-
-
-   single_point = [3, 4]
-   print single_point
-   points = np.arange(20).reshape((10,2))
-   print points
-   dist = (points - single_point)**2
-   dist = np.sum(dist, axis=1)
-   dist = np.sqrt(dist)
-   print dist
 
    dist = (similar_music_model.getA() - input_song_matrix.getA())**2
    dist = np.sum(dist, axis=1)
    dist = np.sqrt(dist)
-   print dist
+   #print dist
 
+   for dist_index, dist_value in enumerate(dist):
+      print dist_index
+      print dist_value
+      print ';'
 
-   similar_music_result = np.dot(similar_music_model, np.transpose(input_song_matrix))
-   similar_music_result_list = np.transpose(similar_music_result).tolist()
-
-   song_id_array = row_song_id.split(',')
-   similar_music_dic = {}
-   for s_index, s_item in enumerate(similar_music_result_list):
-      for ss_index, ss_item in enumerate(s_item):
-         similar_music_dic[song_id_array[ss_index]] = ss_item
-
-   similar_music_sort_dic = list(sorted(similar_music_dic, key=similar_music_dic.__getitem__, reverse=True))
-   print similar_music_sort_dic
-   print similar_music_dic['588']
-   print similar_music_dic['701']
+   #similar_music_result = np.dot(similar_music_model, np.transpose(input_song_matrix))
+   #similar_music_result_list = np.transpose(similar_music_result).tolist()
+   #
+   #song_id_array = row_song_id.split(',')
+   #similar_music_dic = {}
+   #for s_index, s_item in enumerate(similar_music_result_list):
+   #   for ss_index, ss_item in enumerate(s_item):
+   #      similar_music_dic[song_id_array[ss_index]] = ss_item
+   #
+   #similar_music_sort_dic = list(sorted(similar_music_dic, key=similar_music_dic.__getitem__, reverse=True))
+   #print similar_music_sort_dic
+   #print similar_music_dic['588']
+   #print similar_music_dic['701']
