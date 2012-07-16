@@ -42,6 +42,12 @@ U,s,V = np.linalg.svd(A_music_feature_matrix) # SVD decomposition
 print U
 print( "shape --> %d rows x %d columns" % U.shape )
 
+print s
+print( "shape --> %d rows x %d columns" % s.shape )
+
+print V
+print( "shape --> %d rows x %d columns" % V.shape )
+
 #
 #
 #A = np.floor(np.random.rand(4,4)*20-10) # generating a random
