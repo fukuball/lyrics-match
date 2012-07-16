@@ -39,20 +39,11 @@ print( "shape --> %d rows x %d columns" % A_music_feature_matrix.shape )
 
 U,s,V = np.linalg.svd(A_music_feature_matrix) # SVD decomposition
 
-print U
-print( "shape --> %d rows x %d columns" % U.shape )
-
 print s
-#print( "shape --> %d rows x %d columns" % s.shape )
-
-print V
-print( "shape --> %d rows x %d columns" % V.shape )
-
-#
-#
-A = np.floor(np.random.rand(4,4)*20-10) # generating a random
-b = np.floor(np.random.rand(4,1)*20-10) # system Ax=b
-
-U,s,V = np.linalg.svd(A) # SVD decomposition of A
+s[5] = 0.0
+s[6] = 0.0
+s[7] = 0.0
+s[8] = 0.0
+s[9] = 0.0
 
 print s
