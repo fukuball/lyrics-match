@@ -23,7 +23,8 @@ cur = db.cursor()
 cur.execute("SELECT * FROM music_feature_matrix WHERE id=1")
 
 for row in cur.fetchall() :
-   print row['matrix']
+   print row[0]
+   print row[1]
 #
 #
 #A = np.floor(np.random.rand(4,4)*20-10) # generating a random
