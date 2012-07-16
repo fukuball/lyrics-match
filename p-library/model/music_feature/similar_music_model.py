@@ -36,36 +36,40 @@ song_id = sys.argv[1];
 model_id = sys.argv[2];
 
 cur = db.cursor()
-cur.execute("""SELECT s.mode, s.tempo, s.time_signature, s.energy, s.danceability, s.speechiness, s.loudness, mf.bar_count, mf.beat_count, mf.tatum_count, mf.section_count, mf.segment_count, mf.bar_avg_second, mf.beat_avg_second, mf.tatum_avg_second, mf.section_avg_second, mf.segment_avg_second, mf.pitch_avg_vector, mf.timbre_avg_vector, mf.pitch_std_vector, mf.timbre_std_vector FROM music_feature mf INNER JOIN song s ON (mf.song_id = s.id) WHERE mf.is_deleted = '0' AND s.is_deleted ='0' AND mf.song_id=%s ORDER BY mf.id""", (song_id))
 
-has_feature_data = "false"
-song_music_feature_str = ""
-for row in cur.fetchall() :
-   if (row[0]==1) :
-      song_music_feature_str += "10 "
-   else :
-      song_music_feature_str += "-10 "
-   song_music_feature_str += str(row[1])+" "
-   song_music_feature_str += str(row[2])+" "
-   song_music_feature_str += str(row[3])+" "
-   song_music_feature_str += str(row[4])+" "
-   song_music_feature_str += str(row[5])+" "
-   song_music_feature_str += str(row[6])+" "
-   song_music_feature_str += str(row[7])+" "
-   song_music_feature_str += str(row[8])+" "
-   song_music_feature_str += str(row[9])+" "
-   song_music_feature_str += str(row[10])+" "
-   song_music_feature_str += str(row[11])+" "
-   song_music_feature_str += str(row[12])+" "
-   song_music_feature_str += str(row[13])+" "
-   song_music_feature_str += str(row[14])+" "
-   song_music_feature_str += str(row[15])+" "
-   song_music_feature_str += str(row[16])+" "
-   song_music_feature_str += row[17].replace(","," ")+" "
-   song_music_feature_str += row[18].replace(","," ")+" "
-   song_music_feature_str += row[19].replace(","," ")+" "
-   song_music_feature_str += row[20].replace(","," ")
-   has_feature_data = "true"
+#cur.execute("""SELECT s.mode, s.tempo, s.time_signature, s.energy, s.danceability, s.speechiness, s.loudness, mf.bar_count, mf.beat_count, mf.tatum_count, mf.section_count, mf.segment_count, mf.bar_avg_second, mf.beat_avg_second, mf.tatum_avg_second, mf.section_avg_second, mf.segment_avg_second, mf.pitch_avg_vector, mf.timbre_avg_vector, mf.pitch_std_vector, mf.timbre_std_vector FROM music_feature mf INNER JOIN song s ON (mf.song_id = s.id) WHERE mf.is_deleted = '0' AND s.is_deleted ='0' AND mf.song_id=%s ORDER BY mf.id""", (song_id))
+#
+#has_feature_data = "false"
+#song_music_feature_str = ""
+#for row in cur.fetchall() :
+#   if (row[0]==1) :
+#      song_music_feature_str += "10 "
+#   else :
+#      song_music_feature_str += "-10 "
+#   song_music_feature_str += str(row[1])+" "
+#   song_music_feature_str += str(row[2])+" "
+#   song_music_feature_str += str(row[3])+" "
+#   song_music_feature_str += str(row[4])+" "
+#   song_music_feature_str += str(row[5])+" "
+#   song_music_feature_str += str(row[6])+" "
+#   song_music_feature_str += str(row[7])+" "
+#   song_music_feature_str += str(row[8])+" "
+#   song_music_feature_str += str(row[9])+" "
+#   song_music_feature_str += str(row[10])+" "
+#   song_music_feature_str += str(row[11])+" "
+#   song_music_feature_str += str(row[12])+" "
+#   song_music_feature_str += str(row[13])+" "
+#   song_music_feature_str += str(row[14])+" "
+#   song_music_feature_str += str(row[15])+" "
+#   song_music_feature_str += str(row[16])+" "
+#   song_music_feature_str += row[17].replace(","," ")+" "
+#   song_music_feature_str += row[18].replace(","," ")+" "
+#   song_music_feature_str += row[19].replace(","," ")+" "
+#   song_music_feature_str += row[20].replace(","," ")
+#   has_feature_data = "true"
+
+song_id_array = row_song_id.split(',')
+input_song_feature_key = song_id_array.index(song_id)
 
 cur.execute("""SELECT * FROM music_feature_matrix WHERE id=%s""", (model_id))
 
@@ -84,9 +88,8 @@ for row in cur.fetchall() :
    augment_matrix = row[5];
    has_model_data = "true"
 
-if (has_feature_data=="true" and has_model_data=="true") :
-   input_song_matrix = np.matrix(song_music_feature_str)
-
+if (has_model_data=="true") :
+   #input_song_matrix = np.matrix(song_music_feature_str)
 
    # model
    music_feature_matrix = json.loads(music_feature_matrix)
@@ -101,6 +104,8 @@ if (has_feature_data=="true" and has_model_data=="true") :
 
    normalize_min = similar_music_model.getA().min(axis=0)
    normalize_range = similar_music_model.getA().ptp(axis=0)
+   input_song_matrix = similar_music_model.getA()[0]
+   print input_song_matrix
 
    input_song_matrix_normalized = (input_song_matrix.getA() - normalize_min) / normalize_range
    print input_song_matrix_normalized;
@@ -113,7 +118,6 @@ if (has_feature_data=="true" and has_model_data=="true") :
    dist = np.sqrt(dist)
    #print dist
 
-   song_id_array = row_song_id.split(',')
    similar_music_dic = {}
    for dist_index, dist_value in enumerate(dist):
       similar_music_dic[song_id_array[dist_index]] = dist_value
