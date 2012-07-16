@@ -33,8 +33,8 @@ for row in cur.fetchall() :
 
 # music feature matrix
 A_music_feature_matrix = np.matrix(music_feature_matrix)
-print A_music_feature_matrix
-print( "matrix shape --> %d rows x %d columns" % A_music_feature_matrix.shape )
+#print A_music_feature_matrix
+#print( "matrix shape --> %d rows x %d columns" % A_music_feature_matrix.shape )
 
 # SVD decomposition
 music_feature_U,music_feature_s,music_feature_V = np.linalg.svd(A_music_feature_matrix, full_matrices=False)
@@ -46,11 +46,13 @@ for s_index, s_item in enumerate(music_feature_s) :
 
 # music feature model matrix
 music_feature_s = np.diag(music_feature_s)
-print music_feature_s;
 
 A_bar_music_feature_matrix = np.dot(music_feature_U,np.dot(music_feature_s,music_feature_V))
-print A_bar_music_feature_matrix
-print( "matrix shape --> %d rows x %d columns" % A_bar_music_feature_matrix.shape )
+#print A_bar_music_feature_matrix
+#print( "matrix shape --> %d rows x %d columns" % A_bar_music_feature_matrix.shape )
 
 #music_feature_matrix_subtract = np.subtract(A_music_feature_matrix, A_bar_music_feature_matrix)
 #print np.extract(music_feature_matrix_subtract>10, music_feature_matrix_subtract)
+
+A_bar_list = A_bar_music_feature_matrix.tolist()
+print A_bar_list
