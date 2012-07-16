@@ -24,9 +24,14 @@ cur.execute("SELECT * FROM music_feature_matrix WHERE id=1")
 
 music_feature_matrix = "";
 
-for row in cur.fetchall() :
-   music_feature_matrix = row["matrix"];
-   print music_feature_matrix
+for row in rows:
+   print "%s" % (row["matrix"])
+
+#for row in cur.fetchall() :
+#
+#   music_feature_matrix = row[1];
+#   print music_feature_matrix
+#
 #
 #
 #A = np.floor(np.random.rand(4,4)*20-10) # generating a random
