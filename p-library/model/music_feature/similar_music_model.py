@@ -103,10 +103,11 @@ if (has_feature_data=="true" and has_model_data=="true") :
    dist = np.sqrt(dist)
    #print dist
 
+   similar_music_dic = {}
    for dist_index, dist_value in enumerate(dist):
-      print dist_index
-      print dist_value
-      print ';'
+      similar_music_dic[song_id_array[dist_index]] = dist_value
+
+   print similar_music_dic
 
    #similar_music_result = np.dot(similar_music_model, np.transpose(input_song_matrix))
    #similar_music_result_list = np.transpose(similar_music_result).tolist()
