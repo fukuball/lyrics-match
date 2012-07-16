@@ -12,10 +12,10 @@ ImportPath.Import()
 import db_stage
 CONST = db_stage._Const()
 
-A = np.array([[2,0,0,0],[0,0,0,0]])
-U,s,V=np.linalg.svd(A,full_matrices=False)
-S=np.diag(s)
-print np.dot(U,np.dot(S,V))
+#A = np.array([[2,0,0,0],[0,0,0,0]])
+#U,s,V=np.linalg.svd(A,full_matrices=False)
+#S=np.diag(s)
+#print np.dot(U,np.dot(S,V))
 
 
 # connect to db
@@ -45,20 +45,13 @@ A_music_feature_matrix = np.matrix(music_feature_matrix)
 # SVD decomposition
 music_feature_U,music_feature_s,music_feature_V = np.linalg.svd(A_music_feature_matrix)
 
-Sig = np.linalg.diag(music_feature_s, *A_music_feature_matrix.shape)
-print Sig
-
-#u,s,v = np.linalg.svd(x, full_matrices=1)
-
-#temp_music_feature_matrix = np.dot(music_feature_U,np.diag(music_feature_s))
-#print temp_music_feature_matrix
-
 # 降維
-#for s_index, s_item in enumerate(music_feature_s) :
-#   if (s_item<10) :
-#      music_feature_s[s_index] = 0.0
-#
-#temp_music_feature_matrix = np.dot(music_feature_U,np.diag(music_feature_s))
-#A_bar_music_feature_matrix = np.dot(temp_music_feature_matrix,music_feature_V)
-#
-#print A_bar_music_feature_matrix
+for s_index, s_item in enumerate(music_feature_s) :
+   if (s_item<10) :
+      music_feature_s[s_index] = 0.0
+
+music_feature_s = np.diag(music_feature_s)
+
+A_bar_music_feature_matrix = np.dot(music_feature_U,np.dot(music_feature_s,music_feature_V))
+
+print A_bar_music_feature_matrix
