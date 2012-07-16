@@ -206,6 +206,11 @@ if (!empty($_GET['song_id'])) {
       unset($music_feature_obj);
    }
    ?>
+   <h2>音樂特徵值</h2>
+   <?php
+      $similar_song = shell_exec("python26 ".SITE_ROOT."/p-library/model/music_feature/similar_music_model.py $song_obj->getId() 2");
+      echo $similar_song;
+   ?>
 </div>
 <?php
    unset($song_obj);
