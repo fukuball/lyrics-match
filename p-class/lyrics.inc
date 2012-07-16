@@ -39,5 +39,8 @@ require 'song/LMSong.php';
 require 'song/LMMusicFeatureGod.php';
 require 'song/LMMusicFeature.php';
 require 'user/LMUserGod.php';
+// Matrix
+require 'matrix/LMMusicFeatureMatrixGod.php';
+require 'matrix/LMMusicFeatureMatrix.php';
 
 ?>
