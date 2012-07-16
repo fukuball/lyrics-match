@@ -44,6 +44,21 @@ for row in cur.fetchall() :
    else :
       song_music_feature_str += "-10 "
    song_music_feature_str += str(row[1])+" "
+   song_music_feature_str += str(row[2])+" "
+   song_music_feature_str += str(row[3])+" "
+   song_music_feature_str += str(row[4])+" "
+   song_music_feature_str += str(row[5])+" "
+   song_music_feature_str += str(row[6])+" "
+   song_music_feature_str += str(row[7])+" "
+   song_music_feature_str += str(row[8])+" "
+   song_music_feature_str += str(row[9])+" "
+   song_music_feature_str += str(row[10])+" "
+   song_music_feature_str += str(row[11])+" "
+   song_music_feature_str += str(row[12])+" "
+   song_music_feature_str += str(row[13])+" "
+   song_music_feature_str += str(row[14])+" "
+   song_music_feature_str += str(row[15])+" "
+   song_music_feature_str += str(row[16])+" "
 
    #print row[0]
    #if ($query_result_data['mode']==1) {
