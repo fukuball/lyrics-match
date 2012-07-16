@@ -110,4 +110,6 @@ if (has_feature_data=="true" and has_model_data=="true") :
          print ss_item
          similar_music_dic[song_id_array[ss_index]] = ss_item
 
+   print similar_music_dic['1']
+   print similar_music_dic['3']
    print similar_music_dic
