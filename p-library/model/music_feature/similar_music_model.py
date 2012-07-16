@@ -109,10 +109,9 @@ if (has_feature_data=="true" and has_model_data=="true") :
       similar_music_dic[song_id_array[dist_index]] = dist_value
 
    similar_music_sort_dic = list(sorted(similar_music_dic, key=similar_music_dic.__getitem__, reverse=False))
-   print similar_music_sort_dic
-   print similar_music_dic['1']
-   print similar_music_dic['588']
-   print similar_music_dic['701']
+
+   for similar_song_id in similar_music_sort_dic[:30]:
+      print similar_song_id
 
    #similar_music_result = np.dot(similar_music_model, np.transpose(input_song_matrix))
    #similar_music_result_list = np.transpose(similar_music_result).tolist()
