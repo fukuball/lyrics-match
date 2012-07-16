@@ -7,7 +7,7 @@ import MySQLdb as mysql
 
 sys.path.append("/var/www/html/lyrics-match/p-config")
 
-CONST = _Const()
+CONST = db_stage._Const()
 
 print CONST.DBHOST
 
