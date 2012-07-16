@@ -40,12 +40,17 @@ A_music_feature_matrix = np.matrix(music_feature_matrix)
 # SVD decomposition
 music_feature_U,music_feature_s,music_feature_V = np.linalg.svd(A_music_feature_matrix)
 
-# 降維
-for s_index, s_item in enumerate(music_feature_s) :
-   if (s_item<10) :
-      music_feature_s[s_index] = 0.0
+print np.diag(music_feature_s)
 
 temp_music_feature_matrix = np.dot(music_feature_U,np.diag(music_feature_s))
-A_bar_music_feature_matrix = np.dot(temp_music_feature_matrix,music_feature_V)
+print temp_music_feature_matrix
 
-print A_bar_music_feature_matrix
+# 降維
+#for s_index, s_item in enumerate(music_feature_s) :
+#   if (s_item<10) :
+#      music_feature_s[s_index] = 0.0
+#
+#temp_music_feature_matrix = np.dot(music_feature_U,np.diag(music_feature_s))
+#A_bar_music_feature_matrix = np.dot(temp_music_feature_matrix,music_feature_V)
+#
+#print A_bar_music_feature_matrix
