@@ -42,8 +42,8 @@ for row in cur.fetchall() :
    if (row[0]==1) :
       song_music_feature_str += "10 "
    else :
-      song_music_feature_str += "-10"
-
+      song_music_feature_str += "-10 "
+   song_music_feature_str += str(row[1])+" "
 
    #print row[0]
    #if ($query_result_data['mode']==1) {
