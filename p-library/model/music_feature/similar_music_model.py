@@ -106,6 +106,8 @@ if (has_feature_data=="true" and has_model_data=="true") :
    similar_music_dic = {}
    for s_index, s_item in enumerate(similar_music_result_list):
       for ss_index, ss_item in enumerate(s_item):
+         print ss_index
+         print ss_item
          similar_music_dic[song_id_array[ss_index]] = ss_item
 
    print similar_music_dic
