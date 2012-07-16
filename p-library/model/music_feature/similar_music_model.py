@@ -105,7 +105,7 @@ if (has_model_data=="true") :
 
    normalize_min = similar_music_model.getA().min(axis=0)
    normalize_range = similar_music_model.getA().ptp(axis=0)
-   input_song_matrix = similar_music_model.getA()[0]
+   input_song_matrix = similar_music_model.getA()[input_song_feature_key]
    #print input_song_matrixdebugg
 
    input_song_matrix_normalized = (input_song_matrix - normalize_min) / normalize_range
