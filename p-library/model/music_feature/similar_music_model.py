@@ -99,7 +99,7 @@ if (has_feature_data=="true" and has_model_data=="true") :
    #print similar_music_model
    #print( "matrix shape --> %d rows x %d columns" % similar_music_model.shape )
 
-   input_song_matrix_normalized = input_song_matrix.getA() / similar_music_model.getA().ptp(axis=0)
+   input_song_matrix_normalized = input_song_matrix.getA()-similar_music_model.getA().min(axis=0)) / similar_music_model.getA().ptp(axis=0)
    print input_song_matrix_normalized;
    similar_music_model_normalized = (similar_music_model.getA() - similar_music_model.getA().min(axis=0)) / similar_music_model.getA().ptp(axis=0)
    print similar_music_model_normalized;
