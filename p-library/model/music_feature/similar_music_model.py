@@ -60,39 +60,8 @@ for row in cur.fetchall() :
    song_music_feature_str += str(row[15])+" "
    song_music_feature_str += str(row[16])+" "
    song_music_feature_str += row[17].replace(","," ")
-
-   #print row[0]
-   #if ($query_result_data['mode']==1) {
-   #   $mode = 10;
-   #} else {
-   #   $mode = -10;
-   #}
-   #
-   #$matirx =   $matirx.
-   #            $mode." ".
-   #            $query_result_data['tempo']." ".
-   #            $query_result_data['time_signature']." ".
-   #            $query_result_data['energy']." ".
-   #            $query_result_data['danceability']." ".
-   #            $query_result_data['speechiness']." ".
-   #            $query_result_data['loudness']." ".
-   #            $query_result_data['bar_count']." ".
-   #            $query_result_data['beat_count']." ".
-   #            $query_result_data['tatum_count']." ".
-   #            $query_result_data['section_count']." ".
-   #            $query_result_data['segment_count']." ".
-   #            $query_result_data['bar_avg_second']." ".
-   #            $query_result_data['beat_avg_second']." ".
-   #            $query_result_data['tatum_avg_second']." ".
-   #            $query_result_data['section_avg_second']." ".
-   #            $query_result_data['segment_avg_second'].
-   #            "; ";
-   #
-   #$augment_matrix = $augment_matrix.
-   #                  str_replace(",", " ", $query_result_data['pitch_avg_vector'])." ".
-   #                  str_replace(",", " ", $query_result_data['timbre_avg_vector'])." ".
-   #                  str_replace(",", " ", $query_result_data['pitch_std_vector'])." ".
-   #                  str_replace(",", " ", $query_result_data['timbre_std_vector']).
-   #                  "; ";
+   song_music_feature_str += row[18].replace(","," ")
+   song_music_feature_str += row[19].replace(","," ")
+   song_music_feature_str += row[20].replace(","," ")+";"
 
 print song_music_feature_str
