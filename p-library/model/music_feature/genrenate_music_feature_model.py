@@ -37,8 +37,7 @@ A_music_feature_matrix = np.matrix(music_feature_matrix)
 print A_music_feature_matrix
 print( "shape --> %d rows x %d columns" % A_music_feature_matrix.shape )
 
-music_feature_U,music_feature_s,music_feature_V
-   = np.linalg.svd(A_music_feature_matrix) # SVD decomposition
+music_feature_U,music_feature_s,music_feature_V = np.linalg.svd(A_music_feature_matrix) # SVD decomposition
 
 print music_feature_s
 
