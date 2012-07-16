@@ -23,11 +23,19 @@ cur = db.cursor()
 cur.execute("SELECT * FROM music_feature_matrix WHERE id=1")
 
 music_feature_matrix = "";
+row_song_id = "";
+column_music_feature = "";
 
 for row in cur.fetchall() :
 
    music_feature_matrix = row[1];
-   print music_feature_matrix
+   row_song_id = row[2];
+   column_music_feature = row[3];
+
+
+U,s,V = np.linalg.svd(music_feature_matrix) # SVD decomposition
+
+print U
 
 #
 #
