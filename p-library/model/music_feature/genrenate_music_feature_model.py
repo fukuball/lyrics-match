@@ -38,9 +38,7 @@ for row in cur.fetchall() :
    column_music_feature = row[3];
 
 A_music_feature_matrix = np.matrix(music_feature_matrix)
-
-# print A_music_feature_matrix
-# print( "shape --> %d rows x %d columns" % A_music_feature_matrix.shape )
+print( "shape --> %d rows x %d columns" % A_music_feature_matrix.shape )
 
 # SVD decomposition
 music_feature_U,music_feature_s,music_feature_V = np.linalg.svd(A_music_feature_matrix, full_matrices=False)
@@ -55,3 +53,4 @@ music_feature_s = np.diag(music_feature_s)
 A_bar_music_feature_matrix = np.dot(music_feature_U,np.dot(music_feature_s,music_feature_V))
 
 print A_bar_music_feature_matrix
+print( "shape --> %d rows x %d columns" % A_bar_music_feature_matrix.shape )
