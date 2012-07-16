@@ -86,7 +86,8 @@ for row in cur.fetchall() :
 
 if (has_feature_data=="true" and has_model_data=="true") :
    input_song_matrix = np.matrix(song_music_feature_str)
-   print input_song_matrix
+   input_song_matrix_array = song_music_feature_str.split(' ')
+   print input_song_matrix_array
 
    # model
    music_feature_matrix = json.loads(music_feature_matrix)
