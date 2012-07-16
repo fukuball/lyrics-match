@@ -100,7 +100,7 @@ if (has_model_data=="true") :
    augment_matrix = np.matrix(augment_matrix)
 
    similar_music_model = np.concatenate((music_feature_matrix, augment_matrix), axis=1)
-   #print similar_music_model
+   print similar_music_model
    #print( "matrix shape --> %d rows x %d columns" % similar_music_model.shape )
 
    normalize_min = similar_music_model.getA().min(axis=0)
