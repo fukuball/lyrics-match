@@ -62,10 +62,10 @@ A_bar_music_feature_matrix = np.dot(music_feature_U,np.dot(music_feature_s,music
 #music_feature_matrix_subtract = np.subtract(A_music_feature_matrix, A_bar_music_feature_matrix)
 #print np.extract(music_feature_matrix_subtract>10, music_feature_matrix_subtract)
 
-A_bar_list = A_bar_music_feature_matrix.tolist()
+A_bar_string = A_bar_music_feature_matrix.tostring()
 
 try:
-   cur.execute("""INSERT INTO music_feature_matrix (matrix) VALUES (%s)""", (A_bar_list) )
+   cur.execute("""INSERT INTO music_feature_matrix (matrix) VALUES (%s)""", (A_bar_string) )
    db.commit()
    print "success"
 except mysql.Error, e:
