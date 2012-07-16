@@ -25,7 +25,9 @@ foreach ($song_list as $song_list_data) {
       <?=$artist_obj->name?>
    </td>
    <td width="100px">
-      <?=$song_obj->title?>
+      <a href="<?=SITE_HOST?>/music/song/index.php?song_id=<?=$song_obj->getId()?>">
+         <?=$song_obj->title?>
+      </a>
    </td>
    <td width="400px">
       <a class="edit-lyric-link" data-songid="<?=$song_obj->getId()?>">修改歌詞</a>

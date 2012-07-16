@@ -233,10 +233,14 @@ if (!empty($_GET['song_id'])) {
          ?>
          <tr>
             <td>
-               <?php echo $similar_song_obj->getId(); ?>
+               <a href="<?=SITE_HOST?>/music/song/index.php?song_id=<?=$similar_song_obj->getId()?>">
+                  <?php echo $similar_song_obj->getId(); ?>
+               </a>
             </td>
             <td>
-               <?php echo $similar_song_obj->title; ?>
+               <a href="<?=SITE_HOST?>/music/song/index.php?song_id=<?=$similar_song_obj->getId()?>">
+                  <?php echo $similar_song_obj->title; ?>
+               </a>
             </td>
             <td>
                <?php echo $similar_song_value_array[1]; ?>
