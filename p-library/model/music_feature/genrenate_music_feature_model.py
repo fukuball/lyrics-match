@@ -22,9 +22,11 @@ db = mysql.connect(host    = CONST.DBHOST,
 cur = db.cursor()
 cur.execute("SELECT * FROM music_feature_matrix WHERE id=1")
 
+music_feature_matrix = "";
+
 for row in cur.fetchall() :
-   print row[0]
-   print row[1]
+   music_feature_matrix = row["matrix"];
+   print music_feature_matrix
 #
 #
 #A = np.floor(np.random.rand(4,4)*20-10) # generating a random
