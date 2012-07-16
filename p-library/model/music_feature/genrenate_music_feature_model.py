@@ -71,5 +71,7 @@ try:
 except:
    db.rollback()
    print "fail";
+except MySQLdb.Error, e:
+   print "An error has been passed. %s" %e
 
 db.close()
