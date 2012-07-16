@@ -67,7 +67,7 @@ A_bar_list = A_bar_music_feature_matrix.tolist()
 try:
    cur.execute("""INSERT INTO music_feature_matrix (matrix) VALUES (%s)""", (A_bar_list) )
    db.commit()
-   print "success";
+   print "success"
 except:
    db.rollback()
    print "fail";
