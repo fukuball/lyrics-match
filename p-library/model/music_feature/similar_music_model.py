@@ -102,6 +102,7 @@ if (has_feature_data=="true" and has_model_data=="true") :
    similar_music_result_list = np.transpose(similar_music_result).tolist()
 
    song_id_array = row_song_id.split(',')
+   print song_id_array
    similar_music_dic = {}
    for s_index, s_item in enumerate(similar_music_result_list):
       for ss_index, ss_item in enumerate(s_item):
