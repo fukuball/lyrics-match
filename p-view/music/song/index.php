@@ -229,7 +229,7 @@ if (!empty($_GET['song_id'])) {
                歌名
               </th>
               <th>
-               距離
+               相似度
               </th>
            </tr>
         </thead>
