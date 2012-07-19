@@ -113,7 +113,7 @@ if (has_model_data=="true") :
    similar_music_model_normalized = (similar_music_model.getA() - normalize_min) / normalize_range
    #print similar_music_model_normalized;
 
-   similar = np.dot(similar_music_model_normalized,input_song_matrix_normalized.T)
+   similar = np.dot(similar_music_model_normalized,input_song_matrix_normalized.T) / (np.norm(similar_music_model_normalized)*np.norm(input_song_matrix_normalized.T))
 
    similar_music_dic = {}
    for similar_index, similar_value in enumerate(similar):
