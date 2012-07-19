@@ -49,7 +49,7 @@ $select_sql = "SELECT ".
 $query_result = $db_obj->selectCommand($select_sql);
 
 $song_id = "";
-$music_feature = "bar_count,beat_count,tatum_count,section_count,segment_count,bar_avg_second,beat_avg_second,tatum_avg_second,section_avg_second,segment_avg_second";
+$music_feature = "mode,energy,loudness,ratio_of_beat_count_to_bar_count,ratio_of_tatum_count_to_beat_count,ratio_of_tatum_count_to_bar_count,tempo,danceability,bars_per_second,beat_per_second,tatums_per_second,ratio_of_avg_beat_length_to_avg_bar_length,ratio_of_avg_tatum_length_to_avg_beat_length,ratio_of_avg_tatum_length_to_avg_bar_length";
 $matirx = "";
 $augment_music_feature = "pitch_avg_vector1,".
                          "pitch_avg_vector2,".
@@ -114,22 +114,20 @@ foreach ($query_result as $query_result_data) {
 
    $matirx =   $matirx.
                $mode." ".
-               $query_result_data['tempo']." ".
-               $query_result_data['time_signature']." ".
                $query_result_data['energy']." ".
-               $query_result_data['danceability']." ".
-               $query_result_data['speechiness']." ".
                $query_result_data['loudness']." ".
-               $query_result_data['bar_count']." ".
-               $query_result_data['beat_count']." ".
-               $query_result_data['tatum_count']." ".
-               $query_result_data['section_count']." ".
-               $query_result_data['segment_count']." ".
-               $query_result_data['bar_avg_second']." ".
-               $query_result_data['beat_avg_second']." ".
-               $query_result_data['tatum_avg_second']." ".
-               $query_result_data['section_avg_second']." ".
-               $query_result_data['segment_avg_second'].
+               ($query_result_data['beat_count']/$query_result_data['bar_count'])." ".
+               ($query_result_data['tatum_count']/$query_result_data['beat_count'])." ".
+               ($query_result_data['tatum_count']/$query_result_data['bar_count'])." ".
+               $query_result_data['tempo']." ".
+               $query_result_data['danceability']." ".
+               (1/$query_result_data['bar_avg_second'])." ".
+               (1/$query_result_data['beat_avg_second'])." ".
+               (1/$query_result_data['tatum_avg_second'])." ".
+               ($query_result_data['beat_avg_second']/$query_result_data['bar_avg_second'])." ".
+               ($query_result_data['tatum_avg_second']/$query_result_data['beat_avg_second'])." ".
+               ($query_result_data['tatum_avg_second']/$query_result_data['bar_avg_second'])." ".
+               $query_result_data['speechiness'].
                "; ";
 
    $augment_matrix = $augment_matrix.
