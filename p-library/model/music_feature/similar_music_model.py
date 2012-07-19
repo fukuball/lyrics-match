@@ -113,21 +113,24 @@ if (has_model_data=="true") :
    similar_music_model_normalized = (similar_music_model.getA() - normalize_min) / normalize_range
    #print similar_music_model_normalized;
 
-
-   dist = (similar_music_model_normalized - input_song_matrix_normalized)**2
-   dist = np.sum(dist, axis=1)
-   dist = np.sqrt(dist)
+   similar = np.dot(similar_music_model_normalized,input_song_matrix_normalized.T)
+   print similar
+   similar = similar.T
+   print similar
+   #dist = (similar_music_model_normalized - input_song_matrix_normalized)**2
+   #dist = np.sum(dist, axis=1)
+   #dist = np.sqrt(dist)
    #print dist
 
-   similar_music_dic = {}
-   for dist_index, dist_value in enumerate(dist):
-      similar_music_dic[song_id_array[dist_index]] = dist_value
+   #similar_music_dic = {}
+   #for dist_index, dist_value in enumerate(dist):
+      #similar_music_dic[song_id_array[dist_index]] = dist_value
 
-   similar_music_sort_dic = list(sorted(similar_music_dic, key=similar_music_dic.__getitem__, reverse=False))
+   #similar_music_sort_dic = list(sorted(similar_music_dic, key=similar_music_dic.__getitem__, reverse=False))
 
-   similar_song_string = ""
-   for similar_song_id in similar_music_sort_dic :
-      similar_song_string += similar_song_id+":"+str(similar_music_dic[similar_song_id])+","
+   #similar_song_string = ""
+   #for similar_song_id in similar_music_sort_dic :
+      #similar_song_string += similar_song_id+":"+str(similar_music_dic[similar_song_id])+","
 
-   similar_song_string = similar_song_string[:-1]
-   print similar_song_string
+   #similar_song_string = similar_song_string[:-1]
+   #print similar_song_string
