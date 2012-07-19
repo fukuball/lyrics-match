@@ -128,7 +128,7 @@ if (has_model_data=="true") :
    #for dist_index, dist_value in enumerate(dist):
       #similar_music_dic[song_id_array[dist_index]] = dist_value
 
-   similar_music_sort_dic = list(sorted(similar_music_dic, key=similar_music_dic.__getitem__, reverse=False))
+   similar_music_sort_dic = list(sorted(similar_music_dic, key=similar_music_dic.__getitem__, reverse=True))
 
    similar_song_string = ""
    for similar_song_id in similar_music_sort_dic :
