@@ -72,8 +72,11 @@ music_feature_U,music_feature_s,music_feature_V = np.linalg.svd(A_music_feature_
 # music feature model matrix
 music_feature_s = np.diag(music_feature_s)
 print music_feature_U
+print( "music_feature_U shape --> %d rows x %d columns" % music_feature_U.shape )
 print music_feature_s
+print( "music_feature_s shape --> %d rows x %d columns" % music_feature_s.shape )
 print music_feature_V
+print( "music_feature_V shape --> %d rows x %d columns" % music_feature_V.shape )
 
 A_bar_music_feature_matrix = np.dot(music_feature_U,np.dot(music_feature_s,music_feature_V))
 #print A_bar_music_feature_matrix
