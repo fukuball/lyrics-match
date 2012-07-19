@@ -217,6 +217,9 @@ if (!empty($_GET['song_id'])) {
         <thead>
            <tr>
               <th>
+               排名
+              </th>
+              <th>
                song_id
               </th>
               <th>
@@ -234,12 +237,17 @@ if (!empty($_GET['song_id'])) {
    <?php
       $similar_song = shell_exec("python26 ".SITE_ROOT."/p-library/model/music_feature/similar_music_model.py ".$_GET['song_id']." ".$model_id);
       $similar_song_array = explode(",", $similar_song);
+      $rank = 0;
       foreach ($similar_song_array as $skey => $svalue) {
+         $rank++;
          $similar_song_value_array = explode(":", $svalue);
          $similar_song_obj = new LMSong($similar_song_value_array[0]);
          $artist_obj = new LMPerformer($similar_song_obj->performer_id);
          ?>
          <tr>
+            <td>
+            <?php echo $rank; ?>
+            </td>
             <td>
                <a href="<?=SITE_HOST?>/music/song/index.php?song_id=<?=$similar_song_obj->getId()?>">
                   <?php echo $similar_song_obj->getId(); ?>
