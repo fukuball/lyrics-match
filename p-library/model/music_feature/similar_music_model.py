@@ -113,11 +113,15 @@ if (has_model_data=="true") :
    similar_music_model_normalized = (similar_music_model.getA() - normalize_min) / normalize_range
    #print similar_music_model_normalized;
 
-   similar = np.dot(similar_music_model_normalized,input_song_matrix_normalized.T) / (np.linalg.norm(similar_music_model_normalized)*np.linalg.norm(input_song_matrix_normalized))
+   for music_feature_index, music_feature_value in enumerate(similar_music_model_normalized):
+      print music_feature_value
+      print ";"
 
-   similar_music_dic = {}
-   for similar_index, similar_value in enumerate(similar):
-      similar_music_dic[song_id_array[similar_index]] = similar_value
+   #similar = np.dot(similar_music_model_normalized,input_song_matrix_normalized.T) / (np.linalg.norm(similar_music_model_normalized)*np.linalg.norm(input_song_matrix_normalized))
+
+   #similar_music_dic = {}
+   #for similar_index, similar_value in enumerate(similar):
+   #   similar_music_dic[song_id_array[similar_index]] = similar_value
 
    #dist = (similar_music_model_normalized - input_song_matrix_normalized)**2
    #dist = np.sum(dist, axis=1)
@@ -128,11 +132,11 @@ if (has_model_data=="true") :
    #for dist_index, dist_value in enumerate(dist):
       #similar_music_dic[song_id_array[dist_index]] = dist_value
 
-   similar_music_sort_dic = list(sorted(similar_music_dic, key=similar_music_dic.__getitem__, reverse=True))
-
-   similar_song_string = ""
-   for similar_song_id in similar_music_sort_dic :
-      similar_song_string += similar_song_id+":"+str(similar_music_dic[similar_song_id])+","
-
-   similar_song_string = similar_song_string[:-1]
-   print similar_song_string
+   #similar_music_sort_dic = list(sorted(similar_music_dic, key=similar_music_dic.__getitem__, reverse=True))
+   #
+   #similar_song_string = ""
+   #for similar_song_id in similar_music_sort_dic :
+   #   similar_song_string += similar_song_id+":"+str(similar_music_dic[similar_song_id])+","
+   #
+   #similar_song_string = similar_song_string[:-1]
+   #print similar_song_string
