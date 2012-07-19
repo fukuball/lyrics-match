@@ -105,6 +105,7 @@ foreach ($query_result as $query_result_data) {
 
    $song_id =  $song_id.
                $query_result_data['song_id'].",";
+   echo $song_id;
 
    if ($query_result_data['mode']==1) {
       $mode = 10;
