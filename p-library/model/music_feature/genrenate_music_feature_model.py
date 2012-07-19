@@ -64,13 +64,16 @@ A_music_feature_matrix = np.matrix(music_feature_matrix)
 music_feature_U,music_feature_s,music_feature_V = np.linalg.svd(A_music_feature_matrix, full_matrices=False)
 
 # 降維
-for s_index, s_item in enumerate(music_feature_s) :
-   if (s_item<1000) :
-      music_feature_s[s_index] = 0.0
+#for s_index, s_item in enumerate(music_feature_s) :
+#   if (s_item<1000) :
+#      music_feature_s[s_index] = 0.0
 
 # music feature model matrix
+set_printoptions(threshold=nan)
 music_feature_s = np.diag(music_feature_s)
-#print music_feature_s
+print music_feature_U
+print music_feature_s
+print music_feature_V
 
 A_bar_music_feature_matrix = np.dot(music_feature_U,np.dot(music_feature_s,music_feature_V))
 #print A_bar_music_feature_matrix
@@ -82,10 +85,10 @@ A_bar_music_feature_matrix = np.dot(music_feature_U,np.dot(music_feature_s,music
 A_bar_list = A_bar_music_feature_matrix.tolist()
 A_bar_string = json.dumps(A_bar_list)
 
-try:
-   cur.execute("""INSERT INTO music_feature_matrix (matrix,row_song_id,column_music_feature,augment_music_feature,augment_matrix,type,create_time,modify_time,delete_time) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s)""",(A_bar_string, row_song_id, column_music_feature, augment_music_feature, augment_matrix, "model", create_time, modify_time, delete_time))
-   db.commit()
-   print "success"
-except mysql.Error, e:
-   db.rollback()
-   print "An error has been passed. %s" %e
+#try:
+#   cur.execute("""INSERT INTO music_feature_matrix (matrix,row_song_id,column_music_feature,augment_music_feature,augment_matrix,type,create_time,modify_time,delete_time) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s)""",(A_bar_string, row_song_id, column_music_feature, augment_music_feature, augment_matrix, "model", create_time, modify_time, delete_time))
+#   db.commit()
+#   print "success"
+#except mysql.Error, e:
+#   db.rollback()
+#   print "An error has been passed. %s" %e
