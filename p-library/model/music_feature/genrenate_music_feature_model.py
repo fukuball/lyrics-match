@@ -18,6 +18,7 @@ import sys
 import numpy as np
 import MySQLdb as mysql
 import json
+np.set_printoptions(threshold=np.nan)
 
 sys.path.append("/var/www/html/lyrics-match/p-library/model")
 import ImportPath
@@ -69,7 +70,6 @@ music_feature_U,music_feature_s,music_feature_V = np.linalg.svd(A_music_feature_
 #      music_feature_s[s_index] = 0.0
 
 # music feature model matrix
-np.set_printoptions(threshold=nan)
 music_feature_s = np.diag(music_feature_s)
 print music_feature_U
 print music_feature_s
