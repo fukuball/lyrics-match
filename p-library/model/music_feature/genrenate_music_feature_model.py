@@ -64,9 +64,9 @@ A_music_feature_matrix = np.matrix(music_feature_matrix)
 music_feature_U,music_feature_s,music_feature_V = np.linalg.svd(A_music_feature_matrix, full_matrices=False)
 
 # 降維
-#for s_index, s_item in enumerate(music_feature_s) :
-#   if (s_item<10000) :
-#      music_feature_s[s_index] = 0.0
+for s_index, s_item in enumerate(music_feature_s) :
+   if (s_item<100) :
+      music_feature_s[s_index] = 0.0
 
 # music feature model matrix
 music_feature_s = np.diag(music_feature_s)
