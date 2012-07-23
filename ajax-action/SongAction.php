@@ -59,6 +59,24 @@ class SongAction extends LMRESTControl implements LMRESTfulInterface
             unset($error_messanger);
          } else {
 
+            $song_id = $_POST['song_id'];
+
+            $lyrics_block_truth_god_obj = new LMLyricsBlockTruthGod();
+            $parameter_array['song_id']
+                = $song_id;
+
+            $song_lyrics_block_id = $lyrics_block_truth_god_obj->create($parameter_array);
+
+            if ($song_lyrics_block_id) {
+               require SITE_ROOT."/ajax-action/SongActionView/song-lyrics-block-form.php";
+            } else {
+               $type = 'unknow_error';
+               $parameter = array("none"=>"none");
+               $error_messanger = new LMErrorMessenger($type, $parameter);
+               $error_messanger->printErrorJSON();
+               unset($error_messanger);
+            }
+
          }
 
          break;
