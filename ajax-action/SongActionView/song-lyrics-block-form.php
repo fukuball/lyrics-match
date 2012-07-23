@@ -60,7 +60,7 @@ $('button#save-lyrics-block-btn-<?=$song_lyrics_block_id?>').click(function(){
       url: '<?=SITE_HOST?>/ajax-action/song-action/save-lyric-block',
       type: "POST",
       data: {lyrics_block_truth_id: lyrics_block_truth_id, block: block, label_id: label_id},
-      dataType: "html",
+      dataType: "json",
       beforeSend: function( xhr ) {
          $('button#save-lyrics-block-btn-<?=$song_lyrics_block_id?>').attr("disabled", "disabled");
          $('button#delete-lyrics-block-btn-<?=$song_lyrics_block_id?>').attr("disabled", "disabled");
