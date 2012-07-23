@@ -133,6 +133,26 @@ class LMLyricsBlockTruthGod extends LMActiveRecordGod
 
    }// end function getList
 
+   /**
+    * Method getLyricsBlockLabel to get lyrics block label
+    *
+    * @return pdo_list
+    */
+   public static function getLyricsBlockLabel()
+   {
+
+      $select_sql
+          = "SELECT ".
+            "id, c_name ".
+            "FROM lyrics_block_label ".
+            "ORDER BY id";
+
+      $result = $this->db_obj->selectCommand($select_sql);
+
+      return $result;
+
+   }// end function getLyricsBlockLabel
+
 
    /**
     * Method create create one record in database

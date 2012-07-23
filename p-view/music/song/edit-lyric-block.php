@@ -91,7 +91,6 @@ if (!empty($_GET['song_id'])) {
             $query_lyrics_block = $song_obj->getLyricsBlockTruth();
             foreach ($query_lyrics_block as $query_lyrics_block_data) {
                $song_lyrics_block_id = $query_lyrics_block_data['id'];
-               echo $song_lyrics_block_id;
                require SITE_ROOT."/ajax-action/SongActionView/song-lyrics-block-form.php";
             }
             ?>
@@ -117,7 +116,7 @@ $('#song-item-block').ready(function() {
             $('#system-message').show();
          },
          success: function( html_block ) {
-            $('#add-block-form').html(html_block);
+            $('#add-block-form').append(html_block);
             $('#system-message').html('完成');
             $('#system-message').fadeOut();
          }
