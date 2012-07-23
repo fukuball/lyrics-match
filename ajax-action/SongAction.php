@@ -47,9 +47,6 @@ class SongAction extends LMRESTControl implements LMRESTfulInterface
 
       case 'save-lyric-block':
 
-         $validate_song_id
-             = LMValidateHelper::
-                  validateNoEmpty($_POST['song_id']);
          $validate_block
              = LMValidateHelper::
                   validateNoEmpty($_POST['block']);
@@ -60,10 +57,9 @@ class SongAction extends LMRESTControl implements LMRESTfulInterface
              = LMValidateHelper::
                   validateNoEmpty($_POST['lyrics_block_truth_id']);
 
-         if (   !$validate_song_id
+         if (   !$validate_lyrics_block_truth_id
              || !$validate_block
              || !$validate_label_id
-             || !$validate_lyrics_block_truth_id
          ) {
             $type = 'not_exist_value';
             $parameter = array("none"=>"none");
@@ -73,12 +69,10 @@ class SongAction extends LMRESTControl implements LMRESTfulInterface
          } else {
 
             $lyrics_block_truth_id = $_POST['lyrics_block_truth_id'];
-            $song_id = $_POST['song_id'];
             $block = $_POST['block'];
             $label_id = $_POST['label_id'];
 
             $lyrics_block_truth_obj = new LMLyricsBlockTruth($lyrics_block_truth_id);
-            $lyrics_block_truth_obj->song_id = $song_id;
             $lyrics_block_truth_obj->block = $block;
             $lyrics_block_truth_obj->label_id = $label_id;
 
