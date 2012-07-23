@@ -191,6 +191,7 @@ class LMSong extends LMActiveRecord
             "id ".
             "FROM lyrics_block_truth ".
             "WHERE song_id=".$this->id." ".
+            "AND is_deleted=0 ".
             "ORDER BY create_time";
 
       $result = $this->db_obj->selectCommand($select_sql);
