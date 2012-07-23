@@ -178,6 +178,27 @@ class LMSong extends LMActiveRecord
 
    }// end function getAudioUrl
 
+   /**
+    * Method getLyricsBlockTruth to get lyrics block truth
+    *
+    * @return pdo_list
+    */
+   public function getLyricsBlockTruth()
+   {
+
+      $select_sql
+          = "SELECT ".
+            "id ".
+            "FROM lyrics_block_truth ".
+            "WHERE song_id=".$this->id." ".
+            "ORDER BY create_time";
+
+      $result = $this->db_obj->selectCommand($select_sql);
+
+      return $result;
+
+   }// end function getLyricsBlockTruth
+
 
    /**
     * Method update to update some instance value

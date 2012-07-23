@@ -87,6 +87,14 @@ if (!empty($_GET['song_id'])) {
       <div class="flow-left" style="width:470px;margin-left:30px;">
          <h3>歌詞分段</h3>
          <div id="add-block-form" class="margin-top-1">
+            <?php
+            $query_lyrics_block = $song_obj->getLyricsBlockTruth();
+            foreach ($query_lyrics_block as $query_lyrics_block_data) {
+               $song_lyrics_block_id = $query_lyrics_block_data['id'];
+               echo $song_lyrics_block_id;
+               require SITE_ROOT."/ajax-action/SongActionView/song-lyrics-block-form.php";
+            }
+            ?>
          </div>
          <button id="add-block-btn" class="btn btn-primary margin-top-1">
             新增分段
