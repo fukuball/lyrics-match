@@ -59,7 +59,7 @@ foreach ($song_list as $song_list_data) {
       <a href="<?=$song_obj->kkbox_url?>" target="_blank">連結</a>
    </td>
    <td width="100px">
-      <a href="<?=SITE_HOST?>/music/song/edit-lyrics-block.php?song_id=<?=$song_obj->getId()?>" >編輯歌詞分段</a>
+      <a href="<?=SITE_HOST?>/music/song/edit-lyric-block.php?song_id=<?=$song_obj->getId()?>" >編輯歌詞分段</a>
    </td>
 </tr>
 <?php
