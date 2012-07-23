@@ -38,6 +38,8 @@ require 'song/LMSongGod.php';
 require 'song/LMSong.php';
 require 'song/LMMusicFeatureGod.php';
 require 'song/LMMusicFeature.php';
+require 'song/LMLyricsBlockTruthGod.php';
+require 'song/LMLyricsBlockTruth.php';
 require 'user/LMUserGod.php';
 // Matrix
 require 'matrix/LMMusicFeatureMatrixGod.php';

@@ -86,9 +86,9 @@ if (!empty($_GET['song_id'])) {
       </div>
       <div class="flow-left" style="width:470px;margin-left:30px;">
          <h3>歌詞分段</h3>
-         <div id="add-block-form">
+         <div id="add-block-form" class="margin-top-1">
          </div>
-         <button id="add-block-btn" class="btn btn-primary">
+         <button id="add-block-btn" class="btn btn-primary margin-top-1">
             新增分段
          </button>
       </div>
