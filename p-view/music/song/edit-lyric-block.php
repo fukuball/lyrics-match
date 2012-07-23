@@ -70,6 +70,21 @@ if (!empty($_GET['song_id'])) {
       </div>
    </div>
    <hr />
+   <div class="row">
+      <div class="flow-left" style="width:400px;">
+         <h3>歌詞分行</h3>
+         <?php
+         $lyrics_line_array = explode("\n", $song_obj->lyric);
+         ?>
+         <p>
+         <?php
+         foreach ($lyrics_line_array as $line_index => $line_value) {
+            echo ($line_index+1).'. '.$line_value.'<br>';
+         }
+         ?>
+         </p>
+      </div>
+   </div>
 </div>
 <?php
    unset($song_obj);
