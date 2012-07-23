@@ -71,7 +71,7 @@ if (!empty($_GET['song_id'])) {
    </div>
    <hr />
    <div class="row">
-      <div class="flow-left" style="width:400px;">
+      <div class="flow-left" style="width:500px;">
          <h3>歌詞分行</h3>
          <?php
          $lyrics_line_array = explode("\n", $song_obj->lyric);
@@ -84,8 +84,42 @@ if (!empty($_GET['song_id'])) {
          ?>
          </p>
       </div>
+      <div class="flow-left" style="width:470px;margin-left:30px;">
+         <h3>歌詞分段</h3>
+         <div id="add-block-form">
+         </div>
+         <button id="add-block-btn" class="btn btn-primary">
+            新增分段
+         </button>
+      </div>
    </div>
 </div>
+<script>
+$('#song-item-block').ready(function() {
+
+   $('button#add-block-btn').click(function(){
+
+      $.ajax({
+         url: '<?=SITE_HOST?>/ajax-action/song-action/add-lyric-block',
+         type: "POST",
+         data: {song_id: "<?=$song_obj->getId();?>"},
+         dataType: "html",
+         beforeSend: function( xhr ) {
+            $('#system-message').html('處理中');
+            $('#system-message').show();
+         },
+         success: function( html_block ) {
+            $('#add-block-form').html(html_block);
+            $('#system-message').html('完成');
+            $('#system-message').fadeOut();
+         }
+      });
+
+   });
+
+
+});
+</script>
 <?php
    unset($song_obj);
    unset($disc_obj);
