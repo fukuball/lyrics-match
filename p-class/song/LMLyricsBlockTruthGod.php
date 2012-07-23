@@ -13,12 +13,12 @@
  */
 
  /**
-  * LMLyricsBlockTruth is lyrics_block_truth god class
+  * LMLyricsBlockTruthGod is lyrics_block_truth god class
   *
-  * An example of a LMLyricsBlockTruth is:
+  * An example of a LMLyricsBlockTruthGod is:
   *
   * <code>
-  *   $lyrics_block_truth_god_obj = new LMLyricsBlockTruth();
+  *   $lyrics_block_truth_god_obj = new LMLyricsBlockTruthGod();
   * </code>
   *
   * @category PHP
@@ -29,7 +29,7 @@
   * @link     http://sarasti.cs.nccu.edu.tw
   */
 
-class LMLyricsBlockTruth extends LMActiveRecordGod
+class LMLyricsBlockTruthGod extends LMActiveRecordGod
 {
    // extends from LMActiveRecordGod
    //
@@ -162,5 +162,5 @@ class LMLyricsBlockTruth extends LMActiveRecordGod
 
    }// end function __destruct
 
-}// end class LMLyricsBlockTruth
+}// end class LMLyricsBlockTruthGod
 ?>
