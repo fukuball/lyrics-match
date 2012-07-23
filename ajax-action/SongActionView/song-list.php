@@ -40,24 +40,26 @@ foreach ($song_list as $song_list_data) {
    <td width="50px">
       <?=$song_obj->release_date?>
    </td>
-   <td width="100px">
-      <a href="<?=$song_obj->getMidiUrl()?>" target="_blank">試聽</a>
-   </td>
    <td id="song-td-audio-<?=$song_obj->getId()?>" width="100px">
+      <a href="<?=$song_obj->getMidiUrl()?>" target="_blank">midi</a>
+      &nbsp;|&nbsp;
       <?php
       if (!empty($song_obj->audio_path)) {
       ?>
-      <a href="<?=$song_obj->getAudioUrl()?>" target="_blank">試聽</a>
+      <a href="<?=$song_obj->getAudioUrl()?>" target="_blank">mp3</a>
       &nbsp;|&nbsp;
       <?php
       }
       ?>
       <a class="upload-audio-link" data-songid="<?=$song_obj->getId()?>">
-         上傳
+         mp3 上傳
       </a>
    </td>
    <td width="100px">
       <a href="<?=$song_obj->kkbox_url?>" target="_blank">連結</a>
+   </td>
+   <td width="100px">
+      <a href="<?=SITE_HOST?>/music/song/edit-lyrics-block.php?song_id=<?=$song_obj->getId()?>" >編輯歌詞分段</a>
    </td>
 </tr>
 <?php

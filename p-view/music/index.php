@@ -38,13 +38,13 @@
                發行日期
             </th>
             <th width="100px">
-               midi 網址
-            </th>
-            <th width="100px">
-               mp3 網址
+               檔案網址
             </th>
             <th width="100px">
                kkbox 網址
+            </th>
+            <th width="100px">
+               Action
             </th>
          </tr>
       </thead>
