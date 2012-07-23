@@ -12,10 +12,13 @@
  * @link     http://sarasti.cs.nccu.edu.tw
  */
 
+$song_lyrics_block_id = $song_lyrics_block_id;
+$lyrics_block_truth = new LMLyricsBlockTruth($song_lyrics_block_id);
 ?>
 <div class="song-lyrics-block-form-item">
-   <input type="text" class="input-medium" placeholder="用,分隔，比如：1,5" />
-   <select>
+   <input id="song-lyrics-song-id-<?=$song_lyrics_block_id?>" type="hidden" value="<?=$lyrics_block_truth->song_id?>" />
+   <input id="song-lyrics-block-line-<?=$song_lyrics_block_id?>" type="text" class="input-medium" placeholder="用,分隔，比如：1,5" value="<?=$lyrics_block_truth->block?>" />
+   <select id="song-lyrics-block-lable-<?=$song_lyrics_block_id?>">
       <option value="0">
          請選擇分段類型
       </option>
@@ -25,8 +28,12 @@
       foreach ($lyrics_block_label_result as $lyrics_block_label_result_data) {
          $lyrics_block_label_id = $lyrics_block_label_result_data['id'];
          $lyrics_block_label_cname = $lyrics_block_label_result_data['c_name'];
+         $is_selected = "";
+         if ($lyrics_block_label_id==$lyrics_block_truth->label_id) {
+            $is_selected = 'selected="selected"';
+         }
          ?>
-         <option value="<?=$lyrics_block_label_id?>"><?=$lyrics_block_label_cname?></option>
+         <option value="<?=$lyrics_block_label_id?>" <?=$is_selected?>><?=$lyrics_block_label_cname?></option>
          <?php
       }
       unset($lyrics_block_truth_god_obj);
@@ -39,3 +46,6 @@
       刪除
    </button>
 </div>
+<?php
+unset($lyrics_block_truth);
+?>

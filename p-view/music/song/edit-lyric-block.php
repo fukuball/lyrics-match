@@ -71,7 +71,7 @@ if (!empty($_GET['song_id'])) {
    </div>
    <hr />
    <div class="row">
-      <div class="flow-left" style="width:500px;">
+      <div class="flow-left" style="width:400px;">
          <h3>歌詞分行</h3>
          <?php
          $lyrics_line_array = explode("\n", $song_obj->lyric);
@@ -84,7 +84,7 @@ if (!empty($_GET['song_id'])) {
          ?>
          </p>
       </div>
-      <div class="flow-left" style="width:470px;margin-left:30px;">
+      <div class="flow-left" style="width:570px;margin-left:30px;">
          <h3>歌詞分段</h3>
          <div id="add-block-form" class="margin-top-1">
             <?php
