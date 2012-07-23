@@ -138,7 +138,7 @@ class LMLyricsBlockTruthGod extends LMActiveRecordGod
     *
     * @return pdo_list
     */
-   public static function getLyricsBlockLabel()
+   public function getLyricsBlockLabel()
    {
 
       $select_sql

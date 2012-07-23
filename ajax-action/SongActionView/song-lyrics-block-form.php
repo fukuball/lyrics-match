@@ -20,7 +20,8 @@
          請選擇分段類型
       </option>
       <?php
-      $lyrics_block_label_result = LMLyricsBlockTruthGod::getLyricsBlockLabel();
+      $lyrics_block_truth_god_obj = new LMLyricsBlockTruthGod();
+      $lyrics_block_label_result = $lyrics_block_truth_god_obj->getLyricsBlockLabel();
       foreach ($lyrics_block_label_result as $lyrics_block_label_result_data) {
          $lyrics_block_label_id = $lyrics_block_label_result_data['id'];
          $lyrics_block_label_cname = $lyrics_block_label_result_data['c_name'];
@@ -28,6 +29,7 @@
          <option value="<?=$lyrics_block_label_id?>"><?=$lyrics_block_label_cname?></option>
          <?php
       }
+      unset($lyrics_block_truth_god_obj);
       ?>
    </select>
    <button class="btn save-lyrics-block-btn">
