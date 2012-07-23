@@ -15,7 +15,7 @@
 $song_lyrics_block_id = $song_lyrics_block_id;
 $lyrics_block_truth = new LMLyricsBlockTruth($song_lyrics_block_id);
 ?>
-<div class="song-lyrics-block-form-item">
+<div id="song-lyrics-block-form-item-<?=$song_lyrics_block_id?>">
    <input id="song-lyrics-block-truth-id-<?=$song_lyrics_block_id?>" type="hidden" value="<?=$song_lyrics_block_id?>" />
    <input id="song-lyrics-block-line-<?=$song_lyrics_block_id?>" type="text" class="input-medium" placeholder="用,分隔，比如：1,5" value="<?=$lyrics_block_truth->block?>" />
    <select id="song-lyrics-block-lable-<?=$song_lyrics_block_id?>">
@@ -71,6 +71,37 @@ $('button#save-lyrics-block-btn-<?=$song_lyrics_block_id?>').click(function(){
          if(json_data.response.status.code==0){
             $('#system-message').html('完成');
             $('#system-message').fadeOut();
+         } else {
+            $('#system-message').html('失敗，請重新操作');
+            $('#system-message').fadeOut();
+         }
+         $('button#save-lyrics-block-btn-<?=$song_lyrics_block_id?>').removeAttr("disabled");
+         $('button#delete-lyrics-block-btn-<?=$song_lyrics_block_id?>').removeAttr("disabled");
+      }
+   });
+
+});
+
+$('button#delete-lyrics-block-btn-<?=$song_lyrics_block_id?>').click(function(){
+
+   var lyrics_block_truth_id = $('#song-lyrics-block-truth-id-<?=$song_lyrics_block_id?>').val();
+
+   $.ajax({
+      url: '<?=SITE_HOST?>/ajax-action/song-action/delete-lyric-block',
+      type: "POST",
+      data: {lyrics_block_truth_id: lyrics_block_truth_id},
+      dataType: "json",
+      beforeSend: function( xhr ) {
+         $('button#save-lyrics-block-btn-<?=$song_lyrics_block_id?>').attr("disabled", "disabled");
+         $('button#delete-lyrics-block-btn-<?=$song_lyrics_block_id?>').attr("disabled", "disabled");
+         $('#system-message').html('處理中');
+         $('#system-message').show();
+      },
+      success: function( json_data ) {
+         if(json_data.response.status.code==0){
+            $('#system-message').html('完成');
+            $('#system-message').fadeOut();
+            $('#song-lyrics-block-form-item-<?=$song_lyrics_block_id?>').remove();
          } else {
             $('#system-message').html('失敗，請重新操作');
             $('#system-message').fadeOut();
