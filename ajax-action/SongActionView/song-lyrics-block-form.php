@@ -39,13 +39,46 @@ $lyrics_block_truth = new LMLyricsBlockTruth($song_lyrics_block_id);
       unset($lyrics_block_truth_god_obj);
       ?>
    </select>
-   <button class="btn save-lyrics-block-btn">
+   <button id="save-lyrics-block-btn-<?=$song_lyrics_block_id?>" class="btn">
       儲存
    </button>
-   <button class="btn delete-lyrics-block-btn">
+   <button id="delete-lyrics-block-btn-<?=$song_lyrics_block_id?>" class="btn">
       刪除
    </button>
 </div>
 <?php
 unset($lyrics_block_truth);
 ?>
+<script>
+$('button#save-lyrics-block-btn-<?=$song_lyrics_block_id?>').click(function(){
+
+   var song_id = $('#song-lyrics-song-id-<?=$song_lyrics_block_id?>').val();
+   var block = $('#song-lyrics-block-line-<?=$song_lyrics_block_id?>').val();
+   var label_id = $('#song-lyrics-block-lable-<?=$song_lyrics_block_id?>').val();
+
+   $.ajax({
+      url: '<?=SITE_HOST?>/ajax-action/song-action/save-lyric-block',
+      type: "POST",
+      data: {song_id: song_id},
+      dataType: "html",
+      beforeSend: function( xhr ) {
+         $('button#save-lyrics-block-btn-<?=$song_lyrics_block_id?>').attr("disabled", "disabled");
+         $('button#delete-lyrics-block-btn-<?=$song_lyrics_block_id?>').attr("disabled", "disabled");
+         $('#system-message').html('處理中');
+         $('#system-message').show();
+      },
+      success: function( json_data ) {
+         if(json_data.response.status.code==0){
+            $('#system-message').html('完成');
+            $('#system-message').fadeOut();
+         } else {
+            $('#system-message').html('失敗，請重新操作');
+            $('#system-message').fadeOut();
+         }
+         $('button#save-lyrics-block-btn-<?=$song_lyrics_block_id?>').removeAttr("disabled");
+         $('button#delete-lyrics-block-btn-<?=$song_lyrics_block_id?>').removeAttr("disabled");
+      }
+   });
+
+});
+</script>
