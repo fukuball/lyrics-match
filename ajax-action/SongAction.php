@@ -45,6 +45,66 @@ class SongAction extends LMRESTControl implements LMRESTfulInterface
 
       switch ($action_id) {
 
+      case 'save-lyric-block':
+
+         $validate_song_id
+             = LMValidateHelper::
+                  validateNoEmpty($_POST['song_id']);
+         $validate_block
+             = LMValidateHelper::
+                  validateNoEmpty($_POST['block']);
+         $validate_label_id
+             = LMValidateHelper::
+                  validateNoEmpty($_POST['label_id']);
+         $validate_lyrics_block_truth_id
+             = LMValidateHelper::
+                  validateNoEmpty($_POST['lyrics_block_truth_id']);
+
+         if (   !$validate_song_id
+             || !$validate_block
+             || !$validate_label_id
+             || !$validate_lyrics_block_truth_id
+         ) {
+            $type = 'not_exist_value';
+            $parameter = array("none"=>"none");
+            $error_messanger = new LMErrorMessenger($type, $parameter);
+            $error_messanger->printErrorJSON();
+            unset($error_messanger);
+         } else {
+
+            $lyrics_block_truth_id = $_POST['lyrics_block_truth_id'];
+            $song_id = $_POST['song_id'];
+            $block = $_POST['block'];
+            $label_id = $_POST['label_id'];
+
+            $lyrics_block_truth_obj = new LMLyricsBlockTruth($lyrics_block_truth_id);
+            $lyrics_block_truth_obj->song_id = $song_id;
+            $lyrics_block_truth_obj->block = $block;
+            $lyrics_block_truth_obj->label_id = $label_id;
+
+            if ($lyrics_block_truth_obj->save()) {
+
+               $type = 'success';
+               $parameter = array("none"=>"none");
+               $error_messanger = new LMErrorMessenger($type, $parameter);
+               $error_messanger->printErrorJSON();
+               unset($error_messanger);
+
+            } else {
+
+               $type = 'unknow_error';
+               $parameter = array("none"=>"none");
+               $error_messanger = new LMErrorMessenger($type, $parameter);
+               $error_messanger->printErrorJSON();
+               unset($error_messanger);
+
+            }
+
+            unset($lyrics_block_truth_obj);
+         }
+
+         break;
+
       case 'add-lyric-block':
 
          $validate_song_id
