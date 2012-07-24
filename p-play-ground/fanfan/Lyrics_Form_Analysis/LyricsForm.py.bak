@@ -1,0 +1,387 @@
+# -*- coding: utf-8 -*-
+
+import copy
+import time
+import math
+import numpy 
+from Visualization import Visualization
+from SSMOperation import SSMOperation
+from SSMOperation import BlockFamily
+from SSMOperation import FormFinder
+
+class LyricsForm:
+
+	def __init__(self, simObject):
+
+		self.__simObject = simObject
+		self.__viz = Visualization()
+		self.__ssm = SSMOperation()
+		self.__M = numpy.zeros([2, 2])
+		self.__simObjClassName = simObject.__class__.__name__
+
+
+		self.__LENRATE = 6 / 7.0
+	
+
+
+
+	def formAnalysis(self, lines):
+
+		# Self Matrix 建立
+		startTime = time.time()
+		self.__M = self.__matGen(lines)
+		endTime = time.time()
+
+
+		print "LyricsForm: SSM Construction Time = %.2fsec" % (endTime - startTime)
+		print "LyricsForm: Matrix Shape = %s" % str(self.__M.shape)
+		print "LyricsForm: SSM Visualization..."
+
+
+		"""	
+		建立好的 Self Matrix 裡頭的每個 Element 
+		有可能是 Distance 也有可能是 Similarity
+		目前是將 Distance 都轉換成 Similarity 
+		最後會得到一個 SSM
+		"""
+		"""
+		Matrix 轉換成 SSM 
+		"""
+		self.__M = self.__matrix2ssm(self.__M)
+
+
+		"""
+		將 SSM 做 Local Normalize，也就是除以 SSM 中的最大值，讓 SSM 中的值介在 [0, 1]
+		此步驟只對 Distance Matrix 以及 沒有 Normalize 的 Similarity Matrix 有效果
+		"""
+		self.__M = self.__ssm.localNormalize(self.__M)
+		self.__viz.grayMatrix(self.__M, "Local Normalized SSM: " + self.__simObjClassName)
+
+
+		"""
+		擷取 Exact Path 出現的位置
+		"""
+		exactMask = self.__ssm.masker(self.__M, 1.0)
+		#self.__viz.grayMatrix(exactMask, "Exact Mask: " + self.__simObjClassName)
+
+		
+		"""
+		SSM Enhancement
+		enhance 函數的最後一個值是設定 L, L = 4
+		"""
+		enM = self.__ssm.enhance(self.__M, 4)
+		#self.__viz.grayMatrix(enM, "Enhanced SSM: " + self.__simObjClassName)
+
+
+		"""
+		Higher Order Matrix
+		"""
+		#self.__M = self.__ssmSecondOrder(self.__M)
+		#self.__M = self.__ssmNormalization(self.__M)
+		#self.__viz.grayMatrix(self.__M, "Second Order SSM: " + self.__simObjClassName)
+
+
+
+		"""
+		擷取 Enhanced Matrix 中的 Approximate Path 出現的位置
+		門檻值 = 平均值 + 一個標準差
+		"""
+		threshold = enM.mean() + enM.std()
+		approxMask = self.__ssm.masker(enM, threshold)
+		#self.__viz.grayMatrix(approxMask, "Approximate Mask: " + self.__simObjClassName)
+
+
+
+		"""
+		將 exact mask 與 approximate mask 做聯集
+		"""
+		mask = map(numpy.bitwise_or, approxMask, exactMask)
+		#self.__viz.grayMatrix(mask, "Total Mask: " + self.__simObjClassName)
+
+
+
+		#self.__viz.grayMatrix(self.__M * mask, "Original SSM Mask: " + self.__simObjClassName)
+		#self.__viz.grayMatrix(enM * mask, "Enhanced SSM Mask: " + self.__simObjClassName)
+
+		"""
+		計算 SSM 中所有 Parent Block 的 Support
+		"""
+		startTime = time.time()
+		#supportM = self.__parentBlockSupport(enM)
+		self.__supportM, self.__blockM = self.__parentBlockSupport(self.__M)
+		endTime = time.time()
+
+
+
+		print "LyricsForm: Support Matrix Construction Time = %.2fsec" % (endTime - startTime)
+		self.__viz.grayMatrix(self.__supportM, "Parent Block Support: " + self.__simObjClassName)
+
+		#print self.__supportM[1, 0] + self.__supportM[3, 2]
+
+		startTime = time.time()
+		ff = FormFinder(self.__supportM, self.__blockM, 3)
+		formList = ff.computing()
+		endTime = time.time()
+
+		print "LyricsForm: Block Combination Time = %.2fsec" % (endTime - startTime)
+
+
+
+		print formList
+
+	
+
+
+	def __parentBlockSupport(self, M):
+		M = copy.deepcopy(M)
+
+		#supportM = numpy.ones((M.shape[0] / 2, M.shape[1]))
+		supportM = numpy.zeros((M.shape[0] / 2, M.shape[1]))
+		blockM = []
+
+		for i in range(M.shape[0]/2):
+			blockM.append([None] * M.shape[0])
+
+
+		simT = M.mean() + M.std()
+		#simT = M.mean()
+
+		#lenRate = 1
+
+		fb = BlockFamily(M.shape[1])
+
+		for size in range(1, len(M) / 2 + 1):
+			for start in range(0, M.shape[0] - size):
+				rowMask = numpy.zeros(M.shape)
+				rowMask[start: start + size] = 1
+			
+				rowM = M * rowMask
+
+				"""
+				找出 start 到 start + size  parent block 所框出的 family matrix 範圍
+				"""
+				familyMatrix = M[start: start + size, start + size: M.shape[1] ]
+
+				"""
+				利用 Viterbi Algorithm 計算出最佳的 family block
+				"""
+				"""
+				support, pathMask, familyMask = self.__ssm.familyFinding(familyMatrix, M.shape[1], lenT = math.ceil(float(size)*lenRate), simT = simT)
+				tempM = copy.deepcopy(rowM)
+				tempM[start: start + size, start + size: M.shape[1] ] = pathMask
+				self.__viz.grayMatrix(tempM, "Old Path Mask")
+
+				tempM[start: start + size, start + size: M.shape[1] ] = familyMask
+				self.__viz.grayMatrix(tempM, "Old Family Mask")
+				"""
+
+
+				support = fb.familyComputing(familyMatrix, lenT = math.ceil(float(size) * self.__LENRATE), simT = simT)
+
+				"""
+				將 paretn block 的 support 記錄到 Support Matrix
+				"""
+				supportM[size - 1 , start] = support
+
+
+				pathMask = fb.getPathMask()
+				familyMask = fb.getFamilyMask()
+				blockFamily = fb.getBlockFamily()
+
+
+				"""
+				Family Block Range 調整 
+				"""
+				for block in blockFamily:
+					block["range"] = [pos + (start + size) for pos in block["range"]]
+
+
+				"""
+				加入 Parent Block 本身到 Block Family 中
+				"""
+				blockFamily.insert(0, {"sim": 1.0, "range": [start, start + size - 1], "blockLen": size})
+
+
+				"""
+				將 familyBlock 記錄到 Block Matrix
+				"""
+				blockM[size - 1][start] = familyBlock
+
+				
+				#print "familyBlock", familyBlock
+				#print "blockM (%d, %d)" % (size - 1, start), blockM[size - 1][start]
+				#print
+				#raw_input()
+
+				"""
+				self.__viz.grayMatrix(rowM, "Row Mask SSM: start= " + str(start) + " size= " + str(size))
+
+				print "support: ", support
+				print "family block: ", str(familyBlock)
+				print 
+
+
+				rowM[start: start + size, start + size: M.shape[1] ] = pathMask
+				self.__viz.grayMatrix(rowM, "Path Mask")
+
+
+				rowM[start: start + size, start + size: M.shape[1] ] = familyMask
+				self.__viz.grayMatrix(rowM, "Family Mask")
+				"""
+
+
+		return supportM, copy.deepcopy(blockM)
+
+			
+
+
+	def __matGen(self, lines):
+		"""
+		產生自比較矩陣 Self Matrix
+		"""
+
+		# 宣告句子相似度矩陣 type: numpy.array
+		M = numpy.zeros([len(lines), len(lines)])
+
+
+		# Self Matrix 建立
+		for i in range(len(lines)):
+			for j in range(i, len(lines)):
+				lineSim = self.__simObject.similarity(lines[i][:], lines[j][:])
+
+				# 對稱的矩陣
+				M[i][j] = M[j][i] = lineSim
+
+
+		return M
+
+	
+
+
+	
+	def __matrix2ssm(self, M):
+		M = copy.deepcopy(M)
+
+		# 計算 Matrix 中最大的數值是多少
+		maxValue = M.max()
+		print "LyricsForm: Matrix Max Value : %f" % maxValue
+
+
+		"""
+		因為 DTW 演算法計算兩序列的距離，如果超過無限大，則會為回傳 -1
+		所以下面的
+		"""
+		# 如果 SSM 中存在負的值，便將此值設為 SSM 中的最大數值
+		for rowIdx in range(M.shape[0]):
+			M[rowIdx] = map(lambda ele: ele < 0.0 and maxValue or ele, M[rowIdx])
+
+
+		# 如果 Similarity Object 是計算距離的話，就將 Matrix 中的數值從距離轉換成相似度，值越大越像
+		if 'Dist' in self.__simObjClassName:
+			#由 Matrix 中最大的距離來當作最低的相似度
+			mm = numpy.ones(M.shape) * maxValue
+			M = mm - M
+
+
+		return M
+
+
+
+
+
+
+
+
+	
+
+if __name__ == '__main__':
+	import sys
+	import codecs
+	import os
+	from LyricsInput import FromFile
+
+	reload(sys)
+	sys.setdefaultencoding('utf-8')
+
+
+	def fileSelect(dirPath, fileProcess):
+		#lines = FromFile(fileProcess).process(dirPath + '新不了情.txt')
+		#lines = FromFile(fileProcess).process(dirPath + '朋友.txt')
+		#lines = FromFile(fileProcess).process(dirPath + '擁抱.txt')
+		#lines = FromFile(fileProcess).process(dirPath + '朋友未分段.txt')
+		#lines = FromFile(fileProcess).process(dirPath + '擁抱未分段.txt')
+		#lines = FromFile(fileProcess).process(dirPath + '新不了情_未分段.txt')
+		lines = FromFile(fileProcess).process(dirPath + 'hand.txt')
+
+		return lines
+
+
+
+
+
+	def pinyinFormAnalysis():
+		"""
+		利用注音的方法
+		"""
+		print
+		print "Main: Pinyin Form Analysis"
+
+		from AlgoStructAlign import AlgoStructAlign
+		from SimPinyin import SimPinyin
+		from InputProcess import Pinyin2Tuple
+
+		dirPath = 'LyricsFormTest/pinyin/old_famous/'
+		fileNameList = os.listdir(dirPath)
+
+		fileProcess = Pinyin2Tuple()
+
+
+		for fileName in fileNameList:
+			print "Main: %s" % fileName
+			
+			lines = FromFile(fileProcess).process(dirPath + (fileName.decode('big5')))
+			#lines = fileSelect(dirPath, fileProcess)
+
+			simObject = SimPinyin()
+			simObject = AlgoStructAlign(simObject)
+			LyricsForm(simObject).formAnalysis(lines)
+
+
+	def toneFormAnalysis():
+		"""
+		利用聲調的方法
+		"""
+		print
+		print "Main: Pitch Tone Form Analysis"
+
+		from AlgoClassicalDTW import AlgoClassicalDTW
+		from AlgoDDTW import AlgoDDTW
+		from DistNote import DistNote
+		from InputProcess import Str2Int
+		from InputProcess import Tone2Pitch
+		from LocalConstraint import StepType2
+		from LocalConstraint import StepType3
+		from LocalConstraint import StepType1
+
+		dirPath = 'LyricsFormTest/tone/old_famous/'
+		fileNameList = os.listdir(dirPath)
+
+		fileProcess = Tone2Pitch()
+		fileProcess = Str2Int(fileProcess)
+
+
+		for fileName in fileNameList:
+			print "Main: %s" % fileName
+			#lines = fileSelect(dirPath, fileProcess)
+			lines = FromFile(fileProcess).process(dirPath + (fileName.decode('big5')))
+
+			simObject = DistNote()
+			simObject = AlgoClassicalDTW(simObject, stepType = StepType2())
+			simObject = AlgoDDTW(simObject)
+			LyricsForm(simObject).formAnalysis(lines)
+
+
+	#pinyinFormAnalysis()
+	toneFormAnalysis()
+	
+

@@ -1,0 +1,566 @@
+# -*- coding: utf-8 -*-
+from numpy import zeros
+from copy import deepcopy
+from numpy import cast
+from numpy import argmax
+from numpy import argmin
+from numpy import insert
+
+class SSMOperation:
+
+	def localNormalize(self, M):
+		M = deepcopy(M)
+
+		maxValue = M.max()
+
+		for rowIdx in range(M.shape[0]):
+			M[rowIdx] = map(lambda value: value / maxValue, M[rowIdx])
+
+		return M	
+
+	
+
+	def enhance(self, M, length):
+		M = deepcopy(M)
+		forwardM = zeros(M.shape)
+		backwardM = zeros(M.shape)
+
+		for i in range(M.shape[0]):
+
+			for j in range(M.shape[1]):
+
+				#forwardM[i, j] = (M[slice(i - self.__ENLEN / 2, i + self.__ENLEN / 2), 
+							#slice(j - self.__ENLEN / 2, j + self.__ENLEN / 2)].trace()) / self.__ENLEN
+
+				forwardM[i, j] = (M[slice(i, i + length), slice(j, j + length)].trace()) / length
+
+				startI = i - length
+				startJ = j - length
+
+				if startI < 0:
+					startI = 0
+
+				if startJ <0:
+					startJ = 0
+
+
+				#backwardM[i, j] = (M[slice(startI, i), slice(startJ, j)].trace()) / self.__ENLEN
+
+				
+
+
+
+		#M = (forwardM + backwardM) / 2
+		return forwardM
+
+
+
+	def secondOrder(self, M):
+		M = deepcopy(M)
+		return self.__numpy.dot(M, M)
+		#secondM = self.__numpy.dot(M, M)
+		#return self.__numpy.dot(secondM, M)
+	
+
+
+
+	def masker(self, M, threshold):
+		M = deepcopy(M)
+
+		for rowIdx in range(M.shape[0]):
+			M[rowIdx] = map(lambda similarity: (similarity >= threshold), M[rowIdx])
+
+
+		return cast['int'](M)
+	
+
+	def familyFinding(self, tableL, size, lenT = 0.0, simT = 0.0):
+		print lenT
+
+		tableA = zeros(tableL.shape)
+
+		# 初始化 Accumulate Table
+		tableA[:, 0] = tableL[:, 0]
+
+
+		# 設定 Transition Probability，盡量維持45度角走
+		# 如果是 45 度角 權重是 1.5 其他則是 1.0
+		tp = lambda k, i: i == k + 1 and 1.1 or 1.0
+	
+		
+		# 設定計算Accumulate score 的 function
+		def scoreCompute(i, j):
+			scoreList = []
+
+			for k in range(tableA.shape[0]):
+				scoreList.append(tableA[k, j - 1] * tp(k, i))
+
+			return scoreList
+
+
+
+		for j in range(1, tableA.shape[1]):
+			for i in range(tableA.shape[0]):
+				scoreList = scoreCompute(i, j)
+				tableA[i, j] = tableL[i, j] + max(scoreList)
+
+
+
+		# 看 Back Tracking 的路徑正不正確用的 family path 矩陣
+		pathMask = zeros(tableA.shape, int)
+		familyMask = zeros(tableA.shape, int)
+
+
+		"""
+		Back Tracking Block Family
+		"""
+		# 記錄目前的 path 的 i 值
+		nowI = -1
+
+		# 記錄 block family 的出線位置，裡面是由 (t1, t2) 的 tuple 所組成的 list
+		# t1 表示某個 child block 的起始行數 ，t2 表示某個 child block 的終止行數
+		blockFamily = []
+
+		# 記錄一個 block 的 path，裡面是由 (i, j) 的 tuple 所組成的 list
+		cBlockPath = []
+
+
+		totalRange = 0.0
+		totalSim = 0.0
+
+		for j in range(tableA.shape[1], -1, -1):
+
+			# 計算 nowI 是由之前哪個 i 所過來的
+			scoreList = scoreCompute(nowI, j)
+			prevI = argmax(scoreList)
+
+			
+			# 判斷每個 block 的邊界
+			# 這個判斷式表示到了 block 的邊界
+			#if (prevI + 1 != nowI and nowI != -1):
+			if (prevI + 1 != nowI and nowI != -1) or j == 0:
+				
+				# 計算 child block 的與 parent block 的相似度分數
+				cBlockScore = sum(map(lambda coor: tableL[coor], cBlockPath))
+
+				if cBlockScore >= simT and len(cBlockPath) >= lenT :
+					print cBlockPath
+					
+					cBlockRange = (cBlockPath[-1][1], cBlockPath[0][1])
+					blockFamily.append(cBlockRange)
+
+					
+					for path in cBlockPath:
+						familyMask[path] = 1
+
+					totalRange += len(cBlockPath)
+					totalSim += cBlockScore
+
+				cBlockPath = [(prevI, j - 1)]
+
+			# else 表示還在同一個block
+			else:
+				cBlockPath.append((prevI, j - 1))
+				
+			if j != 0:
+				pathMask[prevI, j - 1] = 1
+
+
+
+
+			#將 nowI 設定為新找出的 prevI
+			nowI = prevI
+		
+		"""
+		# 將最後放入 blockPath 中的 path 取出，計算 child block 區間
+		cBlockScore = sum(map(lambda coor: tableL[coor], cBlockPath))
+
+		if cBlockScore >= simT and len(cBlockPath) >= lenT :
+			cBlockRange = (cBlockPath[-1][1], cBlockPath[0][1])
+			blockFamily.append(cBlockRange)
+
+			totalRange += len(cBlockPath)
+			totalSim += cBlockScore
+		"""
+
+
+
+		print "family: %s" % str(blockFamily)
+		print "totalRange: %d" % totalRange
+		print "totalSim: %f" % totalSim
+
+		precision = 0.0
+		support = 0.0
+
+		if totalRange != 0.0:
+			precision = totalSim / totalRange
+
+		#recall = totalRange / tableL.shape[1]
+		recall = totalRange / size
+
+		#if  precision > 0:
+		#	print "precision > 0"
+		
+		if precision + recall != 0.0:	
+			support = 2 * precision * recall / (precision + recall)
+
+
+		#support = precision
+		
+		print "support: %f " % support
+		print
+
+
+		return 	support, pathMask, familyMask
+		
+				
+
+		
+
+	
+class BlockFamily:
+
+	def __init__(self, numOfLines, lenT = 0.0, simT = 0.0):
+		self.__tableL = None
+		self.__tableA = None
+
+		self.__numOfLines = numOfLines
+		self.__lenT = lenT
+		self.__simT = simT
+
+		self.__support = 0.0
+		self.__blockFamily = None
+		self.__familyMask = None
+		self.__pathMask = None
+
+
+		self.__totalCover = 0.0
+		self.__totalSim = 0.0
+
+		"""
+		設定 Transition Probability，盡量維持45度角走
+		如果是 45 度角 權重是 1.1 其他則是 1.0
+		"""
+		self.__tp = lambda k, i: i == k + 1 and 1.5 or 1.0
+
+
+
+	def familyComputing(self, tableL, lenT = 0.0, simT = 0.0):
+		self.__tableL = deepcopy(tableL)
+
+
+		self.__lenT = lenT
+		self.__simT = simT
+
+
+		"""
+		初始化 Accumulate Table
+		"""
+		self.__tableA = zeros(tableL.shape)
+		self.__tableA[:, 0] = tableL[:, 0]
+
+
+		"""	
+		計算 Accumulate Table
+		"""
+		for j in range(1, self.__tableA.shape[1]):
+			for i in range(self.__tableA.shape[0]):
+				scoreList = self.__comeScore(i, j)
+				self.__tableA[i, j] = tableL[i, j] + max(scoreList)
+
+
+
+
+		"""
+		回朔計算的路徑, 也就是找出 block family 所在的區間
+		"""
+		self.__familyFinding()
+
+
+		"""
+		計算此 parent block 的 support 值
+		"""
+		self.__parentSupport()
+
+
+		return self.__support
+
+
+
+	def getSupport(self):
+		return self.__support
+		
+
+
+	def getPathMask(self):
+		return self.__pathMask
+
+
+
+	def getFamilyMask(self):
+		return self.__familyMask
+
+
+
+	def getBlockFamily(self):
+		return deepcopy(self.__blockFamily)
+
+
+
+	def __parentSupport(self):
+		precision = 0.0
+		support = 0.0
+
+
+		if self.__totalCover != 0.0:
+			precision = self.__totalSim / self.__totalCover
+
+
+		recall = self.__totalCover / self.__numOfLines
+
+		
+		if precision + recall != 0.0:	
+			support = 2 * precision * recall / (precision + recall)
+
+
+		#self.__support = support	
+		self.__support = precision
+
+
+
+
+	def __familyFinding(self):
+		"""
+		記錄目前的 path 的 i 值
+		"""
+		nowI = -1
+
+
+		"""
+		記錄一個 Child Block 的 path，裡面是由 (i, j) 的 tuple 所組成的 list
+		"""
+		cBlockPath = []
+
+
+		"""
+		記錄 family block extraction 的結果
+		資料結構為 [ {"sim": number, "block": [start, len]}, ...]
+		"""
+		self.__blockFamily = []
+
+
+		"""
+		初始化 mask
+		"""
+		self.__familyMask = zeros(self.__tableA.shape, int)
+		self.__pathMask = zeros(self.__tableA.shape, int)
+
+
+		self.__totalCover = 0.0
+		self.__totalSim = 0.0
+
+
+		"""
+		回朔路徑
+		"""
+
+
+		for j in range(self.__tableA.shape[1], -1, -1):
+
+			"""
+			計算 nowI 是由之前哪個 i 過來的, prevI
+			"""
+			scoreList = self.__comeScore(nowI, j)
+			prevI = argmax(scoreList)
+
+			"""	
+			判斷每個 block 的邊界
+			如果 prevI + 1 != nowI 表示到了一個 child block 的邊界
+			如果 nowI == -1 表示目前是在一開始回朔的 i
+			"""
+			if (prevI + 1 != nowI and nowI != -1) or j == 0:
+				"""
+				計算 child block 與 parent block 的相似度分數
+				"""
+				cBlockSim = sum(map(lambda coor: self.__tableL[coor], cBlockPath))
+
+				if cBlockSim >= self.__simT and len(cBlockPath) >= self.__lenT:
+
+					start = cBlockPath[0][1]
+					blockLen = len(cBlockPath)
+					end = start + blockLen - 1
+
+					self.__blockFamily.insert(0, {"sim": cBlockSim, "range": [start, end], "blockLen": blockLen})
+
+					self.__totalCover += blockLen
+					self.__totalSim += cBlockSim
+					
+					"""
+					做 familyMask
+					"""
+					for path in cBlockPath:
+						self.__familyMask[path] = 1
+
+
+					
+				cBlockPath = [(prevI, j - 1)]
+
+			else:
+				cBlockPath.insert(0, (prevI, j - 1))
+
+
+			"""
+			做 pathMask
+			"""
+
+			if j != 0:
+				self.__pathMask[prevI, j - 1] = 1
+
+
+			"""
+			將 nowI 設定為新找出的 prevI
+			"""
+			nowI = prevI
+
+
+
+
+	def __comeScore(self, i, j):
+		"""	
+		計算所有到座標 (i, j) 可能的累積分數 List
+		"""
+		scoreList = []
+
+		for k in range(self.__tableA.shape[0]):
+			scoreList.append( self.__tableA[k, j - 1] * self.__tp(k, i) )
+
+		return scoreList
+	
+
+
+
+class FormFinder:
+
+	def __init__(self, supportM, blockM, topK):
+		self.__supportM = deepcopy(supportM)
+		self.__blockM = deepcopy(blockM)
+
+		self.__supportM = insert(self.__supportM, 0, 0, axis = 0)
+		self.__blockM = insert(self.__blockM, 0, 0, axis = 0)
+
+		"""
+		self.__supportM = insert(self.__supportM, 0, 0, axis = 1)
+		self.__blockM = insert(self.__blockM, 0, 0, axis = 1)
+		"""
+
+
+		self.__topK = topK
+
+
+		self.__topList = []
+
+		for i in range(topK):
+			self.__topList.append({"score": 0.0, "form":[]})
+	
+
+
+	def computing(self):
+		
+		#for start in range(self.__supportM.shape[1]):
+		for start in range(self.__supportM.shape[1] / 2):
+			for blockLen in range(2, self.__supportM.shape[0]):
+
+				if self.__supportM[blockLen][start] != 0.0:
+					self.__allNext(start, blockLen)
+				
+
+		return self.__topList
+		
+
+
+	def getTopList(self):
+		return self.__topList
+
+
+
+
+	def __allNext(self, start, blockLen):
+		nextStart = start + blockLen
+
+		block = self.__blockM[blockLen][start][:]
+		block.insert(0, {"sim": 1.0, "start": start, "end": start + blockLen - 1, "blockLen": blockLen})
+
+		for nStart in range(nextStart, self.__supportM.shape[1]):
+			for nBlockLen in range(2, self.__supportM.shape[0]):
+
+				if self.__supportM[nBlockLen][nStart] != 0.0:
+
+					nBlock = self.__blockM[nBlockLen][nStart][:]
+
+					nBlock.insert(0, {"sim": 1.0, "start": nStart, "end": nStart + nBlockLen - 1, "blockLen": nBlockLen})
+
+					form = self.__combine(block, nBlock)
+
+					"""
+					#if blockLen == 2 and start == 0 and nBlockLen == 4 and nStart == 2 :
+					if nBlockLen == 2 and nStart == 8 :
+						print "block1 = ", block
+						print "block2 = ", nBlock
+						print 
+						print form
+						raw_input()
+					"""
+
+					if form != None:
+						
+						"""
+						判斷是否要加入top list
+						"""
+
+						# Local F score
+						#score = self.__supportM[blockLen, start] + self.__supportM[nBlockLen, nStart]
+
+						# Global F score
+						precision = (self.__supportM[blockLen, start] + self.__supportM[nBlockLen, nStart]) / 2.0
+						recall = sum(map(lambda b: b["blockLen"], block)) + sum(map(lambda b: b["blockLen"], nBlock)) 
+
+						recall = recall / float(self.__supportM.shape[1])
+
+						score = 2 * precision * recall / (precision + recall)
+
+
+
+						topScoreList = map(lambda candidate: candidate["score"], self.__topList)
+
+						if score > min(topScoreList):
+							minIdx = argmin(topScoreList)
+							self.__topList[minIdx]["score"] = score
+							self.__topList[minIdx]["form"] = form
+
+
+
+	def __combine(self, block1, block2):
+		blockList = block1 + block2
+
+		keyFunc = lambda block: block["start"]	
+		blockList = sorted(blockList, key = keyFunc)
+
+		form = [ [blockList[0]["start"], blockList[0]["end"]] ]
+
+		for i in range(len(blockList) - 1):
+
+			"""
+			判斷 overlap
+			"""
+			if blockList[i + 1]["start"] >= blockList[i]["start"] and \
+						blockList[i + 1]["start"] <= blockList[i]["end"]:
+				"""
+				overlap
+				"""
+				return None
+			else:
+				form.append( [blockList[i + 1]["start"], blockList[i + 1]["end"] ] )
+
+
+		return form
+
