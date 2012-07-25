@@ -22,11 +22,11 @@ sys.setdefaultencoding('utf-8')
 
 
 
-toneDirPath = '/home/fanfan/www/html/lyrcs-match/p-play-ground/fanfan/LyricsSample/聲調/'.decode('utf-8')
-pinyinDirPath = '/home/fanfan/www/html/lyrcs-match/p-play-ground/fanfan/LyricsSample/注音/'.decode('utf-8')
-lyricsDirPath = '/home/fanfan/www/html/lyrcs-match/p-play-ground/fanfan/LyricsSample/原詞/'.decode('utf-8')
-tempDirPath = '/home/fanfan/www/html/lyrcs-match/p-play-ground/fanfan/LyricsSample/注音聲調暫存/'.decode('utf-8')
-posDirPath = '/home/fanfan/www/html/lyrcs-match/p-play-ground/fanfan/LyricsSample/詞性/'.decode('utf-8')
+toneDirPath = '/var/www/html/lyrics-match/p-play-ground/fanfan/LyricsSample/聲調/'.decode('utf-8')
+pinyinDirPath = '/var/www/html/lyircs-match/p-play-ground/fanfan/LyricsSample/注音/'.decode('utf-8')
+lyricsDirPath = '/var/www/html/lyircs-match/p-play-ground/fanfan/LyricsSample/原詞/'.decode('utf-8')
+tempDirPath = '/var/www/html/lyrics-match/p-play-ground/fanfan/LyricsSample/注音聲調暫存/'.decode('utf-8')
+posDirPath = '/var/www/html/lyrics-match/p-play-ground/fanfan/LyricsSample/詞性/'.decode('utf-8')
 senStructDirPath = '/home/fanfan/www/html/lyrcs-match/p-play-ground/fanfan/LyricsSample/句結構分佈/'.decode('utf-8')
 
 
