@@ -61,6 +61,7 @@ $('#check-add-song-form').ready(function() {
             success: function( html_block ) {
                $('#system-message').html('完成');
                $('#system-message').fadeOut();
+               alert(html_block);
                if (html_block=="song_exist") {
                   $('#song-exist-warnig').removeClass('hide');
                } else {
