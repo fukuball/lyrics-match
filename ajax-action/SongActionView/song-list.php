@@ -45,19 +45,19 @@ foreach ($song_list as $song_list_data) {
       if (!empty($song_obj->midi_path)) {
       ?>
       <a href="<?=$song_obj->getMidiUrl()?>" target="_blank">midi</a>
-      &nbsp;|&nbsp;
+      <br/>
       <?php
       }
       ?>
       <a class="upload-midi-link" data-songid="<?=$song_obj->getId()?>">
          midi 上傳
       </a>
-      &nbsp;|&nbsp;
+      <br/>
       <?php
       if (!empty($song_obj->audio_path)) {
       ?>
       <a href="<?=$song_obj->getAudioUrl()?>" target="_blank">mp3</a>
-      &nbsp;|&nbsp;
+      <br/>
       <?php
       }
       ?>
