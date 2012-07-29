@@ -61,9 +61,6 @@
          max_file_count : 1,
          multipart : true,
          multipart_params : {song_id: '<?php echo $song_id; ?>'},
-         filters : [
-            {title : "Audio files", extensions : ""}
-         ],
          init : {
             FilesAdded: function(up, files) {
                $('.progress').removeClass('hide');
