@@ -194,7 +194,7 @@ class LMSongGod extends LMActiveRecordGod
                     "INNER JOIN performer p ".
                     "ON (s.performer_id=p.id) ".
                     "WHERE s.title='".addslashes($song_title)."' ".
-                    "AND p.name LIKE '%".addslashes($artist_name)."%' ".
+                    "AND p.name LIKE '".addslashes($artist_name)."' ".
                     "GROUP BY s.id ";
 
       $query_result = $this->db_obj->selectCommand($select_sql);
