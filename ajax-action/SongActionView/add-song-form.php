@@ -128,3 +128,114 @@
       </div>
    </fieldset>
 </form>
+<script>
+
+   $(function() {
+
+      $('#add-song-post-form').ajaxForm({
+         beforeSubmit:  validateAddSongRequest,
+         success:       addSongResponse,
+         url: '/ajax-action/song-action/add-song',
+         type: 'post',
+         dataType: 'json'
+      });
+
+      function validateAddSongRequest(formData, jqForm, options) {
+
+         var is_validated = true;
+
+         if(!$('#artist-name').val()){
+            $('#artist-name').parent().parent().attr('class', 'control-group error');
+            is_validated = false;
+         } else {
+            $('#artist-name').parent().parent().attr('class', 'control-group');
+         }
+         if(!$('#artist-kkbox-url').val()){
+            $('#artist-kkbox-url').parent().parent().attr('class', 'control-group error');
+            is_validated = false;
+         } else {
+            $('#artist-kkbox-url').parent().parent().attr('class', 'control-group');
+         }
+         if(!$('#disc-title').val()){
+            $('#disc-title').parent().parent().attr('class', 'control-group error');
+            is_validated = false;
+         } else {
+            $('#disc-title').parent().parent().attr('class', 'control-group');
+         }
+         if(!$('#disc-kkbox-url').val()){
+            $('#disc-kkbox-url').parent().parent().attr('class', 'control-group error');
+            is_validated = false;
+         } else {
+            $('#disc-kkbox-url').parent().parent().attr('class', 'control-group');
+         }
+         if(!$('#genre').val()){
+            $('#genre').parent().parent().attr('class', 'control-group error');
+            is_validated = false;
+         } else {
+            $('#genre').parent().parent().attr('class', 'control-group');
+         }
+         if(!$('#release-date').val()){
+            $('#release-date').parent().parent().attr('class', 'control-group error');
+            is_validated = false;
+         } else {
+            $('#release-date').parent().parent().attr('class', 'control-group');
+         }
+         if(!$('#disc-cover').val()){
+            $('#disc-cover').parent().parent().attr('class', 'control-group error');
+            is_validated = false;
+         } else {
+            $('#disc-cover').parent().parent().attr('class', 'control-group');
+         }
+         if(!$('#song-title').val()){
+            $('#song-title').parent().parent().attr('class', 'control-group error');
+            is_validated = false;
+         } else {
+            $('#song-title').parent().parent().attr('class', 'control-group');
+         }
+         if(!$('#song-kkbox-url').val()){
+            $('#song-kkbox-url').parent().parent().attr('class', 'control-group error');
+            is_validated = false;
+         } else {
+            $('#song-kkbox-url').parent().parent().attr('class', 'control-group');
+         }
+         if(!$('#lyricist').val()){
+            $('#lyricist').parent().parent().attr('class', 'control-group error');
+            is_validated = false;
+         } else {
+            $('#lyricist').parent().parent().attr('class', 'control-group');
+         }
+         if(!$('#composer').val()){
+            $('#composer').parent().parent().attr('class', 'control-group error');
+            is_validated = false;
+         } else {
+            $('#composer').parent().parent().attr('class', 'control-group');
+         }
+         if(!$('#lyric').val()){
+            $('#lyric').parent().parent().attr('class', 'control-group error');
+            is_validated = false;
+         } else {
+            $('#lyric').parent().parent().attr('class', 'control-group');
+         }
+
+         if(is_validated){
+            $('#system-message').html('處理中...');
+            $('#system-message').show();
+         }
+         return is_validated;
+      }
+
+      function addSongResponse(responseText, statusText, xhr, $form)  {
+
+         if(responseText.response.status.code==0){
+            $('#system-message').html('完成');
+            $('#system-message').fadeOut();
+            $('#add-song-form').html();
+         } else {
+            $('#system-message').html('失敗，請重新操作');
+            $('#system-message').fadeOut();
+         }
+
+      }
+
+   });
+</script>
