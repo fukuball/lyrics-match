@@ -44,7 +44,8 @@ foreach ($song_list as $song_list_data) {
       <?php
       if (!empty($song_obj->midi_path)) {
       ?>
-      <a href="<?=$song_obj->getMidiUrl()?>" target="_blank">midi</a>
+      <a href="<?=$song_obj->getMidiUrl()?>" target="_blank">midi 連結</a>
+      <br/>
       <br/>
       <?php
       }
@@ -53,10 +54,12 @@ foreach ($song_list as $song_list_data) {
          midi 上傳
       </a>
       <br/>
+      <br/>
       <?php
       if (!empty($song_obj->audio_path)) {
       ?>
-      <a href="<?=$song_obj->getAudioUrl()?>" target="_blank">mp3</a>
+      <a href="<?=$song_obj->getAudioUrl()?>" target="_blank">mp3 連結</a>
+      <br/>
       <br/>
       <?php
       }
