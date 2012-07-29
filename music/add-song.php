@@ -17,7 +17,7 @@ require_once dirname(dirname(__FILE__))."/p-config/application-setter.php";
 
 $yield_path = '/p-view/music/add-song.php';
 $yield_top_tab_path = '/p-view/tab/music-tab.php';
-$page_title = '藝人資料庫';
+$page_title = '新增歌曲資料';
 
 include SITE_ROOT."/p-layout/top-tab-layout.php";
 
