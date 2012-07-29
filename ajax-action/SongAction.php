@@ -312,7 +312,7 @@ class SongAction extends LMRESTControl implements LMRESTfulInterface
             if ($retunr_value!='fail') {
 
                $song_obj = new LMSong($song_id);
-               $song_obj->audio_path = $retunr_value;
+               $song_obj->midi_path = $retunr_value;
 
                if ($song_obj->save()) {
 
