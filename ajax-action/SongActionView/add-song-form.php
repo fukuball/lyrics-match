@@ -135,7 +135,7 @@
       $('#add-song-post-form').ajaxForm({
          beforeSubmit:  validateAddSongRequest,
          success:       addSongResponse,
-         url: '/ajax-action/song-action/add-song',
+         url: '<?=SITE_HOST?>/ajax-action/song-action/add-song',
          type: 'post',
          dataType: 'json'
       });
