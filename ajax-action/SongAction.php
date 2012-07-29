@@ -282,6 +282,69 @@ class SongAction extends LMRESTControl implements LMRESTfulInterface
 
          break;
 
+      case 'upload-midi':
+
+         // 5 minutes execution time
+         @set_time_limit(5 * 60);
+
+         $validate_song_id
+             = LMValidateHelper::
+                  validateNoEmpty($_POST['song_id']);
+
+         if (!$validate_song_id) {
+            $type = 'not_exist_value';
+            $parameter = array("none"=>"none");
+            $error_messanger = new LMErrorMessenger($type, $parameter);
+            $error_messanger->printErrorJSON();
+            unset($error_messanger);
+         } else {
+
+            $song_id = $_POST['song_id'];
+            $target_file_name = MIDI_ROOT.'/'.$song_id;
+
+            $retunr_value = LMUploadHelper::pluploadProcess(
+               $_REQUEST,
+               $_SERVER,
+               $_FILES,
+               $target_file_name
+            );
+
+            if ($retunr_value!='fail') {
+
+               $song_obj = new LMSong($song_id);
+               $song_obj->audio_path = $retunr_value;
+
+               if ($song_obj->save()) {
+
+                  $type = 'success';
+                  $parameter = array("none"=>"none");
+                  $error_messanger = new LMErrorMessenger($type, $parameter);
+                  $error_messanger->printErrorJSON();
+                  unset($error_messanger);
+
+               } else {
+
+                  $type = 'unknow_error';
+                  $parameter = array("none"=>"none");
+                  $error_messanger = new LMErrorMessenger($type, $parameter);
+                  $error_messanger->printErrorJSON();
+                  unset($error_messanger);
+
+               }
+
+               unset($song_obj);
+            } else {
+               $type = 'unknow_error';
+               $parameter = array("none"=>"none");
+               $error_messanger = new LMErrorMessenger($type, $parameter);
+               $error_messanger->printErrorJSON();
+               unset($error_messanger);
+            }
+
+         }
+
+         break;
+
       default:
 
          $type = 'page_not_found';

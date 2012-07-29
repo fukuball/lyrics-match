@@ -24,6 +24,8 @@ define("SITE_HOST", "http://sarasti.cs.nccu.edu.tw/lyrics-match");
 define("SITE_DOMAIN", "sarasti.cs.nccu.edu.tw");
 define("DATA_ROOT", "/var/www/html/lyrics-data");
 define("DATA_HOST", "http://sarasti.cs.nccu.edu.tw/lyrics-data");
+define("MIDI_ROOT", "/var/www/html/lyrics-match/p-data/midi/all");
+define("MIDI_HOST", "http://sarasti.cs.nccu.edu.tw/lyrics-match/p-data/midi/all");
 define("AUDIO_ROOT", "/var/www/html/lyrics-match/p-data/mp3");
 define("AUDIO_HOST", "http://sarasti.cs.nccu.edu.tw/lyrics-match/p-data/mp3");
 define("ECHONEST_KEY", "LSPUPAL5CD1NGVRUL");
