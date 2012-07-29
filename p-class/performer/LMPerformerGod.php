@@ -151,6 +151,36 @@ class LMPerformerGod extends LMActiveRecordGod
    }// end function findByName
 
    /**
+    * Method findByKKBOXURL to find id by kkbox url
+    *
+    * @param string $kkbox_url
+    *
+    * @return int $id
+    */
+   public function findByKKBOXURL($kkbox_url)
+   {
+
+      $select_sql = "SELECT ".
+                    "id ".
+                    "FROM $this->table_name ".
+                    "WHERE ".
+                    "kkbox_url='".addslashes($kkbox_url)."' ".
+                    "LIMIT 1";
+
+      $query_result = $this->db_obj->selectCommand($select_sql);
+      foreach ($query_result as $query_result_data) {
+         $instance_id = $query_result_data['id'];
+      }
+
+      if (!empty($instance_id)) {
+         return $instance_id;
+      } else {
+         return 0;
+      }
+
+   }// end function findByKKBOXURL
+
+   /**
     * Method __destruct unset instance value
     *
     * @return void

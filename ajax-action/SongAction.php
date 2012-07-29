@@ -45,6 +45,54 @@ class SongAction extends LMRESTControl implements LMRESTfulInterface
 
       switch ($action_id) {
 
+      case 'add-song':
+
+         $validate_artist_name
+             = LMValidateHelper::
+                  validateNoEmpty($_POST['artist_name']);
+
+         $validate_artist_kkbox_url
+             = LMValidateHelper::
+                  validateNoEmpty($_POST['artist_kkbox_url']);
+
+         if (   !$validate_artist_name
+             || !$validate_artist_name
+         ) {
+            $type = 'not_exist_value';
+            $parameter = array("none"=>"none");
+            $error_messanger = new LMErrorMessenger($type, $parameter);
+            $error_messanger->printErrorJSON();
+            unset($error_messanger);
+         } else {
+
+            $performer_god_obj = new LMPerformerGod();
+            $composer_god_obj = new LMComposerGod();
+            $lyricist_god_obj = new LMLyricistGod();
+            $disc_god_obj = new LMDiscGod();
+            $song_god_obj = new LMSongGod();
+
+            $artist_name = $_POST['artist_name'];
+            $artist_kkbox_url = $_POST['artist_kkbox_url'];
+
+            // get performer id
+            $performer_id = $performer_god_obj->findByKKBOXURL($artist_kkbox_url);
+            if (empty($performer_id)) {
+               $parameter_array = array();
+               $parameter_array['name']
+                   = $artist_name;
+               $parameter_array['kkbox_url']
+                   = $artist_kkbox_url;
+               $performer_id = $performer_god_obj->create($parameter_array);
+               echo "create performer $performer_id \n";
+            } else {
+               echo "read performer $performer_id \n";
+            }
+
+         }
+
+
+         break;
+
       case 'check-add-song':
 
          $validate_check_song_title
