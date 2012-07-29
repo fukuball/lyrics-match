@@ -67,6 +67,25 @@
    });
    // end upload audio box
 
+   // start upload midi box
+   $('a.upload-midi-link').live('click.upload_midi_box', function() {
+
+      var song_id = $(this).attr("data-songid");
+      $.ajax({
+         url: '<?=SITE_HOST?>/ajax-action/box-action/upload-midi-form',
+         type: "GET",
+         data: {song_id : song_id},
+         dataType: "html",
+         beforeSend: function( xhr ) {
+         },
+         success: function( html_block ) {
+            $('#p-modal-block').html(html_block);
+         }
+      });
+
+   });
+   // end upload midi box
+
    // start edit lyric box
    $('a.edit-lyric-link').live('click.edit_lyric_box', function() {
 
