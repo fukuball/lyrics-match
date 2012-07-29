@@ -42,7 +42,7 @@ foreach ($song_list as $song_list_data) {
    </td>
    <td id="song-td-audio-<?=$song_obj->getId()?>" width="100px">
       <?php
-      if (!empty($song_obj->audio_path)) {
+      if (!empty($song_obj->midi_path)) {
       ?>
       <a href="<?=$song_obj->getMidiUrl()?>" target="_blank">midi</a>
       &nbsp;|&nbsp;
