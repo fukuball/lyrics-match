@@ -73,7 +73,7 @@ class SongAction extends LMRESTControl implements LMRESTfulInterface
             $instance_id = 0;
             $result = $song_god_obj->searchBYTitleNArtist($check_song_title, $check_artist_name);
             foreach ($result as $result_data) {
-               $instance_id = $query_result_data['id'];
+               $instance_id = $result_data['id'];
             }
 
             if ($instance_id) {

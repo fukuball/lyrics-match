@@ -197,7 +197,6 @@ class LMSongGod extends LMActiveRecordGod
                     "AND p.name LIKE '%".addslashes($artist_name)."%' ".
                     "GROUP BY s.id ";
 
-      echo $select_sql;
       $query_result = $this->db_obj->selectCommand($select_sql);
 
       return $query_result;
