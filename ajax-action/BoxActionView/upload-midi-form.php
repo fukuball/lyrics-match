@@ -47,7 +47,7 @@
 
       });
 
-      var audio_uploader = new plupload.Uploader({
+      var midi_uploader = new plupload.Uploader({
          runtimes : 'html5,flash,gears,silverlight,browserplus',
          browse_button : 'upload-midi-button',
          container: 'p-modal',
@@ -116,7 +116,7 @@
          }
       });
 
-      audio_uploader.init();
+      midi_uploader.init();
 
    });// end $('#p-modal').ready
 </script>
