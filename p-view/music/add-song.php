@@ -49,7 +49,6 @@ $('#check-add-song-form').ready(function() {
       }
 
       if(is_validated){
-         $('#check-add-song-btn').attr("disabled", "disabled");
          $.ajax({
             url: '<?=SITE_HOST?>/ajax-action/song-action/check-add-song',
             type: "POST",
@@ -60,9 +59,16 @@ $('#check-add-song-form').ready(function() {
                $('#system-message').show();
             },
             success: function( html_block ) {
-               $('#add-song-form').append(html_block);
                $('#system-message').html('完成');
                $('#system-message').fadeOut();
+               if (html_block=="song_exist") {
+                  $('#song-exist-warnig').removeClass('hide');
+               } else {
+                  $('#song-exist-warnig').removeClass('hide');
+                  $('#input-invalid-warnig').addClass('hide');
+                  $('#add-song-form').html(html_block);
+               }
+
             }
          });
       }
