@@ -108,7 +108,7 @@
             歌詞
          </label>
          <div class="controls">
-           <textarea class="input-xlarge span7" id="lyric" name="lyric" rows="30"></textarea>
+           <textarea class="input-xlarge span7" id="lyric" name="lyric" rows="15"></textarea>
          </div>
       </div>
       <div class="control-group">
