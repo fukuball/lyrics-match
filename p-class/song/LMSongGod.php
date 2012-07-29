@@ -180,6 +180,30 @@ class LMSongGod extends LMActiveRecordGod
    }// end function findByTitleNPerformerId
 
    /**
+    * Method searchBYTitleNArtist to search by song title and artist name
+    *
+    * @param string $song_title
+    * @param string $artist_name
+    *
+    * @return result
+    */
+   public function searchBYTitleNArtist($song_title, $artist_name) {
+
+      $select_sql = "SELECT s.id ".
+                    "FROM song s ".
+                    "INNER JOIN performer p ".
+                    "ON (s.performer_id=p.id) ".
+                    "WHERE s.title='".addslashes($song_title)."' ".
+                    "AND p.name LIKE '%".addslashes($artist_name)."%' ".
+                    "GROUP BY s.id ";
+
+      $query_result = $this->db_obj->selectCommand($select_sql);
+
+      return $query_result;
+
+   }// end function searchBYTitleNArtist
+
+   /**
     * Method search to search song
     *
     * @param string $query
@@ -192,8 +216,8 @@ class LMSongGod extends LMActiveRecordGod
                     "FROM song s ".
                     "INNER JOIN performer p ".
                     "ON (s.performer_id=p.id) ".
-                    "WHERE s.title LIKE '%".$query."%' ".
-                    "OR p.name LIKE '%".$query."%' ".
+                    "WHERE s.title LIKE '%".addslashes($query)."%' ".
+                    "OR p.name LIKE '%".addslashes($query)."%' ".
                     "GROUP BY s.id ";
 
       $query_result = $this->db_obj->selectCommand($select_sql);

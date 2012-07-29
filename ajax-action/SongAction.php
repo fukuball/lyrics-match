@@ -45,6 +45,55 @@ class SongAction extends LMRESTControl implements LMRESTfulInterface
 
       switch ($action_id) {
 
+      case 'check-add-song':
+
+         $validate_check_song_title
+             = LMValidateHelper::
+                  validateNoEmpty($_POST['check_song_title']);
+
+         $validate_check_artist_name
+             = LMValidateHelper::
+                  validateNoEmpty($_POST['check_artist_name']);
+
+         if (   !$validate_check_song_title
+             || !$validate_check_artist_name
+         ) {
+            $type = 'not_exist_value';
+            $parameter = array("none"=>"none");
+            $error_messanger = new LMErrorMessenger($type, $parameter);
+            $error_messanger->printErrorJSON();
+            unset($error_messanger);
+         } else {
+
+            $check_song_title = $_POST['check_song_title'];
+            $check_artist_name = $_POST['check_artist_name'];
+
+            $song_god_obj = new LMSongGod();
+
+            $instance_id = 0;
+            $result = $song_god_obj->searchBYTitleNArtist($check_song_title, $check_artist_name);
+            foreach ($result as $result_data) {
+               $instance_id = $query_result_data['id'];
+            }
+
+            if ($instance_id) {
+
+               $html_block = 'song_exist';
+               echo $html_block;
+
+            } else {
+
+               $song_title = $check_song_title;
+               $artist_name = $check_artist_name;
+               require SITE_ROOT."/ajax-action/SongActionView/add-song-form.php";
+
+            }
+
+            unset($song_god_obj);
+         }
+
+         break;
+
       case 'delete-lyric-block':
 
          $validate_lyrics_block_truth_id
