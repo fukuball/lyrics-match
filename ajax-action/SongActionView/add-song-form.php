@@ -20,7 +20,7 @@
             藝人名稱
          </label>
          <div class="controls">
-            <input type="text" class="input-xlarge span7" id="artist-name" name="artist_name" value="<?=$artist_name?>" />
+            <input type="text" class="input-xlarge span7" id="artist-name" name="artist_name" value="<?=$in_performer_name?>" />
          </div>
       </div>
       <div class="control-group">
@@ -28,7 +28,7 @@
             藝人 kkbox 網址
          </label>
          <div class="controls">
-            <input type="text" class="input-xlarge span7" id="artist-kkbox-url" name="artist_kkbox_url" />
+            <input type="text" class="input-xlarge span7" id="artist-kkbox-url" name="artist_kkbox_url" value="<?=$in_performer_url?>" />
          </div>
       </div>
       <div class="control-group">
