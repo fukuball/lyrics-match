@@ -84,7 +84,7 @@
             歌曲 kkbox 網址
          </label>
          <div class="controls">
-            <input type="text" class="input-xlarge span7" id="song-kkbox-url" name="song_kkbox_url" />
+            <input type="text" class="input-xlarge span7" id="song-kkbox-url" name="song_kkbox_url" <?=$song_kkbox_url?> />
          </div>
       </div>
       <div class="control-group">
@@ -92,7 +92,7 @@
             作詞
          </label>
          <div class="controls">
-            <input type="text" class="input-xlarge span7" id="lyricist" name="lyricist" />
+            <input type="text" class="input-xlarge span7" id="lyricist" name="lyricist" value="<?=$in_lyricist_name?>" />
          </div>
       </div>
       <div class="control-group">
@@ -100,7 +100,7 @@
             作曲
          </label>
          <div class="controls">
-            <input type="text" class="input-xlarge span7" id="composer" name="composer" />
+            <input type="text" class="input-xlarge span7" id="composer" name="composer" value="<?=$in_composer_name?>" />
          </div>
       </div>
       <div class="control-group">
@@ -108,7 +108,7 @@
             歌詞
          </label>
          <div class="controls">
-           <textarea class="input-xlarge span7" id="lyric" name="lyric" rows="15"></textarea>
+           <textarea class="input-xlarge span7" id="lyric" name="lyric" rows="15"><?=$in_lyric?></textarea>
          </div>
       </div>
       <div class="control-group">

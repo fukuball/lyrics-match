@@ -122,8 +122,48 @@ class SongAction extends LMRESTControl implements LMRESTfulInterface
 
             } else {
 
-               $song_title = $check_song_title;
-               $artist_name = $check_artist_name;
+               $song_kkbox_url = $check_song_kkbox_url;
+
+               // get song detail
+               $yql_query = urlencode('SELECT * FROM html WHERE url="'.$song_kkbox_url.'"');
+               $song_page_html = file_get_contents('http://query.yahooapis.com/v1/public/yql?q='.$yql_query.'&format=json');
+               $song_page_dom = json_decode($song_page_html);
+
+               // get lyric info
+               $kk_lyric = $song_page_dom->query->results->body->div[3]->div[1]->div[0]->div[1]->p->content;
+               //print_r($kk_lyric);
+
+               // parse wrighter
+               $kk_lyric_array = explode('：', $kk_lyric);
+               //print_r($kk_lyric_array);
+
+               // parse lyricist
+               $parse_lyricist = explode('   ', $kk_lyric_array[1]);
+               $in_lyricist_name = trim($parse_lyricist[0]);
+
+               // parse lyricist
+               //$parse_composer = explode(' ', $kk_lyric_array[2]);
+               $parse_composer = explode("\n", $kk_lyric_array[2]);
+               $in_composer_name = trim($parse_composer[0]);
+
+               // parse lyric
+               //$parse_lyric = explode("\n", $kk_lyric_array[4]);
+               $parse_lyric = explode("\n", $kk_lyric_array[2]);
+               $parse_lyric = array_slice($parse_lyric, 1);
+               //print_r($parse_lyric);
+               $normalize_lyric_array = array();
+               foreach ($parse_lyric as $key => $value) {
+                  $normal_value = nl2br(trim($value));
+                  $normal_value = str_replace('<br />', '', $normal_value);
+                  $normal_value = str_replace('<br/>', '', $normal_value);
+                  $normal_value = str_replace('<br>', '', $normal_value);
+                  if ($normal_value!='') {
+                     array_push($normalize_lyric_array, trim($value));
+                  }
+               }
+               //print_r($normalize_lyric_array);
+               $in_lyric = implode("\n", $normalize_lyric_array);
+
                require SITE_ROOT."/ajax-action/SongActionView/add-song-form.php";
 
             }
