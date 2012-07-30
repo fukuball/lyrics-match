@@ -112,10 +112,8 @@ class SongAction extends LMRESTControl implements LMRESTfulInterface
             $song_god_obj = new LMSongGod();
 
             $instance_id = 0;
-            $result = $song_god_obj->findBYKKBOXURL($check_song_kkbox_url);
-            foreach ($result as $result_data) {
-               $instance_id = $result_data['id'];
-            }
+            $instance_id = $song_god_obj->findBYKKBOXURL($check_song_kkbox_url);
+
 
             if ($instance_id) {
 
