@@ -112,13 +112,11 @@
          </div>
       </div>
       <div class="control-group">
-         <label class="control-label" for="have_english">
+         <label class="control-label" for="have-english">
             是否有英文
          </label>
          <div class="controls">
-            <label class="checkbox">
-               <input type="checkbox" id="have_english" name="have_english" value="1">
-            </label>
+            <input type="checkbox" id="have-english" name="have_english" value="1">
          </div>
       </div>
       <div class="form-actions">
