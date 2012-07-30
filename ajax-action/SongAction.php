@@ -173,9 +173,9 @@ class SongAction extends LMRESTControl implements LMRESTfulInterface
                $in_disc_name = trim($song_page_dom->query->results->body->div[3]->div[0]->ul->li[2]->a->content);
                $in_disc_url = $kkbox_link.$song_page_dom->query->results->body->div[3]->div[0]->ul->li[2]->a->href;
                $in_disc_src = $song_page_dom->query->results->body->div[3]->div[1]->div[0]->div[1]->div->div[0]->img->src;
-               print_r($song_page_dom->query->results->body->div[3]->div[1]->div[0]->div[1]);
-               //$in_disc_genre = $song_page_dom->query->results->body->div[3]->div[1]->div[0]->div[0]->div->div[1]->dl->dd[1]->p;
-               //$in_disc_release = trim($song_page_dom->query->results->body->div[3]->div[1]->div[0]->div[0]->div->div[1]->dl->dd[2]->p).'-01';
+               //print_r($song_page_dom->query->results->body->div[3]->div[1]->div[0]->div[1]);
+               $in_disc_genre = $song_page_dom->query->results->body->div[3]->div[1]->div[0]->div[0]->div->div[1]->dl->dd[1]->p;
+               $in_disc_release = trim($song_page_dom->query->results->body->div[3]->div[1]->div[0]->div[0]->div->div[1]->dl->dd[2]->p).'-01';
 
                require SITE_ROOT."/ajax-action/SongActionView/add-song-form.php";
 
