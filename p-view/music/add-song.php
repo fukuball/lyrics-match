@@ -13,7 +13,7 @@
  */
 ?>
 <form id="check-add-song-form" name="check_add_song_form" class="well form-inline">
-   <input id="check-song-kkbox-url" name="check_song_kkbox_url" type="text" class="input-medium" placeholder="請輸入歌曲的kkbox網址">
+   <input id="check-song-kkbox-url" name="check_song_kkbox_url" type="text" class="input-medium span7" placeholder="請輸入歌曲的kkbox網址">
    <button id="check-add-song-btn" type="button" class="btn">
       新增歌曲
    </button>
