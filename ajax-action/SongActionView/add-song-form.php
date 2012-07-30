@@ -116,7 +116,7 @@
             是否有英文
          </label>
          <div class="controls">
-            <input type="checkbox" id="have-english" name="have_english[]" value="1">
+            <input type="checkbox" id="have-english" name="have_english" value="1">
          </div>
       </div>
       <div class="form-actions">
