@@ -4,7 +4,7 @@ import Image
 
 vqclst = [2, 10, 100, 256]
 
-data = Image.read('stallman.png')
+data = Image.open('stallman.png')
 (height, width, channel) = data.shape
 
 data = reshape(data, (height*width, channel))
@@ -14,5 +14,5 @@ for k in vqclst:
     (code, distor) = vq(data, centroids)
     print 'distor: %.6f' % distor.sum()
     im_vq = centroids[code, :]
-    Image.write('result-%d.jpg' % k, reshape(im_vq,
+    Image.save('result-%d.jpg' % k, reshape(im_vq,
         (height, width, channel)))
