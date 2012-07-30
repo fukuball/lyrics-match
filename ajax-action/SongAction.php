@@ -128,10 +128,9 @@ class SongAction extends LMRESTControl implements LMRESTfulInterface
                $yql_query = urlencode('SELECT * FROM html WHERE url="'.$song_kkbox_url.'"');
                $song_page_html = file_get_contents('http://query.yahooapis.com/v1/public/yql?q='.$yql_query.'&format=json');
                $song_page_dom = json_decode($song_page_html);
-               print_r($song_page_dom);
 
                // get lyric info
-               $kk_lyric = $song_page_dom->query->results->body->div[3]->div[1]->div[0]->div[1]->p->content;
+               $kk_lyric = $song_page_dom->query->results->body->div[3];
                print_r($kk_lyric);
 
                // parse wrighter
