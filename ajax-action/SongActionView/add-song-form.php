@@ -36,7 +36,7 @@
             專輯名稱
          </label>
          <div class="controls">
-            <input type="text" class="input-xlarge span7" id="disc-title" name="disc_title" />
+            <input type="text" class="input-xlarge span7" id="disc-title" name="disc_title" value="<?=$in_disc_name?>" />
          </div>
       </div>
       <div class="control-group">
@@ -44,7 +44,7 @@
             專輯 kkbox 網址
          </label>
          <div class="controls">
-            <input type="text" class="input-xlarge span7" id="disc-kkbox-url" name="disc_kkbox_url" />
+            <input type="text" class="input-xlarge span7" id="disc-kkbox-url" name="disc_kkbox_url" value="<?=$in_disc_url?>" />
          </div>
       </div>
       <div class="control-group">
@@ -52,7 +52,7 @@
             音樂類型
          </label>
          <div class="controls">
-            <input type="text" class="input-xlarge span7" id="genre" name="genre" />
+            <input type="text" class="input-xlarge span7" id="genre" name="genre" value="<?=$in_disc_genre?>" />
          </div>
       </div>
       <div class="control-group">
@@ -60,7 +60,7 @@
             發行日期
          </label>
          <div class="controls">
-            <input type="text" class="input-xlarge span7" id="release-date" name="release_date" />
+            <input type="text" class="input-xlarge span7" id="release-date" name="release_date" value="<?=$in_disc_release?>" />
          </div>
       </div>
       <div class="control-group">
@@ -68,7 +68,7 @@
             專輯封面網址
          </label>
          <div class="controls">
-            <input type="text" class="input-xlarge span7" id="disc-cover" name="disc_cover" />
+            <input type="text" class="input-xlarge span7" id="disc-cover" name="disc_cover" value="<?=$in_disc_src?>" />
          </div>
       </div>
       <div class="control-group">
