@@ -130,8 +130,8 @@ class SongAction extends LMRESTControl implements LMRESTfulInterface
                $song_page_dom = json_decode($song_page_html);
 
                // get lyric info
-               $kk_lyric = $song_page_dom->query->results->body->div[3]->div[1]->div[0]->div[2];
-               print_r($kk_lyric);
+               $kk_lyric = $song_page_dom->query->results->body->div[3]->div[1]->div[0]->div[2]->p->content;
+               //print_r($kk_lyric);
 
                // parse wrighter
                $kk_lyric_array = explode('：', $kk_lyric);
