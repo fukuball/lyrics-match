@@ -206,10 +206,6 @@ if (!empty($_GET['song_id'])) {
          </tr>
       </tbody>
    </table>
-   <?php
-      unset($music_feature_obj);
-   }
-   ?>
    <h2>
       相似音樂
    </h2>
@@ -272,6 +268,10 @@ if (!empty($_GET['song_id'])) {
    ?>
       </tbody>
    </table>
+   <?php
+      unset($music_feature_obj);
+   }
+   ?>
 </div>
 <?php
    unset($song_obj);
