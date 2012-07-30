@@ -76,7 +76,7 @@
             歌曲名稱
          </label>
          <div class="controls">
-            <input type="text" class="input-xlarge span7" id="song-title" name="song_title" value="<?=$song_title?>" />
+            <input type="text" class="input-xlarge span7" id="song-title" name="song_title" value="<?=$in_song_name?>" />
          </div>
       </div>
       <div class="control-group">
@@ -84,7 +84,7 @@
             歌曲 kkbox 網址
          </label>
          <div class="controls">
-            <input type="text" class="input-xlarge span7" id="song-kkbox-url" name="song_kkbox_url" <?=$song_kkbox_url?> />
+            <input type="text" class="input-xlarge span7" id="song-kkbox-url" name="song_kkbox_url" value="<?=$song_kkbox_url?>" />
          </div>
       </div>
       <div class="control-group">
