@@ -134,11 +134,11 @@ class SongAction extends LMRESTControl implements LMRESTfulInterface
             $lyric = $_POST['lyric'];
             $song_kkbox_url = $_POST['song_kkbox_url'];
             $have_english = $_POST['have_english'];
-            if ($have_english=='on') {
+            /*if ($have_english=='on') {
                $have_english = 1;
             } else {
                $have_english = 0;
-            }
+            }*/
 
             // get lyricist id
             $lyricist_id = $lyricist_god_obj->findByName($lyricist);

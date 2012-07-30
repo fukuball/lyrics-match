@@ -117,7 +117,7 @@
          </label>
          <div class="controls">
             <label class="checkbox">
-               <input type="checkbox" id="have_english" name="have_english">
+               <input type="checkbox" id="have_english" name="have_english" value="1">
             </label>
          </div>
       </div>
