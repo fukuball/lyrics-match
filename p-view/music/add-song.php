@@ -49,6 +49,7 @@ $('#check-add-song-form').ready(function() {
             beforeSend: function( xhr ) {
                $('#system-message').html('處理中');
                $('#system-message').show();
+               $('#add-song-form').html('');
             },
             success: function( html_block ) {
                $('#system-message').html('完成');
