@@ -230,7 +230,6 @@
             $('#system-message').html('完成');
             $('#system-message').fadeOut();
             $('#add-song-form').html('');
-            alert("success");
          } else {
             $('#system-message').html('失敗，請重新操作');
             $('#system-message').fadeOut();
