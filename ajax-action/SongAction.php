@@ -131,11 +131,11 @@ class SongAction extends LMRESTControl implements LMRESTfulInterface
 
                // get lyric info
                $kk_lyric = $song_page_dom->query->results->body->div[3]->div[1]->div[0]->div[1]->p->content;
-               //print_r($kk_lyric);
+               print_r($kk_lyric);
 
                // parse wrighter
                $kk_lyric_array = explode('：', $kk_lyric);
-               //print_r($kk_lyric_array);
+               print_r($kk_lyric_array);
 
                // parse lyricist
                $parse_lyricist = explode('   ', $kk_lyric_array[1]);
@@ -150,7 +150,7 @@ class SongAction extends LMRESTControl implements LMRESTfulInterface
                //$parse_lyric = explode("\n", $kk_lyric_array[4]);
                $parse_lyric = explode("\n", $kk_lyric_array[2]);
                $parse_lyric = array_slice($parse_lyric, 1);
-               //print_r($parse_lyric);
+               print_r($parse_lyric);
                $normalize_lyric_array = array();
                foreach ($parse_lyric as $key => $value) {
                   $normal_value = nl2br(trim($value));
@@ -161,7 +161,7 @@ class SongAction extends LMRESTControl implements LMRESTfulInterface
                      array_push($normalize_lyric_array, trim($value));
                   }
                }
-               //print_r($normalize_lyric_array);
+               print_r($normalize_lyric_array);
                $in_lyric = implode("\n", $normalize_lyric_array);
 
                require SITE_ROOT."/ajax-action/SongActionView/add-song-form.php";
