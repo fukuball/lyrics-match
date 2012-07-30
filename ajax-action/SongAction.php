@@ -95,17 +95,11 @@ class SongAction extends LMRESTControl implements LMRESTfulInterface
 
       case 'check-add-song':
 
-         $validate_check_song_title
+         $validate_check_song_kkbox_url
              = LMValidateHelper::
-                  validateNoEmpty($_POST['check_song_title']);
+                  validateNoEmpty($_POST['check_song_kkbox_url']);
 
-         $validate_check_artist_name
-             = LMValidateHelper::
-                  validateNoEmpty($_POST['check_artist_name']);
-
-         if (   !$validate_check_song_title
-             || !$validate_check_artist_name
-         ) {
+         if (!$validate_check_song_kkbox_url) {
             $type = 'not_exist_value';
             $parameter = array("none"=>"none");
             $error_messanger = new LMErrorMessenger($type, $parameter);
@@ -113,13 +107,12 @@ class SongAction extends LMRESTControl implements LMRESTfulInterface
             unset($error_messanger);
          } else {
 
-            $check_song_title = $_POST['check_song_title'];
-            $check_artist_name = $_POST['check_artist_name'];
+            $check_song_kkbox_url = $_POST['check_song_kkbox_url'];
 
             $song_god_obj = new LMSongGod();
 
             $instance_id = 0;
-            $result = $song_god_obj->searchBYTitleNArtist($check_song_title, $check_artist_name);
+            $result = $song_god_obj->findBYKKBOXURL($check_song_kkbox_url);
             foreach ($result as $result_data) {
                $instance_id = $result_data['id'];
             }

@@ -13,8 +13,7 @@
  */
 ?>
 <form id="check-add-song-form" name="check_add_song_form" class="well form-inline">
-   <input id="check-song-title" name="check_song_title" type="text" class="input-medium" placeholder="請輸入歌名">
-   <input id="check-artist-name" name="check_artist_name" type="text" class="input-medium" placeholder="請輸入歌手">
+   <input id="check-song-kkbox-url" name="check_song_kkbox_url" type="text" class="input-medium" placeholder="請輸入歌曲的kkbox網址">
    <button id="check-add-song-btn" type="button" class="btn">
       新增歌曲
    </button>
@@ -33,14 +32,7 @@ $('#check-add-song-form').ready(function() {
    $('button#check-add-song-btn').click(function(){
 
       var is_validated = true;
-      if(!$('#check-song-title').val()){
-         $('#input-invalid-warnig').removeClass('hide');
-         is_validated = false;
-      } else {
-         $('#input-invalid-warnig').removeClass('hide');
-         $('#input-invalid-warnig').addClass('hide');
-      }
-      if(!$('#check-artist-name').val()){
+      if(!$('#check-song-kkbox-url').val()){
          $('#input-invalid-warnig').removeClass('hide');
          is_validated = false;
       } else {
@@ -52,7 +44,7 @@ $('#check-add-song-form').ready(function() {
          $.ajax({
             url: '<?=SITE_HOST?>/ajax-action/song-action/check-add-song',
             type: "POST",
-            data: {check_song_title: $('#check-song-title').val(), check_artist_name: $('#check-artist-name').val()},
+            data: {check_song_kkbox_url: $('#check-song-kkbox-url').val()},
             dataType: "html",
             beforeSend: function( xhr ) {
                $('#system-message').html('處理中');
