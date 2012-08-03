@@ -36,6 +36,8 @@ $timbre_matrix = '';
 // get unprocess data
 foreach ($query_result as $query_result_data) {
 
+   echo "song_id :".$query_result_data['id']." \n";
+
    $song_obj = new LMSong($query_result_data['id']);
    $echonest_analysis_file = AUDIO_ROOT.'/'.$song_obj->getId().'.json';
    $echonest_analysis = file_get_contents($echonest_analysis_file);
