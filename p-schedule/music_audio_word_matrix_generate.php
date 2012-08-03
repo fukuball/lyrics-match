@@ -44,6 +44,8 @@ foreach ($query_result as $query_result_data) {
    }
    print_r($song_section_array);
 
+   $segment_count = count($echonest_data->segments);
+
    $segment_duration_sum = 0;
 
    $pitch_d1  = 0;
