@@ -38,11 +38,14 @@ foreach ($query_result as $query_result_data) {
    $echonest_analysis = file_get_contents($echonest_analysis_file);
    $echonest_data = json_decode($echonest_analysis);
 
+   $song_section_array = array();
    foreach ($echonest_data->sections as $section_data){
-      echo "section start: ".$section_data->start." \n";
+      array_push($song_section_array, $section_data->start);
    }
+   print_r($song_section_array);
 
-   /*$segment_duration_sum = 0;
+   $segment_duration_sum = 0;
+
    $pitch_d1  = 0;
    $pitch_d2  = 0;
    $pitch_d3  = 0;
@@ -70,6 +73,9 @@ foreach ($query_result as $query_result_data) {
    $timbre_d12 = 0;
 
    foreach ($echonest_data->segments as $segments_data) {
+
+      $pitch_start = $segments_data->start;
+
       $segment_duration_sum = $segment_duration_sum+$segments_data->duration;
 
       $count_pitch_d = 1;
@@ -188,7 +194,7 @@ foreach ($query_result as $query_result_data) {
    $timbre_a9  = ($timbre_d9/$segment_count);
    $timbre_a10 = ($timbre_d10/$segment_count);
    $timbre_a11 = ($timbre_d11/$segment_count);
-   $timbre_a12 = ($timbre_d12/$segment_count);*/
+   $timbre_a12 = ($timbre_d12/$segment_count);
 
    unset($song_obj);
 }
