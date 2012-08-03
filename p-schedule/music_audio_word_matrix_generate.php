@@ -33,6 +33,8 @@ $music_feature_god = new LMMusicFeatureGod();
 // get unprocess data
 foreach ($query_result as $query_result_data) {
 
+   echo "song_id: ".$query_result_data['id']." \n";
+
    $song_obj = new LMSong($query_result_data['id']);
    $echonest_analysis_file = AUDIO_ROOT.'/'.$song_obj->getId().'.json';
    $echonest_analysis = file_get_contents($echonest_analysis_file);
@@ -80,7 +82,7 @@ foreach ($query_result as $query_result_data) {
       print_r($song_audio_word_array);
       print_r($song_audio_word_count_array);
 
-      foreach ($song_audio_word_array as $key => $value) {
+      /*foreach ($song_audio_word_array as $key => $value) {
          $song_audio_word_array[$key][0] = $song_audio_word_array[$key][0]/$song_audio_word_count_array[$key];
          $song_audio_word_array[$key][1] = $song_audio_word_array[$key][1]/$song_audio_word_count_array[$key];
          $song_audio_word_array[$key][2] = $song_audio_word_array[$key][2]/$song_audio_word_count_array[$key];
@@ -96,7 +98,7 @@ foreach ($query_result as $query_result_data) {
       }
 
       print_r($song_audio_word_array);
-      print_r($song_audio_word_count_array);
+      print_r($song_audio_word_count_array);*/
 
    }// end foreach ($echonest_data->segments as $segments_data)
 
