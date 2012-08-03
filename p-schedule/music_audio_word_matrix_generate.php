@@ -30,6 +30,9 @@ $query_result = $db_obj->selectCommand($select_sql);
 
 $music_feature_god = new LMMusicFeatureGod();
 
+$pitch_matrix = '';
+$timbre_matrix = '';
+
 // get unprocess data
 foreach ($query_result as $query_result_data) {
 
@@ -38,8 +41,7 @@ foreach ($query_result as $query_result_data) {
    $echonest_analysis = file_get_contents($echonest_analysis_file);
    $echonest_data = json_decode($echonest_analysis);
 
-   $pitch_matrix = '';
-   $timbre_matrix = '';
+
    foreach ($echonest_data->segments as $segments_data) {
 
       $pitch_vector = '';
@@ -59,7 +61,7 @@ foreach ($query_result as $query_result_data) {
 
       }// end foreach ($segments_data->pitches as $pitches_data)
 
-      echo $pitch_vector;
+      $pitch_matrix = $pitch_matrix.$pitch_vector;
 
       $timbre_vector = '';
       $count_timbre_d = 1;
@@ -79,12 +81,43 @@ foreach ($query_result as $query_result_data) {
 
    }// end foreach ($echonest_data->segments as $segments_data)
 
-   echo $timbre_vector;
+   $timbre_matrix = $timbre_matrix.$timbre_vector;
 
    unset($song_obj);
 }
 
 unset($music_feature_god);
+
+
+$pitch_matrix = substr ($pitch_matrix, 0, -2);
+$timbre_matrix = substr ($timbre_matrix, 0, -2);
+
+$music_audio_word_matrix_god = new LMMusicAudioWordMatrix();
+
+$parameter_array = array();
+$parameter_array['matrix']
+    = $pitch_matrix;
+$parameter_array['type']
+    = 'pitch';
+
+if ($music_audio_word_matrix_god->create($parameter_array)) {
+   echo "create pitch audio word matrix success \n";
+} else {
+   echo "create pitch audio word matrix fail \n";
+}
+
+$parameter_array = array();
+$parameter_array['matrix']
+    = $timbre_matrix;
+$parameter_array['type']
+    = 'timbre';
+
+if ($music_audio_word_matrix_god->create($parameter_array)) {
+   echo "create timbre audio word matrix success \n";
+} else {
+   echo "create timbre audio word matrix fail \n";
+}
+
 
 require_once SITE_ROOT."/p-config/application-unsetter.php";
 
