@@ -103,6 +103,8 @@ foreach ($query_result as $query_result_data) {
 
       }
 
+      print_r($$segments_data->pitches);
+
       $count_pitch_d = 1;
       foreach ($segments_data->pitches as $pitches_data) {
 
@@ -194,8 +196,6 @@ foreach ($query_result as $query_result_data) {
       }// end foreach ($segments_data->pitches as $pitches_data)
 
    }// end foreach ($echonest_data->segments as $segments_data)
-
-   print_r($song_audio_word_array);
 
    unset($song_obj);
 }
