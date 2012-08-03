@@ -38,6 +38,8 @@ foreach ($query_result as $query_result_data) {
    $echonest_analysis = file_get_contents($echonest_analysis_file);
    $echonest_data = json_decode($echonest_analysis);
 
+   $pitch_matrix = '';
+   $timbre_matrix = '';
    foreach ($echonest_data->segments as $segments_data) {
 
       $pitch_vector = '';
@@ -46,10 +48,10 @@ foreach ($query_result as $query_result_data) {
 
          switch ($count_pitch_d) {
          default:
-            $pitch_vector = $pitch_vector+$pitches_data+' ';
+            $pitch_vector = $pitch_vector.$pitches_data.' ';
             break;
          case '12':
-            $pitch_vector = $pitch_vector+$pitches_data+'; ';
+            $pitch_vector = $pitch_vector.$pitches_data.'; ';
             break;
          }// end switch
 
@@ -65,10 +67,10 @@ foreach ($query_result as $query_result_data) {
 
          switch ($count_timbre_d) {
          default:
-            $timbre_vector = $timbre_vector+$pitches_data+' ';
+            $timbre_vector = $timbre_vector.$pitches_data.' ';
             break;
          case '12':
-            $timbre_vector = $timbre_vector+$pitches_data+'; ';
+            $timbre_vector = $timbre_vector.$pitches_data.'; ';
             break;
          }// end switch ($count_timbre_d)
 
