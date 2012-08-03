@@ -152,8 +152,25 @@ foreach ($query_result as $query_result_data) {
       $song_audio_word_timbre_array[$key][11] = $song_audio_word_timbre_array[$key][11]/$song_audio_word_count_timbre_array[$key];
    }
 
-   print_r($song_audio_word_timbre_array);
-   print_r($song_audio_word_count_timbre_array);
+   //print_r($song_audio_word_timbre_array);
+   //print_r($song_audio_word_count_timbre_array);
+
+   $pitch_audio_word = json_encode($song_audio_word_array);
+   $timbre_audio_word = json_encode($song_audio_word_timbre_array);
+
+   $music_feature_id = $music_feature_god->findBySongId($song_obj->getId());
+   if ($music_feature_id) {
+      $music_feature_obj = new LMMusicFeature($music_feature_id);
+
+      $music_feature_obj->pitch_audio_word = $pitch_audio_word;
+      $music_feature_obj->timbre_audio_word = $timbre_audio_word;
+      if ($music_feature_obj->save()) {
+         echo "update music feature success \n";
+      } else {
+         echo "update music feature fail \n";
+      }
+
+   }
 
    unset($song_obj);
 }
