@@ -92,7 +92,9 @@ unset($music_feature_god);
 $pitch_matrix = substr ($pitch_matrix, 0, -2);
 $timbre_matrix = substr ($timbre_matrix, 0, -2);
 
-$music_audio_word_matrix_god = new LMMusicAudioWordMatrix();
+echo $pitch_matrix;
+
+/*$music_audio_word_matrix_god = new LMMusicAudioWordMatrix();
 
 $parameter_array = array();
 $parameter_array['matrix']
@@ -116,7 +118,7 @@ if ($music_audio_word_matrix_god->create($parameter_array)) {
    echo "create timbre audio word matrix success \n";
 } else {
    echo "create timbre audio word matrix fail \n";
-}
+}*/
 
 
 require_once SITE_ROOT."/p-config/application-unsetter.php";
