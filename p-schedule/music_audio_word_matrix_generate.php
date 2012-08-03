@@ -103,7 +103,7 @@ foreach ($query_result as $query_result_data) {
 
       }
 
-      print_r($$segments_data->pitches);
+      print_r($segments_data->pitches);
 
       $count_pitch_d = 1;
       foreach ($segments_data->pitches as $pitches_data) {
