@@ -82,7 +82,11 @@ foreach ($query_result as $query_result_data) {
 
          if ($section_start!=100000) {
 
-            if ($pitch_start>=$section_start && $pitch_start<$section_start[$key+1]) {
+            echo 'pitch_start'.$pitch_start;
+            echo 'section_start'.$section_start;
+            if ($pitch_start>=$section_start && $pitch_start<$song_section_array[$key+1]) {
+
+               echo 'key'.$key;
 
                $song_audio_word_array[$key][0] = $song_audio_word_array[$key][0]+$segments_data->pitches[0];
                $song_audio_word_array[$key][1] = $song_audio_word_array[$key][1]+$segments_data->pitches[1];
