@@ -79,28 +79,28 @@ foreach ($query_result as $query_result_data) {
 
       }
 
-      print_r($song_audio_word_array);
-      print_r($song_audio_word_count_array);
-
-      /*foreach ($song_audio_word_array as $key => $value) {
-         $song_audio_word_array[$key][0] = $song_audio_word_array[$key][0]/$song_audio_word_count_array[$key];
-         $song_audio_word_array[$key][1] = $song_audio_word_array[$key][1]/$song_audio_word_count_array[$key];
-         $song_audio_word_array[$key][2] = $song_audio_word_array[$key][2]/$song_audio_word_count_array[$key];
-         $song_audio_word_array[$key][3] = $song_audio_word_array[$key][3]/$song_audio_word_count_array[$key];
-         $song_audio_word_array[$key][4] = $song_audio_word_array[$key][4]/$song_audio_word_count_array[$key];
-         $song_audio_word_array[$key][5] = $song_audio_word_array[$key][5]/$song_audio_word_count_array[$key];
-         $song_audio_word_array[$key][6] = $song_audio_word_array[$key][6]/$song_audio_word_count_array[$key];
-         $song_audio_word_array[$key][7] = $song_audio_word_array[$key][7]/$song_audio_word_count_array[$key];
-         $song_audio_word_array[$key][8] = $song_audio_word_array[$key][8]/$song_audio_word_count_array[$key];
-         $song_audio_word_array[$key][9] = $song_audio_word_array[$key][9]/$song_audio_word_count_array[$key];
-         $song_audio_word_array[$key][10] = $song_audio_word_array[$key][10]/$song_audio_word_count_array[$key];
-         $song_audio_word_array[$key][11] = $song_audio_word_array[$key][11]/$song_audio_word_count_array[$key];
-      }
-
-      print_r($song_audio_word_array);
-      print_r($song_audio_word_count_array);*/
-
    }// end foreach ($echonest_data->segments as $segments_data)
+
+   print_r($song_audio_word_array);
+   print_r($song_audio_word_count_array);
+
+   foreach ($song_audio_word_array as $key => $value) {
+      $song_audio_word_array[$key][0] = $song_audio_word_array[$key][0]/$song_audio_word_count_array[$key];
+      $song_audio_word_array[$key][1] = $song_audio_word_array[$key][1]/$song_audio_word_count_array[$key];
+      $song_audio_word_array[$key][2] = $song_audio_word_array[$key][2]/$song_audio_word_count_array[$key];
+      $song_audio_word_array[$key][3] = $song_audio_word_array[$key][3]/$song_audio_word_count_array[$key];
+      $song_audio_word_array[$key][4] = $song_audio_word_array[$key][4]/$song_audio_word_count_array[$key];
+      $song_audio_word_array[$key][5] = $song_audio_word_array[$key][5]/$song_audio_word_count_array[$key];
+      $song_audio_word_array[$key][6] = $song_audio_word_array[$key][6]/$song_audio_word_count_array[$key];
+      $song_audio_word_array[$key][7] = $song_audio_word_array[$key][7]/$song_audio_word_count_array[$key];
+      $song_audio_word_array[$key][8] = $song_audio_word_array[$key][8]/$song_audio_word_count_array[$key];
+      $song_audio_word_array[$key][9] = $song_audio_word_array[$key][9]/$song_audio_word_count_array[$key];
+      $song_audio_word_array[$key][10] = $song_audio_word_array[$key][10]/$song_audio_word_count_array[$key];
+      $song_audio_word_array[$key][11] = $song_audio_word_array[$key][11]/$song_audio_word_count_array[$key];
+   }
+
+   print_r($song_audio_word_array);
+   print_r($song_audio_word_count_array);
 
    unset($song_obj);
 }
