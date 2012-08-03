@@ -45,6 +45,7 @@ foreach ($query_result as $query_result_data) {
    array_push($song_section_array, 100000);
 
    $song_audio_word_array = array();
+   $song_audio_word_count_array = array();
 
    $segment_count = count($echonest_data->segments);
 
@@ -82,11 +83,7 @@ foreach ($query_result as $query_result_data) {
 
          if ($section_start!=100000) {
 
-            echo 'pitch_start'.$pitch_start;
-            echo 'section_start'.$section_start;
             if ($pitch_start>=$section_start && $pitch_start<$song_section_array[$key+1]) {
-
-               echo 'key'.$key;
 
                $song_audio_word_array[$key][0] = $song_audio_word_array[$key][0]+$segments_data->pitches[0];
                $song_audio_word_array[$key][1] = $song_audio_word_array[$key][1]+$segments_data->pitches[1];
@@ -101,6 +98,7 @@ foreach ($query_result as $query_result_data) {
                $song_audio_word_array[$key][10] = $song_audio_word_array[$key][10]+$segments_data->pitches[10];
                $song_audio_word_array[$key][11] = $song_audio_word_array[$key][11]+$segments_data->pitches[11];
 
+               $song_audio_word_count_array[$key] = $song_audio_word_count_array[$key]+1;
             }
 
          }
@@ -199,6 +197,7 @@ foreach ($query_result as $query_result_data) {
       }// end foreach ($segments_data->pitches as $pitches_data)
 
       print_r($song_audio_word_array);
+      print_r($song_audio_word_count_array);
 
    }// end foreach ($echonest_data->segments as $segments_data)
 
