@@ -47,7 +47,31 @@ foreach ($query_result as $query_result_data) {
 $p_audio_word = json_encode($p_audio_word_array);
 $t_audio_word = json_encode($t_audio_word_array);
 
-echo $t_audio_word;
+$music_audio_word_matrix_god = new LMMusicAudioWordMatrixGod();
+
+$parameter_array = array();
+$parameter_array['matrix']
+    = $p_audio_word;
+$parameter_array['type']
+    = 'pitch';
+
+$music_audio_word_matrix_god->create($parameter_array);
+
+echo "create pitch audio word \n";
+
+$parameter_array = array();
+$parameter_array['matrix']
+    = $t_audio_word;
+$parameter_array['type']
+    = 'timbre';
+
+$music_audio_word_matrix_god->create($parameter_array);
+
+echo "create timbre audio word \n";
+
+unset($music_audio_word_matrix_god);
+
+
 
 require_once SITE_ROOT."/p-config/application-unsetter.php";
 
