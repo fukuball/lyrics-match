@@ -52,8 +52,8 @@ for row in cur.fetchall() :
 matrix_array = json.loads(matrix)
 
 audio_word_array = np.array(matrix_array)
-print audio_word_array.shape
-#res, idx = kmeans2(matrix_array, 3)
+#print audio_word_array.shape
+res, idx = kmeans2(matrix_array, 3)
 
-#print res
-#print idx
+print res
+print idx
