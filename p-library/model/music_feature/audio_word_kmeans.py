@@ -22,6 +22,7 @@ try:
     import json
 except ImportError:
     import simplejson as json
+np.set_printoptions(threshold=np.nan)
 
 sys.path.append("/var/www/html/lyrics-match/p-library/model")
 import ImportPath
