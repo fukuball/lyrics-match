@@ -48,6 +48,6 @@ for row in cur.fetchall() :
    matrix = row[1]
    matrix_type = row[2]
 
-matrix_array = np.fromiter(json.loads(matrix))
+matrix_array = json.loads(matrix)
 
 print matrix_array
