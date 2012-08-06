@@ -44,10 +44,10 @@ cur.execute("""SELECT * FROM music_audio_word_matrix WHERE id=%s""", (matrix_id)
 matrix = ""
 matrix_type = ""
 
-
 for row in cur.fetchall() :
    matrix = row[1]
    matrix_type = row[2]
 
-print matrix
-print matrix_type
+matrix_array = np.fromiter(json.loads(matrix))
+
+print matrix_array
