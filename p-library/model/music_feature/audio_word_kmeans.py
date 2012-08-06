@@ -64,7 +64,16 @@ except mysql.Error, e:
    db.rollback()
    print "An error has been passed. %s" %e
 
-print cur.lastrowid
+code_book_id = cur.lastrowid
 
 for code_word in res :
-   print json.dumps(code_word)
+   code_word_json = json.dumps(code_word.tolist())
+   print code_word_json
+
+   try:
+      cur.execute("""INSERT INTO muisc_audio_code_word (code_book_id,audio_word,type,create_time,modify_time) VALUES (%s, %s, %s, NOW(), NOW())""",(code_book_id,code_word_json,"timbre"))
+      db.commit()
+      print "success"
+   except mysql.Error, e:
+      db.rollback()
+      print "An error has been passed. %s" %e
