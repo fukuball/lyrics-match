@@ -31,9 +31,13 @@ foreach ($query_result as $query_result_data) {
 
    $pitch_audio_word = $query_result_data['pitch_audio_word'];
    $pitch_audio_word_array = json_decode($pitch_audio_word);
-   print_r($pitch_audio_word_array);
+   foreach ($pitch_audio_word_array as $key=>$value) {
+      array_push($audio_word_array, $value);
+   }
 
 }
+
+print_r($audio_word_array);
 
 require_once SITE_ROOT."/p-config/application-unsetter.php";
 
