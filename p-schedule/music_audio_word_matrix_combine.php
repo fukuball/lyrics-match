@@ -25,9 +25,13 @@ $select_sql = "SELECT ".
 $query_result = $db_obj->selectCommand($select_sql);
 
 // get unprocess data
+$audio_word_array = array();
+
 foreach ($query_result as $query_result_data) {
 
-   echo "pitch_audio_word: ".$query_result_data['pitch_audio_word']." \n";
+   $pitch_audio_word = $query_result_data['pitch_audio_word'];
+   $pitch_audio_word_array = json_decode($pitch_audio_word);
+   print_r($pitch_audio_word_array);
 
 }
 
