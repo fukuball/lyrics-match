@@ -50,7 +50,10 @@ for row in cur.fetchall() :
    matrix_type = row[2]
 
 matrix_array = json.loads(matrix)
-res, idx = kmeans2(matrix_array, 3)
 
-print res
-print idx
+audio_word_array = np.array(matrix_array)
+print audio_word_array.shape
+#res, idx = kmeans2(matrix_array, 3)
+
+#print res
+#print idx
