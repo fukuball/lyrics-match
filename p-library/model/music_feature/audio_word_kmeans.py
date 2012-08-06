@@ -16,6 +16,7 @@
 
 import sys
 import numpy as np
+from scipy.cluster.vq import *
 import MySQLdb as mysql
 try:
     import json
@@ -49,5 +50,7 @@ for row in cur.fetchall() :
    matrix_type = row[2]
 
 matrix_array = json.loads(matrix)
+res, idx = kmeans2(matrix_array, 3)
 
-print matrix_array
+print res
+print idx
