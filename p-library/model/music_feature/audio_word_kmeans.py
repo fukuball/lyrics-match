@@ -54,7 +54,7 @@ matrix_array = json.loads(matrix)
 
 audio_word_array = np.array(matrix_array)
 #print audio_word_array.shape
-res, idx = kmeans2(audio_word_array, 3)
+res, idx = kmeans2(audio_word_array, 50)
 
 try:
    cur.execute("""INSERT INTO music_audio_code_book (type,create_time,modify_time) VALUES (%s, NOW(), NOW())""",("timbre"))
