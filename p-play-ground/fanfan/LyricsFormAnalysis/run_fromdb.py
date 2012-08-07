@@ -51,7 +51,7 @@ if __name__ == "__main__":
 	conn.cursor()
 
 	dictCursor = conn.cursor(cursorclass = cursors.DictCursor)
-	dictCursor.execute("SELECT id FROM song WHERE id = 3")
+	dictCursor.execute("SELECT id FROM song WHERE id = 9")
 	songList = dictCursor.fetchall()
 
 
