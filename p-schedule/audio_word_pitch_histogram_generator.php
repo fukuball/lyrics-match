@@ -21,7 +21,6 @@ $select_sql = "SELECT ".
               "id ".
               "FROM music_feature ".
               "WHERE is_deleted = '0' ".
-              "AND id=1 ".
               "ORDER BY id";
 
 $query_result = $db_obj->selectCommand($select_sql);
@@ -51,7 +50,14 @@ foreach ($query_result as $query_result_data) {
    }
    $histogram_array_string = implode(',', $histogram_array);
 
-   echo $histogram_array_string;
+   $music_feature_obj->pitch_audio_word_histogram = $histogram_array_string;
+   if ($music_feature_obj->save()) {
+      echo "update music feature $music_feature_obj->getId() success \n";
+   } else {
+      echo "update music feature $music_feature_obj->getId() fail \n";
+   }
+
+   unset($music_feature_obj);
 }
 
 require_once SITE_ROOT."/p-config/application-unsetter.php";
