@@ -160,9 +160,9 @@ class FromDB(LyricsInput):
 
 					# 確定詞性有出現在 lyrics_pos_mapping 中
 					if term["pos"] in posList:
-						termLine.append(term["pos"])
+						posLine.append(term["pos"])
 
-				termLine.append('')
+				posLine.append('')
 
 			feature["word_count"].append(wordCountLine)
 			feature["pinyin"].append(pinyinLine)
