@@ -105,6 +105,8 @@ class Tone2Pitch(LyricsInput):
 		for i in range(len(self.__lines)):
 			self.__lines[i] = map(transform, self.__lines[i])
 
+			print self.__lines[i]
+
 			# 若是清聲則與前一個聲調一樣音高走勢	
 			self.__lines[i] = map(lambda (idx, contour): contour or self.__lines[idx - 1], enumerate(self.__lines[i]))
 
