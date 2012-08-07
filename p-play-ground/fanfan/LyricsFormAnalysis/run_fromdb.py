@@ -56,7 +56,7 @@ if __name__ == "__main__":
 
 
 	for song in songList:
-		formAnalysis(song["song_id"])
+		formAnalysis(song["id"])
 
 
 
