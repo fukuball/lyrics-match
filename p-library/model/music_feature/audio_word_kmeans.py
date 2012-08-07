@@ -79,7 +79,7 @@ for code_word in res :
       print "An error has been passed. %s" %e
 
 
-count = 58537;
+count = 0;
 for code_word_id in idx :
    code_word_id = code_word_id+1
    count = count+1
