@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 import sys
-import MySQLdb
+import MySQLdb as mysql
 import MySQLdb.cursors as cursors
 import ImportPath
 ImportPath.Import()
