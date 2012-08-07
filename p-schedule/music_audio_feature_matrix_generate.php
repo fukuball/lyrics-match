@@ -33,6 +33,8 @@ $select_sql = "SELECT ".
               "mf.timbre_avg_vector, ".
               "mf.pitch_std_vector, ".
               "mf.timbre_std_vector, ".
+              "mf.pitch_audio_word_histogram, ".
+              "mf.timbre_audio_word_histogram, ".
               "s.mode, ".
               "s.tempo, ".
               "s.time_signature, ".
