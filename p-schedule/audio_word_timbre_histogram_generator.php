@@ -50,7 +50,7 @@ foreach ($query_result as $query_result_data) {
    }
    $histogram_array_string = implode(',', $histogram_array);
 
-   $music_feature_obj->pitch_audio_word_histogram = $histogram_array_string;
+   $music_feature_obj->timbre_audio_word_histogram = $histogram_array_string;
    if ($music_feature_obj->save()) {
       echo "update music feature ".$music_feature_obj->getId()." success \n";
    } else {
