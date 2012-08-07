@@ -57,7 +57,7 @@ audio_word_array = np.array(matrix_array)
 res, idx = kmeans2(audio_word_array, 50)
 
 try:
-   cur.execute("""INSERT INTO music_audio_code_book (type,create_time,modify_time) VALUES (%s, NOW(), NOW())""",("timbre"))
+   cur.execute("""INSERT INTO music_audio_code_book (type,create_time,modify_time) VALUES (%s, NOW(), NOW())""",(matrix_type))
    db.commit()
    print "success"
 except mysql.Error, e:
@@ -71,9 +71,25 @@ for code_word in res :
    print code_word_json
 
    try:
-      cur.execute("""INSERT INTO muisc_audio_code_word (code_book_id,audio_word,type,create_time,modify_time) VALUES (%s, %s, %s, NOW(), NOW())""",(code_book_id,code_word_json,"timbre"))
+      cur.execute("""INSERT INTO muisc_audio_code_word (code_book_id,audio_word,type,create_time,modify_time) VALUES (%s, %s, %s, NOW(), NOW())""",(code_book_id,code_word_json,matrix_type))
       db.commit()
-      print "success"
+      print "success insert code word"
+   except mysql.Error, e:
+      db.rollback()
+      print "An error has been passed. %s" %e
+
+
+count = 0;
+for code_word_id in idx :
+   code_word_id = code_word_id+1
+   print code_word_id
+   count = count+1
+   print count
+
+   try:
+      cur.execute("""UPDATE music_audio_word SET code_word_id=%s, modify_time=NOW() WHERE id=%s """,(code_word_id,count))
+      db.commit()
+      print "success update audio word code word label"
    except mysql.Error, e:
       db.rollback()
       print "An error has been passed. %s" %e

@@ -1,11 +1,11 @@
 <?php
 /**
- * LMMusicFeature.php is music feature model class
+ * LMMusicAudioWord.php is music_audio_word model class
  *
  * PHP version 5
  *
  * @category PHP
- * @package  /p-class/song/
+ * @package  /p-class/matrix/
  * @author   Fukuball Lin <fukuball@gmail.com>
  * @license  No Licence
  * @version  Release: <1.0>
@@ -13,22 +13,22 @@
  */
 
  /**
-  * LMMusicFeature is music feature model class
+  * LMMusicAudioWord is music_audio_word model class
   *
-  * An example of a LMMusicFeature is:
+  * An example of a LMMusicAudioWord is:
   *
   * <code>
-  *   $music_feature_obj = new LMMusicFeature($instance_key);
+  *   $music_audio_word_obj = new LMMusicAudioWord($instance_key);
   * </code>
   *
   * @category PHP
-  * @package  /p-class/song/
+  * @package  /p-class/matrix/
   * @author   Fukuball Lin <fukuball@gmail.com>
   * @license  No Licence
   * @version  Release: <1.0>
   * @link     http://sarasti.cs.nccu.edu.tw
   */
-class LMMusicFeature extends LMActiveRecord
+class LMMusicAudioWord extends LMActiveRecord
 {
    // extends from LMActiveRecord
    //
@@ -43,25 +43,9 @@ class LMMusicFeature extends LMActiveRecord
    // protected $delete_time;
    // protected $modify_unix_time;
    public $song_id;
-   public $second;
-   public $bar_count;
-   public $beat_count;
-   public $tatum_count;
-   public $section_count;
-   public $segment_count;
-   public $bar_avg_second;
-   public $beat_avg_second;
-   public $tatum_avg_second;
-   public $section_avg_second;
-   public $segment_avg_second;
-   public $pitch_avg_vector;
-   public $timbre_avg_vector;
-   public $pitch_std_vector;
-   public $timbre_std_vector;
-   public $pitch_audio_word;
-   public $timbre_audio_word;
-   public $pitch_audio_word_histogram;
-   public $timbre_audio_word_histogram;
+   public $code_word_id;
+   public $audio_word;
+   public $type;
 
    /**
     * Method __construct initialize instance
@@ -151,6 +135,7 @@ class LMMusicFeature extends LMActiveRecord
 
    }// end function toJSON
 
+
    /**
     * Method update to update some instance value
     *
@@ -207,5 +192,5 @@ class LMMusicFeature extends LMActiveRecord
 
    }// end function __destruct
 
-}// end class LMSong
+}// end class LMMusicAudioWord
 ?>

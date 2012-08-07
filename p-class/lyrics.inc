@@ -46,5 +46,7 @@ require 'matrix/LMMusicFeatureMatrixGod.php';
 require 'matrix/LMMusicFeatureMatrix.php';
 require 'matrix/LMMusicAudioWordMatrixGod.php';
 require 'matrix/LMMusicAudioWordMatrix.php';
+require 'matrix/LMMusicAudioWordGod.php';
+require 'matrix/LMMusicAudioWord.php';
 
 ?>
