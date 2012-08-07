@@ -54,26 +54,28 @@ matrix_array = json.loads(matrix)
 
 audio_word_array = np.array(matrix_array)
 #print audio_word_array.shape
-res, idx = kmeans2(audio_word_array, 50)
+res, idx = kmeans2(audio_word_array, 150)
 
-try:
-   cur.execute("""INSERT INTO music_audio_code_book (type,create_time,modify_time) VALUES (%s, NOW(), NOW())""",("timbre"))
-   db.commit()
-   print "success"
-except mysql.Error, e:
-   db.rollback()
-   print "An error has been passed. %s" %e
+print idx
 
-code_book_id = cur.lastrowid
-
-for code_word in res :
-   code_word_json = json.dumps(code_word.tolist())
-   print code_word_json
-
-   try:
-      cur.execute("""INSERT INTO muisc_audio_code_word (code_book_id,audio_word,type,create_time,modify_time) VALUES (%s, %s, %s, NOW(), NOW())""",(code_book_id,code_word_json,"timbre"))
-      db.commit()
-      print "success"
-   except mysql.Error, e:
-      db.rollback()
-      print "An error has been passed. %s" %e
+#try:
+#   cur.execute("""INSERT INTO music_audio_code_book (type,create_time,modify_time) VALUES (%s, NOW(), NOW())""",("timbre"))
+#   db.commit()
+#   print "success"
+#except mysql.Error, e:
+#   db.rollback()
+#   print "An error has been passed. %s" %e
+#
+#code_book_id = cur.lastrowid
+#
+#for code_word in res :
+#   code_word_json = json.dumps(code_word.tolist())
+#   print code_word_json
+#
+#   try:
+#      cur.execute("""INSERT INTO muisc_audio_code_word (code_book_id,audio_word,type,create_time,modify_time) VALUES (%s, %s, %s, NOW(), NOW())""",(code_book_id,code_word_json,"timbre"))
+#      db.commit()
+#      print "success"
+#   except mysql.Error, e:
+#      db.rollback()
+#      print "An error has been passed. %s" %e
