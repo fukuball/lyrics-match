@@ -85,7 +85,7 @@ for code_word_id in idx :
    count = count+1
 
    try:
-      cur.execute("""UPDATE muisc_audio_word SET code_book_id=%s, modify_time=NOW() WHERE id=%s """,(code_word_id,count))
+      cur.execute("""UPDATE music_audio_word SET code_book_id=%s, modify_time=NOW() WHERE id=%s """,(code_word_id,count))
       db.commit()
       print "success update audio word code word label"
    except mysql.Error, e:
