@@ -44,6 +44,7 @@ class LMSong extends LMActiveRecord
    // protected $modify_unix_time;
    public $title;
    public $lyric;
+   public $have_english;
    public $genre;
    public $release_date;
    public $kkbox_url;

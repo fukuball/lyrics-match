@@ -107,6 +107,18 @@ class BoxAction extends LMRESTControl implements LMRESTfulInterface
 
          break;
 
+      case 'upload-midi-form':
+
+         $song_id = $_GET['song_id'];
+         $size = $_GET['size'];
+         if (empty($size)) {
+            $size = "500px";
+         }
+
+         include SITE_ROOT.'/ajax-action/BoxActionView/upload-midi-form.php';
+
+         break;
+
       default:
 
          $type = 'page_not_found';

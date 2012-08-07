@@ -45,6 +45,297 @@ class SongAction extends LMRESTControl implements LMRESTfulInterface
 
       switch ($action_id) {
 
+      case 'add-song':
+
+         $validate_song_title
+             = LMValidateHelper::
+                  validateNoEmpty($_POST['song_title']);
+
+         $validate_lyric
+             = LMValidateHelper::
+                  validateNoEmpty($_POST['lyric']);
+
+         $validate_song_kkbox_url
+             = LMValidateHelper::
+                  validateNoEmpty($_POST['song_kkbox_url']);
+
+         $validate_disc_cover
+             = LMValidateHelper::
+                  validateNoEmpty($_POST['disc_cover']);
+
+         $validate_genre
+             = LMValidateHelper::
+                  validateNoEmpty($_POST['genre']);
+
+         $validate_release_date
+             = LMValidateHelper::
+                  validateNoEmpty($_POST['release_date']);
+
+         $validate_disc_kkbox_url
+             = LMValidateHelper::
+                  validateNoEmpty($_POST['disc_kkbox_url']);
+
+         $validate_disc_title
+             = LMValidateHelper::
+                  validateNoEmpty($_POST['disc_title']);
+
+         $validate_composer
+             = LMValidateHelper::
+                  validateNoEmpty($_POST['composer']);
+
+         $validate_lyricist
+             = LMValidateHelper::
+                  validateNoEmpty($_POST['lyricist']);
+
+         $validate_artist_name
+             = LMValidateHelper::
+                  validateNoEmpty($_POST['artist_name']);
+
+         $validate_artist_kkbox_url
+             = LMValidateHelper::
+                  validateNoEmpty($_POST['artist_kkbox_url']);
+
+         if (   !$validate_artist_name
+             || !$validate_artist_kkbox_url
+             || !$validate_composer
+             || !$validate_lyricist
+             || !$validate_disc_title
+             || !$validate_disc_kkbox_url
+             || !$validate_release_date
+             || !$validate_genre
+             || !$validate_disc_cover
+             || !$validate_song_title
+             || !$validate_lyric
+             || !$validate_song_kkbox_url
+         ) {
+            $type = 'not_exist_value';
+            $parameter = array("none"=>"none");
+            $error_messanger = new LMErrorMessenger($type, $parameter);
+            $error_messanger->printErrorJSON();
+            unset($error_messanger);
+         } else {
+
+            $performer_god_obj = new LMPerformerGod();
+            $composer_god_obj = new LMComposerGod();
+            $lyricist_god_obj = new LMLyricistGod();
+            $disc_god_obj = new LMDiscGod();
+            $song_god_obj = new LMSongGod();
+
+            $composer = $_POST['composer'];
+            $lyricist = $_POST['lyricist'];
+            $artist_name = $_POST['artist_name'];
+            $artist_kkbox_url = $_POST['artist_kkbox_url'];
+            $disc_title = $_POST['disc_title'];
+            $disc_kkbox_url = $_POST['disc_kkbox_url'];
+            $genre = $_POST['genre'];
+            $release_date = $_POST['release_date'];
+            $disc_cover = $_POST['disc_cover'];
+            $song_title = $_POST['song_title'];
+            $lyric = $_POST['lyric'];
+            $song_kkbox_url = $_POST['song_kkbox_url'];
+            $have_english = $_POST['have_english'];
+            /*if ($have_english=='on') {
+               $have_english = 1;
+            } else {
+               $have_english = 0;
+            }*/
+
+            // get lyricist id
+            $lyricist_id = $lyricist_god_obj->findByName($lyricist);
+            if (empty($lyricist_id)) {
+               $parameter_array = array();
+               $parameter_array['name']
+                   = $lyricist;
+               $lyricist_id = $lyricist_god_obj->create($parameter_array);
+            }
+
+            // get composer id
+            $composer_id = $composer_god_obj->findByName($composer);
+            if (empty($composer_id)) {
+               $parameter_array = array();
+               $parameter_array['name']
+                   = $composer;
+               $composer_id = $composer_god_obj->create($parameter_array);
+            }
+
+            // get performer id
+            $performer_id = $performer_god_obj->findByKKBOXURL($artist_kkbox_url);
+            if (empty($performer_id)) {
+               $parameter_array = array();
+               $parameter_array['name']
+                   = $artist_name;
+               $parameter_array['kkbox_url']
+                   = $artist_kkbox_url;
+               $performer_id = $performer_god_obj->create($parameter_array);
+            }
+
+            // get disc id
+            $disc_id = $disc_god_obj->findByKKBOXURL($disc_kkbox_url);
+            if (empty($disc_id)) {
+               $parameter_array = array();
+               $parameter_array['title']
+                   = $disc_title;
+               $parameter_array['kkbox_url']
+                   = $disc_kkbox_url;
+               $parameter_array['release_date']
+                   = $release_date;
+               $parameter_array['cover_path']
+                   = $disc_cover;
+               $parameter_array['genre']
+                   = $genre;
+               $parameter_array['performer_id']
+                   = $performer_id;
+
+               $disc_id = $disc_god_obj->create($parameter_array);
+            }
+
+            // get song id
+            $song_id = $song_god_obj->findByKKBOXURL($song_kkbox_url);
+            if (empty($song_id)) {
+               $parameter_array = array();
+               $parameter_array['title']
+                   = $song_title;
+               $parameter_array['lyric']
+                   = $lyric;
+               $parameter_array['kkbox_url']
+                   = $song_kkbox_url;
+               $parameter_array['release_date']
+                   = $release_date;
+               $parameter_array['genre']
+                   = $genre;
+               $parameter_array['performer_id']
+                   = $performer_id;
+               $parameter_array['composer_id']
+                   = $composer_id;
+               $parameter_array['lyricist_id']
+                   = $lyricist_id;
+               $parameter_array['disc_id']
+                   = $disc_id;
+               $parameter_array['have_english']
+                   = $have_english;
+
+               if ($song_god_obj->create($parameter_array)) {
+
+                  $type = 'success';
+                  $parameter = array("none"=>"none");
+                  $error_messanger = new LMErrorMessenger($type, $parameter);
+                  $error_messanger->printErrorJSON();
+                  unset($error_messanger);
+
+               } else {
+
+                  $type = 'unknow_error';
+                  $parameter = array("none"=>"none");
+                  $error_messanger = new LMErrorMessenger($type, $parameter);
+                  $error_messanger->printErrorJSON();
+                  unset($error_messanger);
+
+               }
+
+            }// end if (empty($song_id))
+
+         }
+
+
+         break;
+
+      case 'check-add-song':
+
+         $validate_check_song_kkbox_url
+             = LMValidateHelper::
+                  validateNoEmpty($_POST['check_song_kkbox_url']);
+
+         if (!$validate_check_song_kkbox_url) {
+            $type = 'not_exist_value';
+            $parameter = array("none"=>"none");
+            $error_messanger = new LMErrorMessenger($type, $parameter);
+            $error_messanger->printErrorJSON();
+            unset($error_messanger);
+         } else {
+
+            $check_song_kkbox_url = $_POST['check_song_kkbox_url'];
+
+            $song_god_obj = new LMSongGod();
+
+            $instance_id = 0;
+            $instance_id = $song_god_obj->findBYKKBOXURL($check_song_kkbox_url);
+
+
+            if ($instance_id) {
+
+               $html_block = 'song_exist';
+               echo $html_block;
+
+            } else {
+
+               $kkbox_link = 'http://tw.kkbox.com';
+               $song_kkbox_url = $check_song_kkbox_url;
+
+               // get song detail
+               $yql_query = urlencode('SELECT * FROM html WHERE url="'.$song_kkbox_url.'"');
+               $song_page_html = file_get_contents('http://query.yahooapis.com/v1/public/yql?q='.$yql_query.'&format=json');
+               $song_page_dom = json_decode($song_page_html);
+
+               // get lyric info
+               $kk_lyric = $song_page_dom->query->results->body->div[3]->div[1]->div[0]->div[2]->p->content;
+               //print_r($kk_lyric);
+
+               // parse wrighter
+               $kk_lyric_array = explode('：', $kk_lyric);
+               //print_r($kk_lyric_array);
+
+               // parse lyricist
+               $parse_lyricist = explode('   ', $kk_lyric_array[1]);
+               $in_lyricist_name = trim($parse_lyricist[0]);
+
+               // parse lyricist
+               //$parse_composer = explode(' ', $kk_lyric_array[2]);
+               $parse_composer = explode("\n", $kk_lyric_array[2]);
+               $in_composer_name = trim($parse_composer[0]);
+
+               // parse lyric
+               //$parse_lyric = explode("\n", $kk_lyric_array[4]);
+               $parse_lyric = explode("\n", $kk_lyric_array[2]);
+               $parse_lyric = array_slice($parse_lyric, 1);
+               //print_r($parse_lyric);
+               $normalize_lyric_array = array();
+               foreach ($parse_lyric as $key => $value) {
+                  $normal_value = nl2br(trim($value));
+                  $normal_value = str_replace('<br />', '', $normal_value);
+                  $normal_value = str_replace('<br/>', '', $normal_value);
+                  $normal_value = str_replace('<br>', '', $normal_value);
+                  if ($normal_value!='') {
+                     array_push($normalize_lyric_array, trim($value));
+                  }
+               }
+               //print_r($normalize_lyric_array);
+               $in_lyric = implode("\n", $normalize_lyric_array);
+
+               // get performer info
+               $in_performer_name = trim($song_page_dom->query->results->body->div[3]->div[0]->ul->li[1]->a->content);
+               $in_performer_url = $kkbox_link.$song_page_dom->query->results->body->div[3]->div[0]->ul->li[1]->a->href;
+
+               // get disc info
+               $in_disc_name = trim($song_page_dom->query->results->body->div[3]->div[0]->ul->li[2]->a->content);
+               $in_disc_url = $kkbox_link.$song_page_dom->query->results->body->div[3]->div[0]->ul->li[2]->a->href;
+               $in_disc_src = $song_page_dom->query->results->body->div[3]->div[1]->div[0]->div[1]->div->div[0]->img->src;
+               //print_r($song_page_dom->query->results->body->div[3]->div[1]->div[0]->div[1]);
+               $in_disc_genre = $song_page_dom->query->results->body->div[3]->div[1]->div[0]->div[1]->div->div[1]->dl->dd[1]->p;
+               $in_disc_release = trim($song_page_dom->query->results->body->div[3]->div[1]->div[0]->div[1]->div->div[1]->dl->dd[2]->p).'-01';
+
+               // get song info
+               $in_song_name = trim($song_page_dom->query->results->body->div[3]->div[0]->ul->li[3]->a->content);
+               //$in_song_url = $kkbox_link.$song_page_dom->query->results->body->div[3]->div[0]->ul->li[3]->a->href;
+
+               require SITE_ROOT."/ajax-action/SongActionView/add-song-form.php";
+
+            }
+
+            unset($song_god_obj);
+         }
+
+         break;
+
       case 'delete-lyric-block':
 
          $validate_lyrics_block_truth_id
@@ -250,6 +541,69 @@ class SongAction extends LMRESTControl implements LMRESTfulInterface
 
                $song_obj = new LMSong($song_id);
                $song_obj->audio_path = $retunr_value;
+
+               if ($song_obj->save()) {
+
+                  $type = 'success';
+                  $parameter = array("none"=>"none");
+                  $error_messanger = new LMErrorMessenger($type, $parameter);
+                  $error_messanger->printErrorJSON();
+                  unset($error_messanger);
+
+               } else {
+
+                  $type = 'unknow_error';
+                  $parameter = array("none"=>"none");
+                  $error_messanger = new LMErrorMessenger($type, $parameter);
+                  $error_messanger->printErrorJSON();
+                  unset($error_messanger);
+
+               }
+
+               unset($song_obj);
+            } else {
+               $type = 'unknow_error';
+               $parameter = array("none"=>"none");
+               $error_messanger = new LMErrorMessenger($type, $parameter);
+               $error_messanger->printErrorJSON();
+               unset($error_messanger);
+            }
+
+         }
+
+         break;
+
+      case 'upload-midi':
+
+         // 5 minutes execution time
+         @set_time_limit(5 * 60);
+
+         $validate_song_id
+             = LMValidateHelper::
+                  validateNoEmpty($_POST['song_id']);
+
+         if (!$validate_song_id) {
+            $type = 'not_exist_value';
+            $parameter = array("none"=>"none");
+            $error_messanger = new LMErrorMessenger($type, $parameter);
+            $error_messanger->printErrorJSON();
+            unset($error_messanger);
+         } else {
+
+            $song_id = $_POST['song_id'];
+            $target_file_name = MIDI_ROOT.'/'.$song_id;
+
+            $retunr_value = LMUploadHelper::pluploadProcess(
+               $_REQUEST,
+               $_SERVER,
+               $_FILES,
+               $target_file_name
+            );
+
+            if ($retunr_value!='fail') {
+
+               $song_obj = new LMSong($song_id);
+               $song_obj->midi_path = $retunr_value;
 
                if ($song_obj->save()) {
 

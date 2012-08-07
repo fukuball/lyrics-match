@@ -41,13 +41,26 @@ foreach ($song_list as $song_list_data) {
       <?=$song_obj->release_date?>
    </td>
    <td id="song-td-audio-<?=$song_obj->getId()?>" width="100px">
-      <a href="<?=$song_obj->getMidiUrl()?>" target="_blank">midi</a>
-      &nbsp;|&nbsp;
+      <?php
+      if (!empty($song_obj->midi_path)) {
+      ?>
+      <a href="<?=$song_obj->getMidiUrl()?>" target="_blank">midi 連結</a>
+      <br/>
+      <br/>
+      <?php
+      }
+      ?>
+      <a class="upload-midi-link" data-songid="<?=$song_obj->getId()?>">
+         midi 上傳
+      </a>
+      <br/>
+      <br/>
       <?php
       if (!empty($song_obj->audio_path)) {
       ?>
-      <a href="<?=$song_obj->getAudioUrl()?>" target="_blank">mp3</a>
-      &nbsp;|&nbsp;
+      <a href="<?=$song_obj->getAudioUrl()?>" target="_blank">mp3 連結</a>
+      <br/>
+      <br/>
       <?php
       }
       ?>
