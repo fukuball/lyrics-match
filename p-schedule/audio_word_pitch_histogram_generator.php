@@ -52,9 +52,9 @@ foreach ($query_result as $query_result_data) {
 
    $music_feature_obj->pitch_audio_word_histogram = $histogram_array_string;
    if ($music_feature_obj->save()) {
-      echo "update music feature $music_feature_obj->getId() success \n";
+      echo "update music feature ".$music_feature_obj->getId()." success \n";
    } else {
-      echo "update music feature $music_feature_obj->getId() fail \n";
+      echo "update music feature ".$music_feature_obj->getId()." fail \n";
    }
 
    unset($music_feature_obj);
