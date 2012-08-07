@@ -56,7 +56,8 @@ audio_word_array = np.array(matrix_array)
 #print audio_word_array.shape
 res, idx = kmeans2(audio_word_array, 100)
 
-print idx
+for code_word_id in idx :
+   print code_word_id+1
 
 #try:
 #   cur.execute("""INSERT INTO music_audio_code_book (type,create_time,modify_time) VALUES (%s, NOW(), NOW())""",("timbre"))
