@@ -51,7 +51,7 @@ foreach ($query_result as $query_result_data) {
 
    }
 
-   $timbre_audio_word = $query_result_data['timbre_audio_word'];
+   /*$timbre_audio_word = $query_result_data['timbre_audio_word'];
    $timbre_audio_word_array = json_decode($timbre_audio_word);
    foreach ($timbre_audio_word_array as $key=>$value) {
       array_push($t_audio_word_array, $value);
@@ -65,7 +65,7 @@ foreach ($query_result as $query_result_data) {
           = 'timbre';
 
       $music_audio_word_god->create($parameter_array);
-   }
+   }*/
 
 }
 
@@ -86,7 +86,7 @@ $music_audio_word_matrix_god->create($parameter_array);
 
 echo "create pitch audio word \n";
 
-$parameter_array = array();
+/*$parameter_array = array();
 $parameter_array['matrix']
     = $t_audio_word;
 $parameter_array['type']
@@ -94,7 +94,7 @@ $parameter_array['type']
 
 $music_audio_word_matrix_god->create($parameter_array);
 
-echo "create timbre audio word \n";
+echo "create timbre audio word \n";*/
 
 unset($music_audio_word_matrix_god);
 
