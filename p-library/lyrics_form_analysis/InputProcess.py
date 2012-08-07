@@ -107,8 +107,12 @@ class Tone2Pitch(LyricsInput):
 
 			print self.__lines[i]
 
+
+			if self.__lines[i][0] == None:
+				self.__lines[i][0] == [75, 75]
+
 			# 若是清聲則與前一個聲調一樣音高走勢	
-			self.__lines[i] = map(lambda (idx, contour): contour or self.__lines[idx - 1], enumerate(self.__lines[i]))
+			self.__lines[i] = map(lambda (idx, contour): contour or self.__lines[i][idx - 1], enumerate(self.__lines[i]))
 
 			self.__lines[i] = self.__flatten(self.__lines[i])
 
