@@ -100,7 +100,7 @@ class FromDB(LyricsInput):
 
 
 		for line in lineList:
-			print "line = ", line
+			print "line = ", line["line"]
 
 			sql = "SELECT offset, length FROM lyrics_sentence WHERE song_id = %d AND offset >= %d AND offset < %d ORDER BY offset ASC" % \
 									(songId, line["offset"], line["offset"] + line["length"])
@@ -167,7 +167,7 @@ class FromDB(LyricsInput):
 			feature["word_count"].append(wordCountLine)
 			feature["pinyin"].append(pinyinLine)
 			feature["tone"].append(toneLine)
-			feature["pos"].append(posline)
+			feature["pos"].append(posLine)
 
 			print "WC", wordCountLine
 			print "pinyin", pinyinLine

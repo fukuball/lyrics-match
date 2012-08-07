@@ -59,6 +59,8 @@ if __name__ == "__main__":
 		formAnalysis(song["id"])
 
 
+	dictCursor.close()
+	conn.close()
 
 
 
