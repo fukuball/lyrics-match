@@ -82,7 +82,9 @@ for code_word in res :
 count = 0;
 for code_word_id in idx :
    code_word_id = code_word_id+1
+   print code_word_id
    count = count+1
+   print count
 
    try:
       cur.execute("""UPDATE music_audio_word SET code_word_id=%s, modify_time=NOW() WHERE id=%s """,(code_word_id,count))
