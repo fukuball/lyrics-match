@@ -82,20 +82,20 @@ class FromDB(LyricsInput):
 		baseCursor = conn.cursor()
 
 		dictCursor.execute("SELECT * FROM lyrics_consonant_mapping")
-		conList = dictCursor.fetchall()
+		conList = list(dictCursor.fetchall())
 		
 		dictCursor.execute("SELECT * FROM lyrics_vowel_mapping")
-		vowelList = dictCursor.fetchall()
+		vowelList = list(dictCursor.fetchall())
 
 		dictCursor.execute("SELECT * FROM lyrics_tone_mapping")
-		toneList = dictCursor.fetchall()
+		toneList = list(dictCursor.fetchall())
 
 		dictCursor.execute("SELECT pos FROM lyrics_pos_mapping")
-		posList = dictCursor.fetchall()
+		posList = list(dictCursor.fetchall())
 		posList = map(lambda pos: pos["pos"], posList)
 
 		dictCursor.execute("SELECT line, offset, length FROM lyrics_line WHERE song_id = %d ORDER BY offset ASC" % songId)
-		lineList = dictCursor.fetchall()
+		lineList = list(dictCursor.fetchall())
 
 
 
@@ -105,7 +105,8 @@ class FromDB(LyricsInput):
 			sql = "SELECT offset, length FROM lyrics_sentence WHERE song_id = %d AND offset >= %d AND offset < %d ORDER BY offset ASC" % \
 									(songId, line["offset"], line["offset"] + line["length"])
 			dictCursor.execute(sql)
-			sentenceList = dictCurosr.fetchall()
+			sentenceList = list(dictCursor.fetchall())
+			
 
 			wordCountLine = []
 			pinyinLine = []
@@ -121,7 +122,7 @@ class FromDB(LyricsInput):
 
 
 				# 裡面確定都是中文字
-				wordList = dictCursor.fetchall()
+				wordList = list(dictCursor.fetchall())
 
 
 				# 單句字數
@@ -151,7 +152,7 @@ class FromDB(LyricsInput):
 						(songId, sentence["offset"], sentence["offset"] + sentence["length"])
 				dictCursor.execute(sql)
 
-				termList = dictCurosr.fetchall()
+				termList = list(dictCursor.fetchall())
 
 				
 				# 詞性
