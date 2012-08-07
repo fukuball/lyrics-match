@@ -95,3 +95,8 @@ try:
 except mysql.Error, e:
    db.rollback()
    print "An error has been passed. %s" %e
+
+
+
+cur.close()
+db.close()

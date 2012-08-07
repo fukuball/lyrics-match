@@ -225,9 +225,9 @@ def run(fileName, groundTruth):
 #run('1991_哭砂.txt'.decode('utf-8'), [[[1, 3], [4, 6], [11, 13]], [[7, 10], [14,17]]])
 #run('1990_我很醜可是我很溫柔.txt'.decode('utf-8'), [[[1, 4], [9, 12]], [[5, 8], [13, 16], [17, 20]]])
 #run('1993_吻別_win.txt'.decode('utf-8'), [[[1, 8], [11, 18]], [[9, 10], [19, 20], [21, 22]]])
-run('1990_這城市有愛_win.txt'.decode('utf-8'), [ {"group": [[1, 7], [8, 14], [23, 29]], "label": "verse1"}, 
-						{"group": [[15, 22], [30, 37]], "label": "chorus"}, 
-						{"group": [[38, 38]], "label": "outro"} ])
+#run('1990_這城市有愛_win.txt'.decode('utf-8'), [ {"group": [[1, 7], [8, 14], [23, 29]], "label": "verse1"}, 
+#						{"group": [[15, 22], [30, 37]], "label": "chorus"}, 
+#						{"group": [[38, 38]], "label": "outro"} ])
 #run('2001_張學友_我真的受傷了.txt'.decode('utf-8'), [[[3, 6], [11, 14], [19, 22]], [[7, 10], [15, 18]]])
 
 #run('突然好想你.txt'.decode('utf-8'), [[[1, 2], [3, 4], [7, 8], [13, 14]], [[5, 6], [11, 12]]])
@@ -241,3 +241,6 @@ run('1990_這城市有愛_win.txt'.decode('utf-8'), [ {"group": [[1, 7], [8, 14]
 #run('1998_要知道你的感覺.txt'.decode('utf-8'))
 #run('為什麼.txt'.decode('utf-8'))
 
+run('倒帶.txt'.decode('utf-8'), [ {"group": [[1, 7], [8, 14], [23, 29]], "label": "verse1"}, 
+						{"group": [[15, 22], [30, 37]], "label": "chorus"}, 
+					{"group": [[38, 38]], "label": "outro"} ])
