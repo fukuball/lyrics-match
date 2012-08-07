@@ -38,8 +38,8 @@ db = mysql.connect(host    = CONST.DBHOST,
                    db      = CONST.DBNAME)
 
 matrix_id = sys.argv[1];
-count_from = sys.argv[2];
-code_word_from = sys.argv[3];
+count_from = int(sys.argv[2]);
+code_word_from = int(sys.argv[3]);
 
 cur = db.cursor()
 
