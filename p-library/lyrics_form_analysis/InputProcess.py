@@ -95,15 +95,19 @@ class Tone2Pitch(LyricsInput):
 		self.__lines = lines
 
 
-
+		# 字調轉旋律的規則
 		def transform(tone):
 			#pitchList = [0, 4, 2, 1, 3]
-			pitchList = [[None], [75, 75], [64, 69], [64, 61], [71, 65]]
 			#pitchList = [0, 75, 64, 61, 71]
+			pitchList = [None, [75, 75], [64, 69], [64, 61], [71, 65], None]
 			return pitchList[tone]
 
 		for i in range(len(self.__lines)):
 			self.__lines[i] = map(transform, self.__lines[i])
+
+			# 若是清聲則與前一個聲調一樣音高走勢	
+			self.__lines[i] = map(lambda (idx, contour): contour or self.__lines[idx - 1], enumerate(self.__lines[i]))
+
 			self.__lines[i] = self.__flatten(self.__lines[i])
 
 		self.processNext(self.__processObj, self.__lines)

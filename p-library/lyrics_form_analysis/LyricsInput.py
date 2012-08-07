@@ -63,6 +63,7 @@ class FromDB(LyricsInput):
 		import MySQLdb as mysql
 		import MySQLdb.cursors as cursors
 		import sys
+		from InputProcess import Tone2Pitch
 
 		sys.path.append("www/html/lyrics-match/p-config")
 		import db_stage
@@ -100,7 +101,6 @@ class FromDB(LyricsInput):
 
 
 		for line in lineList:
-			print "line = ", line["line"]
 
 			sql = "SELECT offset, length FROM lyrics_sentence WHERE song_id = %d AND offset >= %d AND offset < %d ORDER BY offset ASC" % \
 									(songId, line["offset"], line["offset"] + line["length"])
@@ -164,16 +164,18 @@ class FromDB(LyricsInput):
 
 				posLine.append('')
 
+
 			feature["word_count"].append(wordCountLine)
 			feature["pinyin"].append(pinyinLine)
 			feature["tone"].append(toneLine)
 			feature["pos"].append(posLine)
 
-			print "WC", wordCountLine
-			print "pinyin", pinyinLine
-			print "tone", toneLine
-			print "pos", posLine
-			exit()
+
+		Tone2Pitch().process(feature["tone"])
+
+		print lineList[0]["line"]		
+		print feature["tone"][0]
+		exit()
 
 
 
