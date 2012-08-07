@@ -46,7 +46,7 @@ foreach ($query_result as $query_result_data) {
    $query_result2 = $db_obj->selectCommand($select_sql2);
 
    foreach ($query_result2 as $query_result_data2) {
-      echo $query_result_data['word_count'];
+      echo $query_result_data2['word_count'];
    }
 
 }
