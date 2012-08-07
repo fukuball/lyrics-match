@@ -35,7 +35,7 @@ db = mysql.connect(host    = CONST.DBHOST,
 
 # 從資料庫抓資料
 cur = db.cursor()
-cur.execute("SELECT * FROM music_feature_matrix WHERE id=1")
+cur.execute("SELECT * FROM music_feature_matrix WHERE id=5")
 
 music_feature_matrix = "";
 row_song_id = "";
