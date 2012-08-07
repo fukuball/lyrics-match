@@ -60,6 +60,8 @@ class LMMusicFeature extends LMActiveRecord
    public $timbre_std_vector;
    public $pitch_audio_word;
    public $timbre_audio_word;
+   public $pitch_audio_word_histogram;
+   public $timbre_audio_word_histogram;
 
    /**
     * Method __construct initialize instance
