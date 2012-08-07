@@ -173,10 +173,11 @@ class FromDB(LyricsInput):
 
 		Tone2Pitch().process(feature["tone"])
 
-		print lineList[0]["line"]		
-		print feature["tone"][0]
-		exit()
 
+		dictCursor.close()
+		conn.close()
+
+		return feature
 
 
 
