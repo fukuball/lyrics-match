@@ -84,7 +84,7 @@ class FromDB(LyricsInput):
 		dictCursor.execute("SELECT * FROM lyrics_consonant_mapping")
 		conList = dictCursor.fetchall()
 		
-		dictCursor.execute("SELECT * FROM lyrics_vowel_mappin")
+		dictCursor.execute("SELECT * FROM lyrics_vowel_mapping")
 		vowelList = dictCursor.fetchall()
 
 		dictCursor.execute("SELECT * FROM lyrics_tone_mapping")
