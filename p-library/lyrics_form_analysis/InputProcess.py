@@ -105,9 +105,6 @@ class Tone2Pitch(LyricsInput):
 		for i in range(len(self.__lines)):
 			self.__lines[i] = map(transform, self.__lines[i])
 
-			print self.__lines[i]
-
-
 			if self.__lines[i][0] == None:
 				self.__lines[i][0] == [75, 75]
 
