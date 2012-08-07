@@ -38,6 +38,8 @@ db = mysql.connect(host    = CONST.DBHOST,
                    db      = CONST.DBNAME)
 
 matrix_id = sys.argv[1];
+count_from = sys.argv[2];
+code_word_from = sys.argv[3];
 
 cur = db.cursor()
 
@@ -79,9 +81,9 @@ for code_word in res :
       print "An error has been passed. %s" %e
 
 
-count = 0;
+count = count_from;
 for code_word_id in idx :
-   code_word_id = code_word_id+1
+   code_word_id = code_word_id+code_word_from+1
    print code_word_id
    count = count+1
    print count
