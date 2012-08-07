@@ -54,7 +54,7 @@ matrix_array = json.loads(matrix)
 
 audio_word_array = np.array(matrix_array)
 #print audio_word_array.shape
-res, idx = kmeans2(audio_word_array, 150)
+res, idx = kmeans2(audio_word_array, 2)
 
 print idx
 
