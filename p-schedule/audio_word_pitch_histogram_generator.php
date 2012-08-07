@@ -45,10 +45,13 @@ foreach ($query_result as $query_result_data) {
 
    $query_result2 = $db_obj->selectCommand($select_sql2);
 
+   $histogram_array = array();
    foreach ($query_result2 as $query_result_data2) {
-      echo $query_result_data2['word_count'];
+      array_push($histogram_array, $query_result_data2['word_count']);
    }
+   $histogram_array_string = implode(',', $histogram_array);
 
+   echo $histogram_array_string;
 }
 
 require_once SITE_ROOT."/p-config/application-unsetter.php";
