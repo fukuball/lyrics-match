@@ -92,7 +92,7 @@ class LyricsForm:
 					lyricsLine -= set(range(start, end + 1))
 
 
-			if len(combine) > 0:
+			if len(cohesionList) > 0:
 				"""
 				判斷副歌
 				"""
