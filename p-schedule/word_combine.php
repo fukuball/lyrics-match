@@ -35,10 +35,10 @@ foreach ($query_result as $query_result_data) {
 
    if (utf8_encode($term) == utf8_encode('不')) {
 
-      if (($song_id=186 && $offset==105)
-       || ($song_id=186 && $offset==210)
-       || ($song_id=186 && $offset==313)
-       || ($song_id=237 && $offset==343)
+      if (($song_id==186 && $offset==105)
+       || ($song_id==186 && $offset==210)
+       || ($song_id==186 && $offset==313)
+       || ($song_id==237 && $offset==343)
       ) {
 
       } else {
