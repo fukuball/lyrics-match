@@ -42,7 +42,7 @@ foreach ($query_result as $query_result_data) {
       ) {
 
       } else {
-         $select_sql2 = "SELECT t.* FROM lyrics_term t WHERE t.id > '$id' AND t.song_id='$song_id'";
+         $select_sql2 = "SELECT t.* FROM lyrics_term t WHERE t.id > '$id' AND t.song_id='$song_id' LIMIT 1";
          $query_result2 = $db_obj->selectCommand($select_sql2);
          foreach ($query_result2 as $query_result_data2) {
 
