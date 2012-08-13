@@ -79,8 +79,6 @@ class LyricsForm:
 				cohesion = self.__allFamilyM[coor[0]][coor[1]]["cohesion"]
 				family = self.__allFamilyM[coor[0]][coor[1]]["family"]
 	
-				print cohesion, family
-
 				lineNumFamily = map(lambda block: [block[0] + 1, block[1] + 1], family)
 
 				familyList.append(lineNumFamily)
