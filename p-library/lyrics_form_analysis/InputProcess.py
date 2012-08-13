@@ -106,7 +106,7 @@ class Tone2Pitch(LyricsInput):
 		def findFirst(i, idx):
 			if self.__lines[i][idx - 1]:
 				return self.__lines[i][idx - 1]
-			else
+			else:
 				findFirst(i, idx - 1)
 
 
