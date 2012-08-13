@@ -92,84 +92,84 @@ class LyricsForm:
 					lyricsLine -= set(range(start, end + 1))
 
 
-			
-			"""
-			判斷副歌
-			"""
-			maxCohesion = max(cohesionList)
-			tempList = []
+			if len(combine) > 0:
+				"""
+				判斷副歌
+				"""
+				maxCohesion = max(cohesionList)
+				tempList = []
 
-			for i in range(len(cohesionList)):
-				if cohesionList[i] == maxCohesion:
-					tempList.append((i, len(familyList[i])))
-			
-			idx = numpy.argmax(map(lambda pair: pair[1], tempList))
-			chorusIdx = tempList[idx][0]
-			chorus = {"label": "chorus", "group": familyList[chorusIdx]}
-			form.append(chorus)
+				for i in range(len(cohesionList)):
+					if cohesionList[i] == maxCohesion:
+						tempList.append((i, len(familyList[i])))
+				
+				idx = numpy.argmax(map(lambda pair: pair[1], tempList))
+				chorusIdx = tempList[idx][0]
+				chorus = {"label": "chorus", "group": familyList[chorusIdx]}
+				form.append(chorus)
 
-			familyList.pop(chorusIdx)
-
-
-			"""
-			判斷主歌
-			"""
-			for i in range(len(familyList)):
-				verse = {"label": "verse" + str(i + 1), "group": familyList[i]}
-				form.append(verse)
+				familyList.pop(chorusIdx)
 
 
-
-			"""
-			判斷前段、橋段與尾聲
-			"""
-			if len(lyricsLine) > 0:
-				lyricsLine = list(lyricsLine)
-				prevLineNum = lyricsLine[0] - 1
-				block = []
-				remainBlocks = []
+				"""
+				判斷主歌
+				"""
+				for i in range(len(familyList)):
+					verse = {"label": "verse" + str(i + 1), "group": familyList[i]}
+					form.append(verse)
 
 
-				for i in range(0, len(lyricsLine)):
+
+				"""
+				判斷前段、橋段與尾聲
+				"""
+				if len(lyricsLine) > 0:
+					lyricsLine = list(lyricsLine)
+					prevLineNum = lyricsLine[0] - 1
+					block = []
+					remainBlocks = []
+
+
+					for i in range(0, len(lyricsLine)):
+						
+						if prevLineNum + 1 != lyricsLine[i]:
+							"""
+							一個 block 形成
+							"""
+							remainBlocks.append([ block[0], block[-1] ])
+							block = [lyricsLine[i]]
+						else:
+							block.append(lyricsLine[i])
+
+
+						prevLineNum = lyricsLine[i]
+
+
+
+					remainBlocks.append([ block[0], block[-1] ])
+
 					
-					if prevLineNum + 1 != lyricsLine[i]:
-						"""
-						一個 block 形成
-						"""
-						remainBlocks.append([ block[0], block[-1] ])
-						block = [lyricsLine[i]]
-					else:
-						block.append(lyricsLine[i])
+					"""
+					加入前段
+					"""
+					if remainBlocks[0][0] == 1:
+						form.append({"label": "intro", "group": [remainBlocks[0]]})
+
+					"""
+					加入橋段
+					"""
+					if len(remainBlocks[1:-2]) > 0:
+						form.append({"label": "bridge", "group": [remainBlocks[1:-2]]})
+
+					"""
+					加入尾聲
+					"""
+					if remainBlocks[-1][1] == lineNum:
+						form.append({"label": "outro", "group": [remainBlocks[-1]]})
 
 
-					prevLineNum = lyricsLine[i]
-
-
-
-				remainBlocks.append([ block[0], block[-1] ])
-
-				
-				"""
-				加入前段
-				"""
-				if remainBlocks[0][0] == 1:
-					form.append({"label": "intro", "group": [remainBlocks[0]]})
-
-				"""
-				加入橋段
-				"""
-				if len(remainBlocks[1:-2]) > 0:
-					form.append({"label": "bridge", "group": [remainBlocks[1:-2]]})
-
-				"""
-				加入尾聲
-				"""
-				if remainBlocks[-1][1] == lineNum:
-					form.append({"label": "outro", "group": [remainBlocks[-1]]})
-
-
-				
-			resultList.append({"score": combine["score"], "form": form})
+					
+				resultList.append({"score": combine["score"], "form": form})
 				
 
 
