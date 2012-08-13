@@ -102,14 +102,22 @@ class Tone2Pitch(LyricsInput):
 			pitchList = [None, [75, 75], [64, 69], [64, 61], [71, 65], None]
 			return pitchList[tone]
 
+		
+		def findFirst(i, idx):
+			if self.__lines[i][idx - 1]:
+				return self.__lines[i][idx - 1]
+			else
+				findFirst(i, idx - 1)
+
+
 		for i in range(len(self.__lines)):
 			self.__lines[i] = map(transform, self.__lines[i])
 
 			if self.__lines[i][0] == None:
 				self.__lines[i][0] == [75, 75]
 
-			# 若是清聲則與前一個聲調一樣音高走勢	
-			self.__lines[i] = map(lambda (idx, contour): contour or self.__lines[i][idx - 1], enumerate(self.__lines[i]))
+			# 若是清聲則與之前第一個不是輕聲的聲調一樣的音高走勢	
+			self.__lines[i] = map(lambda (idx, contour): contour or findFirst(i, idx), enumerate(self.__lines[i]))
 
 			self.__lines[i] = self.__flatten(self.__lines[i])
 
