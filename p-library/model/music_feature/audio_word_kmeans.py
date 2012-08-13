@@ -18,10 +18,6 @@ import sys
 import numpy as np
 from scipy.cluster.vq import *
 import MySQLdb as mysql
-import matplotlib
-matplotlib.use('Agg')
-import pylab
-pylab.close()
 try:
     import json
 except ImportError:
@@ -62,17 +58,13 @@ audio_word_array = np.array(matrix_array)
 #print audio_word_array.shape
 res, idx = kmeans2(audio_word_array, 50)
 
-# convert groups to rbg 3-tuples.
-pylab.unravel_index(audio_word_array.argmax(), audio_word_array.shape)
-pylab.savefig(matrix_id+'clust.png')
-
-#try:
-#   cur.execute("""INSERT INTO music_audio_code_book (type,create_time,modify_time) VALUES (%s, NOW(), NOW())""",(matrix_type))
-#   db.commit()
-#   print "success"
-#except mysql.Error, e:
-#   db.rollback()
-#   print "An error has been passed. %s" %e
+try:
+   cur.execute("""INSERT INTO music_audio_code_book (type,create_time,modify_time) VALUES (%s, NOW(), NOW())""",(matrix_type))
+   db.commit()
+   print "success"
+except mysql.Error, e:
+   db.rollback()
+   print "An error has been passed. %s" %e
 
 code_book_id = cur.lastrowid
 
@@ -80,13 +72,13 @@ for code_word in res :
    code_word_json = json.dumps(code_word.tolist())
    print code_word_json
 
-   #try:
-   #   cur.execute("""INSERT INTO muisc_audio_code_word (code_book_id,audio_word,type,create_time,modify_time) VALUES (%s, %s, %s, NOW(), NOW())""",(code_book_id,code_word_json,matrix_type))
-   #   db.commit()
-   #   print "success insert code word"
-   #except mysql.Error, e:
-   #   db.rollback()
-   #   print "An error has been passed. %s" %e
+   try:
+      cur.execute("""INSERT INTO muisc_audio_code_word (code_book_id,audio_word,type,create_time,modify_time) VALUES (%s, %s, %s, NOW(), NOW())""",(code_book_id,code_word_json,matrix_type))
+      db.commit()
+      print "success insert code word"
+   except mysql.Error, e:
+      db.rollback()
+      print "An error has been passed. %s" %e
 
 
 count = count_from;
@@ -96,10 +88,10 @@ for code_word_id in idx :
    count = count+1
    print count
 
-   #try:
-   #   cur.execute("""UPDATE music_audio_word SET code_word_id=%s, modify_time=NOW() WHERE id=%s """,(code_word_id,count))
-   #   db.commit()
-   #   print "success update audio word code word label"
-   #except mysql.Error, e:
-   #   db.rollback()
-   #   print "An error has been passed. %s" %e
+   try:
+      cur.execute("""UPDATE music_audio_word SET code_word_id=%s, modify_time=NOW() WHERE id=%s """,(code_word_id,count))
+      db.commit()
+      print "success update audio word code word label"
+   except mysql.Error, e:
+      db.rollback()
+      print "An error has been passed. %s" %e
