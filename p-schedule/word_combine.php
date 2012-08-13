@@ -51,7 +51,7 @@ foreach ($query_result as $query_result_data) {
             $pos = 'ADV';
             $length = $length+$query_result_data2['length'];
 
-            echo "combine :".$term;." \n";
+            echo "combine :".$term." \n";
 
          }
       }
