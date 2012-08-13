@@ -50,7 +50,7 @@ class FormFinder:
 		self.__MAXLEN = self.__familyM.shape[0]
 	
 
-		self.__MAXKIND = 3
+		self.__MAXKIND = 2
 
 
 
