@@ -42,7 +42,7 @@ foreach ($query_result as $query_result_data) {
       ) {
 
       } else {
-         $select_sql2 = "SELECT t.* FROM lyrics_term t WHERE t.id > 'id' AND t.song_id='$song_id'";
+         $select_sql2 = "SELECT t.* FROM lyrics_term t WHERE t.id > '$id' AND t.song_id='$song_id'";
          $query_result2 = $db_obj->selectCommand($select_sql2);
          foreach ($query_result2 as $query_result_data2) {
 
@@ -57,7 +57,7 @@ foreach ($query_result as $query_result_data) {
 
    }
 
-   $insert_sql = "INSERT INTO lyrics_term_combine (song_id,term,pos,offset,length,create_time,modify_time) VALUES ('$song_id', '$term', '$pos', '$offset', '$length', NOW(), NOW())";
+   $insert_sql = "INSERT INTO lyrics_term_combine (song_id,term,pos,offset,length,create_time,modify_time) VALUES ('".addslashes($song_id)."', '".addslashes($term)."', '".addslashes($pos)."', '$offset', '$length', NOW(), NOW())";
    $query_result3 = $db_obj->insertCommand($insert_sql);
 
 }// end foreach ($query_result as $query_result_data) {
