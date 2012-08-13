@@ -18,6 +18,10 @@ import sys
 import numpy as np
 from scipy.cluster.vq import *
 import MySQLdb as mysql
+import matplotlib
+matplotlib.use('Agg')
+import pylab
+pylab.close()
 try:
     import json
 except ImportError:
