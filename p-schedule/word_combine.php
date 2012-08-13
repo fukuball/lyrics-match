@@ -16,7 +16,7 @@ require_once dirname(dirname(__FILE__))."/p-config/application-setter.php";
 
 $db_obj = LMDBAccess::getInstance();
 
-$select_sql = "SELECT t.* FROM lyrics_term t WHERE t.term = '不'";
+$select_sql = "SELECT t.* FROM lyrics_term t";
 
 $query_result = $db_obj->selectCommand($select_sql);
 $skip_id = 0;
@@ -33,23 +33,28 @@ foreach ($query_result as $query_result_data) {
       continue;
    }
 
-   if (($song_id=186 && $offset==105)
-    || ($song_id=186 && $offset==210)
-    || ($song_id=186 && $offset==313)
-    || ($song_id=237 && $offset==343)
-   ) {
+   if (utf8_encode($term) == utf8_encode('不')) {
 
-   } else {
-      $select_sql2 = "SELECT t.* FROM lyrics_term t WHERE t.id > 'id' AND t.song_id='$song_id'";
-      $query_result2 = $db_obj->selectCommand($select_sql2);
-      foreach ($query_result2 as $query_result_data2) {
+      if (($song_id=186 && $offset==105)
+       || ($song_id=186 && $offset==210)
+       || ($song_id=186 && $offset==313)
+       || ($song_id=237 && $offset==343)
+      ) {
 
-         $skip_id = $query_result_data2['id'];
-         $term = $term.$query_result_data2['term'];
-         $pos = 'ADV';
-         $length = $length+$query_result_data2['length'];
+      } else {
+         $select_sql2 = "SELECT t.* FROM lyrics_term t WHERE t.id > 'id' AND t.song_id='$song_id'";
+         $query_result2 = $db_obj->selectCommand($select_sql2);
+         foreach ($query_result2 as $query_result_data2) {
 
+            $skip_id = $query_result_data2['id'];
+            $term = $term.$query_result_data2['term'];
+            $pos = 'ADV';
+            $length = $length+$query_result_data2['length'];
+
+         }
       }
+
+
    }
 
    $insert_sql = "INSERT INTO lyrics_term_combine (song_id,term,pos,offset,length,create_time,modify_time) VALUES ('$song_id', '$term', '$pos', '$offset', '$length', NOW(), NOW())";
