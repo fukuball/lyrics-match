@@ -22,30 +22,30 @@
 <br class="clearboth" />
 <div id="accordion" style="width: 500px; margin: 10px auto;">
    <h3>
-      <a href="#">情非得已 &nbsp;&nbsp;&nbsp;原唱：庾澄慶</a>
+      <a href="#">情非得已 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;原唱：庾澄慶</a>
    </h3>
    <div>
       <ul>
-         <li>情非得已 &nbsp;&nbsp;&nbsp;演唱：若天依</li>
-         <li>幸福離我們很近 &nbsp;&nbsp;&nbsp;演唱：若天依</li>
+         <li><a class="r-link" data-id="1-1">情非得已</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;演唱：若天依</li>
+         <li><a class="r-link" data-id="1-2">幸福離我們很近</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;演唱：若天依</li>
       </ul>
    </div>
    <h3>
-      <a href="#">愛如潮水 &nbsp;&nbsp;&nbsp;原唱：張信哲</a>
+      <a href="#">愛如潮水 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;原唱：張信哲</a>
    </h3>
    <div>
       <ul>
-         <li>愛如潮水 &nbsp;&nbsp;&nbsp;演唱：若天依</li>
-         <li>愛你的餘溫 &nbsp;&nbsp;&nbsp;演唱：若天依</li>
+         <li><a class="r-link" data-id="2-1">愛如潮水</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;演唱：若天依</li>
+         <li><a class="r-link" data-id="2-2">愛你的餘溫</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;演唱：若天依</li>
       </ul>
    </div>
    <h3>
-      <a href="#">容易受傷的女人 原唱：王菲</a>
+      <a href="#">容易受傷的女人 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;原唱：王菲</a>
    </h3>
    <div>
       <ul>
-         <li>容易受傷的女人 &nbsp;&nbsp;&nbsp;演唱：若天依</li>
-         <li>情人之間的情人 &nbsp;&nbsp;&nbsp;演唱：若天依</li>
+         <li><a class="r-link" data-id="3-1">容易受傷的女人</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;演唱：若天依</li>
+         <li><a class="r-link" data-id="3-2">情人之間的情人</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;演唱：若天依</li>
       </ul>
    </div>
 </div>
