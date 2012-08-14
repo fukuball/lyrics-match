@@ -23,15 +23,25 @@
       <h4 style="margin-bottom:10px;">
          音樂合成試聽
       </h4>
-      <p id="audioplayer">Load Song</p>
-      <script type="text/javascript">
-      AudioPlayer.embed("audioplayer", {
-          soundFile: "http://sarasti.cs.nccu.edu.tw/lyrics-match/p-data/mp3/1.mp3",
-          titles: "<?=$song_obj->title?>",
-          artists: "若天依",
-          autostart: "no"
-      });
-      </script>
+      <div class="row">
+         <p id="audioplayer" style="pull-left">Load Song</p>
+         <script type="text/javascript">
+         AudioPlayer.embed("audioplayer", {
+             soundFile: "http://sarasti.cs.nccu.edu.tw/lyrics-match/p-data/mp3/1.mp3",
+             titles: "<?=$song_obj->title?>",
+             artists: "若天依",
+             autostart: "no"
+         });
+         </script>
+         <p style="pull-right">
+            <button class="btn btn-primary">
+               <i class="icon-share icon-white"></i>
+               <span>
+                  簡訊分享
+               </span>
+            </button>
+         </p>
+      </div>
       <hr/>
       <h4 style="margin-bottom:10px;">
          歌詞
