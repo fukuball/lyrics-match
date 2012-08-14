@@ -32,7 +32,7 @@ $message = $_GET['message'];
             <label>
                留言
             </label>
-            <textarea class="span4"><?=$message?></textarea>
+            <textarea class="span4" style="height:200px;"><?=$message?></textarea>
          </div>
       </div>
       <div class="modal-footer align-center">

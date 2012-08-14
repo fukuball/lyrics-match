@@ -36,7 +36,7 @@ $message = "我發現「".$song_r_obj->title."」歌詞可以配唱「".$song_o_
          });
          </script>
          <p class="pull-right">
-            <button id="send-sms-btn" data-message="<?=$url?>" class="btn btn-primary">
+            <button id="send-sms-btn" data-message="<?=$message?>" class="btn btn-primary">
                <i class="icon-share icon-white"></i>
                <span>
                   簡訊分享
