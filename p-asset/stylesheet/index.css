@@ -185,7 +185,8 @@ ul.nav {
    padding: 5px 10px;
 }
 
-.r-link {
+.ui-widget-content .r-link {
+   font-weight: bold;
    color: #36C;
 }
 
