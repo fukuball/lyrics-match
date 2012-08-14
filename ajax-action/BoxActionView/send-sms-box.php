@@ -12,6 +12,7 @@
  * @link     http://sarasti.cs.nccu.edu.tw
  */
 
+$message = $_GET['message'];
 ?>
 <div id="p-modal" class="modal hide fade" style="width:<?php echo htmlspecialchars($size); ?>;display: none; ">
    <div class="modal-header">
@@ -31,7 +32,7 @@
             <label>
                留言
             </label>
-            <textarea></textarea>
+            <textarea class="span4"><?=$message?></textarea>
          </div>
       </div>
       <div class="modal-footer align-center">
@@ -91,7 +92,7 @@
             $('#system-message').html('Success');
             $('#system-message').fadeOut();
 
-            $('#p-modal-block').empty();
+            $('#p-modal-block').modal('hide');
 
          } else {
 

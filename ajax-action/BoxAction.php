@@ -137,11 +137,14 @@ class BoxAction extends LMRESTControl implements LMRESTfulInterface
             $size = "500px";
          }
          $song_id = $_GET['song_id'];
-         $song_obj = new LMSong($song_id);
+         $song_id_array = explode('_', $song_id);
+         $song_o_obj = new LMSong($song_id_array[0]);
+         $song_r_obj = new LMSong($song_id_array[1]);
 
          include SITE_ROOT.'/ajax-action/BoxActionView/r-song-box.php';
 
-         unset($song_obj);
+         unset($song_o_obj);
+         unset($song_r_obj);
 
          break;
 

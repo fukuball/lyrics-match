@@ -32,8 +32,8 @@
    </h3>
    <div>
       <ul>
-         <li><a class="r-link" data-song-id="921">情非得已</a></li>
-         <li><a class="r-link" data-song-id="920">幸福離我們很近</a></li>
+         <li><a class="r-link" data-song-id="921_921">情非得已</a></li>
+         <li><a class="r-link" data-song-id="921_920">幸福離我們很近</a></li>
       </ul>
    </div>
    <h3>
@@ -41,8 +41,8 @@
    </h3>
    <div>
       <ul>
-         <li><a class="r-link" data-song-id="922">愛如潮水</a></li>
-         <li><a class="r-link" data-song-id="925">愛你的餘溫</a></li>
+         <li><a class="r-link" data-song-id="922_922">愛如潮水</a></li>
+         <li><a class="r-link" data-song-id="922_925">愛你的餘溫</a></li>
       </ul>
    </div>
    <h3>
@@ -50,8 +50,8 @@
    </h3>
    <div>
       <ul>
-         <li><a class="r-link" data-song-id="924">容易受傷的女人</a></li>
-         <li><a class="r-link" data-song-id="923">情人之間的情人</a></li>
+         <li><a class="r-link" data-song-id="924_924">容易受傷的女人</a></li>
+         <li><a class="r-link" data-song-id="924_923">情人之間的情人</a></li>
       </ul>
    </div>
 </div>
