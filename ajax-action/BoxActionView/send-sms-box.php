@@ -76,13 +76,13 @@ $message = $_GET['message'];
 
          if(!$('#phone').val()){
 
-            $('#phone').parent().parent().attr('class', 'control-group error');
+            $('#phone').parent().attr('class', 'control-group error');
             $('#phone').parent().find( $('.help-block') ).css('display','block');
             is_validated = false;
 
          } else {
 
-            $('#phone').parent().parent().attr('class', 'control-group');
+            $('#phone').parent().attr('class', 'control-group');
             $('#phone').parent().find( $('.help-block') ).css('display','none');
 
          }
