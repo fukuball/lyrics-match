@@ -94,18 +94,20 @@ class UserAction extends LMRESTControl implements LMRESTfulInterface
             curl_setopt($ch, CURLOPT_POSTFIELDS, "isvAccount=$isvid&token=$token&sign=$sign&msisdn=$phone&msg=$msg");
             curl_exec($ch);
 
-            $type = 'success';
-            $parameter = array("none"=>"none");
-            $error_messanger = new LMErrorMessenger($type, $parameter);
-            $error_messanger->printErrorJSON();
-            unset($error_messanger);
+            //$type = 'success';
+            //$parameter = array("none"=>"none");
+            //$error_messanger = new LMErrorMessenger($type, $parameter);
+            //$error_messanger->printErrorJSON();
+            //unset($error_messanger);
 
          } else {
-            $type = 'unknow_error';
-            $parameter = array("none"=>"none");
-            $error_messanger = new LMErrorMessenger($type, $parameter);
-            $error_messanger->printErrorJSON();
-            unset($error_messanger);
+            //$type = 'unknow_error';
+            //$parameter = array("none"=>"none");
+            //$error_messanger = new LMErrorMessenger($type, $parameter);
+            //$error_messanger->printErrorJSON();
+            //unset($error_messanger);
+
+            echo "fail";
 
          }
 

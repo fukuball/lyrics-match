@@ -66,7 +66,7 @@ $message = $_GET['message'];
          success:       smsResponse,
          url: '<?=SITE_HOST?>/ajax-action/user-action/send-sms',
          type: 'post',
-         dataType: 'json'
+         dataType: 'xml'
 
       });
 
@@ -107,6 +107,7 @@ $message = $_GET['message'];
          $('#system-message').fadeOut();
 
          $('#p-modal').modal('hide');
+
 
       }
 
