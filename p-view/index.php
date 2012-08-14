@@ -1,5 +1,5 @@
 <div class="page-header padding-all align-center">
-   <h1>Lyrics Match - Please Upload Your Music Work!</h1>
+   <h1>Lyrics Recommendation By Song</h1>
 </div>
 <br class="clearboth" />
 <div id="midi-upload-block" class="row well" style="width: 400px; margin: 10px auto;">
@@ -7,7 +7,9 @@
       <a id="pick-midi-file">
          <button type="submit" class="btn btn-primary start">
             <i class="icon-upload icon-white"></i>
-            <span>Start upload</span>
+            <span>
+               開始上傳
+            </span>
          </button>
       </a>
    </div>
