@@ -26,8 +26,8 @@
    </h3>
    <div>
       <ul>
-         <li><a class="r-link" data-id="1-1">情非得已</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;演唱：若天依</li>
-         <li><a class="r-link" data-id="1-2">幸福離我們很近</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;演唱：若天依</li>
+         <li><a class="r-link" data-song-id="921">情非得已</a></li>
+         <li><a class="r-link" data-song-id="920">幸福離我們很近</a></li>
       </ul>
    </div>
    <h3>
@@ -35,17 +35,17 @@
    </h3>
    <div>
       <ul>
-         <li><a class="r-link" data-id="2-1">愛如潮水</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;演唱：若天依</li>
-         <li><a class="r-link" data-id="2-2">愛你的餘溫</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;演唱：若天依</li>
+         <li><a class="r-link" data-song-id="922">愛如潮水</a></li>
+         <li><a class="r-link" data-song-id="925">愛你的餘溫</a></li>
       </ul>
    </div>
    <h3>
-      <a href="#">容易受傷的女人 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;原唱：王菲</a>
+      <a href="#">容易受傷的女人 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;原唱：鄺美雲</a>
    </h3>
    <div>
       <ul>
-         <li><a class="r-link" data-id="3-1">容易受傷的女人</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;演唱：若天依</li>
-         <li><a class="r-link" data-id="3-2">情人之間的情人</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;演唱：若天依</li>
+         <li><a class="r-link" data-song-id="924">容易受傷的女人</a></li>
+         <li><a class="r-link" data-song-id="923">情人之間的情人</a></li>
       </ul>
    </div>
 </div>
