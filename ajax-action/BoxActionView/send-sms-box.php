@@ -27,6 +27,9 @@ $message = $_GET['message'];
                手機號碼
             </label>
             <input id="phone" name="phone" type="text" class="span4" placeholder="09" />
+            <p class="help-block" style="display:none;">
+               未填寫
+            </p>
          </div>
          <input id="message" name="message" type="hidden" value="<?=$message?>" />
          <div class="control-group">
@@ -70,6 +73,19 @@ $message = $_GET['message'];
       function smsValidate(formData, jqForm, options){
 
          var is_validated = true;
+
+         if(!$('#phone').val()){
+
+            $('#phone').parent().parent().attr('class', 'control-group error');
+            $('#phone').parent().find( $('.help-block') ).css('display','block');
+            is_validated = false;
+
+         } else {
+
+            $('#phone').parent().parent().attr('class', 'control-group');
+            $('#phone').parent().find( $('.help-block') ).css('display','none');
+
+         }
 
          if(is_validated){
 

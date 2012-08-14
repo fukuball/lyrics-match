@@ -73,21 +73,18 @@ class UserAction extends LMRESTControl implements LMRESTfulInterface
             $phone      = $phone;
             $msg        = $message." \n ".$user_message;
 
-            //get the token and sign
-            //$a       = LMHelper::hiapi_get_auth($host);
-            //$token   = $a[0];
-            //$sign    = $a[1];
+            get the token and sign
+            $a       = LMHelper::hiapi_get_auth($host);
+            $token   = $a[0];
+            $sign    = $a[1];
 
             LMHelper::smstest();
 
-            echo $phone;
-            echo $msg;
-
-            //$type = 'success';
-            //$parameter = array("none"=>"none");
-            //$error_messanger = new LMErrorMessenger($type, $parameter);
-            //$error_messanger->printErrorJSON();
-            //unset($error_messanger);
+            $type = 'success';
+            $parameter = array("none"=>"none");
+            $error_messanger = new LMErrorMessenger($type, $parameter);
+            $error_messanger->printErrorJSON();
+            unset($error_messanger);
 
          } else {
             $type = 'unknow_error';
