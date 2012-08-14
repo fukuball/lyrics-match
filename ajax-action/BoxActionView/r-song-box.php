@@ -20,7 +20,7 @@
       </h3>
    </div>
    <div class="modal-body">
-      <h4>
+      <h4 style="margin-bottom:10px;">
          音樂合成試聽
       </h4>
       <p id="audioplayer">Load Song</p>
@@ -33,10 +33,10 @@
       });
       </script>
       <hr/>
-      <h4>
+      <h4 style="margin-bottom:10px;">
          歌詞
       </h4>
-      <p style="width:480px;height:300px;overflow:auto;">
+      <p style="width:480px;height:150px;overflow:auto;">
          <?=nl2br($song_obj->lyric)?>
       </p>
    </div>
