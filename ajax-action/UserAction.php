@@ -73,7 +73,7 @@ class UserAction extends LMRESTControl implements LMRESTfulInterface
             $phone      = $phone;
             $msg        = $message." \n ".$user_message;
 
-            get the token and sign
+            //get the token and sign
             $a       = LMHelper::hiapi_get_auth($host);
             $token   = $a[0];
             $sign    = $a[1];
