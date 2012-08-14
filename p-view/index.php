@@ -59,6 +59,23 @@
       $( "#accordion" ).accordion();
    });
 
+   $('.r-link').on('click', function () {
+
+      alert($(this).attr("data-song-id"));
+      /*$.ajax({
+         url: '<?=SITE_HOST?>/ajax-action/box-action/r-song-box',
+         type: "GET",
+         data: {song_id: $(this).attr("data-song-id")},
+         dataType: "html",
+         beforeSend: function( xhr ) {
+         },
+         success: function( html_block ) {
+            $('#p-modal-block').html(html_block);
+         }
+      });*/
+
+   });
+
    var audio_uploader = new plupload.Uploader({
       runtimes : 'html5,flash,gears,silverlight,browserplus',
       browse_button : 'pick-midi-file',

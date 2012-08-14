@@ -188,6 +188,7 @@ ul.nav {
 .ui-widget-content .r-link {
    font-weight: bold;
    color: #36C;
+   cursor: pointer;
 }
 
 /* utility */
