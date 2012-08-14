@@ -13,6 +13,9 @@
  */
 
 $url = "http://sarasti.cs.nccu.edu.tw/lyrics-match/p-data/mp3/1.mp3";
+
+$short_url_json = shell_exec("curl https://www.googleapis.com/urlshortener/v1/url -H 'Content-Type: application/json' -d '{\"longUrl\": \"".$url."\"}'");
+print_r($short_url_json);
 $message = "我發現「".$song_r_obj->title."」歌詞可以配唱「".$song_o_obj->title."」歌曲，你覺得好聽嗎？ 連結：".$url;
 $message = "連結：".$url;
 ?>
