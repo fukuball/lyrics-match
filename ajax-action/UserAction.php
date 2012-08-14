@@ -78,7 +78,12 @@ class UserAction extends LMRESTControl implements LMRESTfulInterface
             $token   = $a[0];
             $sign    = $a[1];
 
-            LMHelper::smstest();
+            $smsserver="http://sms.hiapi1.lab.hipaas.hinet.net/hisms/servlet/send";
+            $ch=curl_init();
+            curl_setopt($ch, CURLOPT_URL, $smsserver);
+            curl_setopt($ch,CURLOPT_POST,1);
+            curl_setopt($ch, CURLOPT_POSTFIELDS, "isvAccount=$isvid&token=$token&sign=$sign&msisdn=$phone&msg=$msg");
+            curl_exec($ch);
 
             $type = 'success';
             $parameter = array("none"=>"none");
