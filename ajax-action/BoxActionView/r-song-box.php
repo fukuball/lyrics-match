@@ -24,7 +24,7 @@
          音樂合成試聽
       </h4>
       <div class="row">
-         <p id="audioplayer" style="pull-left">Load Song</p>
+         <p id="audioplayer" class="pull-left">Load Song</p>
          <script type="text/javascript">
          AudioPlayer.embed("audioplayer", {
              soundFile: "http://sarasti.cs.nccu.edu.tw/lyrics-match/p-data/mp3/1.mp3",
@@ -33,7 +33,7 @@
              autostart: "no"
          });
          </script>
-         <p style="pull-right">
+         <p class="pull-right">
             <button class="btn btn-primary">
                <i class="icon-share icon-white"></i>
                <span>
