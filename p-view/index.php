@@ -12,6 +12,10 @@
             </span>
          </button>
       </a>
+      <br/>
+      <div class="progress progress-success progress-striped margin-all hide" style="width: 450px;">
+         <div class="bar" style="width: 0%"></div>
+      </div>
    </div>
 </div>
 <br class="clearboth" />
@@ -25,8 +29,8 @@
       browse_button : 'pick-midi-file',
       multi_selection: false,
       container: 'midi-upload-block',
-      max_file_size : '10mb',
-      url : 'upload.php',
+      max_file_size : '100mb',
+      url : '<?=SITE_HOST?>/ajax-action/user-action/user-upload',
       flash_swf_url : '<?=SITE_HOST?>/p-library/plupload/js/plupload.flash.swf',
       silverlight_xap_url : '<?=SITE_HOST?>/p-library/plupload/js/plupload.silverlight.xap'
       /*filters : [
@@ -39,10 +43,41 @@
    });
 
    uploader.bind('FilesAdded', function(up, files) {
-     alert('added');
+      $('.progress').removeClass('hide');
+      up.start();
+      $('#system-message').html('處理中...');
+      $('#system-message').show();
+     //alert('added');
      /*for (var i in files) {
        $('filelist').innerHTML += '<div id="' + files[i].id + '">' + files[i].name + ' (' + plupload.formatSize(files[i].size) + ') <b></b></div>';
      }*/
+   });
+
+   uploader.bind('FileUploaded', function(up, file, resp) {
+      var responseText = $.parseJSON(resp.response);
+      console.log(responseText);
+      if(responseText.response.status.code==0){
+
+         $('#system-message').html('完成');
+         $('#system-message').fadeOut();
+
+      } else {
+
+         $.ajax({
+            url: '<?=SITE_HOST?>/ajax-action/box-action/alert-no-licence',
+            type: "GET",
+            data: {},
+            dataType: "html",
+            beforeSend: function( xhr ) {
+            },
+            success: function( html_block ) {
+               $('#p-modal-block').html(html_block);
+            }
+         });
+
+
+
+      }
    });
 
    uploader.bind('UploadProgress', function(up, file) {

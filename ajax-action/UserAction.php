@@ -1,6 +1,6 @@
 <?php
 /**
- * BoxAction.php is the controller to dispatch box actions with box view
+ * SongAction.php is the controller to dispatch song actions with song view
  *
  * PHP version 5
  *
@@ -13,9 +13,9 @@
  */
 
 /**
- * BoxAction is the controller to dispatch box actions with box view
+ * SongAction is the controller to dispatch song actions with song view
  *
- * An example of a BoxAction is:
+ * An example of a SongAction is:
  *
  * <code>
  *  # This will done by rest request
@@ -28,7 +28,7 @@
  * @version  Release: <1.0>
  * @link     http://sarasti.cs.nccu.edu.tw
  */
-class BoxAction extends LMRESTControl implements LMRESTfulInterface
+class SongAction extends LMRESTControl implements LMRESTfulInterface
 {
 
    /**
@@ -44,6 +44,19 @@ class BoxAction extends LMRESTControl implements LMRESTfulInterface
       $action_id = $segments[0];
 
       switch ($action_id) {
+
+      case 'user-upload':
+
+         // 5 minutes execution time
+         @set_time_limit(5 * 60);
+
+         $type = 'unknow_error';
+         $parameter = array("none"=>"none");
+         $error_messanger = new LMErrorMessenger($type, $parameter);
+         $error_messanger->printErrorJSON();
+         unset($error_messanger);
+
+         break;
 
       default:
 
@@ -72,63 +85,6 @@ class BoxAction extends LMRESTControl implements LMRESTfulInterface
       $action_id = $segments[0];
 
       switch ($action_id) {
-
-      case 'login-form':
-
-         include SITE_ROOT.'/ajax-action/BoxActionView/login-form.php';
-
-         break;
-
-      case 'edit-lyric-form':
-
-         $song_id = $_GET['song_id'];
-         $size = $_GET['size'];
-         if (empty($size)) {
-            $size = "500px";
-         }
-
-         $song_obj = new LMSong($song_id);
-
-         include SITE_ROOT.'/ajax-action/BoxActionView/edit-lyric-form.php';
-
-         unset($song_obj);
-
-         break;
-
-      case 'upload-audio-form':
-
-         $song_id = $_GET['song_id'];
-         $size = $_GET['size'];
-         if (empty($size)) {
-            $size = "500px";
-         }
-
-         include SITE_ROOT.'/ajax-action/BoxActionView/upload-audio-form.php';
-
-         break;
-
-      case 'upload-midi-form':
-
-         $song_id = $_GET['song_id'];
-         $size = $_GET['size'];
-         if (empty($size)) {
-            $size = "500px";
-         }
-
-         include SITE_ROOT.'/ajax-action/BoxActionView/upload-midi-form.php';
-
-         break;
-
-      case 'alert-no-licence':
-
-         $size = $_GET['size'];
-         if (empty($size)) {
-            $size = "500px";
-         }
-
-         include SITE_ROOT.'/ajax-action/BoxActionView/alert-no-licence.php';
-
-         break;
 
       default:
 
@@ -171,5 +127,5 @@ class BoxAction extends LMRESTControl implements LMRESTfulInterface
 
    }// end function restDelete
 
-}// end class BoxAction
+}// end class DiscAction
 ?>
