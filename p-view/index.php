@@ -31,23 +31,48 @@
    </h3>
    <div>
       <ul>
-         <li>幸福離我們很近 演唱：若天依 原唱：蘇永康</li>
+         <li>
+            <div class="row">
+               <div class="pull-left">幸福離我們很近</div>
+               <div class="pull-right">演唱：若天依 原唱：蘇永康</div>
+            </div>
+         </li>
       </ul>
    </div>
    <h3>
-      <a href="#">愛如潮水 演唱：若天依 原唱：張信哲</a>
+      <a href="#">
+         <div class="row">
+            <div class="pull-left">愛如潮水</div>
+            <div class="pull-right">演唱：若天依 原唱：張信哲</div>
+         </div>
+      </a>
    </h3>
    <div>
       <ul>
-         <li>愛你的餘溫 演唱：若天依 原唱：黎沸揮</li>
+         <li>
+            <div class="row">
+               <div class="pull-left">愛你的餘溫</div>
+               <div class="pull-right">演唱：若天依 原唱：黎沸揮</div>
+            </div>
+         </li>
       </ul>
    </div>
    <h3>
-      <a href="#">容易受傷的女人 演唱：若天依 原唱：王菲</a>
+      <a href="#">
+         <div class="row">
+            <div class="pull-left">容易受傷的女人</div>
+            <div class="pull-right">演唱：若天依 原唱：王菲</div>
+         </div>
+      </a>
    </h3>
    <div>
       <ul>
-         <li>情人之間的情人 演唱：若天依 原唱：邰正宵</li>
+         <li>
+            <div class="row">
+               <div class="pull-left">情人之間的情人</div>
+               <div class="pull-right">演唱：若天依 原唱：邰正宵</div>
+            </div>
+         </li>
       </ul>
    </div>
 </div>
