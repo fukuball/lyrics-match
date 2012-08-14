@@ -185,6 +185,10 @@ ul.nav {
    padding: 5px 10px;
 }
 
+.r-link {
+   color: #36C;
+}
+
 /* utility */
 .font-bold {
    font-weight: bold;
