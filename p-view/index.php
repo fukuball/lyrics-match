@@ -68,7 +68,7 @@
                $('#system-message').fadeOut();
 
             } else {
-
+               $('#system-message').fadeOut();
                $.ajax({
                   url: '<?=SITE_HOST?>/ajax-action/box-action/alert-no-licence',
                   type: "GET",

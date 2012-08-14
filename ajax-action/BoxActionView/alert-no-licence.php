@@ -20,6 +20,10 @@
       </h3>
    </div>
    <div class="modal-body">
+      <div class="alert alert-block">
+         <h4 class="alert-heading">Warning! 此音樂沒有授權</h4>
+         <p>您上傳的歌曲包含未經授權的音軌，因此系統已停用音訊！請上傳其他歌曲，或使用我們提供的合法授權歌曲！</p>
+      </div>
    </div>
    <div class="modal-footer align-center">
       <button id="alert-licence-close" type="button" class="btn" data-dismiss="modal">
