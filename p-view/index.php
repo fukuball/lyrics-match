@@ -12,11 +12,10 @@
             </span>
          </button>
       </a>
-      <br/>
-      <div class="progress progress-success progress-striped margin-all hide" style="width: 450px;">
-         <div class="bar" style="width: 0%"></div>
-      </div>
    </div>
+</div>
+<div class="progress progress-success progress-striped margin-all hide" style="width: 450px;">
+   <div class="bar" style="width: 0%"></div>
 </div>
 <br class="clearboth" />
 <div style="width: 800px; margin: 20px auto;">
@@ -24,70 +23,68 @@
 </div>
 <br class="clearboth" />
 <script>
-   var uploader = new plupload.Uploader({
-      runtimes : 'gears,html5,flash,silverlight,browserplus',
+
+   var audio_uploader = new plupload.Uploader({
+      runtimes : 'html5,flash,gears,silverlight,browserplus',
       browse_button : 'pick-midi-file',
-      multi_selection: false,
       container: 'midi-upload-block',
       max_file_size : '100mb',
+      chunk_size : '1mb',
       url : '<?=SITE_HOST?>/ajax-action/user-action/user-upload',
       flash_swf_url : '<?=SITE_HOST?>/p-library/plupload/js/plupload.flash.swf',
-      silverlight_xap_url : '<?=SITE_HOST?>/p-library/plupload/js/plupload.silverlight.xap'
-      /*filters : [
-         {title : "Image files", extensions : "jpg,gif,png"}
-      ]*/
-   });
+      silverlight_xap_url : '<?=SITE_HOST?>/p-library/plupload/js/plupload.silverlight.xap',
+      multiple_queues : false,
+      multi_selection : false,
+      max_file_count : 1,
+      multipart : true,
+      multipart_params : {song_id: '<?php echo $song_id; ?>'},
+      init : {
+         FilesAdded: function(up, files) {
+            $('.progress').removeClass('hide');
+            up.start();
+            $('#system-message').html('處理中...');
+            $('#system-message').show();
+         },
+         BeforeUpload: function (up, file) {
+         },
+         UploadProgress: function(up, file) {
+            $('.progress .bar').css('width' , file.percent+'%');
+         },
+         UploadComplete: function(up, files) {
+            $('.progress').addClass('hide').delay(500);
+            $.each(files, function(i, file) {
+               // Do stuff with the file. There will only be one file as it uploaded straight after adding!
+            });
+         },
+         FileUploaded: function(up, file, resp) {
 
-   uploader.bind('Init', function(up, params) {
-     //$('filelist').innerHTML = "<div>Current runtime: " + params.runtime + "</div>";
-   });
+            var responseText = $.parseJSON(resp.response);
+            console.log(responseText);
+            if(responseText.response.status.code==0){
 
-   uploader.bind('FilesAdded', function(up, files) {
-      $('.progress').removeClass('hide');
-      up.start();
-      $('#system-message').html('處理中...');
-      $('#system-message').show();
-     //alert('added');
-     /*for (var i in files) {
-       $('filelist').innerHTML += '<div id="' + files[i].id + '">' + files[i].name + ' (' + plupload.formatSize(files[i].size) + ') <b></b></div>';
-     }*/
-   });
+               $('#system-message').html('完成');
+               $('#system-message').fadeOut();
 
-   uploader.bind('FileUploaded', function(up, file, resp) {
-      var responseText = $.parseJSON(resp.response);
-      console.log(responseText);
-      if(responseText.response.status.code==0){
+            } else {
 
-         $('#system-message').html('完成');
-         $('#system-message').fadeOut();
+               $.ajax({
+                  url: '<?=SITE_HOST?>/ajax-action/box-action/alert-no-licence',
+                  type: "GET",
+                  data: {},
+                  dataType: "html",
+                  beforeSend: function( xhr ) {
+                  },
+                  success: function( html_block ) {
+                     $('#p-modal-block').html(html_block);
+                  }
+               });
 
-      } else {
-
-         $.ajax({
-            url: '<?=SITE_HOST?>/ajax-action/box-action/alert-no-licence',
-            type: "GET",
-            data: {},
-            dataType: "html",
-            beforeSend: function( xhr ) {
-            },
-            success: function( html_block ) {
-               $('#p-modal-block').html(html_block);
             }
-         });
 
-
-
+         }
       }
    });
 
-   uploader.bind('UploadProgress', function(up, file) {
-     //$(file.id).getElementsByTagName('b')[0].innerHTML = '<span>' + file.percent + "%</span>";
-   });
+   audio_uploader.init();
 
-   $('uploadfiles').onclick = function() {
-     //uploader.start();
-     //return false;
-   };
-
-   uploader.init();
 </script>
