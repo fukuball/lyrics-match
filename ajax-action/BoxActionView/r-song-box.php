@@ -16,14 +16,28 @@
 <div id="p-modal" class="modal hide fade" style="width:<?php echo htmlspecialchars($size); ?>;display: none; ">
    <div class="modal-header">
       <h3>
-         此音樂沒有授權
+         <?=$song_obj->title?>
       </h3>
    </div>
    <div class="modal-body">
-      <div class="alert alert-block">
-         <h4 class="alert-heading">Warning! 此音樂沒有授權</h4>
-         <p>您上傳的歌曲包含未經授權的音軌，因此系統已停用音訊！請上傳其他歌曲，或使用我們提供的合法授權歌曲！</p>
-      </div>
+      <h4>
+         音樂合成試聽
+      </h4>
+      <p id="audioplayer">Load Song</p>
+      <script type="text/javascript">
+      AudioPlayer.embed("audioplayer", {
+          soundFile: "http://sarasti.cs.nccu.edu.tw/lyrics-match/p-data/mp3/1.mp3",
+          titles: "<?=$song_obj->title?>",
+          artists: "",
+          autostart: "no"
+      });
+      </script>
+      <h4>
+         歌詞
+      </h4>
+      <p>
+         <?=nl2br($song_obj->lyric)?>
+      </p>
    </div>
    <div class="modal-footer align-center">
       <button id="alert-licence-close" type="button" class="btn" data-dismiss="modal">
