@@ -104,7 +104,7 @@ case (preg_match('/music\/word\-count.*/', $current_page_path_url) ? true : fals
    </li>
    <li class="<?=$music_wordcount_tab_active?>">
       <a href="<?=SITE_HOST?>/music/word-count.php">
-         歌詞自述列表
+         歌詞字數列表
       </a>
    </li>
 </ul>
