@@ -145,7 +145,7 @@ class BoxAction extends LMRESTControl implements LMRESTfulInterface
          } else {
             $song_r_obj = new LMSong($song_id_array[1]);
             $r_title = $song_r_obj->title;
-            $r_lyric = $song_r_obj->lyric
+            $r_lyric = $song_r_obj->lyric;
          }
 
 
