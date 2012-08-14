@@ -14,7 +14,7 @@
 
 $url = "http://sarasti.cs.nccu.edu.tw/lyrics-match/p-data/mp3/1.mp3";
 $message = "我發現「".$song_r_obj->title."」歌詞可以配唱「".$song_o_obj->title."」歌曲，你覺得好聽嗎？ 連結：".$url;
-$message = $song_r_obj->title." 一詞多唱連結：".$url;
+$message = "連結：".$url;
 ?>
 <div id="p-modal" class="modal hide fade" style="width:<?php echo htmlspecialchars($size); ?>;display: none; ">
    <div class="modal-header">
