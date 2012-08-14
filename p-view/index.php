@@ -54,6 +54,7 @@
       </ul>
    </div>
 </div>
+<hr />
 <div style="width: 800px; margin: 20px auto;">
    <img width="800" src="<?=SITE_HOST?>/p-asset/image/ui-icon/banner.png" />
 </div>
