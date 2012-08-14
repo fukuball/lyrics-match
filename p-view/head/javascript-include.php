@@ -13,7 +13,7 @@
  */
 ?>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
-<script src="<?=SITE_HOST?>/p-asset/javascript/jquery-ui-1.8.17.custom.min.js" type="text/javascript"></script>
+<script src="<?=SITE_HOST?>/p-asset/javascript/jquery-ui-1.8.22.custom.min.js" type="text/javascript"></script>
 <script src="<?=SITE_HOST?>/p-asset/javascript/bootstrap/bootstrap.min.js" type="text/javascript"></script>
 <script src="<?=SITE_HOST?>/p-asset/javascript/prettify.js" type="text/javascript"></script>
 <script src="<?=SITE_HOST?>/p-asset/javascript/jquery-ui-timepicker-addon.js" type="text/javascript"></script>
