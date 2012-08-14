@@ -22,21 +22,21 @@
 <br class="clearboth" />
 <div id="accordion" style="width: 500px; margin: 10px auto;">
    <h3>
-      <a href="#">情非得已 原唱：庾澄慶</a>
+      <a href="#">情非得已 &nbsp;&nbsp;&nbsp;原唱：庾澄慶</a>
    </h3>
    <div>
       <ul>
-         <li>情非得已 演唱：若天依</li>
-         <li>幸福離我們很近 演唱：若天依</li>
+         <li>情非得已 &nbsp;&nbsp;&nbsp;演唱：若天依</li>
+         <li>幸福離我們很近 &nbsp;&nbsp;&nbsp;演唱：若天依</li>
       </ul>
    </div>
    <h3>
-      <a href="#">愛如潮水 原唱：張信哲</a>
+      <a href="#">愛如潮水 &nbsp;&nbsp;&nbsp;原唱：張信哲</a>
    </h3>
    <div>
       <ul>
-         <li>愛如潮水 演唱：若天依</li>
-         <li>愛你的餘溫 演唱：若天依</li>
+         <li>愛如潮水 &nbsp;&nbsp;&nbsp;演唱：若天依</li>
+         <li>愛你的餘溫 &nbsp;&nbsp;&nbsp;演唱：若天依</li>
       </ul>
    </div>
    <h3>
@@ -44,8 +44,8 @@
    </h3>
    <div>
       <ul>
-         <li>容易受傷的女人 演唱：若天依</li>
-         <li>情人之間的情人 演唱：若天依</li>
+         <li>容易受傷的女人 &nbsp;&nbsp;&nbsp;演唱：若天依</li>
+         <li>情人之間的情人 &nbsp;&nbsp;&nbsp;演唱：若天依</li>
       </ul>
    </div>
 </div>
