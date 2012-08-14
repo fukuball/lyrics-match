@@ -69,6 +69,7 @@
 
             } else {
                $('#system-message').fadeOut();
+               $('.progress .bar').css('width' , '0%');
                $.ajax({
                   url: '<?=SITE_HOST?>/ajax-action/box-action/alert-no-licence',
                   type: "GET",
