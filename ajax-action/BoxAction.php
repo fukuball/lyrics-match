@@ -130,6 +130,21 @@ class BoxAction extends LMRESTControl implements LMRESTfulInterface
 
          break;
 
+      case 'r-song-box':
+
+         $size = $_GET['size'];
+         if (empty($size)) {
+            $size = "500px";
+         }
+         $song_id = $_GET['song_id'];
+         $song_obj = new LMSong($song_id);
+
+         include SITE_ROOT.'/ajax-action/BoxActionView/r-song-box.php';
+
+         unset($song_obj);
+
+         break;
+
       default:
 
          $type = 'page_not_found';

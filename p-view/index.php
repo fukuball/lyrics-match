@@ -61,8 +61,7 @@
 
    $('.r-link').on('click', function () {
 
-      alert($(this).attr("data-song-id"));
-      /*$.ajax({
+      $.ajax({
          url: '<?=SITE_HOST?>/ajax-action/box-action/r-song-box',
          type: "GET",
          data: {song_id: $(this).attr("data-song-id")},
@@ -72,7 +71,7 @@
          success: function( html_block ) {
             $('#p-modal-block').html(html_block);
          }
-      });*/
+      });
 
    });
 
