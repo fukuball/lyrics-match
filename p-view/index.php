@@ -23,7 +23,7 @@
 <div id="accordion" style="width: 500px; margin: 10px auto;">
    <h3>
       <a href="#">
-         <div calss="row">
+         <div class="row">
             <div class="pull-left">情非得已</div>
             <div class="pull-right">演唱：若天依 原唱：庾澄慶</div>
          </div>
