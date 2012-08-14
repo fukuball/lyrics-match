@@ -28,7 +28,7 @@
  * @version  Release: <1.0>
  * @link     http://sarasti.cs.nccu.edu.tw
  */
-class SongAction extends LMRESTControl implements LMRESTfulInterface
+class UserAction extends LMRESTControl implements LMRESTfulInterface
 {
 
    /**
@@ -127,5 +127,5 @@ class SongAction extends LMRESTControl implements LMRESTfulInterface
 
    }// end function restDelete
 
-}// end class DiscAction
+}// end class UserAction
 ?>

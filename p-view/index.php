@@ -14,7 +14,7 @@
       </a>
    </div>
 </div>
-<div style="margin: 10px auto;">
+<div style="width:470px;margin: 10px auto;">
    <div class="progress progress-success progress-striped margin-all hide" style="width: 450px;">
       <div class="bar" style="width: 0%"></div>
    </div>
@@ -69,8 +69,7 @@
 
             } else {
 
-               alert("test");
-               /*$.ajax({
+               $.ajax({
                   url: '<?=SITE_HOST?>/ajax-action/box-action/alert-no-licence',
                   type: "GET",
                   data: {},
@@ -80,7 +79,7 @@
                   success: function( html_block ) {
                      $('#p-modal-block').html(html_block);
                   }
-               });*/
+               });
 
             }
 
