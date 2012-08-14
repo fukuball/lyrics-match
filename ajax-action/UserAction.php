@@ -74,9 +74,18 @@ class UserAction extends LMRESTControl implements LMRESTfulInterface
             $msg        = $message." \n ".$user_message;
 
             //get the token and sign
-            $a       = LMHelper::hiapi_get_auth($host);
-            $token   = $a[0];
-            $sign    = $a[1];
+            $nonce = substr(md5(uniqid('nonce_', true)),0,16);
+            $timestamp=round(microtime(true)*1000);
+            $sdksign=sha1($isvkey.$nonce.$timestamp);
+            $url="http://$host/SrvMgr/requestToken/$isvid/$serviceid/$nonce/$timestamp/$sdksign/";
+            $ch = curl_init();
+            curl_setopt($ch, CURLOPT_URL, $url);
+            curl_setopt($ch, CURLOPT_HEADER, 0);
+            curl_setopt($ch, CURLOPT_RETURNTRANSFER,1);
+            $r=curl_exec($ch);
+            $jsonresult=json_decode($r);
+            $token=$jsonresult->info->token;
+            $sign=$jsonresult->info->sign;
 
             $smsserver="http://sms.hiapi1.lab.hipaas.hinet.net/hisms/servlet/send";
             $ch=curl_init();
