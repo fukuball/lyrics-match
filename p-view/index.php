@@ -1,4 +1,4 @@
-<div class="page-header padding-all align-center">
+<div class="page-header align-center" style="padding-top: 28px;padding-bottom: 28px;background-color: whiteSmoke;">
    <h1>Lyrics Recommendation By Song</h1>
 </div>
 <br class="clearboth" />
