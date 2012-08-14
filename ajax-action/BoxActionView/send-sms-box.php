@@ -28,11 +28,12 @@ $message = $_GET['message'];
             </label>
             <input id="phone" name="phone" type="text" class="span4" placeholder="09" />
          </div>
+         <input id="message" name="message" type="hidden" value="<?=$message?>" />
          <div class="control-group">
             <label>
                留言
             </label>
-            <textarea class="span4" style="height:200px;"><?=$message?></textarea>
+            <textarea class="span4" id="user_message" name="user_message" style="height:200px;"></textarea>
          </div>
       </div>
       <div class="modal-footer align-center">

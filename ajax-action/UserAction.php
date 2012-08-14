@@ -60,6 +60,46 @@ class UserAction extends LMRESTControl implements LMRESTfulInterface
 
       case 'send-sms':
 
+         //variable configuration
+         $phone = $_POST['phone'];
+         $message = $_POST['message'];
+         $user_message = $_POST['user_message'];
+
+         if (!empty($phone)) {
+            $host       = "hiapi.ext.hipaas.hinet.net";
+            $serviceid  = "14";
+            $isvid      = "a93ac44e86924497892b674d619c29fe";
+            $isvkey     = "FngenvssyLCMw+A1W8TeNg==";
+            $phone      = $phone;
+            $msg        = $message." \n ".$user_message;
+
+            //get the token and sign
+            //$a       = LMHelper::hiapi_get_auth($host);
+            //$token   = $a[0];
+            //$sign    = $a[1];
+
+            LMHelper::smstest();
+
+            echo $phone;
+            echo $msg;
+
+            //$type = 'success';
+            //$parameter = array("none"=>"none");
+            //$error_messanger = new LMErrorMessenger($type, $parameter);
+            //$error_messanger->printErrorJSON();
+            //unset($error_messanger);
+
+         } else {
+            $type = 'unknow_error';
+            $parameter = array("none"=>"none");
+            $error_messanger = new LMErrorMessenger($type, $parameter);
+            $error_messanger->printErrorJSON();
+            unset($error_messanger);
+
+         }
+
+
+
          break;
 
       default:
