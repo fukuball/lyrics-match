@@ -22,27 +22,27 @@
 <br class="clearboth" />
 <div id="accordion" style="width: 500px; margin: 10px auto;">
    <h3>
-      <a href="#">情非得已</a>
+      <a href="#">情非得已 演唱：若天依 原唱：庾澄慶</a>
    </h3>
    <div>
       <ul>
-         <li>幸福離我們很近</li>
+         <li>幸福離我們很近 演唱：若天依 原唱：蘇永康</li>
       </ul>
    </div>
    <h3>
-      <a href="#">愛如潮水</a>
+      <a href="#">愛如潮水 演唱：若天依 原唱：張信哲</a>
    </h3>
    <div>
       <ul>
-         <li>愛你的餘溫</li>
+         <li>愛你的餘溫 演唱：若天依 原唱：黎沸揮</li>
       </ul>
    </div>
    <h3>
-      <a href="#">容易受傷的女人</a>
+      <a href="#">容易受傷的女人 演唱：若天依 原唱：王菲</a>
    </h3>
    <div>
       <ul>
-         <li>情人之間的情人</li>
+         <li>情人之間的情人 演唱：若天依 原唱：邰正宵</li>
       </ul>
    </div>
 </div>
