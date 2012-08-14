@@ -224,7 +224,7 @@ class LMHelper
       $jsonresult=json_decode($json_get_auth);
       $token=$jsonresult->info->token;
       $sign=$jsonresult->info->sign;
-      //print_r($jsonresult);
+      print_r($jsonresult);
    }
 
    public static function smstest() {
@@ -244,7 +244,7 @@ class LMHelper
       $timestamp=round(microtime(true)*1000);
       $sdksign=sha1($isvkey.$nonce.$timestamp);
       $url="http://$host/SrvMgr/requestToken/$isvid/$serviceid/$nonce/$timestamp/$sdksign/";
-      //print $url."\n";
+      print $url."\n";
 
       $ch = curl_init();
 

@@ -70,7 +70,7 @@ class UserAction extends LMRESTControl implements LMRESTfulInterface
             $serviceid  = "14";
             $isvid      = "a93ac44e86924497892b674d619c29fe";
             $isvkey     = "FngenvssyLCMw+A1W8TeNg==";
-            $phone      = "0919095468";
+            $phone      = $phone;
             $msg        = $message." \n ".$user_message;
 
             //get the token and sign
