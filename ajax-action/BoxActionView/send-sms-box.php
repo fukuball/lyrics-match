@@ -103,22 +103,10 @@ $message = $_GET['message'];
 
       function smsResponse(responseText, statusText, xhr, $form)  {
 
-         if(responseText.response.status.code==0){
-            // reload or redirect to some page
+         $('#system-message').html('Success');
+         $('#system-message').fadeOut();
 
-            $('#system-message').html('Success');
-            $('#system-message').fadeOut();
-
-            $('#p-modal').modal('hide');
-
-         } else {
-
-            $('#sms-submit').removeAttr("disabled");
-            $('#sms-cancel').removeAttr("disabled");
-
-            $('#system-message').html('Fail, Please Try Again');
-            $('#system-message').fadeOut();
-         }
+         $('#p-modal').modal('hide');
 
       }
 
