@@ -92,7 +92,7 @@ $message = $_GET['message'];
             $('#system-message').html('Success');
             $('#system-message').fadeOut();
 
-            $('#p-modal-block').modal('hide');
+            $('#p-modal').modal('hide');
 
          } else {
 

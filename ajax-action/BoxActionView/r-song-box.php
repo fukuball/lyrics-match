@@ -71,7 +71,7 @@ $message = "我發現「".$song_r_obj->title."」歌詞可以配唱「".$song_o_
 
       $('#send-sms-btn').on('click', function () {
 
-          $('#p-modal-block').modal('hide');
+          $('#p-modal').modal('hide');
 
           $.ajax({
              url: '<?=SITE_HOST?>/ajax-action/box-action/send-sms-box',
