@@ -61,13 +61,17 @@ $message = $_GET['message'];
       })
 
       $('#sms-form').ajaxForm({
-
          beforeSubmit:  smsValidate,
-         success:       smsResponse,
          url: '<?=SITE_HOST?>/ajax-action/user-action/send-sms',
          type: 'post',
-         dataType: 'xml'
+         // success identifies the function to invoke when the server response
+         // has been received; here we apply a fade-in effect to the new content
+         success: function() {
+            $('#system-message').html('Success');
+            $('#system-message').fadeOut();
 
+            $('#p-modal').modal('hide');
+         }
       });
 
       function smsValidate(formData, jqForm, options){
@@ -98,16 +102,6 @@ $message = $_GET['message'];
          }
 
          return is_validated;
-
-      }// end function loginValidate
-
-      function smsResponse(responseText, statusText, xhr, $form)  {
-
-         $('#system-message').html('Success');
-         $('#system-message').fadeOut();
-
-         $('#p-modal').modal('hide');
-
 
       }
 
