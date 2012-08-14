@@ -145,6 +145,20 @@ class BoxAction extends LMRESTControl implements LMRESTfulInterface
 
          break;
 
+      case 'send-sms-box':
+
+         $size = $_GET['size'];
+         if (empty($size)) {
+            $size = "500px";
+         }
+         $url = $_GET['url'];
+
+         include SITE_ROOT.'/ajax-action/BoxActionView/send-sms-box.php';
+
+         unset($song_obj);
+
+         break;
+
       default:
 
          $type = 'page_not_found';

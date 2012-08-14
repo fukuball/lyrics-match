@@ -12,6 +12,7 @@
  * @link     http://sarasti.cs.nccu.edu.tw
  */
 
+$url = "http://sarasti.cs.nccu.edu.tw/lyrics-match/p-data/mp3/1.mp3";
 ?>
 <div id="p-modal" class="modal hide fade" style="width:<?php echo htmlspecialchars($size); ?>;display: none; ">
    <div class="modal-header">
@@ -27,14 +28,14 @@
          <p id="audioplayer" class="pull-left">Load Song</p>
          <script type="text/javascript">
          AudioPlayer.embed("audioplayer", {
-             soundFile: "http://sarasti.cs.nccu.edu.tw/lyrics-match/p-data/mp3/1.mp3",
+             soundFile: "<?=$url?>",
              titles: "<?=$song_obj->title?>",
              artists: "若天依",
              autostart: "no"
          });
          </script>
          <p class="pull-right">
-            <button class="btn btn-primary">
+            <button id="send-sms-btn" data-url="<?=$url?>" class="btn btn-primary">
                <i class="icon-share icon-white"></i>
                <span>
                   簡訊分享
@@ -65,7 +66,25 @@
 
          $('#p-modal-block').empty();
 
-      })
+      });
+
+      $('#send-sms-btn').on('click', function () {
+
+          $('#p-modal-block').empty();
+
+          $.ajax({
+             url: '<?=SITE_HOST?>/ajax-action/box-action/send-sms-box',
+             type: "GET",
+             data: {url: $(this).attr("data-url")},
+             dataType: "html",
+             beforeSend: function( xhr ) {
+             },
+             success: function( html_block ) {
+                $('#p-modal-block').html(html_block);
+             }
+          });
+
+      });
 
    });// end $('#p-modal').ready
 </script>

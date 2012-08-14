@@ -58,6 +58,10 @@ class UserAction extends LMRESTControl implements LMRESTfulInterface
 
          break;
 
+      case 'send-sms':
+
+         break;
+
       default:
 
          $type = 'page_not_found';
