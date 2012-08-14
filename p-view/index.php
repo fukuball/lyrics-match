@@ -22,57 +22,30 @@
 <br class="clearboth" />
 <div id="accordion" style="width: 500px; margin: 10px auto;">
    <h3>
-      <a href="#">
-         <div class="row">
-            <div class="pull-left">情非得已</div>
-            <div class="pull-right">演唱：若天依 原唱：庾澄慶</div>
-         </div>
-      </a>
+      <a href="#">情非得已 原唱：庾澄慶</a>
    </h3>
    <div>
       <ul>
-         <li>
-            <div class="row">
-               <div class="pull-left">幸福離我們很近</div>
-               <div class="pull-right">演唱：若天依 原唱：蘇永康</div>
-            </div>
-         </li>
+         <li>情非得已 演唱：若天依</li>
+         <li>幸福離我們很近 演唱：若天依</li>
       </ul>
    </div>
    <h3>
-      <a href="#">
-         <div class="row">
-            <div class="pull-left">愛如潮水</div>
-            <div class="pull-right">演唱：若天依 原唱：張信哲</div>
-         </div>
-      </a>
+      <a href="#">愛如潮水 原唱：張信哲</a>
    </h3>
    <div>
       <ul>
-         <li>
-            <div class="row">
-               <div class="pull-left">愛你的餘溫</div>
-               <div class="pull-right">演唱：若天依 原唱：黎沸揮</div>
-            </div>
-         </li>
+         <li>愛如潮水 演唱：若天依</li>
+         <li>愛你的餘溫 演唱：若天依</li>
       </ul>
    </div>
    <h3>
-      <a href="#">
-         <div class="row">
-            <div class="pull-left">容易受傷的女人</div>
-            <div class="pull-right">演唱：若天依 原唱：王菲</div>
-         </div>
-      </a>
+      <a href="#">容易受傷的女人 原唱：王菲</a>
    </h3>
    <div>
       <ul>
-         <li>
-            <div class="row">
-               <div class="pull-left">情人之間的情人</div>
-               <div class="pull-right">演唱：若天依 原唱：邰正宵</div>
-            </div>
-         </li>
+         <li>容易受傷的女人 演唱：若天依</li>
+         <li>情人之間的情人 演唱：若天依</li>
       </ul>
    </div>
 </div>
