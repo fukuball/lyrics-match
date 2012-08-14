@@ -20,11 +20,41 @@
    </div>
 </div>
 <br class="clearboth" />
+<div id="accordion" style="width: 500px; margin: 10px auto;">
+   <h3>
+      <a href="#">情非得已</a>
+   </h3>
+   <div>
+      <ul>
+         <li>幸福離我們很近</li>
+      </ul>
+   </div>
+   <h3>
+      <a href="#">愛如潮水</a>
+   </h3>
+   <div>
+      <ul>
+         <li>愛你的餘溫</li>
+      </ul>
+   </div>
+   <h3>
+      <a href="#">容易受傷的女人</a>
+   </h3>
+   <div>
+      <ul>
+         <li>情人之間的情人</li>
+      </ul>
+   </div>
+</div>
 <div style="width: 800px; margin: 20px auto;">
    <img width="800" src="<?=SITE_HOST?>/p-asset/image/ui-icon/banner.png" />
 </div>
 <br class="clearboth" />
 <script>
+
+   $(function() {
+      $( "#accordion" ).accordion();
+   });
 
    var audio_uploader = new plupload.Uploader({
       runtimes : 'html5,flash,gears,silverlight,browserplus',
