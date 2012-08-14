@@ -32,10 +32,11 @@
           autostart: "no"
       });
       </script>
+      <hr/>
       <h4>
          歌詞
       </h4>
-      <p>
+      <p style="width:480px;height:400px;overflow:auto;">
          <?=nl2br($song_obj->lyric)?>
       </p>
    </div>
