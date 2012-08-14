@@ -1,4 +1,5 @@
 <?php
+require_once dirname(dirname(dirname(__FILE__)))."/p-config/application-setter.php";
 
 //variable configuration
 $host       = "hiapi.ext.hipaas.hinet.net";
