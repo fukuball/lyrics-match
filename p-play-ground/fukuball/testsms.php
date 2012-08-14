@@ -14,6 +14,6 @@ $a       = LMHelper::hiapi_get_auth($host);
 $token   = $a[0];
 $sign    = $a[1];
 
-smstest();
+LMHelper::smstest();
 
 ?>
