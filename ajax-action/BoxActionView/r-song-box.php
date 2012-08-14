@@ -12,16 +12,17 @@
  * @link     http://sarasti.cs.nccu.edu.tw
  */
 
-$url = "http://sarasti.cs.nccu.edu.tw/lyrics-match/p-data/mp3/1.mp3";
+
+$url = "http://sarasti.cs.nccu.edu.tw/lyrics-match/p-data/demo/".$song_id.".mp3";
 
 $short_url_json = json_decode(shell_exec("curl https://www.googleapis.com/urlshortener/v1/url -H 'Content-Type: application/json' -d "."'{".'"longUrl"'.": ".'"'.$url.'"'."}'"));
-$message = "我發現「".$song_r_obj->title."」歌詞可以配唱「".$song_o_obj->title."」歌曲，你覺得好聽嗎？ 連結：".$short_url_json->id;
+$message = "我發現「".$r_title."」歌詞可以配唱「".$song_o_obj->title."」歌曲，你覺得好聽嗎？ 連結：".$short_url_json->id;
 //$message = "連結：".$url;
 ?>
 <div id="p-modal" class="modal hide fade" style="width:<?php echo htmlspecialchars($size); ?>;display: none; ">
    <div class="modal-header">
       <h3>
-         <?=$song_r_obj->title?>
+         <?=$r_title?>
       </h3>
    </div>
    <div class="modal-body">
@@ -33,7 +34,7 @@ $message = "我發現「".$song_r_obj->title."」歌詞可以配唱「".$song_o_
          <script type="text/javascript">
          AudioPlayer.embed("audioplayer", {
              soundFile: "<?=$url?>",
-             titles: "<?=$song_r_obj->title?>",
+             titles: "<?=$r_title?>",
              artists: "若天依",
              autostart: "no"
          });
@@ -52,7 +53,7 @@ $message = "我發現「".$song_r_obj->title."」歌詞可以配唱「".$song_o_
          歌詞
       </h4>
       <p style="width:480px;height:150px;overflow:auto;text-align:center;line-height:25px;">
-         <?=nl2br($song_r_obj->lyric)?>
+         <?=nl2br($r_lyric)?>
       </p>
    </div>
    <div class="modal-footer align-center">

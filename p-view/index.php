@@ -34,6 +34,9 @@
       <ul>
          <li><a class="r-link" data-song-id="921_921">情非得已</a></li>
          <li><a class="r-link" data-song-id="921_920">幸福離我們很近</a></li>
+         <li><a class="r-link" data-song-id="921_141">怯</a></li>
+         <li><a class="r-link" data-song-id="921_80">I believe</a></li>
+         <li><a class="r-link" data-song-id="921_788">七里香</a></li>
       </ul>
    </div>
    <h3>
@@ -43,6 +46,9 @@
       <ul>
          <li><a class="r-link" data-song-id="922_922">愛如潮水</a></li>
          <li><a class="r-link" data-song-id="922_925">愛你的餘溫</a></li>
+         <li><a class="r-link" data-song-id="922_220">勇氣</a></li>
+         <li><a class="r-link" data-song-id="922_210">夜太黑</a></li>
+         <li><a class="r-link" data-song-id="922_325">潛意識</a></li>
       </ul>
    </div>
    <h3>
@@ -52,6 +58,18 @@
       <ul>
          <li><a class="r-link" data-song-id="924_924">容易受傷的女人</a></li>
          <li><a class="r-link" data-song-id="924_923">情人之間的情人</a></li>
+         <li><a class="r-link" data-song-id="924_41">不要變</a></li>
+         <li><a class="r-link" data-song-id="924_75">下沙</a></li>
+         <li><a class="r-link" data-song-id="924_61">一個人的天荒地老</a></li>
+      </ul>
+   </div>
+   <h3>
+      <a href="#">但願人長久 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;原唱：王菲</a>
+   </h3>
+   <div>
+      <ul>
+         <li><a class="r-link" data-song-id="1_1">但願人長久</a></li>
+         <li><a class="r-link" data-song-id="1_a">床前明月光</a></li>
       </ul>
    </div>
 </div>

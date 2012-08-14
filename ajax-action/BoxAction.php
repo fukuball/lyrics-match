@@ -139,7 +139,15 @@ class BoxAction extends LMRESTControl implements LMRESTfulInterface
          $song_id = $_GET['song_id'];
          $song_id_array = explode('_', $song_id);
          $song_o_obj = new LMSong($song_id_array[0]);
-         $song_r_obj = new LMSong($song_id_array[1]);
+         if ($song_id_array[1]=='a') {
+            $r_title = "床前明月光";
+            $r_lyric = "床前明月光";
+         } else {
+            $song_r_obj = new LMSong($song_id_array[1]);
+            $r_title = $song_r_obj->title;
+            $r_lyric = $song_r_obj->lyric
+         }
+
 
          include SITE_ROOT.'/ajax-action/BoxActionView/r-song-box.php';
 
