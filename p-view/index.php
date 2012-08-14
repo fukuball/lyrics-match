@@ -1,4 +1,4 @@
-<div class="page-header align-center" style="padding-top: 28px;padding-bottom: 28px;background-color: whiteSmoke;">
+<div class="page-header align-center" style="padding-top: 28px;padding-bottom: 28px;background-color: whiteSmoke; margin: 0px auto 18px auto;">
    <h1>Lyrics Recommendation By Song</h1>
 </div>
 <br class="clearboth" />
@@ -14,8 +14,10 @@
       </a>
    </div>
 </div>
-<div class="progress progress-success progress-striped margin-all hide" style="width: 450px;">
-   <div class="bar" style="width: 0%"></div>
+<div style="margin: 10px auto;">
+   <div class="progress progress-success progress-striped margin-all hide" style="width: 450px;">
+      <div class="bar" style="width: 0%"></div>
+   </div>
 </div>
 <br class="clearboth" />
 <div style="width: 800px; margin: 20px auto;">
@@ -67,7 +69,8 @@
 
             } else {
 
-               $.ajax({
+               alert("test");
+               /*$.ajax({
                   url: '<?=SITE_HOST?>/ajax-action/box-action/alert-no-licence',
                   type: "GET",
                   data: {},
@@ -77,7 +80,7 @@
                   success: function( html_block ) {
                      $('#p-modal-block').html(html_block);
                   }
-               });
+               });*/
 
             }
 
