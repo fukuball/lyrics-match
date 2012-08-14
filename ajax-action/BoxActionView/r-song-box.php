@@ -46,7 +46,7 @@
       <h4 style="margin-bottom:10px;">
          歌詞
       </h4>
-      <p style="width:480px;height:150px;overflow:auto;">
+      <p style="width:480px;height:150px;overflow:auto;text-align:center;">
          <?=nl2br($song_obj->lyric)?>
       </p>
    </div>
