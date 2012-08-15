@@ -14,7 +14,7 @@
 ?>
 <div id='song-list-block'>
    <?php
-   //if (LMAuthHelper::isLogin()) {
+   if (LMAuthHelper::isLogin()) {
    ?>
    <table width="1000px" class="table table-bordered table-striped">
       <thead width="1000px">
@@ -106,10 +106,10 @@
       }
       ?>
    <?php
-   //} else {
+   } else {
    ?>
-   <!--<h2>Please Login To Use This Page!</h2>-->
+   <h2>Please Login To Use This Page!</h2>
    <?php
-   //}
+   }
    ?>
 </div>
