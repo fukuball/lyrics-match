@@ -220,5 +220,43 @@ class LMHelper
 
    }// end function doPost
 
+   public static function print_getauth($json_get_auth) {
+      $jsonresult=json_decode($json_get_auth);
+      $token=$jsonresult->info->token;
+      $sign=$jsonresult->info->sign;
+      print_r($jsonresult);
+   }
+
+   public static function smstest() {
+      global $isvid,$serviceid,$isvkey,$host,$token,$sign,$phone,$msg;
+      $smsserver="http://sms.hiapi1.lab.hipaas.hinet.net/hisms/servlet/send";
+      $ch=curl_init();
+      curl_setopt($ch, CURLOPT_URL, $smsserver);
+      curl_setopt($ch,CURLOPT_POST,1);
+      curl_setopt($ch, CURLOPT_POSTFIELDS, "isvAccount=$isvid&token=$token&sign=$sign&msisdn=$phone&msg=$msg");
+      curl_exec($ch);
+   }
+
+   public static function hiapi_get_auth($host) {
+      global $isvkey,$isvid,$serviceid;
+
+      $nonce = substr(md5(uniqid('nonce_', true)),0,16);
+      $timestamp=round(microtime(true)*1000);
+      $sdksign=sha1($isvkey.$nonce.$timestamp);
+      $url="http://$host/SrvMgr/requestToken/$isvid/$serviceid/$nonce/$timestamp/$sdksign/";
+      print $url."\n";
+
+      $ch = curl_init();
+
+      curl_setopt($ch, CURLOPT_URL, $url);
+      curl_setopt($ch, CURLOPT_HEADER, 0);
+      curl_setopt($ch, CURLOPT_RETURNTRANSFER,1);
+      $r=curl_exec($ch);
+      $jsonresult=json_decode($r);
+      $token=$jsonresult->info->token;
+      $sign=$jsonresult->info->sign;
+      return array($token,$sign);
+   }
+
 }// end class LMHelper
 ?>

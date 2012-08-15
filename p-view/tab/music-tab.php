@@ -18,6 +18,7 @@ $music_performer_tab_active = '';
 $music_lyricist_tab_active = '';
 $music_composer_tab_active = '';
 $music_addsong_tab_active = '';
+$music_wordcount_tab_active = '';
 
 switch ($current_page_path_url) {
 
@@ -60,6 +61,12 @@ case (preg_match('/music\/add\-song.*/', $current_page_path_url) ? true : false)
 
    break;
 
+case (preg_match('/music\/word\-count.*/', $current_page_path_url) ? true : false) :
+
+   $music_wordcount_tab_active = ' active';
+
+   break;
+
 }
 
 
@@ -93,6 +100,11 @@ case (preg_match('/music\/add\-song.*/', $current_page_path_url) ? true : false)
    <li class="<?=$music_addsong_tab_active?>">
       <a href="<?=SITE_HOST?>/music/add-song.php">
          新增歌曲資料
+      </a>
+   </li>
+   <li class="<?=$music_wordcount_tab_active?>">
+      <a href="<?=SITE_HOST?>/music/word-count.php">
+         歌詞字數列表
       </a>
    </li>
 </ul>

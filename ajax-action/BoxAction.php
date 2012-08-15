@@ -119,6 +119,57 @@ class BoxAction extends LMRESTControl implements LMRESTfulInterface
 
          break;
 
+      case 'alert-no-licence':
+
+         $size = $_GET['size'];
+         if (empty($size)) {
+            $size = "500px";
+         }
+
+         include SITE_ROOT.'/ajax-action/BoxActionView/alert-no-licence.php';
+
+         break;
+
+      case 'r-song-box':
+
+         $size = $_GET['size'];
+         if (empty($size)) {
+            $size = "500px";
+         }
+         $song_id = $_GET['song_id'];
+         $song_id_array = explode('_', $song_id);
+         $song_o_obj = new LMSong($song_id_array[0]);
+         if ($song_id_array[1]=='a') {
+            $r_title = "床前明月光";
+            $r_lyric = "床前明月光";
+         } else {
+            $song_r_obj = new LMSong($song_id_array[1]);
+            $r_title = $song_r_obj->title;
+            $r_lyric = $song_r_obj->lyric;
+         }
+
+
+         include SITE_ROOT.'/ajax-action/BoxActionView/r-song-box.php';
+
+         unset($song_o_obj);
+         unset($song_r_obj);
+
+         break;
+
+      case 'send-sms-box':
+
+         $size = $_GET['size'];
+         if (empty($size)) {
+            $size = "500px";
+         }
+         $url = $_GET['url'];
+
+         include SITE_ROOT.'/ajax-action/BoxActionView/send-sms-box.php';
+
+         unset($song_obj);
+
+         break;
+
       default:
 
          $type = 'page_not_found';

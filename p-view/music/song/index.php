@@ -51,7 +51,7 @@ if (!empty($_GET['song_id'])) {
          <?php
          if (!empty($song_obj->audio_path)) {
          ?>
-         <p id="audioplayer">Load Song</p>
+         <!--<p id="audioplayer">Load Song</p>
          <script type="text/javascript">
          AudioPlayer.embed("audioplayer", {
              soundFile: "<?=$song_obj->getAudioUrl()?>",
@@ -59,7 +59,7 @@ if (!empty($_GET['song_id'])) {
              artists: "<?=$performer_obj->name?>",
              autostart: "no"
          });
-         </script>
+         </script>-->
          <?php
          }
          ?>
