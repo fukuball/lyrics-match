@@ -103,6 +103,9 @@ class AlgoDistDTW(AlgoSequence):
 		self.__seqI = seq1
 		self.__seqJ = seq2
 
+		if len(self.__seqI) > len(self.__seqJ):
+			self.__seqI, self.__seqJ = self.__seqJ, self.__seqI
+
 
 		# 產生 Accumulate Cost Table 和 Local Cost Table
 		self.__tableAccu = zeros([len(self.__seqI), len(self.__seqJ)], float)
@@ -255,6 +258,7 @@ class AlgoDistDTW(AlgoSequence):
 							prevCoor = tuple(map(sum, zip(nowCoor, comePath[i])))
 							pathIdxList.insert(0, prevCoor)
 
+
 						# 計算前一個起始的座標位置
 						prevStartCoor = tuple(map(sum, zip(nowCoor, comePath[0]))) # [0]表示起始點
 
@@ -308,10 +312,8 @@ class AlgoDistDTW(AlgoSequence):
 
 
 if __name__ == "__main__":
-	from DistNote import DistNote
-	from LocalConstraint import StepType1
-	from LocalConstraint import StepType2
-	from LocalConstraint import StepType3
+	from DistPitch import DistPitch
+	from LocalConstraint import *
 
 
 
@@ -323,15 +325,17 @@ if __name__ == "__main__":
 
 	#seq2 = [4, 3, 2, 1]
 	#seq2 = [4, 3, 3, 1, 3, 1, 4 ,1]
-	seq2 = [5, 3, 1, 0, 7, 8]
+	seq2 = [5, 3, 1, 0, 3]
 	#seq2 = [5, 1, 9, 3, 10]
 	#seq2 = [1,1,1,1,1,1]
 
 	print "Main: seq1 = %d" % len(seq1)
 	print "Main: seq2 = %d" % len(seq2)
 
-	dtw = AlgoClassicalDTW(DistNote(), StepType3())
+	#dtw = AlgoDistDTW(DistPitch(), StepType3())
+	dtw = AlgoDistDTW(DistPitch(), PitchToneType())
+	
 
-	print "Main: Distance = %.2f" % dtw.similarity(seq1, seq2)
+	print "Main: Distance = %.2f" % dtw.similarity(seq2, seq1)
 	print "Main: Alignment Result = \n %s" % dtw.getAlignmentResult()
 
