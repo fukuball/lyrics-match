@@ -25,7 +25,7 @@ class DistNote(SimElement):
 		label2 = n2[2]
 		labelDist = 1
 
-		if label1 == lable2:
+		if label1 == label2:
 			labelDist = 0
 
 
