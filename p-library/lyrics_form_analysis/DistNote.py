@@ -3,10 +3,10 @@ from SimElement import SimElement
 from DistPitch import DistPitch
 
 class DistNote(SimElement):
-	def __init__(self):
-		self.pitchRate = 0.2
-		self.durationRate = 0.3
-		self.labelRate = 0.5 
+	def __init__(self, pitchRate = 0.2, durationRate = 0.3, labelRate = 0.5):
+		self.__pitchRate = pitchRate
+		self.__durationRate = durationRate
+		self.__labelRate = labelRate
 
 	def similarity(self, n1, n2):
 
@@ -29,7 +29,7 @@ class DistNote(SimElement):
 			labelDist = 0
 
 
-		distance = pitchDist * self.pitchRate + \
+		distance = pitchDist * self.__pitchRate + \
 				durationDist * self.__durationRate + \
 				labelDist * self.__labelRate
 		
