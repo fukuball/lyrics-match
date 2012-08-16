@@ -15,11 +15,11 @@ class DistNote(SimElement):
 		"""
 		pitch1 = n1[0]
 		pitch2 = n2[0]
-		pitchDist = DistPitch.similarity(pitch1, pitch2)
+		pitchDist = DistPitch().similarity(pitch1, pitch2)
 
 		duration1 = n1[1]
 		duration2 = n2[1]
-		durationDist = DistPitch.similarity(duration1, duration2)
+		durationDist = DistPitch().similarity(duration1, duration2)
 
 		label1 = n1[2]
 		label2 = n2[2]
