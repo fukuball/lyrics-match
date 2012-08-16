@@ -157,7 +157,7 @@ class LyricsForm:
 					加入橋段
 					"""
 					if len(remainBlocks[1:-2]) > 0:
-						form.append({"label": "bridge", "group": [remainBlocks[1:-2]]})
+						form.append({"label": "bridge", "group": remainBlocks[1:-2]})
 
 					"""
 					加入尾聲
