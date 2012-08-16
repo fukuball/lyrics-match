@@ -17,6 +17,7 @@ class Evaluation:
 
 	def pairwiseFScore(self, estimate, truth):
 		print "estimate gen"
+		print estimate
 		eSet = self.__pairwiseSetGen(estimate)
 
 		print "truth gen"
