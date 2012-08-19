@@ -6,7 +6,7 @@ class StepType1:
 		if len(weightVec) != 3:
 			raise "LocalConstraint: Weight Vector Length should be 3 !!"
 		else:
-			print "LocalConstraint : Step Type 1 Setup"
+			#print "LocalConstraint : Step Type 1 Setup"
 
 			# 設定 Local Weight Vector，Weight 數值的順序要與 Step Path 的順序相同
 			self.weightVec = weightVec
@@ -28,7 +28,7 @@ class StepType2:
 		if len(weightVec) != 3:
 			raise "LocalConstraint: Weight Vector Length should be 3 !!"
 		else:
-			print "LocalConstraint : Step Type 2 Setup"
+			#print "LocalConstraint : Step Type 2 Setup"
 
 			# 設定 Local Weight Vector，Weight 數值的順序要與 Step Path 的順序相同
 			self.weightVec = weightVec
@@ -49,7 +49,7 @@ class StepType3:
 		if len(weightVec) != 5:
 			raise "LocalConstraint: Weight Vector Length should be 3 !!"
 		else:
-			print "LocalConstraint : Step Type 3 Setup"
+			#print "LocalConstraint : Step Type 3 Setup"
 
 			# 設定 Local Weight Vector，Weight 數值的順序要與 Step Path 的順序相同
 			self.weightVec = weightVec
@@ -73,7 +73,7 @@ class PitchToneType:
 		if len(weightVec) != 3:
 			raise "LocalConstraint: Weight Vector Length should be 3 !!"
 		else:
-			print "LocalConstraint : Pitch Tone Type Setup"
+			#print "LocalConstraint : Pitch Tone Type Setup"
 
 			# 設定 Local Weight Vector，Weight 數值的順序要與 Step Path 的順序相同
 			self.weightVec = weightVec
