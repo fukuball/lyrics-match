@@ -15,7 +15,7 @@ class Pinyin2Tuple(LyricsInput):
 	
 	
 	def process(self, lines):
-		print "InputProcess: Pinyin2Tuple"
+		#print "InputProcess: Pinyin2Tuple"
 
 		self.__lines = lines
 
@@ -63,7 +63,7 @@ class Str2Int(LyricsInput):
 
 	
 	def process(self, lines):
-		print "InputProcess: Str2Int"
+		#print "InputProcess: Str2Int"
 
 		self.__lines = lines
 
@@ -93,7 +93,7 @@ class Tone2Pitch(LyricsInput):
 		self.__transRule = transRule
 	
 	def process(self, lines):
-		print "InputProcess: Tone2Pitch"
+		#print "InputProcess: Tone2Pitch"
 
 		self.__lines = lines
 
