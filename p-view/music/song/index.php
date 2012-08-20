@@ -272,6 +272,76 @@ if (!empty($_GET['song_id'])) {
       unset($music_feature_obj);
    }
    ?>
+   <h2>
+      相似歌詞
+   </h2>
+   <table class="table table-bordered table-striped">
+        <thead>
+           <tr>
+              <th>
+               排名
+              </th>
+              <th>
+               song_id
+              </th>
+              <th>
+               藝人
+              </th>
+              <th>
+               歌名
+              </th>
+              <th>
+               相似度
+              </th>
+           </tr>
+        </thead>
+        <tbody>
+        <?php
+
+         $db_obj = LMDBAccess::getInstance();
+
+         $select_sql = "SELECT similar_song_id,similar FROM similar_song WHERE song_id='".$_GET['song_id']."' AND model='lyrics-model-8.txt' ORDER BY similar DESC LIMIT 500";
+
+         $query_result = $db_obj->selectCommand($select_sql);
+
+         $rank = 0;
+         foreach ($query_result as $query_result_data) {
+            $rank++;
+            $similar_song_id = $query_result_data['similar_song_id'];
+            $similar = $query_result_data['similar'];
+
+            $similar_song_obj = new LMSong($similar_song_id);
+            $artist_obj = new LMPerformer($similar_song_obj->performer_id);
+           ?>
+           <tr>
+              <td>
+              <?php echo $rank; ?>
+              </td>
+              <td>
+                 <a href="<?=SITE_HOST?>/music/song/index.php?song_id=<?=$similar_song_obj->getId()?>">
+                    <?php echo $similar_song_obj->getId(); ?>
+                 </a>
+              </td>
+              <td>
+                 <?php echo $artist_obj->name; ?>
+              </td>
+              <td>
+                 <a href="<?=SITE_HOST?>/music/song/index.php?song_id=<?=$similar_song_obj->getId()?>">
+                    <?php echo $similar_song_obj->title; ?>
+                 </a>
+              </td>
+              <td>
+                 <?php echo $similar_song_value_array[1]; ?>
+              </td>
+           </tr>
+           <?php
+
+            unset($similar_song_obj);
+            unset($artist_obj);
+         }
+        ?>
+        </tbody>
+   </table>
 </div>
 <?php
    unset($song_obj);
