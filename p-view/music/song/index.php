@@ -309,7 +309,6 @@ if (!empty($_GET['song_id'])) {
             $rank++;
             $similar_song_id = $query_result_data['similar_song_id'];
             $similar = $query_result_data['similar'];
-            echo $similar_song_id;
 
             $similar_song_obj = new LMSong($similar_song_id);
             $artist_obj = new LMPerformer($similar_song_obj->performer_id);
