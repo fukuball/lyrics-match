@@ -144,7 +144,7 @@ class AlgoDistStruct(AlgoSequence):
 			backStartCoor = (self.__tableAccu.shape[0] - 1, self.__tableAccu.shape[1] - 1)
 			self.__backTracking(backStartCoor, self.__pathIdxList)
 			self.__pathLength = len(self.__pathIdxList)
-			self.__similarity = self.__distance / self.__pathLength
+			#self.__similarity = self.__distance / self.__pathLength
 			#self.__similarity = self.__distance
 			
 
