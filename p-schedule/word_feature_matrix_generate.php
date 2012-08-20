@@ -28,7 +28,7 @@ $count = 0 ;
 foreach ($query_result as $query_result_data) {
 
    $song_id = $song_id.'['.$query_result_data['song_id'].'],';
-   $matirx = $matirx.'['.$matirx$query_result_data['lyrics_term_vector'].'],';
+   $matirx = $matirx.'['.$query_result_data['lyrics_term_vector'].'],';
 
    if ($count==0) {
       $lyrics_feature = '['.$query_result_data['lyrics_term_vector_readable'].']';
