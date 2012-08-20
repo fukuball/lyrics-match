@@ -52,11 +52,12 @@ for row in cur.fetchall() :
    modify_time = row[7];
    delete_time = row[8];
 
+# lyrics feature matrix
+# model
+lyrics_feature_matrix = json.loads(lyrics_feature_matrix)
+
 print lyrics_feature_matrix;
 
-## lyrics feature matrix
-## model
-#lyrics_feature_matrix = json.loads(lyrics_feature_matrix)
 #A_lyrics_feature_matrix = np.matrix(lyrics_feature_matrix)
 #
 #print A_lyrics_feature_matrix
