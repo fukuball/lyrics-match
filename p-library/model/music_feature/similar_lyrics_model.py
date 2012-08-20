@@ -40,7 +40,7 @@ cur.execute("SET CHARACTER_SET_CLIENT=UTF8")
 cur.execute("SET CHARACTER_SET_RESULTS=UTF8")
 db.commit()
 
-model_id = 8
+model_id = 9
 
 cur.execute("""SELECT * FROM lyrics_feature_matrix WHERE id=%s""", (model_id))
 
@@ -78,7 +78,7 @@ if (has_model_data=="true") :
    for row in cur.fetchall() :
 
       song_id = row[0]
-      #print "song_id: "+song_id
+      print "song_id: "+song_id
 
       #input_song_feature_key = song_id_array.index(song_id)
       #input_song_matrix = similar_music_model.getA()[input_song_feature_key]
