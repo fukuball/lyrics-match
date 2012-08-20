@@ -145,7 +145,7 @@ class AlgoDistStruct(AlgoSequence):
 			self.__backTracking(backStartCoor, self.__pathIdxList)
 			self.__pathLength = len(self.__pathIdxList)
 			#self.__similarity = self.__distance / self.__pathLength
-			#self.__similarity = self.__distance
+			self.__similarity = self.__distance
 			
 
 			# 將排比的路徑座標轉換成序列的 Index
