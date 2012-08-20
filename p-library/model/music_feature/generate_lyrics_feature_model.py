@@ -90,27 +90,17 @@ f = open('lyrics-model-1.txt', 'w')
 f.write(A_bar_string)
 f.close()
 
+cur = db.cursor()
+try:
+   cur.execute("""INSERT INTO lyrics_feature_matrix (matrix, row_song_id, column_lyrics_feature, type, create_time, modify_time) VALUES (%s, %s, %s, %s, %s, %s)""",("lyrics-model-1.txt", row_song_id, column_lyrics_feature, "model", create_time, modify_time))
+   db.commit()
+   print "success"
+except mysql.Error, e:
+   db.rollback()
+   print "An error has been passed. %s" %e
+
+print "save in db"
+
 
 cur.close()
 db.close()
-
-# connect to db
-#db2 = mysql.connect(host    = CONST.DBHOST,
-#                   user    = CONST.DBUSER,
-#                   passwd  = CONST.DBPASS,
-#                   db      = CONST.DBNAME)
-#
-# 從資料庫抓資料
-#cur2 = db2.cursor()
-#try:
-#   cur2.execute("""INSERT INTO lyrics_feature_matrix (matrix, row_song_id, column_lyrics_feature, type, create_time, modify_time) VALUES (%s, %s, %s, %s, %s, %s)""",(A_bar_string, row_song_id, column_lyrics_feature, "model", create_time, modify_time))
-#   db2.commit()
-#   print "success"
-#except mysql.Error, e:
-#   db2.rollback()
-#   print "An error has been passed. %s" %e
-#
-#print "save in db"
-#
-#cur2.close()
-#db2.close()
