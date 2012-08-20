@@ -73,7 +73,7 @@ if (has_model_data=="true") :
    normalize_range = similar_music_model.getA().ptp(axis=0)
    similar_music_model_normalized = (similar_music_model.getA() - normalize_min) / normalize_range
 
-   cur.execute("""SELECT id FROM song WHERE lyric!='' AND have_english='0' AND id='1' LIMIT 1""")
+   cur.execute("""SELECT id FROM song WHERE lyric!='' AND have_english='0'""")
 
    for row in cur.fetchall() :
 
