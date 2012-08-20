@@ -300,7 +300,7 @@ if (!empty($_GET['song_id'])) {
 
          $db_obj = LMDBAccess::getInstance();
 
-         $select_sql = "SELECT similar_song_id,similar FROM similar_song WHERE song_id='".$_GET['song_id']."' AND similar_song!='920' AND similar_song!='921' AND similar_song!='922' AND similar_song!='923' AND similar_song!='924' AND similar_song!='925' AND model='lyrics-model-8.txt' ORDER BY similar DESC LIMIT 500";
+         $select_sql = "SELECT similar_song_id,similar FROM similar_song WHERE song_id='".$_GET['song_id']."' AND similar_song_id!='920' AND similar_song_id!='921' AND similar_song_id!='922' AND similar_song_id!='923' AND similar_song_id!='924' AND similar_song_id!='925' AND model='lyrics-model-8.txt' ORDER BY similar DESC LIMIT 500";
 
          $query_result = $db_obj->selectCommand($select_sql);
 
