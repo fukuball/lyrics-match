@@ -31,7 +31,8 @@ CONST = db_stage._Const()
 db = mysql.connect(host    = CONST.DBHOST,
                    user    = CONST.DBUSER,
                    passwd  = CONST.DBPASS,
-                   db      = CONST.DBNAME)
+                   db      = CONST.DBNAME,
+                   charset = 'UTF8')
 
 # 從資料庫抓資料
 cur = db.cursor()
