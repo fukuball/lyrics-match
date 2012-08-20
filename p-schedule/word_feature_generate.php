@@ -39,7 +39,7 @@ foreach ($query_result as $query_result_data) {
    $term_vector_string = substr ($term_vector_string, 0, -1);
    $term_vector_readable_string = substr ($term_vector_readable_string, 0, -1);
 
-   $insert_sql = "INSERT INTO lyrics_feature (song_id,lyrics_term_vector,lyrics_term_vector_readable,create_time,modify_time) VALUES ('".addslashes($song_id)."', '".addslashes($term_vector_readable_string)."', NOW(), NOW())";
+   $insert_sql = "INSERT INTO lyrics_feature (song_id,lyrics_term_vector,lyrics_term_vector_readable,create_time,modify_time) VALUES ('".addslashes($song_id)."', '".addslashes($term_vector_string)."', '".addslashes($term_vector_readable_string)."', NOW(), NOW())";
    $query_result3 = $db_obj->insertCommand($insert_sql);
    echo $song_id." lyrics feature \n";
 
