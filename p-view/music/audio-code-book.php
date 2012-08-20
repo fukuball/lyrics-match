@@ -17,36 +17,26 @@
    var chart;
 
    var chartData = [{
-       year: "2003",
-       europe: 2.5,
-       namerica: 2.5,
-       asia: 2.1,
-       lamerica: 0.3,
-       meast: 0.2,
-       africa: 0.1
-   }, {
-       year: "2004",
-       europe: 2.6,
-       namerica: 2.7,
-       asia: 2.2,
-       lamerica: 0.3,
-       meast: 0.3,
-       africa: 0.1
-   }, {
-       year: "2005",
-       europe: 2.8,
-       namerica: 2.9,
-       asia: 2.4,
-       lamerica: 0.3,
-       meast: 0.3,
-       africa: 0.1
+       code_word: "code word 1",
+       pitch1: 1,
+       pitch2: 1,
+       pitch3: 1,
+       pitch4: 1,
+       pitch5: 1,
+       pitch6: 1,
+       pitch7: 1,
+       pitch8: 1,
+       pitch9: 1,
+       pitch10: 1,
+       pitch11: 1,
+       pitch12: 1
    }];
 
    AmCharts.ready(function () {
        // SERIAL CHART
        chart = new AmCharts.AmSerialChart();
        chart.dataProvider = chartData;
-       chart.categoryField = "year";
+       chart.categoryField = "code_word";
 
        // sometimes we need to set margins manually
        // autoMargins should be set to false in order chart to use custom margin values
@@ -72,77 +62,17 @@
        chart.addValueAxis(valueAxis);
 
        // GRAPHS
-       // first graph
-       var graph = new AmCharts.AmGraph();
-       graph.title = "Europe";
-       graph.labelText = "[[percents]]%";
-       graph.balloonText = "[[value]] ([[percents]]%)";
-       graph.valueField = "europe";
-       graph.type = "column";
-       graph.lineAlpha = 0;
-       graph.fillAlphas = 1;
-       graph.lineColor = "#C72C95";
-       chart.addGraph(graph);
-
-       // second graph
-       var graph = new AmCharts.AmGraph();
-       graph.title = "North America";
-       graph.labelText = "[[percents]]%";
-       graph.balloonText = "[[value]] ([[percents]]%)";
-       graph.valueField = "namerica";
-       graph.type = "column";
-       graph.lineAlpha = 0;
-       graph.fillAlphas = 1;
-       graph.lineColor = "#D8E0BD";
-       chart.addGraph(graph);
-
-       // third graph
-       var graph = new AmCharts.AmGraph();
-       graph.title = "Asia-Pacific";
-       graph.labelText = "[[percents]]%";
-       graph.balloonText = "[[value]] ([[percents]]%)";
-       graph.valueField = "asia";
-       graph.type = "column";
-       graph.lineAlpha = 0;
-       graph.fillAlphas = 1;
-       graph.lineColor = "#B3DBD4";
-       chart.addGraph(graph);
-
-       // fourth graph
-       var graph = new AmCharts.AmGraph();
-       graph.title = "Latin America";
-       graph.labelText = "[[percents]]%";
-       graph.balloonText = "[[value]] ([[percents]]%)";
-       graph.valueField = "lamerica";
-       graph.type = "column";
-       graph.lineAlpha = 0;
-       graph.fillAlphas = 1;
-       graph.lineColor = "#69A55C";
-       chart.addGraph(graph);
-
-       // fifth graph
-       var graph = new AmCharts.AmGraph();
-       graph.title = "Middle-East";
-       graph.labelText = "[[percents]]%";
-       graph.balloonText = "[[value]] ([[percents]]%)";
-       graph.valueField = "meast";
-       graph.type = "column";
-       graph.lineAlpha = 0;
-       graph.fillAlphas = 1;
-       graph.lineColor = "#B5B8D3";
-       chart.addGraph(graph);
-
-       // sixth graph
-       var graph = new AmCharts.AmGraph();
-       graph.title = "Africa";
-       graph.labelText = "[[percents]]%";
-       graph.balloonText = "[[value]] ([[percents]]%)";
-       graph.valueField = "africa";
-       graph.type = "column";
-       graph.lineAlpha = 0;
-       graph.fillAlphas = 1;
-       graph.lineColor = "#F4E23B";
-       chart.addGraph(graph);
+        // first graph
+        var graph = new AmCharts.AmGraph();
+        graph.title = "pitch1";
+        graph.labelText = "[[percents]]%";
+        graph.balloonText = "[[value]] ([[percents]]%)";
+        graph.valueField = "pitch1";
+        graph.type = "column";
+        graph.lineAlpha = 0;
+        graph.fillAlphas = 0.5;
+        graph.lineColor = "#ffffff";
+        chart.addGraph(graph);
 
        // LEGEND
        var legend = new AmCharts.AmLegend();
