@@ -331,7 +331,7 @@ if (!empty($_GET['song_id'])) {
                  </a>
               </td>
               <td>
-                 <?php echo $similar_song_value_array[1]; ?>
+                 <?php echo $similar; ?>
               </td>
            </tr>
            <?php
