@@ -310,8 +310,9 @@ class AlgoDistStruct(AlgoSequence):
 			if self.__tableAccu[prev] != self.__INF and isSatisfy:
 				#totalCost = self.__tableAccu[prev] + pow(self.__BASE, countDiff)
 				#totalCost = self.__tableAccu[prev] + log(countDiff + 1, 2)
-				totalCost = self.__sigmoid((float(noteCount) / self.__seqI[nowCoor[0]]) - 1) + \
+				localCost = self.__sigmoid((float(noteCount) / self.__seqI[nowCoor[0]]) - 1) + \
 						self.__sigmoid((phraseStart - phraseIdx)) - 1
+				totalCost = self.__tableAccu[prev] + localCost
 
 				#totalCost *= (phraseStart - phraseIdx + 1)
 				#totalCost = self.__tableAccu[prev] + noteCount - self.__seqI[nowCoor[0]]
@@ -334,8 +335,9 @@ class AlgoDistStruct(AlgoSequence):
 			if self.__tableAccu[prev] != self.__INF and isSatisfy:
 				#totalCost = self.__tableAccu[prev] + pow(self.__BASE, countDiff)
 				#totalCost = self.__tableAccu[prev] + log(countDiff + 1, 2)
-				totalCost = self.__sigmoid((float(self.__seqJ[nowCoor[1]]) / wordCount) - 1) + \
+				localCost = self.__sigmoid((float(self.__seqJ[nowCoor[1]]) / wordCount) - 1) + \
 						self.__sigmoid((sentenceStart - sentenceIdx)) - 1
+				totalCost = self.__tableAccu[prev] + localCost
 
 				#totalCost *= (sentenceStart - sentenceIdx + 1)
 				#totalCost = self.__tableAccu[prev] + self.__seqJ[nowCoor[1]] - wordCount
