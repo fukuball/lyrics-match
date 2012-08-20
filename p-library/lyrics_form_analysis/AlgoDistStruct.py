@@ -326,7 +326,8 @@ class AlgoDistStruct(AlgoSequence):
 			wordCount += self.__seqI[sentenceIdx]
 			prev = (sentenceIdx - 1, nowCoor[1] - 1)
 
-			countDiff = wordCount - self.__seqJ[nowCoor[1]]
+			#countDiff = wordCount - self.__seqJ[nowCoor[1]]
+			countDiff = self.__seqJ[nowCoor[1]] - wordCount
 			totalCost = self.__INF
 
 			if self.__tableAccu[prev] != self.__INF and countDiff >= 0:
