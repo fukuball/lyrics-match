@@ -2,6 +2,7 @@
 from AlgoSequence import AlgoSequence
 from LocalConstraint import PitchToneType
 from numpy import zeros
+from math import log
 from numpy import argmin
 from numpy import insert
 from copy import deepcopy
@@ -305,7 +306,8 @@ class AlgoDistStruct(AlgoSequence):
 			totalCost = self.__INF
 
 			if self.__tableAccu[prev] != self.__INF and countDiff >= 0:
-				totalCost = self.__tableAccu[prev] + pow(self.__BASE, countDiff)
+				#totalCost = self.__tableAccu[prev] + pow(self.__BASE, countDiff)
+				totalCost = self.__tableAccu[prev] + log(countDiff + 1, 2)
 					
 			pathCosts.append({"prev": prev, "cost": totalCost})
 
@@ -323,7 +325,8 @@ class AlgoDistStruct(AlgoSequence):
 			totalCost = self.__INF
 
 			if self.__tableAccu[prev] != self.__INF and countDiff >= 0:
-				totalCost = self.__tableAccu[prev] + pow(self.__BASE, countDiff)
+				#totalCost = self.__tableAccu[prev] + pow(self.__BASE, countDiff)
+				totalCost = self.__tableAccu[prev] + log(countDiff + 1, 2)
 					
 			pathCosts.append({"prev": prev, "cost": totalCost})
 
