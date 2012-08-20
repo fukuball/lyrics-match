@@ -73,7 +73,7 @@ if (has_model_data=="true") :
    normalize_range = similar_music_model.getA().ptp(axis=0)
    similar_music_model_normalized = (similar_music_model.getA() - normalize_min) / normalize_range
 
-   cur.execute("""SELECT id FROM song WHERE lyric!='' AND have_english='0' AND id!='340'""")
+   cur.execute("""SELECT id FROM song WHERE lyric!='' AND have_english='0' AND id!='340' LIMIT 1""")
 
    for row in cur.fetchall() :
 
@@ -82,6 +82,31 @@ if (has_model_data=="true") :
 
       input_song_feature_key = song_id_array.index(song_id)
       input_song_matrix = similar_music_model.getA()[input_song_feature_key]
+
+      input_song_matrix_list = input_song_matrix.tolist()
+      input_song_matrix_string = json.dumps(input_song_matrix_list)
+      # connect to db
+      db2 = mysql.connect(host    = CONST.DBHOST,
+                         user    = CONST.DBUSER,
+                         passwd  = CONST.DBPASS,
+                         db      = CONST.DBNAME,
+                         charset = 'UTF8')
+
+      # 從資料庫抓資料
+      cur2 = db2.cursor()
+      cur2.execute("SET NAMES UTF8")
+      cur2.execute("SET CHARACTER_SET_CLIENT=UTF8")
+      cur2.execute("SET CHARACTER_SET_RESULTS=UTF8")
+      db2.commit()
+
+      try:
+         cur2.execute("""UPDATE lyrics_feature SET lyrics_term_vector_svd=%s WHERE song_id=%s""",(input_song_matrix_string, song_id))
+         db2.commit()
+         print "success"
+      except mysql.Error, e:
+         db2.rollback()
+         print "An error has been passed. %s" %e
+
       input_song_matrix_normalized = (input_song_matrix - normalize_min) / normalize_range
 
       similar_music_dic = {}
@@ -93,23 +118,8 @@ if (has_model_data=="true") :
       similar_song_string = ""
       for similar_song_id in similar_music_sort_dic :
 
-         # connect to db
-         db2 = mysql.connect(host    = CONST.DBHOST,
-                            user    = CONST.DBUSER,
-                            passwd  = CONST.DBPASS,
-                            db      = CONST.DBNAME,
-                            charset = 'UTF8')
-
-         # 從資料庫抓資料
-         cur2 = db2.cursor()
-         cur2.execute("SET NAMES UTF8")
-         cur2.execute("SET CHARACTER_SET_CLIENT=UTF8")
-         cur2.execute("SET CHARACTER_SET_RESULTS=UTF8")
-         db2.commit()
-
          if (similar_song_id!='340') {
 
-            cur2 = db2.cursor()
             try:
                cur2.execute("""INSERT INTO similar_song (song_id, similar_song_id, similar, model, create_time, modify_time) VALUES (%s, %s, %s, %s, NOW(), NOW())""",(song_id, similar_song_id, str(similar_music_dic[similar_song_id]), lyrics_feature_matrix_path))
                db2.commit()
