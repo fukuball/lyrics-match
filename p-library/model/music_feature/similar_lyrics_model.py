@@ -73,7 +73,7 @@ if (has_model_data=="true") :
    normalize_range = similar_music_model.getA().ptp(axis=0)
    similar_music_model_normalized = (similar_music_model.getA() - normalize_min) / normalize_range
 
-   cur.execute("""SELECT id FROM song WHERE lyric!='' AND have_english='0' LIMIT 1""")
+   cur.execute("""SELECT id FROM song WHERE lyric!='' AND have_english='0' AND id!='340'""")
 
    for row in cur.fetchall() :
 
@@ -107,16 +107,20 @@ if (has_model_data=="true") :
          cur2.execute("SET CHARACTER_SET_RESULTS=UTF8")
          db2.commit()
 
-         cur2 = db2.cursor()
-         try:
-            cur2.execute("""INSERT INTO similar_song (song_id, similar_song_id, similar, model, create_time, modify_time) VALUES (%s, %s, %s, %s, NOW(), NOW())""",(song_id, similar_song_id, str(similar_music_dic[similar_song_id]), lyrics_feature_matrix_path))
-            db2.commit()
-            print "success"
-         except mysql.Error, e:
-            db2.rollback()
-            print "An error has been passed. %s" %e
+         if (similar_song_id!='340') {
 
-         similar_song_string += similar_song_id+":"+str(similar_music_dic[similar_song_id])+","
+            cur2 = db2.cursor()
+            try:
+               cur2.execute("""INSERT INTO similar_song (song_id, similar_song_id, similar, model, create_time, modify_time) VALUES (%s, %s, %s, %s, NOW(), NOW())""",(song_id, similar_song_id, str(similar_music_dic[similar_song_id]), lyrics_feature_matrix_path))
+               db2.commit()
+               print "success"
+            except mysql.Error, e:
+               db2.rollback()
+               print "An error has been passed. %s" %e
 
-      similar_song_string = similar_song_string[:-1]
-      print similar_song_string
+         }
+
+         #similar_song_string += similar_song_id+":"+str(similar_music_dic[similar_song_id])+","
+
+      #similar_song_string = similar_song_string[:-1]
+      #print similar_song_string
