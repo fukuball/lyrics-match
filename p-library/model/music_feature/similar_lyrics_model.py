@@ -59,7 +59,6 @@ for row in cur.fetchall() :
 if (has_model_data=="true") :
 
    song_id_array = row_song_id.split(',')
-   input_song_feature_key = song_id_array.index(song_id)
 
    # model
    f = open(lyrics_feature_matrix_path, 'r')
@@ -73,18 +72,15 @@ if (has_model_data=="true") :
    #
    normalize_min = similar_music_model.getA().min(axis=0)
    normalize_range = similar_music_model.getA().ptp(axis=0)
-   input_song_matrix = similar_music_model.getA()[input_song_feature_key]
-   #print input_song_matrixdebugg
-
-   input_song_matrix_normalized = (input_song_matrix - normalize_min) / normalize_range
-   #print input_song_matrix_normalized;
    similar_music_model_normalized = (similar_music_model.getA() - normalize_min) / normalize_range
-   #print similar_music_model_normalized;
+
+   input_song_feature_key = song_id_array.index(song_id)
+   input_song_matrix = similar_music_model.getA()[input_song_feature_key]
+   input_song_matrix_normalized = (input_song_matrix - normalize_min) / normalize_range
 
    similar_music_dic = {}
    for music_feature_index, music_feature_value in enumerate(similar_music_model_normalized):
       similar_music_dic[song_id_array[music_feature_index]] = np.dot(music_feature_value, input_song_matrix_normalized)/(np.linalg.norm(music_feature_value)*np.linalg.norm(input_song_matrix_normalized))
-
 
    similar_music_sort_dic = list(sorted(similar_music_dic, key=similar_music_dic.__getitem__, reverse=True))
 
