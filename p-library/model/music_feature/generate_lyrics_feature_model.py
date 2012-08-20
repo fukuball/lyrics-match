@@ -64,7 +64,7 @@ print "matrix formed"
 lyrics_feature_U,lyrics_feature_s,lyrics_feature_V = np.linalg.svd(A_lyrics_feature_matrix, full_matrices=False)
 
 print "SVD performed"
-#print lyrics_feature_s
+print lyrics_feature_s
 
 # 降維
 for s_index, s_item in enumerate(lyrics_feature_s) :
