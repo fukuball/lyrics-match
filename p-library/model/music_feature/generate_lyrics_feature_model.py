@@ -54,14 +54,11 @@ for row in cur.fetchall() :
 
 # lyrics feature matrix
 # model
-lyrics_feature_matrix = json.loads(lyrics_feature_matrix)
+A_lyrics_feature_matrix = np.matrix(json.loads(lyrics_feature_matrix))
 
-print lyrics_feature_matrix;
+print A_lyrics_feature_matrix
+print( "matrix shape --> %d rows x %d columns" % A_lyrics_feature_matrix.shape )
 
-#A_lyrics_feature_matrix = np.matrix(lyrics_feature_matrix)
-#
-#print A_lyrics_feature_matrix
-#print( "matrix shape --> %d rows x %d columns" % A_lyrics_feature_matrix.shape )
 #
 ## SVD decomposition
 #lyrics_feature_U,lyrics_feature_s,lyrics_feature_V = np.linalg.svd(A_lyrics_feature_matrix, full_matrices=False)
