@@ -20,6 +20,8 @@ class AlgoDistStruct(AlgoSequence):
 		# 記錄PitchToneType 設定中，ㄧ字最多對幾個音符
 		self.__MAXNOTE = max([abs(path[0][1]) for path in self.__pitchToneType.stepPattern])
 
+		print self.__MAXNOTE
+
 
 		# 填表開始的座標位子
 		self.__STARTCOOR = (1, 1)
@@ -145,8 +147,6 @@ class AlgoDistStruct(AlgoSequence):
 			backStartCoor = (self.__tableAccu.shape[0] - 1, self.__tableAccu.shape[1] - 1)
 			depth = self.__backTracking(backStartCoor, self.__pathIdxList)
 			self.__pathLength = len(self.__pathIdxList)
-			#self.__similarity = self.__distance / self.__pathLength
-			#self.__similarity = self.__distance
 			self.__similarity = self.__distance / depth
 			
 
@@ -299,7 +299,7 @@ class AlgoDistStruct(AlgoSequence):
 			noteCount += self.__seqJ[phraseIdx]
 			prev = (nowCoor[0] - 1, phraseIdx - 1)
 
-			isSatisfy = noteCount - self.__seqI[nowCoor[0]] >= 0
+			isSatisfy = (noteCount - self.__seqI[nowCoor[0]]) >= 0
 			totalCost = self.__INF
 
 			if self.__tableAccu[prev] != self.__INF and isSatisfy:
@@ -326,7 +326,7 @@ class AlgoDistStruct(AlgoSequence):
 			wordCount += self.__seqI[sentenceIdx]
 			prev = (sentenceIdx - 1, nowCoor[1] - 1)
 
-			isSatisfy = wordCount - ceil(((self.__seqJ[nowCoor[1]] - 1) / self.__MAXNOTE) + 1) >= 0
+			isSatisfy = (wordCount - ceil(((self.__seqJ[nowCoor[1]] - 1) / self.__MAXNOTE) + 1)) >= 0
 			totalCost = self.__INF
 
 			if self.__tableAccu[prev] != self.__INF and isSatisfy:
