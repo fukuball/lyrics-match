@@ -261,9 +261,6 @@ class AlgoDistStruct(AlgoSequence):
 			startI = prevCoor[0] + 1
 			startJ = prevCoor[1] + 1
 
-			print "nowCoor:" + str(nowCoor)
-			print "prevCoor:" + str(prevCoor)
-
 			if startJ == nowCoor[1]:
 
 				# 走 column
