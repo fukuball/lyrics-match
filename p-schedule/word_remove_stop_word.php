@@ -16,7 +16,7 @@ require_once dirname(dirname(__FILE__))."/p-config/application-setter.php";
 
 $db_obj = LMDBAccess::getInstance();
 
-$select_sql = "SELECT lt.* FROM lyrics_term_combine lt LEFT JOIN lyrics_stop_word_mapping ls ON (lt.term=ls.stop_word) WHERE ls.stop_word IS NULL ORDER BY lt.id";
+$select_sql = "SELECT lt.* FROM lyrics_term_combine lt LEFT JOIN lyrics_stop_word_mapping ls ON (lt.term=ls.stop_word) WHERE ls.stop_word IS NULL AND lt.pos!='DET' ORDER BY lt.id";
 
 $query_result = $db_obj->selectCommand($select_sql);
 
