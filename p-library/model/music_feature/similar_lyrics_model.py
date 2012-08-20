@@ -60,7 +60,6 @@ if (has_model_data=="true") :
 
    song_id_array = row_song_id.split(',')
    input_song_feature_key = song_id_array.index(song_id)
-   input_song_matrix = np.matrix(song_music_feature_str)
 
    # model
    f = open(lyrics_feature_matrix_path, 'r')
