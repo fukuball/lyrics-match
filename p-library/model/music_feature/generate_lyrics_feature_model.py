@@ -42,7 +42,6 @@ row_song_id = ""
 column_lyrics_feature = ""
 create_time = ""
 modify_time = ""
-delete_time = ""
 
 for row in cur.fetchall() :
    lyrics_feature_matrix = row[1]
@@ -50,7 +49,6 @@ for row in cur.fetchall() :
    column_lyrics_feature = row[3]
    create_time = row[6]
    modify_time = row[7]
-   delete_time = row[8]
 
 # lyrics feature matrix
 # model
@@ -64,17 +62,18 @@ print "matrix formed"
 lyrics_feature_U,lyrics_feature_s,lyrics_feature_V = np.linalg.svd(A_lyrics_feature_matrix, full_matrices=False)
 
 print "SVD performed"
-print lyrics_feature_s
+#print lyrics_feature_s
 
 # 降維
 for s_index, s_item in enumerate(lyrics_feature_s) :
-   if (s_item<1000) :
+   if (s_item<100) :
       lyrics_feature_s[s_index] = 0.0
 
 print "dedimenstion performed"
 
 # lyrics feature model matrix
 lyrics_feature_s = np.diag(lyrics_feature_s)
+#print lyrics_feature_s
 
 A_bar_lyrics_feature_matrix = np.dot(lyrics_feature_U,np.dot(lyrics_feature_s,lyrics_feature_V))
 #print A_bar_lyrics_feature_matrix
@@ -88,7 +87,7 @@ A_bar_string = json.dumps(A_bar_list)
 print "matrix dump"
 
 try:
-   cur.execute("""INSERT INTO lyrics_feature_matrix (matrix, row_song_id, column_lyrics_feature, type, create_time, modify_time, delete_time) VALUES (%s, %s, %s, %s, %s, %s, %s)""",(A_bar_string, row_song_id, column_lyrics_feature, "model", create_time, modify_time, delete_time))
+   cur.execute("""INSERT INTO lyrics_feature_matrix (matrix, row_song_id, column_lyrics_feature, type, create_time, modify_time) VALUES (%s, %s, %s, %s, %s, %s)""",(A_bar_string, row_song_id, column_lyrics_feature, "model", create_time, modify_time))
    db.commit()
    print "success"
 except mysql.Error, e:
