@@ -18,19 +18,19 @@
 
       var chartData = [{
           code_word: 1,
-          pitch: 23.5
+          pitch: 3
       }, {
           code_word: 2,
-          pitch: 26.2
+          pitch: 5
       }, {
           code_word: 3,
-          pitch: 30.1
+          pitch: 8
       }, {
           code_word: 4,
-          pitch: 29.5
+          pitch: 9
       }, {
           code_word: 5,
-          pitch: 24.6
+          pitch: 4
       }];
 
 
@@ -51,7 +51,7 @@
 
           // value
           var valueAxis = new AmCharts.ValueAxis();
-          valueAxis.dashLength = 5;
+          valueAxis.dashLength = 12;
           valueAxis.axisAlpha = 0.2;
           valueAxis.position = "top";
           valueAxis.title = "Pitch Audio Word";
@@ -63,7 +63,6 @@
           graph1.type = "column";
           graph1.title = "Pitch";
           graph1.valueField = "pitch";
-          graph1.lineAlpha = 0;
           graph1.fillColors = "#ADD981";
           graph1.fillAlphas = 1;
           chart.addGraph(graph1);
