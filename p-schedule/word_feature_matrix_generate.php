@@ -16,7 +16,7 @@ require_once dirname(dirname(__FILE__))."/p-config/application-setter.php";
 
 $db_obj = LMDBAccess::getInstance();
 
-$row_song_id = "[";
+$row_song_id = "";
 $lyrics_feature = "";
 $matirx = "[";
 
@@ -32,7 +32,7 @@ foreach ($query_result as $query_result_data) {
    $matirx = $matirx.'['.$query_result_data['lyrics_term_vector'].'],';
 
    if ($count==0) {
-      $lyrics_feature = '['.$query_result_data['lyrics_term_vector_readable'].']';
+      $lyrics_feature = $query_result_data['lyrics_term_vector_readable'];
    }
    $count++;
 
@@ -42,7 +42,6 @@ foreach ($query_result as $query_result_data) {
 $row_song_id = substr ($row_song_id, 0, -1);
 $matirx = substr ($matirx, 0, -1);
 
-$row_song_id = $row_song_id."]";
 $matirx = $matirx."]";
 
 $insert_sql = "INSERT INTO lyrics_feature_matrix (matrix,row_song_id,column_lyrics_feature,type,create_time,modify_time) VALUES ('".addslashes($matirx)."', '".addslashes($row_song_id)."', '".addslashes($lyrics_feature)."', 'matrix', NOW(), NOW())";
