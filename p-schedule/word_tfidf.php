@@ -23,7 +23,7 @@ $document_num = 0;
 foreach ($query_result as $query_result_data) {
 
    $song_id = $query_result_data['id'];
-   $select_sql = "SELECT ltrsw.*,COUNT(ltrsw.term) tf, ltu.idf FROM lyrics_term_remove_stop_word ltrsw INNER JOIN lyrics_term_unique ltu ON (ltrsw.term=ltu.term) WHERE ltrsw.song_id='256' GROUP BY ltrsw.term";
+   $select_sql = "SELECT ltrsw.*,COUNT(ltrsw.term) tf, ltu.idf FROM lyrics_term_remove_stop_word ltrsw INNER JOIN lyrics_term_unique ltu ON (ltrsw.term=ltu.term) WHERE ltrsw.song_id='$song_id' GROUP BY ltrsw.term";
 
    $query_result2 = $db_obj->selectCommand($select_sql);
    foreach ($query_result2 as $query_result_data2) {
@@ -32,7 +32,7 @@ foreach ($query_result as $query_result_data) {
       $term = $query_result_data2['term'];
       $pos = $query_result_data2['pos'];
       $tf = $query_result_data2['tf'];
-      $idf = $query_result_data['idf'];
+      $idf = $query_result_data2['idf'];
       $tfidf = $tf*$idf;
 
       $insert_sql = "INSERT INTO lyrics_term_tfidf (song_id,term,pos,tf,tfidf,create_time,modify_time) VALUES ('".addslashes($song_id)."', '".addslashes($term)."', '".addslashes($pos)."', '".addslashes($tf)."', '".addslashes($idf)."', NOW(), NOW())";
