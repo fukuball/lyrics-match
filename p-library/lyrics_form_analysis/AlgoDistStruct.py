@@ -312,7 +312,7 @@ class AlgoDistStruct(AlgoSequence):
 				totalCost = self.__sigmoid((float(noteCount) / self.__seqI[nowCoor[0]]) - 1) + \
 						self.__sigmoid((phraseStart - phraseIdx)) - 1
 
-				totalCost *= (phraseStart - phraseIdx + 1)
+				#totalCost *= (phraseStart - phraseIdx + 1)
 					
 			pathCosts.append({"prev": prev, "cost": totalCost})
 
@@ -335,7 +335,7 @@ class AlgoDistStruct(AlgoSequence):
 				totalCost = self.__sigmoid((float(self.__seqJ[nowCoor[1]]) / wordCount) - 1) + \
 						self.__sigmoid((sentenceStart - sentenceIdx)) - 1
 
-				totalCost *= (sentenceStart - sentenceIdx + 1)
+				#totalCost *= (sentenceStart - sentenceIdx + 1)
 					
 			pathCosts.append({"prev": prev, "cost": totalCost})
 
