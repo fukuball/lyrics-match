@@ -35,7 +35,7 @@ foreach ($query_result as $query_result_data) {
       $idf = $query_result_data2['idf'];
       $tfidf = $tf*$idf;
 
-      $insert_sql = "INSERT INTO lyrics_term_tfidf (song_id,term,pos,tf,tfidf,create_time,modify_time) VALUES ('".addslashes($song_id)."', '".addslashes($term)."', '".addslashes($pos)."', '".addslashes($tf)."', '".addslashes($idf)."', NOW(), NOW())";
+      $insert_sql = "INSERT INTO lyrics_term_tfidf (song_id,term,pos,tf,tfidf,create_time,modify_time) VALUES ('".addslashes($song_id)."', '".addslashes($term)."', '".addslashes($pos)."', '".addslashes($tf)."', '".addslashes($tfidf)."', NOW(), NOW())";
       $query_result3 = $db_obj->insertCommand($insert_sql);
        echo $song_id." term:".$term." tfidf:".$tfidf." \n";
    }
