@@ -178,7 +178,7 @@ class AlgoDistStruct(AlgoSequence):
 
 		for i in range(self.__STARTCOOR[0], self.__tableLyricsRange.shape[0]):
 			for j in range(self.__STARTCOOR[1], self.__tableLyricsRange.shape[1]):
-				maxAlignNote = (self.__seqI[i] - 1) * self.__MAXNOTE + 1
+				maxAlignNote = ((self.__seqI[i] - 1) * self.__MAXNOTE) + 1
 				
 				noteCount = 0
 				backStepNum = 0
@@ -297,7 +297,7 @@ class AlgoDistStruct(AlgoSequence):
 			noteCount += self.__seqJ[phraseIdx]
 			prev = (nowCoor[0] - 1, phraseIdx - 1)
 
-			isSatisfy = (noteCount - self.__seqI[nowCoor[0]]) >= 0
+			isSatisfy = noteCount >= self.__seqI[nowCoor[0]]
 			totalCost = self.__INF
 
 			if self.__tableAccu[prev] != self.__INF and isSatisfy:
@@ -324,7 +324,7 @@ class AlgoDistStruct(AlgoSequence):
 			wordCount += self.__seqI[sentenceIdx]
 			prev = (sentenceIdx - 1, nowCoor[1] - 1)
 
-			isSatisfy = (wordCount - ceil(((self.__seqJ[nowCoor[1]] - 1) / self.__MAXNOTE) + 1)) >= 0
+			isSatisfy = wordCount >= ceil(((self.__seqJ[nowCoor[1]] - 1) / float(self.__MAXNOTE)) + 1) 
 			totalCost = self.__INF
 
 			if self.__tableAccu[prev] != self.__INF and isSatisfy:
