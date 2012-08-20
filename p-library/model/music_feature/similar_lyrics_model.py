@@ -92,7 +92,31 @@ if (has_model_data=="true") :
 
       similar_song_string = ""
       for similar_song_id in similar_music_sort_dic :
-         similar_song_string += similar_song_id+":"+str(similar_music_dic[similar_song_id])+","
 
-      similar_song_string = similar_song_string[:-1]
-      print similar_song_string
+         # connect to db
+         db2 = mysql.connect(host    = CONST.DBHOST,
+                            user    = CONST.DBUSER,
+                            passwd  = CONST.DBPASS,
+                            db      = CONST.DBNAME,
+                            charset = 'UTF8')
+
+         # 從資料庫抓資料
+         cur2 = db2.cursor()
+         cur2.execute("SET NAMES UTF8")
+         cur2.execute("SET CHARACTER_SET_CLIENT=UTF8")
+         cur2.execute("SET CHARACTER_SET_RESULTS=UTF8")
+         db2.commit()
+
+         cur2 = db2.cursor()
+         try:
+            cur2.execute("""INSERT INTO similar_song (song_id, similar_song_id, similar, model, create_time, modify_time) VALUES (%s, %s, %s, %s, NOW(), NOW())""",(song_id, similar_song_id, str(similar_music_dic[similar_song_id]), lyrics_feature_matrix_path))
+            db2.commit()
+            print "success"
+         except mysql.Error, e:
+            db2.rollback()
+            print "An error has been passed. %s" %e
+
+         #similar_song_string += similar_song_id+":"+str(similar_music_dic[similar_song_id])+","
+
+      #similar_song_string = similar_song_string[:-1]
+      #print similar_song_string
