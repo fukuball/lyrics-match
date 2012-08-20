@@ -59,18 +59,17 @@ for row in cur.fetchall() :
 if (has_model_data=="true") :
 
    song_id_array = row_song_id.split(',')
-   print song_id_array
    input_song_feature_key = song_id_array.index(song_id)
-   #input_song_matrix = np.matrix(song_music_feature_str)
+   input_song_matrix = np.matrix(song_music_feature_str)
 
    # model
-   #f = open(lyrics_feature_matrix_path, 'r')
-   #lyrics_feature_matrix = f.read()
-   #
-   #print lyrics_feature_matrix
-   #
-   #lyrics_feature_matrix = np.matrix(json.loads(lyrics_feature_matrix))
-   #f.close()
+   f = open(lyrics_feature_matrix_path, 'r')
+   lyrics_feature_matrix = f.read()
+
+   print lyrics_feature_matrix
+
+   lyrics_feature_matrix = np.matrix(json.loads(lyrics_feature_matrix))
+   f.close()
 
 
    #similar_music_model = np.concatenate((music_feature_matrix, augment_matrix), axis=1)
