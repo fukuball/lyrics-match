@@ -29,6 +29,9 @@ class AlgoDistStruct(AlgoSequence):
 		# 無限大定義
 		self.__INF = 1e6
 
+		# Cost 的 base
+		self.__BASE = 1.5
+
 	
 	def __varInit(self):
 		from numpy import zeros
@@ -211,23 +214,6 @@ class AlgoDistStruct(AlgoSequence):
 
 
 
-	def __tableAugment(self, table):
-		"""
-		描述：將輸入的 table 在第一列與第一行前面擴增 值為無限大的行或是列
-		輸入：要增廣的 table，numpy.array matrix
-		輸出：增廣的 table
-		"""
-
-		rowInsert = zeros(self.__IMAXSTEPSIZE)
-		temp = insert(table, rowInsert, self.__INF, axis = 0)
-
-		colInsert = zeros(self.__JMAXSTEPSIZE)
-		temp = insert(temp, colInsert, self.__INF, axis = 1)
-
-		return temp
-
-
-
 	def __tableComputing(self):
 		"""
 		描述：運用 DP 的概念，來填充 Accumulate Cost Table
@@ -315,7 +301,7 @@ class AlgoDistStruct(AlgoSequence):
 			noteCount += self.__seqJ[phraseIdx]
 			prev = (nowCoor[0] - 1, phraseIdx - 1)
 
-			pathCost = noteCount - self.__seqI[nowCoor[0]]
+			pathCost = pow(self.__BASE, noteCount - self.__seqI[nowCoor[0]])
 			totalCost = self.__tableAccu[prev] + pathCost
 
 			if self.__tableAccu[prev] == self.__INF or pathCost < 0:
@@ -333,7 +319,7 @@ class AlgoDistStruct(AlgoSequence):
 			wordCount += self.__seqI[sentenceIdx]
 			prev = (sentenceIdx - 1, nowCoor[1] - 1)
 
-			pathCost = wordCount - self.__seqJ[nowCoor[1]]
+			pathCost = pow(self.__BASE, wordCount - self.__seqJ[nowCoor[1]])
 			totalCost = self.__tableAccu[prev] + pathCost
 
 			if self.__tableAccu[prev] == self.__INF or pathCost < 0:
