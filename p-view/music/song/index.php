@@ -300,7 +300,7 @@ if (!empty($_GET['song_id'])) {
 
          $db_obj = LMDBAccess::getInstance();
 
-         $select_sql = "SELECT similar_song_id,similar FROM similar_song WHERE song_id='".$_GET['song_id']."' AND model='lyrics-model-8.txt' ORDER BY similar DESC LIMIT 500";
+         $select_sql = "SELECT similar_song_id,similar FROM similar_song WHERE song_id='1' AND model='lyrics-model-8.txt' ORDER BY similar DESC LIMIT 500";
 
          $query_result = $db_obj->selectCommand($select_sql);
 
@@ -309,6 +309,7 @@ if (!empty($_GET['song_id'])) {
             $rank++;
             $similar_song_id = $query_result_data['similar_song_id'];
             $similar = $query_result_data['similar'];
+            echo $similar_song_id;
 
             $similar_song_obj = new LMSong($similar_song_id);
             $artist_obj = new LMPerformer($similar_song_obj->performer_id);
