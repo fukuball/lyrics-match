@@ -4,6 +4,7 @@ from LocalConstraint import PitchToneType
 from numpy import zeros
 from math import log
 from math import exp
+from math import ceil
 from numpy import argmin
 from numpy import insert
 from copy import deepcopy
@@ -303,16 +304,17 @@ class AlgoDistStruct(AlgoSequence):
 			noteCount += self.__seqJ[phraseIdx]
 			prev = (nowCoor[0] - 1, phraseIdx - 1)
 
-			countDiff = noteCount - self.__seqI[nowCoor[0]]
+			isSatisfy = noteCount - self.__seqI[nowCoor[0]] >= 0
 			totalCost = self.__INF
 
-			if self.__tableAccu[prev] != self.__INF and countDiff >= 0:
+			if self.__tableAccu[prev] != self.__INF and isSatisfy:
 				#totalCost = self.__tableAccu[prev] + pow(self.__BASE, countDiff)
 				#totalCost = self.__tableAccu[prev] + log(countDiff + 1, 2)
-				totalCost = self.__sigmoid((float(noteCount) / self.__seqI[nowCoor[0]]) - 1) + \
-						self.__sigmoid((phraseStart - phraseIdx)) - 1
+				#totalCost = self.__sigmoid((float(noteCount) / self.__seqI[nowCoor[0]]) - 1) + \
+				#		self.__sigmoid((phraseStart - phraseIdx)) - 1
 
 				#totalCost *= (phraseStart - phraseIdx + 1)
+				totalCost = self.__tableAccu[prev] + noteCount - self.__seqI[nowCoor[0]]
 					
 			pathCosts.append({"prev": prev, "cost": totalCost})
 
@@ -327,16 +329,20 @@ class AlgoDistStruct(AlgoSequence):
 			prev = (sentenceIdx - 1, nowCoor[1] - 1)
 
 			#countDiff = wordCount - self.__seqJ[nowCoor[1]]
-			countDiff = self.__seqJ[nowCoor[1]] - wordCount
+			#countDiff = self.__seqJ[nowCoor[1]] - wordCount
+			isSatisfy = wordCount - ceil(((self.__seqJ[nowCoor[1]] - 1) / self.__MAXNOTE) + 1) >= 0
+
 			totalCost = self.__INF
 
-			if self.__tableAccu[prev] != self.__INF and countDiff >= 0:
+			if self.__tableAccu[prev] != self.__INF and isSatisfy:
 				#totalCost = self.__tableAccu[prev] + pow(self.__BASE, countDiff)
 				#totalCost = self.__tableAccu[prev] + log(countDiff + 1, 2)
-				totalCost = self.__sigmoid((float(self.__seqJ[nowCoor[1]]) / wordCount) - 1) + \
-						self.__sigmoid((sentenceStart - sentenceIdx)) - 1
+				#totalCost = self.__sigmoid((float(self.__seqJ[nowCoor[1]]) / wordCount) - 1) + \
+				#		self.__sigmoid((sentenceStart - sentenceIdx)) - 1
 
 				#totalCost *= (sentenceStart - sentenceIdx + 1)
+				totalCost = self.__tableAccu[prev] + self.__seqJ[nowCoor[1]] - wordCount
+
 					
 			pathCosts.append({"prev": prev, "cost": totalCost})
 
