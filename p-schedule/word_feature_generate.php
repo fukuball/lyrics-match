@@ -31,8 +31,8 @@ foreach ($query_result as $query_result_data) {
    $term_vector_readable_string = '';
    foreach ($query_result2 as $query_result_data2) {
 
-      $term_vector_string = $query_result2['tfidf'].',';
-      $term_vector_readable_string = $query_result2['term'].',';
+      $term_vector_string = $query_result_data2['tfidf'].',';
+      $term_vector_readable_string = $query_result_data2['term'].',';
 
    }
 
