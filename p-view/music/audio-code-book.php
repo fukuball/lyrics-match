@@ -74,15 +74,150 @@
         graph.lineColor = "#ffffff";
         chart.addGraph(graph);
 
-       // LEGEND
-       var legend = new AmCharts.AmLegend();
-       legend.borderAlpha = 0.2;
-       legend.horizontalGap = 10;
-       legend.autoMargins = false;
-       legend.marginLeft = 20;
-       legend.marginRight = 20;
-       legend.switchType = "v";
-       chart.addLegend(legend);
+        // first graph
+          var graph = new AmCharts.AmGraph();
+          graph.title = "pitch1";
+          graph.labelText = "[[percents]]%";
+          graph.balloonText = "[[value]] ([[percents]]%)";
+          graph.valueField = "pitch1";
+          graph.type = "column";
+          graph.lineAlpha = 0;
+          graph.fillAlphas = 0.5;
+          graph.lineColor = "#ffffff";
+          chart.addGraph(graph);
+
+          // first graph
+            var graph = new AmCharts.AmGraph();
+            graph.title = "pitch2";
+            graph.labelText = "[[percents]]%";
+            graph.balloonText = "[[value]] ([[percents]]%)";
+            graph.valueField = "pitch2";
+            graph.type = "column";
+            graph.lineAlpha = 0;
+            graph.fillAlphas = 0.5;
+            graph.lineColor = "#ffffff";
+            chart.addGraph(graph);
+
+            // first graph
+              var graph = new AmCharts.AmGraph();
+              graph.title = "pitch3";
+              graph.labelText = "[[percents]]%";
+              graph.balloonText = "[[value]] ([[percents]]%)";
+              graph.valueField = "pitch3";
+              graph.type = "column";
+              graph.lineAlpha = 0;
+              graph.fillAlphas = 0.5;
+              graph.lineColor = "#ffffff";
+              chart.addGraph(graph);
+
+              // first graph
+                var graph = new AmCharts.AmGraph();
+                graph.title = "pitch4";
+                graph.labelText = "[[percents]]%";
+                graph.balloonText = "[[value]] ([[percents]]%)";
+                graph.valueField = "pitch4";
+                graph.type = "column";
+                graph.lineAlpha = 0;
+                graph.fillAlphas = 0.5;
+                graph.lineColor = "#ffffff";
+                chart.addGraph(graph);
+
+                // first graph
+                  var graph = new AmCharts.AmGraph();
+                  graph.title = "pitch5";
+                  graph.labelText = "[[percents]]%";
+                  graph.balloonText = "[[value]] ([[percents]]%)";
+                  graph.valueField = "pitch5";
+                  graph.type = "column";
+                  graph.lineAlpha = 0;
+                  graph.fillAlphas = 0.5;
+                  graph.lineColor = "#ffffff";
+                  chart.addGraph(graph);
+
+                  // first graph
+                    var graph = new AmCharts.AmGraph();
+                    graph.title = "pitch6";
+                    graph.labelText = "[[percents]]%";
+                    graph.balloonText = "[[value]] ([[percents]]%)";
+                    graph.valueField = "pitch6";
+                    graph.type = "column";
+                    graph.lineAlpha = 0;
+                    graph.fillAlphas = 0.5;
+                    graph.lineColor = "#ffffff";
+                    chart.addGraph(graph);
+
+                    // first graph
+                      var graph = new AmCharts.AmGraph();
+                      graph.title = "pitch7";
+                      graph.labelText = "[[percents]]%";
+                      graph.balloonText = "[[value]] ([[percents]]%)";
+                      graph.valueField = "pitch7";
+                      graph.type = "column";
+                      graph.lineAlpha = 0;
+                      graph.fillAlphas = 0.5;
+                      graph.lineColor = "#ffffff";
+                      chart.addGraph(graph);
+
+                      // first graph
+                        var graph = new AmCharts.AmGraph();
+                        graph.title = "pitch8";
+                        graph.labelText = "[[percents]]%";
+                        graph.balloonText = "[[value]] ([[percents]]%)";
+                        graph.valueField = "pitch8";
+                        graph.type = "column";
+                        graph.lineAlpha = 0;
+                        graph.fillAlphas = 0.5;
+                        graph.lineColor = "#ffffff";
+                        chart.addGraph(graph);
+
+                        // first graph
+                          var graph = new AmCharts.AmGraph();
+                          graph.title = "pitch9";
+                          graph.labelText = "[[percents]]%";
+                          graph.balloonText = "[[value]] ([[percents]]%)";
+                          graph.valueField = "pitch9";
+                          graph.type = "column";
+                          graph.lineAlpha = 0;
+                          graph.fillAlphas = 0.5;
+                          graph.lineColor = "#ffffff";
+                          chart.addGraph(graph);
+
+                          // first graph
+                            var graph = new AmCharts.AmGraph();
+                            graph.title = "pitch10";
+                            graph.labelText = "[[percents]]%";
+                            graph.balloonText = "[[value]] ([[percents]]%)";
+                            graph.valueField = "pitch10";
+                            graph.type = "column";
+                            graph.lineAlpha = 0;
+                            graph.fillAlphas = 0.5;
+                            graph.lineColor = "#ffffff";
+                            chart.addGraph(graph);
+
+                            // first graph
+                              var graph = new AmCharts.AmGraph();
+                              graph.title = "pitch11";
+                              graph.labelText = "[[percents]]%";
+                              graph.balloonText = "[[value]] ([[percents]]%)";
+                              graph.valueField = "pitch11";
+                              graph.type = "column";
+                              graph.lineAlpha = 0;
+                              graph.fillAlphas = 0.5;
+                              graph.lineColor = "#ffffff";
+                              chart.addGraph(graph);
+
+
+                              // first graph
+                                var graph = new AmCharts.AmGraph();
+                                graph.title = "pitch12";
+                                graph.labelText = "[[percents]]%";
+                                graph.balloonText = "[[value]] ([[percents]]%)";
+                                graph.valueField = "pitch12";
+                                graph.type = "column";
+                                graph.lineAlpha = 0;
+                                graph.fillAlphas = 0.5;
+                                graph.lineColor = "#ffffff";
+                                chart.addGraph(graph);
 
        // WRITE
        chart.write("chartdiv");
