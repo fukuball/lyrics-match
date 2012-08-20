@@ -20,8 +20,6 @@ class AlgoDistStruct(AlgoSequence):
 		# 記錄PitchToneType 設定中，ㄧ字最多對幾個音符
 		self.__MAXNOTE = max([abs(path[0][1]) for path in self.__pitchToneType.stepPattern])
 
-		print self.__MAXNOTE
-
 
 		# 填表開始的座標位子
 		self.__STARTCOOR = (1, 1)
@@ -313,7 +311,7 @@ class AlgoDistStruct(AlgoSequence):
 
 				#totalCost = self.__tableAccu[prev] + noteCount - self.__seqI[nowCoor[0]]
 					
-			pathCosts.append({"prev": prev, "cost": totalCost})
+				pathCosts.append({"prev": prev, "cost": totalCost})
 
 
 
@@ -344,6 +342,10 @@ class AlgoDistStruct(AlgoSequence):
 			pathCosts.append({"prev": prev, "cost": totalCost})
 
 
+		if pathCosts == []:
+			pathCosts.append({"prev": None, "cost": self.__INF})
+
+
 		return pathCosts
 
 
@@ -360,11 +362,14 @@ if __name__ == "__main__":
 	from random import randint
 
 	#sentenceSeq  = [4, 7, 1, 3]
-	sentenceSeq  = [8]
-	#sentenceSeq = [3, 3, 1]
+	#sentenceSeq  = [8]
+	sentenceSeq = [2, 3, 4]
+	#sentenceSeq = [3, 4, 5]
 	#phraseSeq = [3, 5, 2, 5, 1, 4]
-	phraseSeq = [3, 2, 5]
+	#phraseSeq = [3, 2, 5]
 	#phraseSeq = [8]
+	phraseSeq = [3, 4, 5]
+	#phraseSeq = [2, 3, 4]
 
 
 	struct = AlgoDistStruct(PitchToneType())
