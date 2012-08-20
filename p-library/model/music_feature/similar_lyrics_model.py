@@ -118,7 +118,7 @@ if (has_model_data=="true") :
       similar_song_string = ""
       for similar_song_id in similar_music_sort_dic :
 
-         if (similar_song_id!='340') {
+         if (similar_song_id!='340')
 
             try:
                cur2.execute("""INSERT INTO similar_song (song_id, similar_song_id, similar, model, create_time, modify_time) VALUES (%s, %s, %s, %s, NOW(), NOW())""",(song_id, similar_song_id, str(similar_music_dic[similar_song_id]), lyrics_feature_matrix_path))
@@ -128,7 +128,6 @@ if (has_model_data=="true") :
                db2.rollback()
                print "An error has been passed. %s" %e
 
-         }
 
          #similar_song_string += similar_song_id+":"+str(similar_music_dic[similar_song_id])+","
 
