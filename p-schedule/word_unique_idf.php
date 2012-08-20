@@ -40,7 +40,7 @@ foreach ($query_result as $query_result_data) {
                  "SET idf='$idf' ".
                  "WHERE ".
                  "id='$term_id' ".
-                 "modify_time=NOW() "
+                 "modify_time=NOW() ".
                  "LIMIT 1";
    $query_result3 = $db_obj->insertCommand($update_sql);
    echo $term." idf:".$idf." \n";
