@@ -339,7 +339,7 @@ class AlgoDistStruct(AlgoSequence):
 		return pathCosts
 
 
-	def __sigmoid(x):
+	def __sigmoid(self, x):
 		return 1 / (1 + exp(-x))
 
 
