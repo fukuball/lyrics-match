@@ -16,7 +16,7 @@ require_once dirname(dirname(__FILE__))."/p-config/application-setter.php";
 
 $db_obj = LMDBAccess::getInstance();
 
-$song_id = "[";
+$row_song_id = "[";
 $lyrics_feature = "";
 $matirx = "[";
 
@@ -27,7 +27,8 @@ $query_result = $db_obj->selectCommand($select_sql);
 $count = 0 ;
 foreach ($query_result as $query_result_data) {
 
-   $song_id = $song_id.'['.$query_result_data['song_id'].'],';
+   $song_id = $query_result_data['song_id'];
+   $row_song_id = $row_song_id.$song_id.',';
    $matirx = $matirx.'['.$query_result_data['lyrics_term_vector'].'],';
 
    if ($count==0) {
@@ -38,13 +39,13 @@ foreach ($query_result as $query_result_data) {
    echo "combine $song_id \n";
 }
 
-$song_id = substr ($song_id, 0, -1);
+$row_song_id = substr ($row_song_id, 0, -1);
 $matirx = substr ($matirx, 0, -1);
 
-$song_id = $song_id."]";
+$row_song_id = $row_song_id."]";
 $matirx = $matirx."]";
 
-$insert_sql = "INSERT INTO lyrics_feature_matrix (matrix,row_song_id,column_lyrics_feature,type,create_time,modify_time) VALUES ('".addslashes($matirx)."', '".addslashes($song_id)."', '".addslashes($lyrics_feature)."', 'matrix', NOW(), NOW())";
+$insert_sql = "INSERT INTO lyrics_feature_matrix (matrix,row_song_id,column_lyrics_feature,type,create_time,modify_time) VALUES ('".addslashes($matirx)."', '".addslashes($row_song_id)."', '".addslashes($lyrics_feature)."', 'matrix', NOW(), NOW())";
 $query_result3 = $db_obj->insertCommand($insert_sql);
 echo "lyrics matirx feature \n";
 
