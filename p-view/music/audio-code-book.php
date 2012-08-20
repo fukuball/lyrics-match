@@ -63,6 +63,7 @@
           graph1.type = "column";
           graph1.title = "Pitch";
           graph1.valueField = "pitch";
+          graph1.lineAlpha = 0;
           graph1.fillColors = "#ADD981";
           graph1.fillAlphas = 1;
           chart.addGraph(graph1);
