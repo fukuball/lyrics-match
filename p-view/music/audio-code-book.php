@@ -12,7 +12,7 @@
  * @link     http://sarasti.cs.nccu.edu.tw
  */
 ?>
-<div id="chartdiv" style="width: 500px; height: 600px;"></div>
+<div id="chartdiv" style="width: 1000px; height: 600px;"></div>
 <script type="text/javascript">
       var chart;
 
