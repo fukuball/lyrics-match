@@ -330,7 +330,7 @@ class AlgoDistStruct(AlgoSequence):
 			if self.__tableAccu[prev] != self.__INF and countDiff >= 0:
 				#totalCost = self.__tableAccu[prev] + pow(self.__BASE, countDiff)
 				#totalCost = self.__tableAccu[prev] + log(countDiff + 1, 2)
-				totalCost = self.__sigmoid((float(self.__seqJ[nowCoor[1]) / wordCount) - 1) + \
+				totalCost = self.__sigmoid((float(self.__seqJ[nowCoor[1]]) / wordCount) - 1) + \
 						self.__sigmoid(sentenceStart - sentenceIdx) - 1
 					
 			pathCosts.append({"prev": prev, "cost": totalCost})
