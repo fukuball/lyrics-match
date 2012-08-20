@@ -305,7 +305,7 @@ class AlgoDistStruct(AlgoSequence):
 			totalCost = self.__INF
 
 			if self.__tableAccu[prev] != self.__INF and countDiff >= 0:
-				totalCost = tableAccu[prev] + pow(self.__BASE, countDiff)
+				totalCost = self.__tableAccu[prev] + pow(self.__BASE, countDiff)
 					
 			pathCosts.append({"prev": prev, "cost": totalCost})
 
