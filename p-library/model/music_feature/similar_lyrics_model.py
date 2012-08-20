@@ -64,16 +64,12 @@ if (has_model_data=="true") :
    # model
    f = open(lyrics_feature_matrix_path, 'r')
    lyrics_feature_matrix = f.read()
-
-   print lyrics_feature_matrix
-
    lyrics_feature_matrix = np.matrix(json.loads(lyrics_feature_matrix))
    f.close()
 
-
-   #similar_music_model = np.concatenate((music_feature_matrix, augment_matrix), axis=1)
-   ##print similar_music_model
-   ##print( "matrix shape --> %d rows x %d columns" % similar_music_model.shape )
+   similar_music_model = lyrics_feature_matrix
+   #print similar_music_model
+   print( "matrix shape --> %d rows x %d columns" % similar_music_model.shape )
    #
    #normalize_min = similar_music_model.getA().min(axis=0)
    #normalize_range = similar_music_model.getA().ptp(axis=0)
