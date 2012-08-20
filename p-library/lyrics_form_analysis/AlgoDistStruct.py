@@ -301,11 +301,11 @@ class AlgoDistStruct(AlgoSequence):
 			noteCount += self.__seqJ[phraseIdx]
 			prev = (nowCoor[0] - 1, phraseIdx - 1)
 
-			pathCost = pow(self.__BASE, noteCount - self.__seqI[nowCoor[0]])
-			totalCost = self.__tableAccu[prev] + pathCost
+			countDiff = noteCount - self.__seqI[nowCoor[0]]
+			totalCost = self.__INF
 
-			if self.__tableAccu[prev] == self.__INF or pathCost < 0:
-				totalCost = self.__INF
+			if self.__tableAccu[prev] != self.__INF and countDiff >= 0:
+				totalCost = tableAccu[prev] + pow(self.__BASE, countDiff)
 					
 			pathCosts.append({"prev": prev, "cost": totalCost})
 
@@ -319,11 +319,11 @@ class AlgoDistStruct(AlgoSequence):
 			wordCount += self.__seqI[sentenceIdx]
 			prev = (sentenceIdx - 1, nowCoor[1] - 1)
 
-			pathCost = pow(self.__BASE, wordCount - self.__seqJ[nowCoor[1]])
-			totalCost = self.__tableAccu[prev] + pathCost
+			countDiff = wordCount - self.__seqJ[nowCoor[1]]
+			totalCost = self.__INF
 
-			if self.__tableAccu[prev] == self.__INF or pathCost < 0:
-				totalCost = self.__INF
+			if self.__tableAccu[prev] != self.__INF and countDiff >= 0:
+				totalCost = self.__tableAccu[prev] + pow(self.__BASE, countDiff)
 					
 			pathCosts.append({"prev": prev, "cost": totalCost})
 
