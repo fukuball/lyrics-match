@@ -16,7 +16,7 @@ require_once dirname(dirname(__FILE__))."/p-config/application-setter.php";
 
 $db_obj = LMDBAccess::getInstance();
 
-$select_sql = "SELECT id FROM song WHERE lyric!=''";
+$select_sql = "SELECT id FROM song WHERE lyric!='' ORDER BY id";
 
 $query_result = $db_obj->selectCommand($select_sql);
 $document_num = 0;
@@ -31,8 +31,8 @@ foreach ($query_result as $query_result_data) {
    $term_vector_readable_string = '';
    foreach ($query_result2 as $query_result_data2) {
 
-      $term_vector_string = $query_result_data2['tfidf'].',';
-      $term_vector_readable_string = $query_result_data2['term'].',';
+      $term_vector_string = $term_vector_string.$query_result_data2['tfidf'].',';
+      $term_vector_readable_string = $term_vector_readable_string.$query_result_data2['term'].',';
 
    }
 
