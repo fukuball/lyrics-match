@@ -143,10 +143,11 @@ class AlgoDistStruct(AlgoSequence):
 			# 回朔排比的最佳對應路徑
 			self.__pathIdxList = []
 			backStartCoor = (self.__tableAccu.shape[0] - 1, self.__tableAccu.shape[1] - 1)
-			self.__backTracking(backStartCoor, self.__pathIdxList)
+			depth = self.__backTracking(backStartCoor, self.__pathIdxList)
 			self.__pathLength = len(self.__pathIdxList)
 			#self.__similarity = self.__distance / self.__pathLength
-			self.__similarity = self.__distance
+			#self.__similarity = self.__distance
+			self.__similarity = self.__distance / depth
 			
 
 			# 將排比的路徑座標轉換成序列的 Index
@@ -250,7 +251,7 @@ class AlgoDistStruct(AlgoSequence):
 
 
 		if nowCoor == self.__STOPCOOR:
-			return
+			return 0
 		else:
 			# 將目前的對應座標加到 pathIdxList 裡面
 			pathIdxList.insert(0, nowCoor)
@@ -277,7 +278,7 @@ class AlgoDistStruct(AlgoSequence):
 					pathIdxList.insert(0, (startI, j))
 
 
-			return  self.__backTracking(prevCoor, pathIdxList)
+			return  self.__backTracking(prevCoor, pathIdxList) + 1
 
 		
 
@@ -312,9 +313,10 @@ class AlgoDistStruct(AlgoSequence):
 				#totalCost = self.__tableAccu[prev] + log(countDiff + 1, 2)
 				localCost = self.__sigmoid((float(noteCount) / self.__seqI[nowCoor[0]]) - 1) + \
 						self.__sigmoid((phraseStart - phraseIdx)) - 1
+				#localCost *= (phraseStart - phraseIdx + 1)
+
 				totalCost = self.__tableAccu[prev] + localCost
 
-				#totalCost *= (phraseStart - phraseIdx + 1)
 				#totalCost = self.__tableAccu[prev] + noteCount - self.__seqI[nowCoor[0]]
 					
 			pathCosts.append({"prev": prev, "cost": totalCost})
@@ -337,9 +339,10 @@ class AlgoDistStruct(AlgoSequence):
 				#totalCost = self.__tableAccu[prev] + log(countDiff + 1, 2)
 				localCost = self.__sigmoid((float(self.__seqJ[nowCoor[1]]) / wordCount) - 1) + \
 						self.__sigmoid((sentenceStart - sentenceIdx)) - 1
+				#localCost *= (sentenceStart - sentenceIdx + 1)
+
 				totalCost = self.__tableAccu[prev] + localCost
 
-				#totalCost *= (sentenceStart - sentenceIdx + 1)
 				#totalCost = self.__tableAccu[prev] + self.__seqJ[nowCoor[1]] - wordCount
 
 					
