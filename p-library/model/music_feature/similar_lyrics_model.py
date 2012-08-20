@@ -115,7 +115,7 @@ if (has_model_data=="true") :
             db2.rollback()
             print "An error has been passed. %s" %e
 
-         #similar_song_string += similar_song_id+":"+str(similar_music_dic[similar_song_id])+","
+         similar_song_string += similar_song_id+":"+str(similar_music_dic[similar_song_id])+","
 
-      #similar_song_string = similar_song_string[:-1]
-      #print similar_song_string
+      similar_song_string = similar_song_string[:-1]
+      print similar_song_string
