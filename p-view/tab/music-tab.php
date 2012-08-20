@@ -19,6 +19,7 @@ $music_lyricist_tab_active = '';
 $music_composer_tab_active = '';
 $music_addsong_tab_active = '';
 $music_wordcount_tab_active = '';
+$music_audiocodebook_tab_active = '';
 
 switch ($current_page_path_url) {
 
@@ -67,6 +68,12 @@ case (preg_match('/music\/word\-count.*/', $current_page_path_url) ? true : fals
 
    break;
 
+case (preg_match('/music\/audio\-code\-book.*/', $current_page_path_url) ? true : false) :
+
+   $music_audiocodebook_tab_active = ' active';
+
+   break;
+
 }
 
 
@@ -105,6 +112,11 @@ case (preg_match('/music\/word\-count.*/', $current_page_path_url) ? true : fals
    <li class="<?=$music_wordcount_tab_active?>">
       <a href="<?=SITE_HOST?>/music/word-count.php">
          歌詞字數列表
+      </a>
+   </li>
+   <li class="<?=$music_audiocodebook_tab_active?>">
+      <a href="<?=SITE_HOST?>/music/audio-code-book.php">
+         Audio Code Book
       </a>
    </li>
 </ul>
