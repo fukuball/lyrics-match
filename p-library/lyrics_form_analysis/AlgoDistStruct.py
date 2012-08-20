@@ -3,6 +3,7 @@ from AlgoSequence import AlgoSequence
 from LocalConstraint import PitchToneType
 from numpy import zeros
 from math import log
+from math import exp
 from numpy import argmin
 from numpy import insert
 from copy import deepcopy
@@ -143,8 +144,8 @@ class AlgoDistStruct(AlgoSequence):
 			backStartCoor = (self.__tableAccu.shape[0] - 1, self.__tableAccu.shape[1] - 1)
 			self.__backTracking(backStartCoor, self.__pathIdxList)
 			self.__pathLength = len(self.__pathIdxList)
-			#self.__similarity = self.__distance / self.__pathLength
-			self.__similarity = self.__distance
+			self.__similarity = self.__distance / self.__pathLength
+			#self.__similarity = self.__distance
 			
 
 			# 將排比的路徑座標轉換成序列的 Index
@@ -307,7 +308,9 @@ class AlgoDistStruct(AlgoSequence):
 
 			if self.__tableAccu[prev] != self.__INF and countDiff >= 0:
 				#totalCost = self.__tableAccu[prev] + pow(self.__BASE, countDiff)
-				totalCost = self.__tableAccu[prev] + log(countDiff + 1, 2)
+				#totalCost = self.__tableAccu[prev] + log(countDiff + 1, 2)
+				totalCost = self.__sigmoid((float(noteCount) / self.__seqI[nowCoor[0]]) - 1) + \
+						self.__sigmoid(phraseStart - phraseIdx) - 1
 					
 			pathCosts.append({"prev": prev, "cost": totalCost})
 
@@ -326,7 +329,9 @@ class AlgoDistStruct(AlgoSequence):
 
 			if self.__tableAccu[prev] != self.__INF and countDiff >= 0:
 				#totalCost = self.__tableAccu[prev] + pow(self.__BASE, countDiff)
-				totalCost = self.__tableAccu[prev] + log(countDiff + 1, 2)
+				#totalCost = self.__tableAccu[prev] + log(countDiff + 1, 2)
+				totalCost = self.__sigmoid((float(self.__seqJ[nowCoor[1]) / wordCount) - 1) + \
+						self.__sigmoid(sentenceStart - sentenceIdx) - 1
 					
 			pathCosts.append({"prev": prev, "cost": totalCost})
 
@@ -334,7 +339,8 @@ class AlgoDistStruct(AlgoSequence):
 		return pathCosts
 
 
-
+	def __sigmoid(x):
+		return 1 / (1 + exp(-x))
 
 
 
