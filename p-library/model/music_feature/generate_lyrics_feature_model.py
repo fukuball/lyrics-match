@@ -36,7 +36,13 @@ db = mysql.connect(host    = CONST.DBHOST,
 
 # 從資料庫抓資料
 cur = db.cursor()
+cur.execute("SET NAMES UTF8")
+cur.execute("SET CHARACTER_SET_CLIENT=UTF8")
+cur.execute("SET CHARACTER_SET_RESULTS=UTF8")
+db.commit()
+
 cur.execute("SELECT * FROM lyrics_feature_matrix WHERE id=1")
+
 
 lyrics_feature_matrix = ""
 row_song_id = ""
