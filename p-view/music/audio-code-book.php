@@ -17,25 +17,20 @@
       var chart;
 
       var chartData = [{
-          year: 2005,
-          income: 23.5,
-          expenses: 18.1
+          code_word: 1,
+          pitch: 23.5
       }, {
-          year: 2006,
-          income: 26.2,
-          expenses: 22.8
+          code_word: 2,
+          pitch: 26.2
       }, {
-          year: 2007,
-          income: 30.1,
-          expenses: 23.9
+          code_word: 3,
+          pitch: 30.1
       }, {
-          year: 2008,
-          income: 29.5,
-          expenses: 25.1
+          code_word: 4,
+          pitch: 29.5
       }, {
-          year: 2009,
-          income: 24.6,
-          expenses: 25.0
+          code_word: 5,
+          pitch: 24.6
       }];
 
 
@@ -43,7 +38,7 @@
           // SERIAL CHART
           chart = new AmCharts.AmSerialChart();
           chart.dataProvider = chartData;
-          chart.categoryField = "year";
+          chart.categoryField = "code_word";
           chart.startDuration = 1;
           chart.rotate = true;
 
@@ -59,29 +54,19 @@
           valueAxis.dashLength = 5;
           valueAxis.axisAlpha = 0.2;
           valueAxis.position = "top";
-          valueAxis.title = "Million USD";
+          valueAxis.title = "Pitch Audio Word";
           chart.addValueAxis(valueAxis);
 
           // GRAPHS
           // column graph
           var graph1 = new AmCharts.AmGraph();
           graph1.type = "column";
-          graph1.title = "Income";
-          graph1.valueField = "income";
+          graph1.title = "Pitch";
+          graph1.valueField = "pitch";
           graph1.lineAlpha = 0;
           graph1.fillColors = "#ADD981";
           graph1.fillAlphas = 1;
           chart.addGraph(graph1);
-
-          // line graph
-          var graph2 = new AmCharts.AmGraph();
-          graph2.type = "line";
-          graph2.title = "Expenses";
-          graph2.valueField = "expenses";
-          graph2.lineThickness = 2;
-          graph2.bullet = "round";
-          graph2.fillAlphas = 0;
-          chart.addGraph(graph2);
 
           // LEGEND
           var legend = new AmCharts.AmLegend();
