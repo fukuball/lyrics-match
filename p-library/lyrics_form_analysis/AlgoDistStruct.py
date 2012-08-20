@@ -245,36 +245,33 @@ class AlgoDistStruct(AlgoSequence):
 		"""
 		描述：回朔兩條序列經過DTW後，排比的對應位置
 		輸入：目前的原點座標，要記錄路徑的 list
-		輸出：無，pathIdxList 會儲存好回朔的路徑 index list
+		輸出：tracking 的深度(depth)
+			以及 pathIdxList 會儲存好回朔的路徑 index list
 		"""
-
-
 
 		if nowCoor == self.__STOPCOOR:
 			return 0
 		else:
 			# 將目前的對應座標加到 pathIdxList 裡面
-			pathIdxList.insert(0, nowCoor)
+			#pathIdxList.insert(0, nowCoor)
 
 
-			# 先檢查目前的做標是否超過計算邊界
-			# 利用 nowCoor 與 self.__STOPCOOR 兩個座標做比較
+			# 加入 ancestor 座標
 			prevCoor = self.__tablePrevCoor[nowCoor]
+			startI = prevCoor[0] + 1
+			startJ = prevCoor[1] + 1
 
-			if nowCoor[0] - prevCoor[0] > 1:
+			print "nowCoor:" + str(nowCoor)
+			print "prevCoor:" + str(prevCoor)
+
+			if startJ == nowCoor[1]:
+
 				# 走 column
-				startI = prevCoor[0] + 1
-				startJ = prevCoor[1] + 1
-
-				for i in range(startI, nowCoor[0]):
+				for i in range(nowCoor[0] , prevCoor[0], -1):
 					pathIdxList.insert(0, (i, startJ))
 
 			else:
-				# 走 row
-				startI = prevCoor[0] + 1
-				startJ = prevCoor[1] + 1
-
-				for j in range(startJ, nowCoor[1]):
+				for j in range(nowCoor[1] , prevCoor[1], -1):
 					pathIdxList.insert(0, (startI, j))
 
 
@@ -322,6 +319,7 @@ class AlgoDistStruct(AlgoSequence):
 			pathCosts.append({"prev": prev, "cost": totalCost})
 
 
+
 		# 計算 樂句 所有可以對應字句的 cost (Step Pattern 走 Column 的方向)
 		sentenceStart = nowCoor[0]
 		sentenceEnd = nowCoor[0] - melodyRange
@@ -364,10 +362,12 @@ if __name__ == "__main__":
 
 	from random import randint
 
-	sentenceSeq  = [4, 7, 1, 3]
-	#sentenceSeq  = [4]
-	phraseSeq = [3, 5, 2, 5, 1, 4]
-	#phraseSeq = [3, 2]
+	#sentenceSeq  = [4, 7, 1, 3]
+	sentenceSeq  = [8]
+	#sentenceSeq = [3, 3, 1]
+	#phraseSeq = [3, 5, 2, 5, 1, 4]
+	phraseSeq = [3, 2, 5]
+	#phraseSeq = [8]
 
 
 	struct = AlgoDistStruct(PitchToneType())
