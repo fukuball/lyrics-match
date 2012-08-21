@@ -8,7 +8,7 @@
          <button type="submit" class="btn btn-primary start">
             <i class="icon-upload icon-white"></i>
             <span>
-               開始上傳
+               開始上傳歌曲
             </span>
          </button>
       </a>
@@ -35,7 +35,18 @@
          推薦結果：
       </h4>
       <ol>
-         <li><a class="r-link" data-song-id="921_921"><sapn style="font-size:12px;">情非得已</span></a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<button style="color:black;font-weight:normal;" class="r-link" data-song-id="921_921">歌詞與試聽</button></li>
+         <li>
+            <table>
+               <tr>
+                  <td>
+                     <a class="r-link" data-song-id="921_921"><sapn style="font-size:12px;">情非得已</span></a>
+                  </td>
+                  <td>
+                     <button style="color:black;font-weight:normal;" class="r-link" data-song-id="921_921">歌詞與試聽</button>
+                  </td>
+               </tr>
+            </table>
+         </li>
          <li><a class="r-link" data-song-id="921_920"><sapn style="font-size:12px;">幸福離我們很近</span></a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<button style="color:black;font-weight:normal;" class="r-link" data-song-id="921_920">歌詞與試聽</button></li>
          <li><a class="r-link" data-song-id="921_141"><sapn style="font-size:12px;">怯</span></a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<button style="color:black;font-weight:normal;" class="r-link" data-song-id="921_141">歌詞與試聽</button></li>
          <li><a class="r-link" data-song-id="921_80"><sapn style="font-size:12px;">I believe</span></a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<button style="color:black;font-weight:normal;" class="r-link" data-song-id="921_80">歌詞與試聽</button></li>
