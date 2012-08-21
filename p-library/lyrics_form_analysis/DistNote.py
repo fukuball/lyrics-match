@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 from SimElement import SimElement
 from DistPitch import DistPitch
+from DistDuration import DistDuration
 
 class DistNote(SimElement):
 	def __init__(self, pitchRate = 0.2, durationRate = 0.3, labelRate = 0.5):
