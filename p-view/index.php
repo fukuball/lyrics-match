@@ -28,16 +28,19 @@
 </div>
 <div id="accordion" style="width: 800px; margin: 10px auto;">
    <h3>
-      <a href="#">情非得已 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;原唱：庾澄慶 <button class="r-link" data-song-id="921_921">(查詢原曲試聽)</button></a>
+      <a href="#">情非得已 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;原唱：庾澄慶 <button class="r-link" data-song-id="921_921">查詢原曲試聽</button></a>
    </h3>
    <div>
-      <ul>
+      <h4>
+         推薦結果：
+      </h4>
+      <ol>
          <li><a class="r-link" data-song-id="921_921">情非得已</a></li>
          <li><a class="r-link" data-song-id="921_920">幸福離我們很近</a></li>
          <li><a class="r-link" data-song-id="921_141">怯</a></li>
          <li><a class="r-link" data-song-id="921_80">I believe</a></li>
          <li><a class="r-link" data-song-id="921_788">七里香</a></li>
-      </ul>
+      </ol>
    </div>
    <h3>
       <a href="#">愛如潮水 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;原唱：張信哲</a>
