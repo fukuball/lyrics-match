@@ -238,7 +238,7 @@
       </ol>
    </div>
    <h3>
-      <a href="#">但願人長久 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;原唱：王菲</a>
+      <a href="#">但願人長久 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;原唱：王菲 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<button class="r-link" data-song-id="1_1">查詢原曲試聽</button></a>
    </h3>
    <div>
       <h4>
