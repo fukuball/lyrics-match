@@ -168,16 +168,74 @@
       </ol>
    </div>
    <h3>
-      <a href="#">容易受傷的女人 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;原唱：鄺美雲</a>
+      <a href="#">容易受傷的女人 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;原唱：鄺美雲 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<button class="r-link" data-song-id="924_924">查詢原曲試聽</button></a>
    </h3>
    <div>
-      <ul>
-         <li><a class="r-link" data-song-id="924_924">容易受傷的女人</a></li>
-         <li><a class="r-link" data-song-id="924_923">情人之間的情人</a></li>
-         <li><a class="r-link" data-song-id="924_41">不要變</a></li>
-         <li><a class="r-link" data-song-id="924_75">下沙</a></li>
-         <li><a class="r-link" data-song-id="924_61">一個人的天荒地老</a></li>
-      </ul>
+      <h4>
+         推薦結果：
+      </h4>
+      <ol>
+         <li>
+            <table>
+               <tr width="600px">
+                  <td width="400px">
+                     <a class="r-link" data-song-id="924_924"><sapn style="font-size:12px;">容易受傷的女人</span></a>
+                  </td>
+                  <td width="200px">
+                     <button style="color:black;font-weight:normal;" class="r-link" data-song-id="921_921">歌詞與試聽</button>
+                  </td>
+               </tr>
+            </table>
+         </li>
+         <li>
+            <table>
+               <tr width="600px">
+                  <td width="400px">
+                     <a class="r-link" data-song-id="924_923"><sapn style="font-size:12px;">情人之間的情人</span></a>
+                  </td>
+                  <td width="200px">
+                     <button style="color:black;font-weight:normal;" class="r-link" data-song-id="921_920">歌詞與試聽</button>
+                  </td>
+               </tr>
+            </table>
+         </li>
+         <li>
+            <table>
+               <tr width="600px">
+                  <td width="400px">
+                     <a class="r-link" data-song-id="924_41"><sapn style="font-size:12px;">不要變</span></a>
+                  </td>
+                  <td width="200px">
+                     <button style="color:black;font-weight:normal;" class="r-link" data-song-id="921_141">歌詞與試聽</button>
+                  </td>
+               </tr>
+            </table>
+         </li>
+         <li>
+            <table>
+               <tr width="600px">
+                  <td width="400px">
+                     <a class="r-link" data-song-id="924_75"><sapn style="font-size:12px;">下沙</span></a>
+                  </td>
+                  <td width="200px">
+                     <button style="color:black;font-weight:normal;" class="r-link" data-song-id="921_80">歌詞與試聽</button>
+                  </td>
+               </tr>
+            </table>
+         </li>
+         <li>
+            <table>
+               <tr width="600px">
+                  <td width="400px">
+                     <a class="r-link" data-song-id="924_61"><sapn style="font-size:12px;">一個人的天荒地老</span></a>
+                  </td>
+                  <td width="200px">
+                     <button style="color:black;font-weight:normal;" class="r-link" data-song-id="921_788">歌詞與試聽</button>
+                  </td>
+               </tr>
+            </table>
+         </li>
+      </ol>
    </div>
    <h3>
       <a href="#">但願人長久 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;原唱：王菲</a>
