@@ -28,7 +28,7 @@
 </div>
 <div id="accordion" style="width: 800px; margin: 10px auto;">
    <h3>
-      <a href="#">情非得已 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;原唱：庾澄慶 <button class="r-link" data-song-id="921_921">查詢原曲試聽</button></a>
+      <a href="#">情非得已 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;原唱：庾澄慶 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<button class="r-link" data-song-id="921_921">查詢原曲試聽</button></a>
    </h3>
    <div>
       <h4>
@@ -98,16 +98,74 @@
       </ol>
    </div>
    <h3>
-      <a href="#">愛如潮水 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;原唱：張信哲</a>
+      <a href="#">愛如潮水 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;原唱：張信哲 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<button class="r-link" data-song-id="922_922">查詢原曲試聽</button></a>
    </h3>
    <div>
-      <ul>
-         <li><a class="r-link" data-song-id="922_922">愛如潮水</a></li>
-         <li><a class="r-link" data-song-id="922_925">愛你的餘溫</a></li>
-         <li><a class="r-link" data-song-id="922_220">勇氣</a></li>
-         <li><a class="r-link" data-song-id="922_210">夜太黑</a></li>
-         <li><a class="r-link" data-song-id="922_325">潛意識</a></li>
-      </ul>
+      <h4>
+         推薦結果：
+      </h4>
+      <ol>
+         <li>
+            <table>
+               <tr width="600px">
+                  <td width="400px">
+                     <a class="r-link" data-song-id="922_922"><sapn style="font-size:12px;">愛如潮水</span></a>
+                  </td>
+                  <td width="200px">
+                     <button style="color:black;font-weight:normal;" class="r-link" data-song-id="921_921">歌詞與試聽</button>
+                  </td>
+               </tr>
+            </table>
+         </li>
+         <li>
+            <table>
+               <tr width="600px">
+                  <td width="400px">
+                     <a class="r-link" data-song-id="922_925"><sapn style="font-size:12px;">愛你的餘溫</span></a>
+                  </td>
+                  <td width="200px">
+                     <button style="color:black;font-weight:normal;" class="r-link" data-song-id="921_920">歌詞與試聽</button>
+                  </td>
+               </tr>
+            </table>
+         </li>
+         <li>
+            <table>
+               <tr width="600px">
+                  <td width="400px">
+                     <a class="r-link" data-song-id="922_220"><sapn style="font-size:12px;">勇氣</span></a>
+                  </td>
+                  <td width="200px">
+                     <button style="color:black;font-weight:normal;" class="r-link" data-song-id="921_141">歌詞與試聽</button>
+                  </td>
+               </tr>
+            </table>
+         </li>
+         <li>
+            <table>
+               <tr width="600px">
+                  <td width="400px">
+                     <a class="r-link" data-song-id="922_210"><sapn style="font-size:12px;">夜太黑</span></a>
+                  </td>
+                  <td width="200px">
+                     <button style="color:black;font-weight:normal;" class="r-link" data-song-id="921_80">歌詞與試聽</button>
+                  </td>
+               </tr>
+            </table>
+         </li>
+         <li>
+            <table>
+               <tr width="600px">
+                  <td width="400px">
+                     <a class="r-link" data-song-id="922_325"><sapn style="font-size:12px;">潛意識</span></a>
+                  </td>
+                  <td width="200px">
+                     <button style="color:black;font-weight:normal;" class="r-link" data-song-id="921_788">歌詞與試聽</button>
+                  </td>
+               </tr>
+            </table>
+         </li>
+      </ol>
    </div>
    <h3>
       <a href="#">容易受傷的女人 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;原唱：鄺美雲</a>
