@@ -47,10 +47,54 @@
                </tr>
             </table>
          </li>
-         <li><a class="r-link" data-song-id="921_920"><sapn style="font-size:12px;">幸福離我們很近</span></a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<button style="color:black;font-weight:normal;" class="r-link" data-song-id="921_920">歌詞與試聽</button></li>
-         <li><a class="r-link" data-song-id="921_141"><sapn style="font-size:12px;">怯</span></a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<button style="color:black;font-weight:normal;" class="r-link" data-song-id="921_141">歌詞與試聽</button></li>
-         <li><a class="r-link" data-song-id="921_80"><sapn style="font-size:12px;">I believe</span></a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<button style="color:black;font-weight:normal;" class="r-link" data-song-id="921_80">歌詞與試聽</button></li>
-         <li><a class="r-link" data-song-id="921_788"><sapn style="font-size:12px;">七里香</span></a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<button style="color:black;font-weight:normal;" class="r-link" data-song-id="921_788">歌詞與試聽</button></li>
+         <li>
+            <table>
+               <tr width="600px">
+                  <td width="400px">
+                     <a class="r-link" data-song-id="921_920"><sapn style="font-size:12px;">幸福離我們很近</span></a>
+                  </td>
+                  <td width="200px">
+                     <button style="color:black;font-weight:normal;" class="r-link" data-song-id="921_920">歌詞與試聽</button>
+                  </td>
+               </tr>
+            </table>
+         </li>
+         <li>
+            <table>
+               <tr width="600px">
+                  <td width="400px">
+                     <a class="r-link" data-song-id="921_141"><sapn style="font-size:12px;">怯</span></a>
+                  </td>
+                  <td width="200px">
+                     <button style="color:black;font-weight:normal;" class="r-link" data-song-id="921_141">歌詞與試聽</button>
+                  </td>
+               </tr>
+            </table>
+         </li>
+         <li>
+            <table>
+               <tr width="600px">
+                  <td width="400px">
+                     <a class="r-link" data-song-id="921_80"><sapn style="font-size:12px;">I believe</span></a>
+                  </td>
+                  <td width="200px">
+                     <button style="color:black;font-weight:normal;" class="r-link" data-song-id="921_80">歌詞與試聽</button>
+                  </td>
+               </tr>
+            </table>
+         </li>
+         <li>
+            <table>
+               <tr width="600px">
+                  <td width="400px">
+                     <a class="r-link" data-song-id="921_788"><sapn style="font-size:12px;">七里香</span></a>
+                  </td>
+                  <td width="200px">
+                     <button style="color:black;font-weight:normal;" class="r-link" data-song-id="921_788">歌詞與試聽</button>
+                  </td>
+               </tr>
+            </table>
+         </li>
       </ol>
    </div>
    <h3>
