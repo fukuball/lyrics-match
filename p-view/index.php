@@ -23,12 +23,12 @@
 <hr />
 <div style="width: 800px; margin: 10px auto;">
    <h2>
-      熱門推薦
+      熱門查詢
    </h2>
 </div>
 <div id="accordion" style="width: 800px; margin: 10px auto;">
    <h3>
-      <a href="#">情非得已 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;原唱：庾澄慶</a>
+      <a href="#">情非得已 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;原唱：庾澄慶 </a><a class="r-link" data-song-id="921_921">(查詢原曲試聽)</a>
    </h3>
    <div>
       <ul>
