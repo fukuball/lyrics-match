@@ -35,11 +35,11 @@
          推薦結果：
       </h4>
       <ol>
-         <li><a class="r-link" data-song-id="921_921">情非得已</a></li>
-         <li><a class="r-link" data-song-id="921_920">幸福離我們很近</a></li>
-         <li><a class="r-link" data-song-id="921_141">怯</a></li>
-         <li><a class="r-link" data-song-id="921_80">I believe</a></li>
-         <li><a class="r-link" data-song-id="921_788">七里香</a></li>
+         <li><a class="r-link" data-song-id="921_921">情非得已 <button class="r-link" data-song-id="921_921">歌詞與試聽</button></a></li>
+         <li><a class="r-link" data-song-id="921_920">幸福離我們很近 <button class="r-link" data-song-id="921_920">歌詞與試聽</button></a></li>
+         <li><a class="r-link" data-song-id="921_141">怯 <button class="r-link" data-song-id="921_141">歌詞與試聽</button></a></li>
+         <li><a class="r-link" data-song-id="921_80">I believe <button class="r-link" data-song-id="921_80">歌詞與試聽</button></a></li>
+         <li><a class="r-link" data-song-id="921_788">七里香 <button class="r-link" data-song-id="921_788">歌詞與試聽</button></a></li>
       </ol>
    </div>
    <h3>
