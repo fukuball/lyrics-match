@@ -37,11 +37,11 @@
       <ol>
          <li>
             <table>
-               <tr>
-                  <td>
+               <tr width="600px">
+                  <td width="400px">
                      <a class="r-link" data-song-id="921_921"><sapn style="font-size:12px;">情非得已</span></a>
                   </td>
-                  <td>
+                  <td width="200px">
                      <button style="color:black;font-weight:normal;" class="r-link" data-song-id="921_921">歌詞與試聽</button>
                   </td>
                </tr>
