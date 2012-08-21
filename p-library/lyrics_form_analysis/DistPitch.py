@@ -7,11 +7,12 @@ class DistPitch(SimElement):
 		"""
 		正規化的音高距離
 		"""
-		denom = float(p1 + p2)
-		distance = 0.0
+		#denom = float(p1 + p2)
+		#distance = 0.0
 		
-		if denom != 0.0:
-			distance = abs(p1 - p2) / denom
+		#if denom != 0.0:
+		#	distance = abs(p1 - p2) / denom
+		distance = abs(p1 - p2) / 128.0
 
 		return distance
 

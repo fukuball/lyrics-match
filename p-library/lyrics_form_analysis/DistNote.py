@@ -19,15 +19,11 @@ class DistNote(SimElement):
 
 		duration1 = n1[1]
 		duration2 = n2[1]
-		durationDist = DistPitch().similarity(duration1, duration2)
+		durationDist = DistDuration().similarity(duration1, duration2)
 
 		label1 = n1[2]
 		label2 = n2[2]
-		labelDist = 1
-
-		if label1 == label2:
-			labelDist = 0
-
+		labelDist = (label1 == label2) and 0 or 1
 
 		distance = pitchDist * self.__pitchRate + \
 				durationDist * self.__durationRate + \
