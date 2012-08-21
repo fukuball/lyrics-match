@@ -20,6 +20,7 @@
 <script src="<?=SITE_HOST?>/p-asset/javascript/jquery.form.js" type="text/javascript"></script>
 <script src="<?=SITE_HOST?>/p-asset/javascript/masonry/jquery.masonry.min.js" type="text/javascript"></script>
 <script src="<?=SITE_HOST?>/p-library/audio-player/audio-player.js" type="text/javascript"></script>
+<script src="<?=SITE_HOST?>/p-library/amcharts_2.7.5/amcharts/amcharts.js" type="text/javascript"></script>
 <script type="text/javascript">
    AudioPlayer.setup("<?=SITE_HOST?>/p-library/audio-player/player.swf", {
       width: 300

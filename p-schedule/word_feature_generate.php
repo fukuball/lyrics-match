@@ -16,7 +16,7 @@ require_once dirname(dirname(__FILE__))."/p-config/application-setter.php";
 
 $db_obj = LMDBAccess::getInstance();
 
-$select_sql = "SELECT id FROM song WHERE lyric!='' ORDER BY id";
+$select_sql = "SELECT id FROM song WHERE lyric!='' AND have_english='0' ORDER BY id";
 
 $query_result = $db_obj->selectCommand($select_sql);
 $document_num = 0;

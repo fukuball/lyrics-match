@@ -140,8 +140,8 @@ class BoxAction extends LMRESTControl implements LMRESTfulInterface
          $song_id_array = explode('_', $song_id);
          $song_o_obj = new LMSong($song_id_array[0]);
          if ($song_id_array[1]=='a') {
-            $r_title = "床前明月光";
-            $r_lyric = "床前明月光";
+            $r_title = "靜夜思";
+            $r_lyric = "床前明月光<br/>疑是地上霜<br/>舉頭望明月<br/>低頭思故鄉";
          } else {
             $song_r_obj = new LMSong($song_id_array[1]);
             $r_title = $song_r_obj->title;

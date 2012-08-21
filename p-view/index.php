@@ -8,7 +8,7 @@
          <button type="submit" class="btn btn-primary start">
             <i class="icon-upload icon-white"></i>
             <span>
-               開始上傳
+               開始上傳歌曲
             </span>
          </button>
       </a>
@@ -23,54 +23,253 @@
 <hr />
 <div style="width: 800px; margin: 10px auto;">
    <h2>
-      熱門推薦
+      熱門查詢
    </h2>
 </div>
 <div id="accordion" style="width: 800px; margin: 10px auto;">
    <h3>
-      <a href="#">情非得已 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;原唱：庾澄慶</a>
+      <a href="#">情非得已 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;原唱：庾澄慶 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<button class="r-link" data-song-id="921_921">查詢原曲試聽</button></a>
    </h3>
    <div>
-      <ul>
-         <li><a class="r-link" data-song-id="921_921">情非得已</a></li>
-         <li><a class="r-link" data-song-id="921_920">幸福離我們很近</a></li>
-         <li><a class="r-link" data-song-id="921_141">怯</a></li>
-         <li><a class="r-link" data-song-id="921_80">I believe</a></li>
-         <li><a class="r-link" data-song-id="921_788">七里香</a></li>
-      </ul>
+      <h4>
+         推薦結果：
+      </h4>
+      <ol>
+         <li>
+            <table>
+               <tr width="600px">
+                  <td width="400px">
+                     <a class="r-link" data-song-id="921_921"><sapn style="font-size:12px;">情非得已</span></a>
+                  </td>
+                  <td width="200px">
+                     <button style="color:black;font-weight:normal;" class="r-link" data-song-id="921_921">歌詞與試聽</button>
+                  </td>
+               </tr>
+            </table>
+         </li>
+         <li>
+            <table>
+               <tr width="600px">
+                  <td width="400px">
+                     <a class="r-link" data-song-id="921_920"><sapn style="font-size:12px;">幸福離我們很近</span></a>
+                  </td>
+                  <td width="200px">
+                     <button style="color:black;font-weight:normal;" class="r-link" data-song-id="921_920">歌詞與試聽</button>
+                  </td>
+               </tr>
+            </table>
+         </li>
+         <li>
+            <table>
+               <tr width="600px">
+                  <td width="400px">
+                     <a class="r-link" data-song-id="921_141"><sapn style="font-size:12px;">怯</span></a>
+                  </td>
+                  <td width="200px">
+                     <button style="color:black;font-weight:normal;" class="r-link" data-song-id="921_141">歌詞與試聽</button>
+                  </td>
+               </tr>
+            </table>
+         </li>
+         <li>
+            <table>
+               <tr width="600px">
+                  <td width="400px">
+                     <a class="r-link" data-song-id="921_80"><sapn style="font-size:12px;">I believe</span></a>
+                  </td>
+                  <td width="200px">
+                     <button style="color:black;font-weight:normal;" class="r-link" data-song-id="921_80">歌詞與試聽</button>
+                  </td>
+               </tr>
+            </table>
+         </li>
+         <li>
+            <table>
+               <tr width="600px">
+                  <td width="400px">
+                     <a class="r-link" data-song-id="921_788"><sapn style="font-size:12px;">七里香</span></a>
+                  </td>
+                  <td width="200px">
+                     <button style="color:black;font-weight:normal;" class="r-link" data-song-id="921_788">歌詞與試聽</button>
+                  </td>
+               </tr>
+            </table>
+         </li>
+      </ol>
    </div>
    <h3>
-      <a href="#">愛如潮水 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;原唱：張信哲</a>
+      <a href="#">愛如潮水 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;原唱：張信哲 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<button class="r-link" data-song-id="922_922">查詢原曲試聽</button></a>
    </h3>
    <div>
-      <ul>
-         <li><a class="r-link" data-song-id="922_922">愛如潮水</a></li>
-         <li><a class="r-link" data-song-id="922_925">愛你的餘溫</a></li>
-         <li><a class="r-link" data-song-id="922_220">勇氣</a></li>
-         <li><a class="r-link" data-song-id="922_210">夜太黑</a></li>
-         <li><a class="r-link" data-song-id="922_325">潛意識</a></li>
-      </ul>
+      <h4>
+         推薦結果：
+      </h4>
+      <ol>
+         <li>
+            <table>
+               <tr width="600px">
+                  <td width="400px">
+                     <a class="r-link" data-song-id="922_922"><sapn style="font-size:12px;">愛如潮水</span></a>
+                  </td>
+                  <td width="200px">
+                     <button style="color:black;font-weight:normal;" class="r-link" data-song-id="922_922">歌詞與試聽</button>
+                  </td>
+               </tr>
+            </table>
+         </li>
+         <li>
+            <table>
+               <tr width="600px">
+                  <td width="400px">
+                     <a class="r-link" data-song-id="922_925"><sapn style="font-size:12px;">愛你的餘溫</span></a>
+                  </td>
+                  <td width="200px">
+                     <button style="color:black;font-weight:normal;" class="r-link" data-song-id="922_925">歌詞與試聽</button>
+                  </td>
+               </tr>
+            </table>
+         </li>
+         <li>
+            <table>
+               <tr width="600px">
+                  <td width="400px">
+                     <a class="r-link" data-song-id="922_220"><sapn style="font-size:12px;">勇氣</span></a>
+                  </td>
+                  <td width="200px">
+                     <button style="color:black;font-weight:normal;" class="r-link" data-song-id="922_220">歌詞與試聽</button>
+                  </td>
+               </tr>
+            </table>
+         </li>
+         <li>
+            <table>
+               <tr width="600px">
+                  <td width="400px">
+                     <a class="r-link" data-song-id="922_210"><sapn style="font-size:12px;">夜太黑</span></a>
+                  </td>
+                  <td width="200px">
+                     <button style="color:black;font-weight:normal;" class="r-link" data-song-id="922_210">歌詞與試聽</button>
+                  </td>
+               </tr>
+            </table>
+         </li>
+         <li>
+            <table>
+               <tr width="600px">
+                  <td width="400px">
+                     <a class="r-link" data-song-id="922_325"><sapn style="font-size:12px;">潛意識</span></a>
+                  </td>
+                  <td width="200px">
+                     <button style="color:black;font-weight:normal;" class="r-link" data-song-id="922_325">歌詞與試聽</button>
+                  </td>
+               </tr>
+            </table>
+         </li>
+      </ol>
    </div>
    <h3>
-      <a href="#">容易受傷的女人 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;原唱：鄺美雲</a>
+      <a href="#">容易受傷的女人 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;原唱：鄺美雲 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<button class="r-link" data-song-id="924_924">查詢原曲試聽</button></a>
    </h3>
    <div>
-      <ul>
-         <li><a class="r-link" data-song-id="924_924">容易受傷的女人</a></li>
-         <li><a class="r-link" data-song-id="924_923">情人之間的情人</a></li>
-         <li><a class="r-link" data-song-id="924_41">不要變</a></li>
-         <li><a class="r-link" data-song-id="924_75">下沙</a></li>
-         <li><a class="r-link" data-song-id="924_61">一個人的天荒地老</a></li>
-      </ul>
+      <h4>
+         推薦結果：
+      </h4>
+      <ol>
+         <li>
+            <table>
+               <tr width="600px">
+                  <td width="400px">
+                     <a class="r-link" data-song-id="924_924"><sapn style="font-size:12px;">容易受傷的女人</span></a>
+                  </td>
+                  <td width="200px">
+                     <button style="color:black;font-weight:normal;" class="r-link" data-song-id="924_924">歌詞與試聽</button>
+                  </td>
+               </tr>
+            </table>
+         </li>
+         <li>
+            <table>
+               <tr width="600px">
+                  <td width="400px">
+                     <a class="r-link" data-song-id="924_923"><sapn style="font-size:12px;">情人之間的情人</span></a>
+                  </td>
+                  <td width="200px">
+                     <button style="color:black;font-weight:normal;" class="r-link" data-song-id="924_923">歌詞與試聽</button>
+                  </td>
+               </tr>
+            </table>
+         </li>
+         <li>
+            <table>
+               <tr width="600px">
+                  <td width="400px">
+                     <a class="r-link" data-song-id="924_41"><sapn style="font-size:12px;">不要變</span></a>
+                  </td>
+                  <td width="200px">
+                     <button style="color:black;font-weight:normal;" class="r-link" data-song-id="924_41">歌詞與試聽</button>
+                  </td>
+               </tr>
+            </table>
+         </li>
+         <li>
+            <table>
+               <tr width="600px">
+                  <td width="400px">
+                     <a class="r-link" data-song-id="924_75"><sapn style="font-size:12px;">下沙</span></a>
+                  </td>
+                  <td width="200px">
+                     <button style="color:black;font-weight:normal;" class="r-link" data-song-id="924_75">歌詞與試聽</button>
+                  </td>
+               </tr>
+            </table>
+         </li>
+         <li>
+            <table>
+               <tr width="600px">
+                  <td width="400px">
+                     <a class="r-link" data-song-id="924_61"><sapn style="font-size:12px;">一個人的天荒地老</span></a>
+                  </td>
+                  <td width="200px">
+                     <button style="color:black;font-weight:normal;" class="r-link" data-song-id="924_61">歌詞與試聽</button>
+                  </td>
+               </tr>
+            </table>
+         </li>
+      </ol>
    </div>
    <h3>
-      <a href="#">但願人長久 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;原唱：王菲</a>
+      <a href="#">但願人長久 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;原唱：王菲 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<button class="r-link" data-song-id="1_1">查詢原曲試聽</button></a>
    </h3>
    <div>
-      <ul>
-         <li><a class="r-link" data-song-id="1_1">但願人長久</a></li>
-         <li><a class="r-link" data-song-id="1_a">床前明月光</a></li>
-      </ul>
+      <h4>
+         推薦結果：
+      </h4>
+      <ol>
+         <li>
+            <table>
+               <tr width="600px">
+                  <td width="400px">
+                     <a class="r-link" data-song-id="1_1"><sapn style="font-size:12px;">但願人長久</span></a>
+                  </td>
+                  <td width="200px">
+                     <button style="color:black;font-weight:normal;" class="r-link" data-song-id="1_1">歌詞與試聽</button>
+                  </td>
+               </tr>
+            </table>
+         </li>
+         <li>
+            <table>
+               <tr width="600px">
+                  <td width="400px">
+                     <a class="r-link" data-song-id="1_a"><sapn style="font-size:12px;">床前明月光</span></a>
+                  </td>
+                  <td width="200px">
+                     <button style="color:black;font-weight:normal;" class="r-link" data-song-id="1_a">歌詞與試聽</button>
+                  </td>
+               </tr>
+            </table>
+         </li>
+      </ol>
    </div>
 </div>
 <br class="clearboth" />

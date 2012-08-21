@@ -31,11 +31,18 @@ CONST = db_stage._Const()
 db = mysql.connect(host    = CONST.DBHOST,
                    user    = CONST.DBUSER,
                    passwd  = CONST.DBPASS,
-                   db      = CONST.DBNAME)
+                   db      = CONST.DBNAME,
+                   charset = 'UTF8')
 
 # 從資料庫抓資料
 cur = db.cursor()
-cur.execute("SELECT * FROM lyrics_feature_matrix WHERE id=1")
+cur.execute("SET NAMES UTF8")
+cur.execute("SET CHARACTER_SET_CLIENT=UTF8")
+cur.execute("SET CHARACTER_SET_RESULTS=UTF8")
+db.commit()
+
+cur.execute("SELECT * FROM lyrics_feature_matrix WHERE id=8")
+
 
 lyrics_feature_matrix = ""
 row_song_id = ""
@@ -56,7 +63,7 @@ A_lyrics_feature_matrix = np.matrix(json.loads(lyrics_feature_matrix))
 
 print "matrix formed"
 #print A_lyrics_feature_matrix
-#print( "matrix shape --> %d rows x %d columns" % A_lyrics_feature_matrix.shape )
+print( "matrix shape --> %d rows x %d columns" % A_lyrics_feature_matrix.shape )
 
 # SVD decomposition
 lyrics_feature_U,lyrics_feature_s,lyrics_feature_V = np.linalg.svd(A_lyrics_feature_matrix, full_matrices=False)
@@ -77,7 +84,7 @@ lyrics_feature_s = np.diag(lyrics_feature_s)
 
 A_bar_lyrics_feature_matrix = np.dot(lyrics_feature_U,np.dot(lyrics_feature_s,lyrics_feature_V))
 #print A_bar_lyrics_feature_matrix
-#print( "matrix shape --> %d rows x %d columns" % A_bar_lyrics_feature_matrix.shape )
+print( "matrix shape --> %d rows x %d columns" % A_bar_lyrics_feature_matrix.shape )
 
 print "reform matrix"
 
@@ -86,8 +93,13 @@ A_bar_string = json.dumps(A_bar_list)
 
 print "matrix dump"
 
+f = open('lyrics-model-8.txt', 'w')
+f.write(A_bar_string)
+f.close()
+
+cur = db.cursor()
 try:
-   cur.execute("""INSERT INTO lyrics_feature_matrix (matrix, row_song_id, column_lyrics_feature, type, create_time, modify_time) VALUES (%s, %s, %s, %s, %s, %s)""",(A_bar_string, row_song_id, column_lyrics_feature, "model", create_time, modify_time))
+   cur.execute("""INSERT INTO lyrics_feature_matrix (matrix, row_song_id, column_lyrics_feature, type, create_time, modify_time) VALUES (%s, %s, %s, %s, %s, %s)""",("lyrics-model-8.txt", row_song_id, column_lyrics_feature, "model", create_time, modify_time))
    db.commit()
    print "success"
 except mysql.Error, e:
@@ -95,6 +107,7 @@ except mysql.Error, e:
    print "An error has been passed. %s" %e
 
 print "save in db"
+
 
 cur.close()
 db.close()
