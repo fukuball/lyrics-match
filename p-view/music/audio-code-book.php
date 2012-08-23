@@ -23,13 +23,16 @@ $select_sql = "SELECT ".
 
 $query_result = $db_obj->selectCommand($select_sql);
 
+?>
+<div class="row">
+<?php
 foreach ($query_result as $query_result_data) {
 
    $audio_word_id = $query_result_data['id'];
    $audio_word = json_decode($query_result_data['audio_word']);
 
    ?>
-   <div id="chartdiv<?=$audio_word_id;?>" style="width: 70px; height: 300px;"></div>
+   <div id="chartdiv<?=$audio_word_id;?>" class="pull-left" style="width: 70px; height: 300px;"></div>
    <script type="text/javascript">
       var chart<?=$audio_word_id;?>;
 
@@ -86,7 +89,7 @@ foreach ($query_result as $query_result_data) {
             var graph = new AmCharts.AmGraph();
             graph.title = "pitch<?=$count?>";
             graph.labelText = "";
-            graph.balloonText = "";
+            graph.balloonText = "<?=$audio_word_value?>";
             graph.valueField = "pitch<?=$count?>";
             graph.type = "column";
             graph.lineAlpha = 0;
@@ -107,3 +110,4 @@ foreach ($query_result as $query_result_data) {
 
 }
 ?>
+</div>
