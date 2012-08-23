@@ -70,14 +70,14 @@ foreach ($query_result as $query_result_data) {
          // AXES
          // category
          var categoryAxis = chart<?=$audio_word_id;?>.categoryAxis;
-         categoryAxis.gridAlpha = 0;
+         categoryAxis.gridAlpha = 0.1;
          categoryAxis.axisAlpha = 0;
          categoryAxis.gridPosition = "start";
 
          // value
          var valueAxis = new AmCharts.ValueAxis();
          valueAxis.stackType = "100%"; // this line makes the chart 100% stacked
-         valueAxis.gridAlpha = 0;
+         valueAxis.gridAlpha = 0.1;
          valueAxis.axisAlpha = 0;
          valueAxis.labelsEnabled = true;
          chart<?=$audio_word_id;?>.addValueAxis(valueAxis);
