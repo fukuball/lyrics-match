@@ -86,7 +86,6 @@ if (!empty($_GET['song_id'])) {
             <td colspan="2" width="800">
                <div id="term_frequency" style="width: 100%; height: 400px;"></div>
                <script type="text/javascript">
-                  var chart;
                   <?php
 
                   $db_obj = LMDBAccess::getInstance();
@@ -101,36 +100,42 @@ if (!empty($_GET['song_id'])) {
                      array_push($term_data_array, $term_data);
                   }
                   $term_data_array_string = implode(',', $term_data_array);
+
+                  if (!empty($term_data_array_string)) {
+                     ?>
+                     var chart;
+                     var chartData = [<?=$term_data_array_string?>];
+
+                     AmCharts.ready(function () {
+                        // SERIAL CHART
+                        chart = new AmCharts.AmSerialChart();
+                        chart.dataProvider = chartData;
+                        chart.categoryField = "term";
+                        chart.startDuration = 1;
+
+                        // AXES
+                        // category
+                        var categoryAxis = chart.categoryAxis;
+                        categoryAxis.labelRotation = 90;
+                        categoryAxis.gridPosition = "start";
+
+                        // value
+                        // in case you don't want to change default settings of value axis,
+                        // you don't need to create it, as one value axis is created automatically.
+
+                        // GRAPH
+                        var graph = new AmCharts.AmGraph();
+                        graph.valueField = "word_count";
+                        graph.balloonText = "[[category]]: [[value]]";
+                        graph.type = "column";
+                        graph.lineAlpha = 0;
+                        graph.fillAlphas = 0.8;
+                        chart.addGraph(graph);
+
+                        chart.write("term_frequency");
+                     <?php
+                  }
                   ?>
-                  var chartData = [<?=$term_data_array_string?>];
-
-                  AmCharts.ready(function () {
-                     // SERIAL CHART
-                     chart = new AmCharts.AmSerialChart();
-                     chart.dataProvider = chartData;
-                     chart.categoryField = "term";
-                     chart.startDuration = 1;
-
-                     // AXES
-                     // category
-                     var categoryAxis = chart.categoryAxis;
-                     categoryAxis.labelRotation = 90;
-                     categoryAxis.gridPosition = "start";
-
-                     // value
-                     // in case you don't want to change default settings of value axis,
-                     // you don't need to create it, as one value axis is created automatically.
-
-                     // GRAPH
-                     var graph = new AmCharts.AmGraph();
-                     graph.valueField = "word_count";
-                     graph.balloonText = "[[category]]: [[value]]";
-                     graph.type = "column";
-                     graph.lineAlpha = 0;
-                     graph.fillAlphas = 0.8;
-                     chart.addGraph(graph);
-
-                     chart.write("term_frequency");
                   });
                </script>
             </td>
