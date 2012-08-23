@@ -83,7 +83,7 @@ if (!empty($_GET['song_id'])) {
       <tbody>
          <tr>
             <td rowspan="1">Term Frequency</td>
-            <td colspan="2">
+            <td colspan="2" width="800">
                <div id="term_frequency" style="width: 100%; height: 400px;"></div>
                <script type="text/javascript">
                   var chart;
@@ -97,7 +97,7 @@ if (!empty($_GET['song_id'])) {
                   foreach ($query_result as $query_result_data) {
                      $term = $query_result_data['term'].'('.$query_result_data['pos'].')';
                      $word_count = $query_result_data['tf'];
-                     $term_data = '{ term: "'.$term.'", word_count: '.$word_count.' }';
+                     $term_data = '{ term: "'.addslashes($term).'", word_count: '.$word_count.' }';
                      array_push($term_data_array, $term_data);
                   }
                   $term_data_array_string = implode(',', $term_data_array);
