@@ -155,7 +155,7 @@ if (!empty($_GET['song_id'])) {
                foreach ($query_result as $query_result_data) {
                   $term = $query_result_data['term'];
                   $word_count = round($query_result_data['tfidf'], 4);
-                  $term_data = '{ TF-IDF: "'.addslashes($term).'", word_count: '.$word_count.' }';
+                  $term_data = '{ TFIDF: "'.addslashes($term).'", word_count: '.$word_count.' }';
                   array_push($term_data_array, $term_data);
                }
                $term_data_array_string = implode(',', $term_data_array);
@@ -171,7 +171,7 @@ if (!empty($_GET['song_id'])) {
                      // SERIAL CHART
                      chart_tfidf = new AmCharts.AmSerialChart();
                      chart_tfidf.dataProvider = chartData_tfidf;
-                     chart_tfidf.categoryField = "TF-IDF";
+                     chart_tfidf.categoryField = "TFIDF";
                      chart_tfidf.startDuration = 1;
 
                      // AXES
