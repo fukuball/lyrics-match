@@ -19,7 +19,7 @@ $select_sql = "SELECT ".
               "FROM muisc_audio_code_word ".
               "WHERE is_deleted = '0' ".
               "AND code_book_id = '1' ".
-              "ORDER BY id LIMIT 1";
+              "ORDER BY id";
 
 $query_result = $db_obj->selectCommand($select_sql);
 
@@ -29,7 +29,7 @@ foreach ($query_result as $query_result_data) {
    $audio_word = json_decode($query_result_data['audio_word']);
 
    ?>
-   <div id="chartdiv<?=$audio_word_id;?>" style="width: 50px; height: 300px;"></div>
+   <div id="chartdiv<?=$audio_word_id;?>" style="width: 70px; height: 300px;"></div>
    <script type="text/javascript">
       var chart<?=$audio_word_id;?>;
 
@@ -86,7 +86,7 @@ foreach ($query_result as $query_result_data) {
             var graph = new AmCharts.AmGraph();
             graph.title = "pitch<?=$count?>";
             graph.labelText = "";
-            graph.balloonText = "0.1";
+            graph.balloonText = "";
             graph.valueField = "pitch<?=$count?>";
             graph.type = "column";
             graph.lineAlpha = 0;
