@@ -88,7 +88,7 @@ foreach ($query_result as $query_result_data) {
             ?>
             var graph = new AmCharts.AmGraph();
             graph.title = "pitch<?=$count?>";
-            graph.labelText = "[[value]]";
+            graph.labelText = "pitch<?=$count?>";
             graph.balloonText = "<?=round($audio_word_value, 4)?>";
             graph.valueField = "pitch<?=$count?>";
             graph.type = "column";
