@@ -112,13 +112,14 @@ if (!empty($_GET['song_id'])) {
                      chart_wt.dataProvider = chartData_wt;
                      chart_wt.categoryField = "term_word";
                      chart_wt.startDuration = 1;
-                     chart_wt.columnSpacing = 1;
 
                      // AXES
                      // category
                      var categoryAxis = chart_wt.categoryAxis;
                      categoryAxis.labelRotation = 90;
                      categoryAxis.gridPosition = "start";
+                     categoryAxis.autoGridCount = false;
+                     categoryAxis.gridCount = 1;
 
                      // value
                      // in case you don't want to change default settings of value axis,
