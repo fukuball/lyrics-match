@@ -94,7 +94,7 @@ if (!empty($_GET['song_id'])) {
                foreach ($query_result as $query_result_data) {
                   $term = $query_result_data['term'];
                   $word_count = $query_result_data['tf'];
-                  $term_data = '{ term: "'.addslashes($term).'", word_count: '.$word_count.' }';
+                  $term_data = '{ term_word: "'.addslashes($term).'", word_count: '.$word_count.' }';
                   array_push($term_data_array, $term_data);
                }
                $term_data_array_string = implode(',', $term_data_array);
@@ -103,19 +103,19 @@ if (!empty($_GET['song_id'])) {
                   ?>
                   <div id="term_frequency" style="width: 100%; height: 400px;"></div>
                   <script type="text/javascript">
-                  var chart;
-                  var chartData = [<?=$term_data_array_string?>];
+                  var chart_wt;
+                  var chartData_wt = [<?=$term_data_array_string?>];
 
                   AmCharts.ready(function () {
                      // SERIAL CHART
-                     chart = new AmCharts.AmSerialChart();
-                     chart.dataProvider = chartData;
-                     chart.categoryField = "term";
-                     chart.startDuration = 1;
+                     chart_wt = new AmCharts.AmSerialChart();
+                     chart_wt.dataProvider = chartData_wt;
+                     chart_wt.categoryField = "term_word";
+                     chart_wt.startDuration = 1;
 
                      // AXES
                      // category
-                     var categoryAxis = chart.categoryAxis;
+                     var categoryAxis = chart_wt.categoryAxis;
                      categoryAxis.labelRotation = 90;
                      categoryAxis.gridPosition = "start";
 
@@ -130,9 +130,9 @@ if (!empty($_GET['song_id'])) {
                      graph.type = "column";
                      graph.lineAlpha = 0;
                      graph.fillAlphas = 0.8;
-                     chart.addGraph(graph);
+                     chart_wt.addGraph(graph);
 
-                     chart.write("term_frequency");
+                     chart_wt.write("term_frequency");
                   });
                   </script>
                   <?php
