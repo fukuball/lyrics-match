@@ -70,6 +70,10 @@ if (!empty($_GET['song_id'])) {
       </div>
    </div>
    <hr />
+   <h2>
+      歌詞特徵值
+   </h2>
+   <br />
    <?php
    $music_feature_god = new LMMusicFeatureGod();
    $music_feature_id = $music_feature_god->findBySongId($song_obj->getId());
@@ -266,72 +270,7 @@ if (!empty($_GET['song_id'])) {
          </tr>
       </tbody>
    </table>
-   <h2>
-      相似音樂
-   </h2>
-   <table class="table table-bordered table-striped">
-        <thead>
-           <tr>
-              <th>
-               排名
-              </th>
-              <th>
-               song_id
-              </th>
-              <th>
-               藝人
-              </th>
-              <th>
-               歌名
-              </th>
-              <th>
-               相似度
-              </th>
-           </tr>
-        </thead>
-        <tbody>
-   <?php
-      $similar_song = shell_exec("python26 ".SITE_ROOT."/p-library/model/music_feature/similar_music_model.py ".$_GET['song_id']." ".$model_id);
-      $similar_song_array = explode(",", $similar_song);
-      $rank = 0;
-      foreach ($similar_song_array as $skey => $svalue) {
-         $rank++;
-         $similar_song_value_array = explode(":", $svalue);
-         $similar_song_obj = new LMSong($similar_song_value_array[0]);
-         $artist_obj = new LMPerformer($similar_song_obj->performer_id);
-         ?>
-         <tr>
-            <td>
-            <?php echo $rank; ?>
-            </td>
-            <td>
-               <a href="<?=SITE_HOST?>/music/song/index.php?song_id=<?=$similar_song_obj->getId()?>">
-                  <?php echo $similar_song_obj->getId(); ?>
-               </a>
-            </td>
-            <td>
-               <?php echo $artist_obj->name; ?>
-            </td>
-            <td>
-               <a href="<?=SITE_HOST?>/music/song/index.php?song_id=<?=$similar_song_obj->getId()?>">
-                  <?php echo $similar_song_obj->title; ?>
-               </a>
-            </td>
-            <td>
-               <?php echo $similar_song_value_array[1]; ?>
-            </td>
-         </tr>
-         <?php
-         unset($similar_song_obj);
-         unset($artist_obj);
-      }
-   ?>
-      </tbody>
-   </table>
-   <?php
-      unset($music_feature_obj);
-   }
-   ?>
+   <hr />
    <h2>
       相似歌詞
    </h2>
@@ -402,6 +341,73 @@ if (!empty($_GET['song_id'])) {
         ?>
         </tbody>
    </table>
+   <hr />
+   <h2>
+      相似音樂
+   </h2>
+   <table class="table table-bordered table-striped">
+        <thead>
+           <tr>
+              <th>
+               排名
+              </th>
+              <th>
+               song_id
+              </th>
+              <th>
+               藝人
+              </th>
+              <th>
+               歌名
+              </th>
+              <th>
+               相似度
+              </th>
+           </tr>
+        </thead>
+        <tbody>
+   <?php
+      $similar_song = shell_exec("python26 ".SITE_ROOT."/p-library/model/music_feature/similar_music_model.py ".$_GET['song_id']." ".$model_id);
+      $similar_song_array = explode(",", $similar_song);
+      $rank = 0;
+      foreach ($similar_song_array as $skey => $svalue) {
+         $rank++;
+         $similar_song_value_array = explode(":", $svalue);
+         $similar_song_obj = new LMSong($similar_song_value_array[0]);
+         $artist_obj = new LMPerformer($similar_song_obj->performer_id);
+         ?>
+         <tr>
+            <td>
+            <?php echo $rank; ?>
+            </td>
+            <td>
+               <a href="<?=SITE_HOST?>/music/song/index.php?song_id=<?=$similar_song_obj->getId()?>">
+                  <?php echo $similar_song_obj->getId(); ?>
+               </a>
+            </td>
+            <td>
+               <?php echo $artist_obj->name; ?>
+            </td>
+            <td>
+               <a href="<?=SITE_HOST?>/music/song/index.php?song_id=<?=$similar_song_obj->getId()?>">
+                  <?php echo $similar_song_obj->title; ?>
+               </a>
+            </td>
+            <td>
+               <?php echo $similar_song_value_array[1]; ?>
+            </td>
+         </tr>
+         <?php
+         unset($similar_song_obj);
+         unset($artist_obj);
+      }
+   ?>
+      </tbody>
+   </table>
+   <?php
+      unset($music_feature_obj);
+   }
+   ?>
 </div>
 <?php
    unset($song_obj);
