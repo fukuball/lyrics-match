@@ -52,21 +52,21 @@ foreach ($query_result as $query_result_data) {
       AmCharts.ready(function () {
 
          // SERIAL CHART
-         chart = new AmCharts.AmSerialChart();
-         chart.dataProvider = chartData;
-         chart.categoryField = "code_word<?=$audio_word_id;?>";
+         chart<?=$audio_word_id;?> = new AmCharts.AmSerialChart();
+         chart<?=$audio_word_id;?>.dataProvider = chartData<?=$audio_word_id;?>;
+         chart<?=$audio_word_id;?>.categoryField = "code_word<?=$audio_word_id;?>";
 
          // sometimes we need to set margins manually
          // autoMargins should be set to false in order chart to use custom margin values
-         chart.autoMargins = false;
-         chart.marginLeft = 0;
-         chart.marginRight = 0;
-         chart.marginTop = 30;
-         chart.marginBottom = 40;
+         chart<?=$audio_word_id;?>.autoMargins = false;
+         chart<?=$audio_word_id;?>.marginLeft = 0;
+         chart<?=$audio_word_id;?>.marginRight = 0;
+         chart<?=$audio_word_id;?>.marginTop = 30;
+         chart<?=$audio_word_id;?>.marginBottom = 40;
 
          // AXES
          // category
-         var categoryAxis = chart.categoryAxis;
+         var categoryAxis = chart<?=$audio_word_id;?>.categoryAxis;
          categoryAxis.gridAlpha = 0;
          categoryAxis.axisAlpha = 0;
          categoryAxis.gridPosition = "start";
@@ -77,145 +77,29 @@ foreach ($query_result as $query_result_data) {
          valueAxis.gridAlpha = 0;
          valueAxis.axisAlpha = 0;
          valueAxis.labelsEnabled = false;
-         chart.addValueAxis(valueAxis);
+         chart<?=$audio_word_id;?>.addValueAxis(valueAxis);
 
-
-
-         var graph = new AmCharts.AmGraph();
-         graph.title = "pitch1";
-         graph.labelText = "";
-         graph.balloonText = "0.2";
-         graph.valueField = "pitch1";
-         graph.type = "column";
-         graph.lineAlpha = 0;
-         graph.fillAlphas = 0.5;
-         graph.lineColor = "#D41313";
-         chart.addGraph(graph);
-
-
-         var graph = new AmCharts.AmGraph();
-         graph.title = "pitch2";
-         graph.labelText = "";
-         graph.balloonText = "0.2";
-         graph.valueField = "pitch2";
-         graph.type = "column";
-         graph.lineAlpha = 0;
-         graph.fillAlphas = 0.5;
-         graph.lineColor = "#D41313";
-         chart.addGraph(graph);
-
-         var graph = new AmCharts.AmGraph();
-         graph.title = "pitch3";
-         graph.labelText = "";
-         graph.balloonText = "0.4";
-         graph.valueField = "pitch3";
-         graph.type = "column";
-         graph.lineAlpha = 0;
-         graph.fillAlphas = 0.5;
-         graph.lineColor = "#D41313";
-         chart.addGraph(graph);
-
-         var graph = new AmCharts.AmGraph();
-         graph.title = "pitch4";
-         graph.labelText = "";
-         graph.balloonText = "0.4";
-         graph.valueField = "pitch4";
-         graph.type = "column";
-         graph.lineAlpha = 0;
-         graph.fillAlphas = 0.5;
-         graph.lineColor = "#D41313";
-         chart.addGraph(graph);
-
-         var graph = new AmCharts.AmGraph();
-         graph.title = "pitch5";
-         graph.labelText = "";
-         graph.balloonText = "0.4";
-         graph.valueField = "pitch5";
-         graph.type = "column";
-         graph.lineAlpha = 0;
-         graph.fillAlphas = 0.5;
-         graph.lineColor = "#D41313";
-         chart.addGraph(graph);
-
-         var graph = new AmCharts.AmGraph();
-         graph.title = "pitch6";
-         graph.labelText = "";
-         graph.balloonText = "0.4";
-         graph.valueField = "pitch6";
-         graph.type = "column";
-         graph.lineAlpha = 0;
-         graph.fillAlphas = 0.5;
-         graph.lineColor = "#D41313";
-         chart.addGraph(graph);
-
-         var graph = new AmCharts.AmGraph();
-         graph.title = "pitch7";
-         graph.labelText = "";
-         graph.balloonText = "0.4";
-         graph.valueField = "pitch7";
-         graph.type = "column";
-         graph.lineAlpha = 0;
-         graph.fillAlphas = 0.5;
-         graph.lineColor = "#D41313";
-         chart.addGraph(graph);
-
-         var graph = new AmCharts.AmGraph();
-         graph.title = "pitch8";
-         graph.labelText = "";
-         graph.balloonText = "0.4";
-         graph.valueField = "pitch8";
-         graph.type = "column";
-         graph.lineAlpha = 0;
-         graph.fillAlphas = 0.5;
-         graph.lineColor = "#D41313";
-         chart.addGraph(graph);
-
-         var graph = new AmCharts.AmGraph();
-         graph.title = "pitch9";
-         graph.labelText = "";
-         graph.balloonText = "0.4";
-         graph.valueField = "pitch9";
-         graph.type = "column";
-         graph.lineAlpha = 0;
-         graph.fillAlphas = 0.5;
-         graph.lineColor = "#D41313";
-         chart.addGraph(graph);
-
-         var graph = new AmCharts.AmGraph();
-         graph.title = "pitch10";
-         graph.labelText = "";
-         graph.balloonText = "0.4";
-         graph.valueField = "pitch10";
-         graph.type = "column";
-         graph.lineAlpha = 0;
-         graph.fillAlphas = 0.5;
-         graph.lineColor = "#D41313";
-         chart.addGraph(graph);
-
-         var graph = new AmCharts.AmGraph();
-         graph.title = "pitch11";
-         graph.labelText = "";
-         graph.balloonText = "0.4";
-         graph.valueField = "pitch11";
-         graph.type = "column";
-         graph.lineAlpha = 0;
-         graph.fillAlphas = 0.5;
-         graph.lineColor = "#D41313";
-         chart.addGraph(graph);
-
-         var graph = new AmCharts.AmGraph();
-         graph.title = "pitch12";
-         graph.labelText = "";
-         graph.balloonText = "0.4";
-         graph.valueField = "pitch12";
-         graph.type = "column";
-         graph.lineAlpha = 0;
-         graph.fillAlphas = 0.5;
-         graph.lineColor = "#D41313";
-         chart.addGraph(graph);
+         <?php
+         $count = 1;
+         foreach ($audio_word as $key=>$audio_word_value) {
+            ?>
+            var graph = new AmCharts.AmGraph();
+            graph.title = "pitch<?=$count?>";
+            graph.labelText = "";
+            graph.balloonText = "0.1";
+            graph.valueField = "pitch<?=$count?>";
+            graph.type = "column";
+            graph.lineAlpha = 0;
+            graph.fillAlphas = <?=$audio_word_value?>;
+            graph.lineColor = "#D41313";
+            chart<?=$audio_word_id;?>.addGraph(graph);
+            <?php
+            $count++;
+         }
+         ?>
 
          // WRITE
-         chart.write("chartdiv");
+         chart<?=$audio_word_id;?>.write("chartdiv<?=$audio_word_id;?>");
       });
 
    </script>
