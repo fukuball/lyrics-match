@@ -219,7 +219,7 @@ if (!empty($_GET['song_id'])) {
                <h3>timbre_audio_word_histogram</h3>
                <div id="timbre_histogram" style="width: 100%; height: 400px;"></div>
                <script type="text/javascript">
-                  var chart;
+                  var chart_t;
                   <?php
                   $timbre_array = explode(',',$music_feature_obj->timbre_audio_word_histogram);
                   $timbre_data_array = array();
@@ -231,18 +231,18 @@ if (!empty($_GET['song_id'])) {
                   }
                   $timbre_data_array_string = implode(',', $timbre_data_array);
                   ?>
-                  var chartData = [<?=$timbre_data_array_string?>];
+                  var chartData_t = [<?=$timbre_data_array_string?>];
 
                   AmCharts.ready(function () {
                      // SERIAL CHART
-                     chart = new AmCharts.AmSerialChart();
-                     chart.dataProvider = chartData;
-                     chart.categoryField = "timbre_audio_word";
-                     chart.startDuration = 1;
+                     chart_t = new AmCharts.AmSerialChart();
+                     chart_t.dataProvider = chartData_t;
+                     chart_t.categoryField = "timbre_audio_word";
+                     chart_t.startDuration = 1;
 
                      // AXES
                      // category
-                     var categoryAxis = chart.categoryAxis;
+                     var categoryAxis = chart_t.categoryAxis;
                      categoryAxis.labelRotation = 90;
                      categoryAxis.gridPosition = "start";
 
@@ -257,9 +257,9 @@ if (!empty($_GET['song_id'])) {
                      graph.type = "column";
                      graph.lineAlpha = 0;
                      graph.fillAlphas = 0.8;
-                     chart.addGraph(graph);
+                     chart_t.addGraph(graph);
 
-                     chart.write("timbre_histogram");
+                     chart_t.write("timbre_histogram");
                   });
                </script>
             </td>
