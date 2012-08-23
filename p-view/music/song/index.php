@@ -170,7 +170,7 @@ if (!empty($_GET['song_id'])) {
                   $pitch_data_array = array();
                   $count = 1;
                   foreach ($pitch_array as $key=>$pitch_value) {
-                     $pitch_data = '{ pitch_audio_word: "pitch audio word '.$count.'", word_count: '.$pitch_value.' }';
+                     $pitch_data = '{ pitch_audio_word: " '.$count.'", word_count: '.$pitch_value.' }';
                      array_push($pitch_data_array, $pitch_data);
                      $count++;
                   }
