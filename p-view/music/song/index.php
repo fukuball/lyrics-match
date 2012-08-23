@@ -142,6 +142,67 @@ if (!empty($_GET['song_id'])) {
                ?>
             </td>
          </tr>
+         <tr>
+            <td rowspan="1">TF-IDF</td>
+            <td colspan="2" width="800">
+               <?php
+
+               $db_obj = LMDBAccess::getInstance();
+               $select_sql = "SELECT term,pos,tf,tfidf FROM lyrics_term_tfidf WHERE song_id='".$_GET['song_id']."' AND is_deleted=0 ORDER BY term";
+               $query_result = $db_obj->selectCommand($select_sql);
+
+               $term_data_array = array();
+               foreach ($query_result as $query_result_data) {
+                  $term = $query_result_data['term'];
+                  $word_count = round($query_result_data['tfidf'], 4);
+                  $term_data = '{ TF-IDF: "'.addslashes($term).'", word_count: '.$word_count.' }';
+                  array_push($term_data_array, $term_data);
+               }
+               $term_data_array_string = implode(',', $term_data_array);
+
+               if (!empty($term_data_array_string)) {
+                  ?>
+                  <div id="tfidf" style="width: 100%; height: 400px;"></div>
+                  <script type="text/javascript">
+                  var chart_tfidf;
+                  var chartData_tfidf = [<?=$term_data_array_string?>];
+
+                  AmCharts.ready(function () {
+                     // SERIAL CHART
+                     chart_tfidf = new AmCharts.AmSerialChart();
+                     chart_tfidf.dataProvider = chartData_tfidf;
+                     chart_tfidf.categoryField = "TF-IDF";
+                     chart_tfidf.startDuration = 1;
+
+                     // AXES
+                     // category
+                     var categoryAxis = chart_tfidf.categoryAxis;
+                     categoryAxis.labelRotation = 90;
+                     categoryAxis.gridPosition = "start";
+                     categoryAxis.autoGridCount = false;
+                     categoryAxis.gridCount = 100000;
+
+                     // value
+                     // in case you don't want to change default settings of value axis,
+                     // you don't need to create it, as one value axis is created automatically.
+
+                     // GRAPH
+                     var graph = new AmCharts.AmGraph();
+                     graph.valueField = "word_count";
+                     graph.balloonText = "[[category]]: [[value]]";
+                     graph.type = "column";
+                     graph.lineAlpha = 0;
+                     graph.fillAlphas = 0.8;
+                     chart_tfidf.addGraph(graph);
+
+                     chart_tfidf.write("tfidf");
+                  });
+                  </script>
+                  <?php
+               }
+               ?>
+            </td>
+         </tr>
       </tbody>
    </table>
    <hr />
@@ -265,6 +326,8 @@ if (!empty($_GET['song_id'])) {
                      var categoryAxis = chart.categoryAxis;
                      categoryAxis.labelRotation = 90;
                      categoryAxis.gridPosition = "start";
+                     categoryAxis.autoGridCount = false;
+                     categoryAxis.gridCount = 100000;
 
                      // value
                      // in case you don't want to change default settings of value axis,
@@ -320,6 +383,8 @@ if (!empty($_GET['song_id'])) {
                      var categoryAxis = chart_t.categoryAxis;
                      categoryAxis.labelRotation = 90;
                      categoryAxis.gridPosition = "start";
+                     categoryAxis.autoGridCount = false;
+                     categoryAxis.gridCount = 100000;
 
                      // value
                      // in case you don't want to change default settings of value axis,
