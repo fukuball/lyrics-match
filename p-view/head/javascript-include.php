@@ -35,3 +35,16 @@
 <script src="<?=SITE_HOST?>/p-library/plupload/js/plupload.html4.js" type="text/javascript"></script>
 <script src="<?=SITE_HOST?>/p-library/plupload/js/plupload.html5.js" type="text/javascript"></script>
 <script src="<?=SITE_HOST?>/p-asset/javascript/index.js" type="text/javascript"></script>
+<script src="http://cdn.ezcomet.com/ezcomet.min.js" type="text/javascript"></script>
+<script>
+   function callback(msg) {
+        alert(msg);
+    }
+    window.onload = function() {
+        ez_comet.subscribe({
+            user_name: 'indievox',
+            channel: 'fukuball-unread-message',
+            callback: callback
+        });
+    };
+</script>
