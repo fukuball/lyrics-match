@@ -12,7 +12,7 @@
  * @link     http://sarasti.cs.nccu.edu.tw
  */
 ?>
-<div id="chartdiv" style="width: 600px; height: 400px;"></div>
+<div id="chartdiv" style="width: 50px; height: 300px;"></div>
 <script type="text/javascript">
    var chart;
 
@@ -72,7 +72,7 @@
           graph.type = "column";
           graph.lineAlpha = 0;
           graph.fillAlphas = 0.5;
-          graph.lineColor = "#ff0000";
+          graph.lineColor = "#D41313";
           chart.addGraph(graph);
 
           // first graph
@@ -84,7 +84,7 @@
             graph.type = "column";
             graph.lineAlpha = 0;
             graph.fillAlphas = 0.5;
-            graph.lineColor = "#ff0000";
+            graph.lineColor = "#D41313";
             chart.addGraph(graph);
 
             // first graph
@@ -96,7 +96,7 @@
               graph.type = "column";
               graph.lineAlpha = 0;
               graph.fillAlphas = 0.5;
-              graph.lineColor = "#ff0000";
+              graph.lineColor = "#D41313";
               chart.addGraph(graph);
 
               // first graph
@@ -108,7 +108,7 @@
                 graph.type = "column";
                 graph.lineAlpha = 0;
                 graph.fillAlphas = 0.5;
-                graph.lineColor = "#ff0000";
+                graph.lineColor = "#D41313";
                 chart.addGraph(graph);
 
                 // first graph
@@ -120,7 +120,7 @@
                   graph.type = "column";
                   graph.lineAlpha = 0;
                   graph.fillAlphas = 0.5;
-                  graph.lineColor = "#ff0000";
+                  graph.lineColor = "#D41313";
                   chart.addGraph(graph);
 
                   // first graph
@@ -132,7 +132,7 @@
                     graph.type = "column";
                     graph.lineAlpha = 0;
                     graph.fillAlphas = 0.5;
-                    graph.lineColor = "#ff0000";
+                    graph.lineColor = "#D41313";
                     chart.addGraph(graph);
 
                     // first graph
@@ -144,7 +144,7 @@
                       graph.type = "column";
                       graph.lineAlpha = 0;
                       graph.fillAlphas = 0.5;
-                      graph.lineColor = "#ff0000";
+                      graph.lineColor = "#D41313";
                       chart.addGraph(graph);
 
                       // first graph
@@ -156,7 +156,7 @@
                         graph.type = "column";
                         graph.lineAlpha = 0;
                         graph.fillAlphas = 0.5;
-                        graph.lineColor = "#ff0000";
+                        graph.lineColor = "#D41313";
                         chart.addGraph(graph);
 
                         // first graph
@@ -168,7 +168,7 @@
                           graph.type = "column";
                           graph.lineAlpha = 0;
                           graph.fillAlphas = 0.5;
-                          graph.lineColor = "#ff0000";
+                          graph.lineColor = "#D41313";
                           chart.addGraph(graph);
 
                           // first graph
@@ -180,7 +180,7 @@
                             graph.type = "column";
                             graph.lineAlpha = 0;
                             graph.fillAlphas = 0.5;
-                            graph.lineColor = "#ff0000";
+                            graph.lineColor = "#D41313";
                             chart.addGraph(graph);
 
                             // first graph
@@ -192,7 +192,7 @@
                               graph.type = "column";
                               graph.lineAlpha = 0;
                               graph.fillAlphas = 0.5;
-                              graph.lineColor = "#ff0000";
+                              graph.lineColor = "#D41313";
                               chart.addGraph(graph);
 
 
@@ -205,7 +205,7 @@
                                 graph.type = "column";
                                 graph.lineAlpha = 0;
                                 graph.fillAlphas = 0.5;
-                                graph.lineColor = "#ff0000";
+                                graph.lineColor = "#D41313";
                                 chart.addGraph(graph);
 
        // WRITE
