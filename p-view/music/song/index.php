@@ -146,8 +146,6 @@ if (!empty($_GET['song_id'])) {
             <td rowspan="1">TF-IDF</td>
             <td colspan="2" width="800">
                <?php
-
-               $db_obj = LMDBAccess::getInstance();
                $select_sql = "SELECT term,pos,tf,tfidf FROM lyrics_term_tfidf WHERE song_id='".$_GET['song_id']."' AND is_deleted=0 ORDER BY term";
                $query_result = $db_obj->selectCommand($select_sql);
 
