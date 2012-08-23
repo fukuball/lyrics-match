@@ -161,7 +161,7 @@ if (!empty($_GET['song_id'])) {
          <tr>
             <td rowspan="1">音高及音程</td>
             <td colspan="2">
-               <h3>pitch_audio_word_histogram<h3>
+               <h3>pitch_audio_word_histogram</h3>
                <div id="pitch_histogram" style="width: 100%; height: 400px;"></div>
                <script type="text/javascript">
                   var chart;
@@ -216,12 +216,52 @@ if (!empty($_GET['song_id'])) {
          </tr>
          <tr>
             <td colspan="2">
-               <h3>timbre_audio_word_histogram<h3>
+               <h3>timbre_audio_word_histogram</h3>
+               <div id="timbre_histogram" style="width: 100%; height: 400px;"></div>
+               <script type="text/javascript">
+                  var chart;
                   <?php
                   $timbre_array = explode(',',$music_feature_obj->timbre_audio_word_histogram);
-                  $timbre_audio_word_histogram = implode('<br/>', $timbre_array);
-                  echo $timbre_audio_word_histogram;
+                  $timbre_data_array = array();
+                  $count = 1;
+                  foreach ($timbre_array as $key=>$timbre_value) {
+                     $timbre_data = '{ timbre_audio_word: "timbre audio word '.$count.'", word_count: '.$timbre_value.' }';
+                     array_push($timbre_data_array, $timbre_data);
+                     $count++;
+                  }
+                  $timbre_data_array_string = implode(',', $timbre_data_array);
                   ?>
+                  var chartData = [<?=$timbre_data_array_string?>];
+
+                  AmCharts.ready(function () {
+                     // SERIAL CHART
+                     chart = new AmCharts.AmSerialChart();
+                     chart.dataProvider = chartData;
+                     chart.categoryField = "timbre_audio_word";
+                     chart.startDuration = 1;
+
+                     // AXES
+                     // category
+                     var categoryAxis = chart.categoryAxis;
+                     categoryAxis.labelRotation = 90;
+                     categoryAxis.gridPosition = "start";
+
+                     // value
+                     // in case you don't want to change default settings of value axis,
+                     // you don't need to create it, as one value axis is created automatically.
+
+                     // GRAPH
+                     var graph = new AmCharts.AmGraph();
+                     graph.valueField = "word_count";
+                     graph.balloonText = "[[category]]: [[value]]";
+                     graph.type = "column";
+                     graph.lineAlpha = 0;
+                     graph.fillAlphas = 0.8;
+                     chart.addGraph(graph);
+
+                     chart.write("timbre_histogram");
+                  });
+               </script>
             </td>
          </tr>
       </tbody>
