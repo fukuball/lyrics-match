@@ -32,7 +32,7 @@ foreach ($query_result as $query_result_data) {
    $audio_word = json_decode($query_result_data['audio_word']);
 
    ?>
-   <div id="chartdiv<?=$audio_word_id;?>" class="pull-left" style="width: 70px; height: 300px;"></div>
+   <div id="chartdiv<?=$audio_word_id;?>" class="pull-left" style="width: 100px; height: 300px;"></div>
    <script type="text/javascript">
       var chart<?=$audio_word_id;?>;
 
