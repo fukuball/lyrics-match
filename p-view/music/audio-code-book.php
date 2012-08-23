@@ -37,7 +37,7 @@ foreach ($query_result as $query_result_data) {
       var chart<?=$audio_word_id;?>;
 
       var chartData<?=$audio_word_id;?> = [{
-          code_word<?=$audio_word_id;?>: "code word<?=$audio_word_id;?>",
+          code_word<?=$audio_word_id;?>: "<?=$audio_word_id;?>",
           pitch1: 1,
           pitch2: 1,
           pitch3: 1,
@@ -57,7 +57,7 @@ foreach ($query_result as $query_result_data) {
          // SERIAL CHART
          chart<?=$audio_word_id;?> = new AmCharts.AmSerialChart();
          chart<?=$audio_word_id;?>.dataProvider = chartData<?=$audio_word_id;?>;
-         chart<?=$audio_word_id;?>.categoryField = "code_word<?=$audio_word_id;?>";
+         chart<?=$audio_word_id;?>.categoryField = "<?=$audio_word_id;?>";
 
          // sometimes we need to set margins manually
          // autoMargins should be set to false in order chart to use custom margin values
