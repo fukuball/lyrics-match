@@ -170,7 +170,7 @@ if (!empty($_GET['song_id'])) {
                   $pitch_data_array = array();
                   $count = 1;
                   foreach ($pitch_array as $key=>$pitch_value) {
-                     $pitch_data = '{ pitch_audio_word: " '.$count.'", word_count: '.$pitch_value.' }';
+                     $pitch_data = '{ pitch_audio_word: "pitch word '.$count.'", word_count: '.$pitch_value.' }';
                      array_push($pitch_data_array, $pitch_data);
                      $count++;
                   }
@@ -225,7 +225,7 @@ if (!empty($_GET['song_id'])) {
                   $timbre_data_array = array();
                   $count = 1;
                   foreach ($timbre_array as $key=>$timbre_value) {
-                     $timbre_data = '{ timbre_audio_word: "timbre audio word '.$count.'", word_count: '.$timbre_value.' }';
+                     $timbre_data = '{ timbre_audio_word: "timbre word '.$count.'", word_count: '.$timbre_value.' }';
                      array_push($timbre_data_array, $timbre_data);
                      $count++;
                   }
