@@ -32,7 +32,7 @@ foreach ($query_result as $query_result_data) {
    $audio_word = json_decode($query_result_data['audio_word']);
 
    ?>
-   <div id="chartdiv<?=$audio_word_id;?>" class="pull-left" style="width: 100px; height: 300px;"></div>
+   <div id="chartdiv<?=$audio_word_id;?>" class="pull-left" style="width: 400px; height: 300px;"></div>
    <script type="text/javascript">
       var chart<?=$audio_word_id;?>;
 
@@ -70,15 +70,15 @@ foreach ($query_result as $query_result_data) {
          // AXES
          // category
          var categoryAxis = chart<?=$audio_word_id;?>.categoryAxis;
-         categoryAxis.gridAlpha = 0.1;
-         categoryAxis.axisAlpha = 0;
+         categoryAxis.gridAlpha = 1;
+         categoryAxis.axisAlpha = 1;
          categoryAxis.gridPosition = "start";
 
          // value
          var valueAxis = new AmCharts.ValueAxis();
          valueAxis.stackType = "100%"; // this line makes the chart 100% stacked
-         valueAxis.gridAlpha = 0.1;
-         valueAxis.axisAlpha = 0;
+         valueAxis.gridAlpha = 1;
+         valueAxis.axisAlpha = 1;
          valueAxis.labelsEnabled = true;
          chart<?=$audio_word_id;?>.addValueAxis(valueAxis);
 
