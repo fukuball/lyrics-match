@@ -164,7 +164,7 @@ if (!empty($_GET['song_id'])) {
             <td>
                <?php
                $pitch_array = explode(',',$music_feature_obj->pitch_audio_word_histogram);
-               $pitch_avg_vector = implode('<br/>', $pitch_array);
+               $pitch_audio_word_histogram = implode('<br/>', $pitch_array);
                echo $pitch_audio_word_histogram;
                ?>
             </td>
@@ -179,7 +179,7 @@ if (!empty($_GET['song_id'])) {
             <td>
                <?php
                $timbre_array = explode(',',$music_feature_obj->timbre_audio_word_histogram);
-               $timbre_avg_vector = implode('<br/>', $timbre_array);
+               $timbre_audio_word_histogram = implode('<br/>', $timbre_array);
                echo $timbre_audio_word_histogram;
                ?>
             </td>
