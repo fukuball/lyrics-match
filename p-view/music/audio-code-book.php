@@ -79,7 +79,7 @@ foreach ($query_result as $query_result_data) {
          valueAxis.stackType = "100%"; // this line makes the chart 100% stacked
          valueAxis.gridAlpha = 0;
          valueAxis.axisAlpha = 0;
-         valueAxis.labelsEnabled = false;
+         valueAxis.labelsEnabled = true;
          chart<?=$audio_word_id;?>.addValueAxis(valueAxis);
 
          <?php
