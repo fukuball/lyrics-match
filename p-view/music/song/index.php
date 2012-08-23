@@ -159,48 +159,28 @@ if (!empty($_GET['song_id'])) {
             <td><?=($music_feature_obj->tatum_avg_second/$music_feature_obj->bar_avg_second)?></td>
          </tr>
          <tr>
-            <td rowspan="2">音高及音程</td>
-            <td>average pitch vector</td>
+            <td rowspan="1">音高及音程</td>
+            <td>pitch_audio_word_histogram</td>
             <td>
                <?php
-               $pitch_array = explode(',',$music_feature_obj->pitch_avg_vector);
+               $pitch_array = explode(',',$music_feature_obj->pitch_audio_word_histogram);
                $pitch_avg_vector = implode('<br/>', $pitch_array);
-               echo $pitch_avg_vector;
+               echo $pitch_audio_word_histogram;
                ?>
             </td>
          </tr>
          <tr>
-            <td>variance of pitch vector</td>
-            <td>
-            <?php
-            $pitch_array = explode(',',$music_feature_obj->pitch_std_vector);
-            $pitch_std_vector = implode('<br/>', $pitch_array);
-            echo $pitch_std_vector;
-            ?>
-            </td>
-         </tr>
-         <tr>
-            <td rowspan="3">音色</td>
+            <td rowspan="2">音色</td>
             <td>speechiness</td>
             <td><?=$song_obj->speechiness?></td>
          </tr>
          <tr>
-            <td>average timbre vector</td>
+            <td>timbre_audio_word_histogram</td>
             <td>
                <?php
-               $timbre_array = explode(',',$music_feature_obj->timbre_avg_vector);
+               $timbre_array = explode(',',$music_feature_obj->timbre_audio_word_histogram);
                $timbre_avg_vector = implode('<br/>', $timbre_array);
-               echo $timbre_avg_vector;
-               ?>
-            </td>
-         </tr>
-         <tr>
-            <td>variance of timbre vector</td>
-            <td>
-               <?php
-               $timbre_array = explode(',',$music_feature_obj->timbre_std_vector);
-               $timbre_std_vector = implode('<br/>', $timbre_array);
-               echo $timbre_std_vector;
+               echo $timbre_audio_word_histogram;
                ?>
             </td>
          </tr>
