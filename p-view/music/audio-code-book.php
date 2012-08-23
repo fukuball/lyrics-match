@@ -89,11 +89,11 @@ foreach ($query_result as $query_result_data) {
             var graph = new AmCharts.AmGraph();
             graph.title = "pitch<?=$count?>";
             graph.labelText = "";
-            graph.balloonText = "<?=$audio_word_value?>";
+            graph.balloonText = "<?=round($audio_word_value, 4)?>";
             graph.valueField = "pitch<?=$count?>";
             graph.type = "column";
             graph.lineAlpha = 0;
-            graph.fillAlphas = <?=$audio_word_value?>;
+            graph.fillAlphas = <?=round($audio_word_value, 4)?>;
             graph.lineColor = "#D41313";
             chart<?=$audio_word_id;?>.addGraph(graph);
             <?php
