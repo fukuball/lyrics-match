@@ -95,7 +95,7 @@ if (!empty($_GET['song_id'])) {
 
                   $term_data_array = array();
                   foreach ($query_result as $query_result_data) {
-                     $term = $query_result_data['term'].'('.$query_result_data['pos'].')';
+                     $term = $query_result_data['term'];
                      $word_count = $query_result_data['tf'];
                      $term_data = '{ term: "'.addslashes($term).'", word_count: '.$word_count.' }';
                      array_push($term_data_array, $term_data);
