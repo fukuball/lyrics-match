@@ -160,13 +160,53 @@ if (!empty($_GET['song_id'])) {
          </tr>
          <tr>
             <td rowspan="1">音高及音程</td>
-            <td>pitch_audio_word_histogram</td>
-            <td>
-               <?php
-               $pitch_array = explode(',',$music_feature_obj->pitch_audio_word_histogram);
-               $pitch_audio_word_histogram = implode('<br/>', $pitch_array);
-               echo $pitch_audio_word_histogram;
-               ?>
+            <td colspan="2">
+               <h3>pitch_audio_word_histogram<h3>
+               <div id="pitch_histogram" style="width: 100%; height: 400px;"></div>
+               <script type="text/javascript">
+                  var chart;
+                  <?php
+                  $pitch_array = explode(',',$music_feature_obj->pitch_audio_word_histogram);
+                  $pitch_data_array = array();
+                  $count = 1;
+                  foreach ($pitch_array as $key=>$pitch_value) {
+                     $pitch_data = '{ pitch_audio_word: "pitch audio word '.$count.'", word_count: '.$pitch_value.' }';
+                     array_push($pitch_data_array, $pitch_data);
+                     $count++;
+                  }
+                  $pitch_data_array_string = implode(',', $pitch_data_array);
+                  ?>
+                  var chartData = [<?=$pitch_data_array_string?>];
+
+                  AmCharts.ready(function () {
+                     // SERIAL CHART
+                     chart = new AmCharts.AmSerialChart();
+                     chart.dataProvider = chartData;
+                     chart.categoryField = "pitch_audio_word";
+                     chart.startDuration = 1;
+
+                     // AXES
+                     // category
+                     var categoryAxis = chart.categoryAxis;
+                     categoryAxis.labelRotation = 90;
+                     categoryAxis.gridPosition = "start";
+
+                     // value
+                     // in case you don't want to change default settings of value axis,
+                     // you don't need to create it, as one value axis is created automatically.
+
+                     // GRAPH
+                     var graph = new AmCharts.AmGraph();
+                     graph.valueField = "word_count";
+                     graph.balloonText = "[[category]]: [[value]]";
+                     graph.type = "column";
+                     graph.lineAlpha = 0;
+                     graph.fillAlphas = 0.8;
+                     chart.addGraph(graph);
+
+                     chart.write("pitch_histogram");
+                  });
+               </script>
             </td>
          </tr>
          <tr>
@@ -175,13 +215,13 @@ if (!empty($_GET['song_id'])) {
             <td><?=$song_obj->speechiness?></td>
          </tr>
          <tr>
-            <td>timbre_audio_word_histogram</td>
-            <td>
-               <?php
-               $timbre_array = explode(',',$music_feature_obj->timbre_audio_word_histogram);
-               $timbre_audio_word_histogram = implode('<br/>', $timbre_array);
-               echo $timbre_audio_word_histogram;
-               ?>
+            <td colspan="2">
+               <h3>timbre_audio_word_histogram<h3>
+                  <?php
+                  $timbre_array = explode(',',$music_feature_obj->timbre_audio_word_histogram);
+                  $timbre_audio_word_histogram = implode('<br/>', $timbre_array);
+                  echo $timbre_audio_word_histogram;
+                  ?>
             </td>
          </tr>
       </tbody>
