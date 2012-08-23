@@ -191,7 +191,7 @@ foreach ($query_result as $query_result_data) {
             graph.valueField = "timbre<?=$count?>";
             graph.type = "column";
             graph.lineAlpha = 0;
-            graph.fillAlphas = <?=round($audio_word_value, 4)?>;
+            graph.fillAlphas = <?=round(($audio_word_value+100)/300, 4)?>;
             graph.lineColor = "#D41313";
             chart<?=$audio_word_id;?>.addGraph(graph);
             <?php
