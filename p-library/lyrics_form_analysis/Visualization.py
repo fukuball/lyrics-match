@@ -1,8 +1,27 @@
 # -*- coding:utf-8 -*-
+import numpy
+import pylab
+
 
 class Visualization:
 	def __init__(self):
 		self.__axisMax = 30.0
+	
+
+
+	def drawGompertz(self, a, b, c):
+		t = numpy.arange(-5.0, 10.0, 0.01)
+		#y = a*numpy.exp(b*numpy.exp(c*t))
+		y1 = a*numpy.exp(b*numpy.exp(c*t))
+		y2 = a*numpy.exp(-1*numpy.exp(c*t))
+
+		pylab.plot(t, y1)
+		pylab.plot(t, y2)
+		pylab.xlabel('time(s)')
+		pylab.ylabel('value')
+		pylab.title("Gompertz Function a=%.2f  b=%.2f  c=%.2f" % (a, b, c))
+
+		pylab.show()
 
 	def testdrawMatrix(self):
 		import numpy
@@ -106,3 +125,6 @@ class Visualization:
 		ycorners = N.array([y - hs, y - hs, y + hs, y + hs])
 		P.fill(xcorners, ycorners, colour, edgecolor=edgeColor)
 		
+
+if __name__ == "__main__":
+	Visualization().drawGompertz(1, -10, -0.8)

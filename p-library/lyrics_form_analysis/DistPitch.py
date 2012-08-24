@@ -2,6 +2,8 @@
 from SimElement import SimElement
 
 class DistPitch(SimElement):
+	def __init__(self):
+		self.__MAXPITCH = 128.0
 
 	def similarity(self, p1, p2):
 		"""
@@ -12,7 +14,7 @@ class DistPitch(SimElement):
 		
 		#if denom != 0.0:
 		#	distance = abs(p1 - p2) / denom
-		distance = abs(p1 - p2) / 128.0
+		distance = abs(p1 - p2) / self.__MAXPITCH
 
 		return distance
 

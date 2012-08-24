@@ -146,6 +146,7 @@ class AlgoDistStruct(AlgoSequence):
 			depth = self.__backTracking(backStartCoor, self.__pathIdxList)
 			self.__pathLength = len(self.__pathIdxList)
 			self.__similarity = self.__distance / depth
+
 			
 
 			# 將排比的路徑座標轉換成序列的 Index
@@ -178,7 +179,8 @@ class AlgoDistStruct(AlgoSequence):
 
 		for i in range(self.__STARTCOOR[0], self.__tableLyricsRange.shape[0]):
 			for j in range(self.__STARTCOOR[1], self.__tableLyricsRange.shape[1]):
-				maxAlignNote = ((self.__seqI[i] - 1) * self.__MAXNOTE) + 1
+				#maxAlignNote = ((self.__seqI[i] - 1) * self.__MAXNOTE) + 1
+				maxAlignNote = self.__seqI[i] * self.__MAXNOTE 
 				
 				noteCount = 0
 				backStepNum = 0
@@ -324,7 +326,8 @@ class AlgoDistStruct(AlgoSequence):
 			wordCount += self.__seqI[sentenceIdx]
 			prev = (sentenceIdx - 1, nowCoor[1] - 1)
 
-			isSatisfy = wordCount >= ceil(((self.__seqJ[nowCoor[1]] - 1) / float(self.__MAXNOTE)) + 1) 
+			#isSatisfy = wordCount >= ceil(((self.__seqJ[nowCoor[1]] - 1) / float(self.__MAXNOTE)) + 1) 
+			isSatisfy = wordCount >= ceil(self.__seqJ[nowCoor[1]] / float(self.__MAXNOTE)) 
 			totalCost = self.__INF
 
 			if self.__tableAccu[prev] != self.__INF and isSatisfy:
@@ -363,12 +366,12 @@ if __name__ == "__main__":
 
 	#sentenceSeq  = [4, 7, 1, 3]
 	#sentenceSeq  = [8]
-	sentenceSeq = [2, 3, 4]
+	sentenceSeq = [2, 4]
 	#sentenceSeq = [3, 4, 5]
 	#phraseSeq = [3, 5, 2, 5, 1, 4]
 	#phraseSeq = [3, 2, 5]
 	#phraseSeq = [8]
-	phraseSeq = [3, 4, 5]
+	phraseSeq = [16]
 	#phraseSeq = [2, 3, 4]
 
 

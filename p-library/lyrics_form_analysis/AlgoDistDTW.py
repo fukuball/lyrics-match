@@ -135,7 +135,7 @@ class AlgoDistDTW(AlgoSequence):
 			
 
 			# 將排比的路徑座標轉換成序列的 Index
-			self.__pathIdxList = [tuple(map(lambda pair: pair[0] - pair[1], zip(coor, self.__STOPCOOR))) for coor in self.__pathIdxList]
+			self.__pathIdxList = [tuple(map(lambda pair: pair[0] - pair[1], zip(coor, self.__STARTCOOR))) for coor in self.__pathIdxList]
 
 
 		#print "AlgoDTW: Path Length = %d " % self.__pathLength
@@ -168,7 +168,8 @@ class AlgoDistDTW(AlgoSequence):
 		# 主要是利用 Step Pattern 搭配已經填表好的 Local Cost Table，來計算 Accumulate Cost Table 的第一行與第一列
 
 		# 填充 Accumulate Cost Table 起始點的分數
-		self.__tableAccu[self.__STOPCOOR] = self.__tableLocal[self.__STOPCOOR]
+		#self.__tableAccu[self.__STOPCOOR] = self.__tableLocal[self.__STOPCOOR]
+		self.__tableAccu[self.__STOPCOOR] = 0.0
 
 		# 開始填 Accumulate Cost Table 的第一行 (i 軸)
 		for i in range(self.__STOPCOOR[0] + 1, self.__tableAccu.shape[0]):
@@ -192,10 +193,12 @@ class AlgoDistDTW(AlgoSequence):
 		輸出：增廣的 table
 		"""
 
-		rowInsert = zeros(self.__IMAXSTEPSIZE)
+		#rowInsert = zeros(self.__IMAXSTEPSIZE)
+		rowInsert = zeros(self.__IMAXSTEPSIZE + 1)
 		temp = insert(table, rowInsert, self.__INF, axis = 0)
 
-		colInsert = zeros(self.__JMAXSTEPSIZE)
+		#colInsert = zeros(self.__JMAXSTEPSIZE)
+		colInsert = zeros(self.__JMAXSTEPSIZE + 1)
 		temp = insert(temp, colInsert, self.__INF, axis = 1)
 
 		return temp
@@ -231,11 +234,12 @@ class AlgoDistDTW(AlgoSequence):
 
 
 		# 將目前的對應座標加到 pathIdxList 裡面
-		pathIdxList.insert(0, nowCoor)
 
 		if nowCoor == self.__STOPCOOR:
 			return
 		else:
+			pathIdxList.insert(0, nowCoor)
+
 			# 先檢查目前的做標是否超過計算邊界
 			# 利用 nowCoor 與 self.__STOPCOOR 兩個座標做比較
 			isOutList = map(lambda pair: pair[0] < pair[1], zip(nowCoor, self.__STOPCOOR))
@@ -317,7 +321,7 @@ if __name__ == "__main__":
 
 
 
-	seq1  = [1, 2, 3]
+	seq1  = [1,1,1, 1, 2, 4]
 	#seq1 = [4, 3, 3, 1, 3, 1, 4 ,1]
 	#seq1 = [3, 2, 3, 2, 2, 1, 2, 1, 1, 2, 4, 4, 4]
 	#seq1 = [3, 3, 4, 2, 2, 1, 2, 1]
@@ -325,15 +329,15 @@ if __name__ == "__main__":
 
 	#seq2 = [4, 3, 2, 1]
 	#seq2 = [4, 3, 3, 1, 3, 1, 4 ,1]
-	seq2 = [5, 3, 1, 0, 3]
+	seq2 = [5,1, 4]
 	#seq2 = [5, 1, 9, 3, 10]
 	#seq2 = [1,1,1,1,1,1]
 
 	print "Main: seq1 = %d" % len(seq1)
 	print "Main: seq2 = %d" % len(seq2)
 
-	#dtw = AlgoDistDTW(DistPitch(), StepType3())
-	dtw = AlgoDistDTW(DistPitch(), PitchToneType())
+	dtw = AlgoDistDTW(DistPitch(), StepType2())
+	#dtw = AlgoDistDTW(DistPitch(), PitchToneType())
 	
 
 	print "Main: Distance = %.2f" % dtw.similarity(seq2, seq1)
