@@ -11,216 +11,201 @@
  * @version  Release: <1.0>
  * @link     http://sarasti.cs.nccu.edu.tw
  */
+
+$db_obj = LMDBAccess::getInstance();
+
+$select_sql = "SELECT ".
+              "id, audio_word ".
+              "FROM muisc_audio_code_word ".
+              "WHERE is_deleted = '0' ".
+              "AND code_book_id = '1' ".
+              "ORDER BY id";
+
+$query_result = $db_obj->selectCommand($select_sql);
+
 ?>
-<div id="chartdiv" style="width: 600px; height: 400px;"></div>
-<script type="text/javascript">
-   var chart;
+<h2>Pitch Audio Word</h2>
+<div class="row">
+<?php
+foreach ($query_result as $query_result_data) {
 
-   var chartData = [{
-       code_word: "code word 1",
-       pitch1: 1,
-       pitch2: 1,
-       pitch3: 1,
-       pitch4: 1,
-       pitch5: 1,
-       pitch6: 1,
-       pitch7: 1,
-       pitch8: 1,
-       pitch9: 1,
-       pitch10: 1,
-       pitch11: 1,
-       pitch12: 1
-   }];
+   $audio_word_id = $query_result_data['id'];
+   $audio_word = json_decode($query_result_data['audio_word']);
 
-   AmCharts.ready(function () {
-       // SERIAL CHART
-       chart = new AmCharts.AmSerialChart();
-       chart.dataProvider = chartData;
-       chart.categoryField = "code_word";
+   ?>
+   <div id="chartdiv<?=$audio_word_id;?>" class="pull-left" style="width: 100px; height: 300px;"></div>
+   <script type="text/javascript">
+      var chart<?=$audio_word_id;?>;
 
-       // sometimes we need to set margins manually
-       // autoMargins should be set to false in order chart to use custom margin values
-       chart.autoMargins = false;
-       chart.marginLeft = 0;
-       chart.marginRight = 0;
-       chart.marginTop = 30;
-       chart.marginBottom = 40;
+      var chartData<?=$audio_word_id;?> = [{
+          code_word<?=$audio_word_id;?>: "code word<?=$audio_word_id;?>",
+          pitch1: 1,
+          pitch2: 1,
+          pitch3: 1,
+          pitch4: 1,
+          pitch5: 1,
+          pitch6: 1,
+          pitch7: 1,
+          pitch8: 1,
+          pitch9: 1,
+          pitch10: 1,
+          pitch11: 1,
+          pitch12: 1
+      }];
 
-       // AXES
-       // category
-       var categoryAxis = chart.categoryAxis;
-       categoryAxis.gridAlpha = 0;
-       categoryAxis.axisAlpha = 0;
-       categoryAxis.gridPosition = "start";
+      AmCharts.ready(function () {
 
-       // value
-       var valueAxis = new AmCharts.ValueAxis();
-       valueAxis.stackType = "100%"; // this line makes the chart 100% stacked
-       valueAxis.gridAlpha = 0;
-       valueAxis.axisAlpha = 0;
-       valueAxis.labelsEnabled = false;
-       chart.addValueAxis(valueAxis);
+         // SERIAL CHART
+         chart<?=$audio_word_id;?> = new AmCharts.AmSerialChart();
+         chart<?=$audio_word_id;?>.dataProvider = chartData<?=$audio_word_id;?>;
+         chart<?=$audio_word_id;?>.categoryField = "code_word<?=$audio_word_id;?>";
 
-       // GRAPHS
+         // sometimes we need to set margins manually
+         // autoMargins should be set to false in order chart to use custom margin values
+         chart<?=$audio_word_id;?>.autoMargins = false;
+         chart<?=$audio_word_id;?>.marginLeft = 0;
+         chart<?=$audio_word_id;?>.marginRight = 0;
+         chart<?=$audio_word_id;?>.marginTop = 30;
+         chart<?=$audio_word_id;?>.marginBottom = 40;
 
-        // first graph
-          var graph = new AmCharts.AmGraph();
-          graph.title = "pitch1";
-          graph.labelText = "";
-          graph.balloonText = "0.1";
-          graph.valueField = "pitch1";
-          graph.type = "column";
-          graph.lineAlpha = 0;
-          graph.fillAlphas = 0.5;
-          graph.lineColor = "#ff0000";
-          chart.addGraph(graph);
+         // AXES
+         // category
+         var categoryAxis = chart<?=$audio_word_id;?>.categoryAxis;
+         categoryAxis.gridAlpha = 0;
+         categoryAxis.axisAlpha = 0;
+         categoryAxis.gridPosition = "start";
 
-          // first graph
+         // value
+         var valueAxis = new AmCharts.ValueAxis();
+         valueAxis.stackType = "100%"; // this line makes the chart 100% stacked
+         valueAxis.gridAlpha = 0;
+         valueAxis.axisAlpha = 0;
+         valueAxis.labelsEnabled = true;
+         chart<?=$audio_word_id;?>.addValueAxis(valueAxis);
+
+         <?php
+         $count = 1;
+         foreach ($audio_word as $key=>$audio_word_value) {
+            ?>
             var graph = new AmCharts.AmGraph();
-            graph.title = "pitch2";
+            graph.title = "pitch<?=$count?>";
             graph.labelText = "";
-            graph.balloonText = "0.2";
-            graph.valueField = "pitch2";
+            graph.balloonText = "<?=round($audio_word_value, 4)?>";
+            graph.valueField = "pitch<?=$count?>";
             graph.type = "column";
             graph.lineAlpha = 0;
-            graph.fillAlphas = 0.5;
-            graph.lineColor = "#ff0000";
-            chart.addGraph(graph);
+            graph.fillAlphas = <?=round($audio_word_value, 4)?>;
+            graph.lineColor = "#D41313";
+            chart<?=$audio_word_id;?>.addGraph(graph);
+            <?php
+            $count++;
+         }
+         ?>
 
-            // first graph
-              var graph = new AmCharts.AmGraph();
-              graph.title = "pitch3";
-              graph.labelText = "";
-              graph.balloonText = "0.4";
-              graph.valueField = "pitch3";
-              graph.type = "column";
-              graph.lineAlpha = 0;
-              graph.fillAlphas = 0.5;
-              graph.lineColor = "#ff0000";
-              chart.addGraph(graph);
+         // WRITE
+         chart<?=$audio_word_id;?>.write("chartdiv<?=$audio_word_id;?>");
+      });
 
-              // first graph
-                var graph = new AmCharts.AmGraph();
-                graph.title = "pitch4";
-                graph.labelText = "";
-                graph.balloonText = "0.4";
-                graph.valueField = "pitch4";
-                graph.type = "column";
-                graph.lineAlpha = 0;
-                graph.fillAlphas = 0.5;
-                graph.lineColor = "#ff0000";
-                chart.addGraph(graph);
+   </script>
+   <?php
 
-                // first graph
-                  var graph = new AmCharts.AmGraph();
-                  graph.title = "pitch5";
-                  graph.labelText = "";
-                  graph.balloonText = "0.4";
-                  graph.valueField = "pitch5";
-                  graph.type = "column";
-                  graph.lineAlpha = 0;
-                  graph.fillAlphas = 0.5;
-                  graph.lineColor = "#ff0000";
-                  chart.addGraph(graph);
+}
 
-                  // first graph
-                    var graph = new AmCharts.AmGraph();
-                    graph.title = "pitch6";
-                    graph.labelText = "";
-                    graph.balloonText = "0.4";
-                    graph.valueField = "pitch6";
-                    graph.type = "column";
-                    graph.lineAlpha = 0;
-                    graph.fillAlphas = 0.5;
-                    graph.lineColor = "#ff0000";
-                    chart.addGraph(graph);
+$select_sql = "SELECT ".
+              "id, audio_word ".
+              "FROM muisc_audio_code_word ".
+              "WHERE is_deleted = '0' ".
+              "AND code_book_id = '2' ".
+              "ORDER BY id";
 
-                    // first graph
-                      var graph = new AmCharts.AmGraph();
-                      graph.title = "pitch7";
-                      graph.labelText = "";
-                      graph.balloonText = "0.4";
-                      graph.valueField = "pitch7";
-                      graph.type = "column";
-                      graph.lineAlpha = 0;
-                      graph.fillAlphas = 0.5;
-                      graph.lineColor = "#ff0000";
-                      chart.addGraph(graph);
+$query_result = $db_obj->selectCommand($select_sql);
 
-                      // first graph
-                        var graph = new AmCharts.AmGraph();
-                        graph.title = "pitch8";
-                        graph.labelText = "";
-                        graph.balloonText = "0.4";
-                        graph.valueField = "pitch8";
-                        graph.type = "column";
-                        graph.lineAlpha = 0;
-                        graph.fillAlphas = 0.5;
-                        graph.lineColor = "#ff0000";
-                        chart.addGraph(graph);
+?>
+<h2>Timbre Audio Word</h2>
+<div class="row">
+<?php
+foreach ($query_result as $query_result_data) {
 
-                        // first graph
-                          var graph = new AmCharts.AmGraph();
-                          graph.title = "pitch9";
-                          graph.labelText = "";
-                          graph.balloonText = "0.4";
-                          graph.valueField = "pitch9";
-                          graph.type = "column";
-                          graph.lineAlpha = 0;
-                          graph.fillAlphas = 0.5;
-                          graph.lineColor = "#ff0000";
-                          chart.addGraph(graph);
+   $audio_word_id = $query_result_data['id'];
+   $audio_word = json_decode($query_result_data['audio_word']);
 
-                          // first graph
-                            var graph = new AmCharts.AmGraph();
-                            graph.title = "pitch10";
-                            graph.labelText = "";
-                            graph.balloonText = "0.4";
-                            graph.valueField = "pitch10";
-                            graph.type = "column";
-                            graph.lineAlpha = 0;
-                            graph.fillAlphas = 0.5;
-                            graph.lineColor = "#ff0000";
-                            chart.addGraph(graph);
+   ?>
+   <div id="chartdiv<?=$audio_word_id;?>" class="pull-left" style="width: 100px; height: 300px;"></div>
+   <script type="text/javascript">
+      var chart<?=$audio_word_id;?>;
 
-                            // first graph
-                              var graph = new AmCharts.AmGraph();
-                              graph.title = "pitch11";
-                              graph.labelText = "";
-                              graph.balloonText = "0.4";
-                              graph.valueField = "pitch11";
-                              graph.type = "column";
-                              graph.lineAlpha = 0;
-                              graph.fillAlphas = 0.5;
-                              graph.lineColor = "#ff0000";
-                              chart.addGraph(graph);
+      var chartData<?=$audio_word_id;?> = [{
+          code_word<?=$audio_word_id;?>: "code word<?=$audio_word_id;?>",
+          timbre1: 1,
+          timbre2: 1,
+          timbre3: 1,
+          timbre4: 1,
+          timbre5: 1,
+          timbre6: 1,
+          timbre7: 1,
+          timbre8: 1,
+          timbre9: 1,
+          timbre10: 1,
+          timbre11: 1,
+          timbre12: 1
+      }];
 
+      AmCharts.ready(function () {
 
-                              // first graph
-                                var graph = new AmCharts.AmGraph();
-                                graph.title = "pitch12";
-                                graph.labelText = "";
-                                graph.balloonText = "0.4";
-                                graph.valueField = "pitch12";
-                                graph.type = "column";
-                                graph.lineAlpha = 0;
-                                graph.fillAlphas = 0.5;
-                                graph.lineColor = "#ff0000";
-                                chart.addGraph(graph);
+         // SERIAL CHART
+         chart<?=$audio_word_id;?> = new AmCharts.AmSerialChart();
+         chart<?=$audio_word_id;?>.dataProvider = chartData<?=$audio_word_id;?>;
+         chart<?=$audio_word_id;?>.categoryField = "code_word<?=$audio_word_id;?>";
 
-       // WRITE
-       chart.write("chartdiv");
-   });
+         // sometimes we need to set margins manually
+         // autoMargins should be set to false in order chart to use custom margin values
+         chart<?=$audio_word_id;?>.autoMargins = false;
+         chart<?=$audio_word_id;?>.marginLeft = 0;
+         chart<?=$audio_word_id;?>.marginRight = 0;
+         chart<?=$audio_word_id;?>.marginTop = 30;
+         chart<?=$audio_word_id;?>.marginBottom = 40;
 
-   // this method makes chart 2D/3D
-   function setDepth() {
-       if (document.getElementById("rb1").checked) {
-           chart.depth3D = 0;
-           chart.angle = 0;
-       } else {
-           chart.depth3D = 25;
-           chart.angle = 30;
-       }
-       chart.validateNow();
-   }
-</script>
+         // AXES
+         // category
+         var categoryAxis = chart<?=$audio_word_id;?>.categoryAxis;
+         categoryAxis.gridAlpha = 0;
+         categoryAxis.axisAlpha = 0;
+         categoryAxis.gridPosition = "start";
+
+         // value
+         var valueAxis = new AmCharts.ValueAxis();
+         valueAxis.stackType = "100%"; // this line makes the chart 100% stacked
+         valueAxis.gridAlpha = 0;
+         valueAxis.axisAlpha = 0;
+         valueAxis.labelsEnabled = true;
+         chart<?=$audio_word_id;?>.addValueAxis(valueAxis);
+
+         <?php
+         $count = 1;
+         foreach ($audio_word as $key=>$audio_word_value) {
+            ?>
+            var graph = new AmCharts.AmGraph();
+            graph.title = "timbre<?=$count?>";
+            graph.labelText = "";
+            graph.balloonText = "<?=round($audio_word_value, 4)?>";
+            graph.valueField = "timbre<?=$count?>";
+            graph.type = "column";
+            graph.lineAlpha = 0;
+            graph.fillAlphas = <?=round(($audio_word_value+170)/320, 4)?>;
+            graph.lineColor = "#D41313";
+            chart<?=$audio_word_id;?>.addGraph(graph);
+            <?php
+            $count++;
+         }
+         ?>
+
+         // WRITE
+         chart<?=$audio_word_id;?>.write("chartdiv<?=$audio_word_id;?>");
+      });
+
+   </script>
+   <?php
+
+}
+?>
+</div>

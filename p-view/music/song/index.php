@@ -70,6 +70,140 @@ if (!empty($_GET['song_id'])) {
       </div>
    </div>
    <hr />
+   <h2>
+      歌詞特徵值
+   </h2>
+   <table class="table table-bordered table-striped">
+      <thead>
+         <tr>
+            <th>種類</th>
+            <th>Feature</th>
+         </tr>
+      </thead>
+      <tbody>
+         <tr>
+            <td rowspan="1">Term Frequency</td>
+            <td colspan="2" width="800">
+               <?php
+
+               $db_obj = LMDBAccess::getInstance();
+               $select_sql = "SELECT term,pos,tf,tfidf FROM lyrics_term_tfidf WHERE song_id='".$_GET['song_id']."' AND is_deleted=0 ORDER BY term";
+               $query_result = $db_obj->selectCommand($select_sql);
+
+               $term_data_array = array();
+               foreach ($query_result as $query_result_data) {
+                  $term = $query_result_data['term'];
+                  $word_count = $query_result_data['tf'];
+                  $term_data = '{ term_word: "'.addslashes($term).'", word_count: '.$word_count.' }';
+                  array_push($term_data_array, $term_data);
+               }
+               $term_data_array_string = implode(',', $term_data_array);
+
+               if (!empty($term_data_array_string)) {
+                  ?>
+                  <div id="term_frequency" style="width: 100%; height: 400px;"></div>
+                  <script type="text/javascript">
+                  var chart_wt;
+                  var chartData_wt = [<?=$term_data_array_string?>];
+
+                  AmCharts.ready(function () {
+                     // SERIAL CHART
+                     chart_wt = new AmCharts.AmSerialChart();
+                     chart_wt.dataProvider = chartData_wt;
+                     chart_wt.categoryField = "term_word";
+                     chart_wt.startDuration = 1;
+
+                     // AXES
+                     // category
+                     var categoryAxis = chart_wt.categoryAxis;
+                     categoryAxis.labelRotation = 90;
+                     categoryAxis.gridPosition = "start";
+                     categoryAxis.autoGridCount = false;
+                     categoryAxis.gridCount = 100000;
+
+                     // value
+                     // in case you don't want to change default settings of value axis,
+                     // you don't need to create it, as one value axis is created automatically.
+
+                     // GRAPH
+                     var graph = new AmCharts.AmGraph();
+                     graph.valueField = "word_count";
+                     graph.balloonText = "[[category]]: [[value]]";
+                     graph.type = "column";
+                     graph.lineAlpha = 0;
+                     graph.fillAlphas = 0.8;
+                     chart_wt.addGraph(graph);
+
+                     chart_wt.write("term_frequency");
+                  });
+                  </script>
+                  <?php
+               }
+               ?>
+            </td>
+         </tr>
+         <tr>
+            <td rowspan="1">TF-IDF</td>
+            <td colspan="2" width="800">
+               <?php
+               $select_sql = "SELECT term,pos,tf,tfidf FROM lyrics_term_tfidf WHERE song_id='".$_GET['song_id']."' AND is_deleted=0 ORDER BY term";
+               $query_result = $db_obj->selectCommand($select_sql);
+
+               $term_data_array = array();
+               foreach ($query_result as $query_result_data) {
+                  $term = $query_result_data['term'];
+                  $word_count = round($query_result_data['tfidf'], 4);
+                  $term_data = '{ TFIDF: "'.addslashes($term).'", word_count: '.$word_count.' }';
+                  array_push($term_data_array, $term_data);
+               }
+               $term_data_array_string = implode(',', $term_data_array);
+
+               if (!empty($term_data_array_string)) {
+                  ?>
+                  <div id="tfidf" style="width: 100%; height: 400px;"></div>
+                  <script type="text/javascript">
+                  var chart_tfidf;
+                  var chartData_tfidf = [<?=$term_data_array_string?>];
+
+                  AmCharts.ready(function () {
+                     // SERIAL CHART
+                     chart_tfidf = new AmCharts.AmSerialChart();
+                     chart_tfidf.dataProvider = chartData_tfidf;
+                     chart_tfidf.categoryField = "TFIDF";
+                     chart_tfidf.startDuration = 1;
+
+                     // AXES
+                     // category
+                     var categoryAxis = chart_tfidf.categoryAxis;
+                     categoryAxis.labelRotation = 90;
+                     categoryAxis.gridPosition = "start";
+                     categoryAxis.autoGridCount = false;
+                     categoryAxis.gridCount = 100000;
+
+                     // value
+                     // in case you don't want to change default settings of value axis,
+                     // you don't need to create it, as one value axis is created automatically.
+
+                     // GRAPH
+                     var graph = new AmCharts.AmGraph();
+                     graph.valueField = "word_count";
+                     graph.balloonText = "[[category]]: [[value]]";
+                     graph.type = "column";
+                     graph.lineAlpha = 0;
+                     graph.fillAlphas = 0.8;
+                     chart_tfidf.addGraph(graph);
+
+                     chart_tfidf.write("tfidf");
+                  });
+                  </script>
+                  <?php
+               }
+               ?>
+            </td>
+         </tr>
+      </tbody>
+   </table>
+   <hr />
    <?php
    $music_feature_god = new LMMusicFeatureGod();
    $music_feature_id = $music_feature_god->findBySongId($song_obj->getId());
@@ -159,119 +293,118 @@ if (!empty($_GET['song_id'])) {
             <td><?=($music_feature_obj->tatum_avg_second/$music_feature_obj->bar_avg_second)?></td>
          </tr>
          <tr>
-            <td rowspan="2">音高及音程</td>
-            <td>average pitch vector</td>
-            <td>
-               <?php
-               $pitch_array = explode(',',$music_feature_obj->pitch_avg_vector);
-               $pitch_avg_vector = implode('<br/>', $pitch_array);
-               echo $pitch_avg_vector;
-               ?>
+            <td rowspan="1">音高及音程</td>
+            <td colspan="2">
+               <h3>pitch_audio_word_histogram</h3>
+               <div id="pitch_histogram" style="width: 100%; height: 400px;"></div>
+               <script type="text/javascript">
+                  var chart;
+                  <?php
+                  $pitch_array = explode(',',$music_feature_obj->pitch_audio_word_histogram);
+                  $pitch_data_array = array();
+                  $count = 1;
+                  foreach ($pitch_array as $key=>$pitch_value) {
+                     $pitch_data = '{ pitch_audio_word: "pitch word '.$count.'", word_count: '.$pitch_value.' }';
+                     array_push($pitch_data_array, $pitch_data);
+                     $count++;
+                  }
+                  $pitch_data_array_string = implode(',', $pitch_data_array);
+                  ?>
+                  var chartData = [<?=$pitch_data_array_string?>];
+
+                  AmCharts.ready(function () {
+                     // SERIAL CHART
+                     chart = new AmCharts.AmSerialChart();
+                     chart.dataProvider = chartData;
+                     chart.categoryField = "pitch_audio_word";
+                     chart.startDuration = 1;
+
+                     // AXES
+                     // category
+                     var categoryAxis = chart.categoryAxis;
+                     categoryAxis.labelRotation = 90;
+                     categoryAxis.gridPosition = "start";
+                     categoryAxis.autoGridCount = false;
+                     categoryAxis.gridCount = 100000;
+
+                     // value
+                     // in case you don't want to change default settings of value axis,
+                     // you don't need to create it, as one value axis is created automatically.
+
+                     // GRAPH
+                     var graph = new AmCharts.AmGraph();
+                     graph.valueField = "word_count";
+                     graph.balloonText = "[[category]]: [[value]]";
+                     graph.type = "column";
+                     graph.lineAlpha = 0;
+                     graph.fillAlphas = 0.8;
+                     chart.addGraph(graph);
+
+                     chart.write("pitch_histogram");
+                  });
+               </script>
             </td>
          </tr>
          <tr>
-            <td>variance of pitch vector</td>
-            <td>
-            <?php
-            $pitch_array = explode(',',$music_feature_obj->pitch_std_vector);
-            $pitch_std_vector = implode('<br/>', $pitch_array);
-            echo $pitch_std_vector;
-            ?>
-            </td>
-         </tr>
-         <tr>
-            <td rowspan="3">音色</td>
+            <td rowspan="2">音色</td>
             <td>speechiness</td>
             <td><?=$song_obj->speechiness?></td>
          </tr>
          <tr>
-            <td>average timbre vector</td>
-            <td>
-               <?php
-               $timbre_array = explode(',',$music_feature_obj->timbre_avg_vector);
-               $timbre_avg_vector = implode('<br/>', $timbre_array);
-               echo $timbre_avg_vector;
-               ?>
-            </td>
-         </tr>
-         <tr>
-            <td>variance of timbre vector</td>
-            <td>
-               <?php
-               $timbre_array = explode(',',$music_feature_obj->timbre_std_vector);
-               $timbre_std_vector = implode('<br/>', $timbre_array);
-               echo $timbre_std_vector;
-               ?>
+            <td colspan="2">
+               <h3>timbre_audio_word_histogram</h3>
+               <div id="timbre_histogram" style="width: 100%; height: 400px;"></div>
+               <script type="text/javascript">
+                  var chart_t;
+                  <?php
+                  $timbre_array = explode(',',$music_feature_obj->timbre_audio_word_histogram);
+                  $timbre_data_array = array();
+                  $count = 1;
+                  foreach ($timbre_array as $key=>$timbre_value) {
+                     $timbre_data = '{ timbre_audio_word: "timbre word '.$count.'", word_count: '.$timbre_value.' }';
+                     array_push($timbre_data_array, $timbre_data);
+                     $count++;
+                  }
+                  $timbre_data_array_string = implode(',', $timbre_data_array);
+                  ?>
+                  var chartData_t = [<?=$timbre_data_array_string?>];
+
+                  AmCharts.ready(function () {
+                     // SERIAL CHART
+                     chart_t = new AmCharts.AmSerialChart();
+                     chart_t.dataProvider = chartData_t;
+                     chart_t.categoryField = "timbre_audio_word";
+                     chart_t.startDuration = 1;
+
+                     // AXES
+                     // category
+                     var categoryAxis = chart_t.categoryAxis;
+                     categoryAxis.labelRotation = 90;
+                     categoryAxis.gridPosition = "start";
+                     categoryAxis.autoGridCount = false;
+                     categoryAxis.gridCount = 100000;
+
+                     // value
+                     // in case you don't want to change default settings of value axis,
+                     // you don't need to create it, as one value axis is created automatically.
+
+                     // GRAPH
+                     var graph = new AmCharts.AmGraph();
+                     graph.valueField = "word_count";
+                     graph.balloonText = "[[category]]: [[value]]";
+                     graph.type = "column";
+                     graph.lineAlpha = 0;
+                     graph.fillAlphas = 0.8;
+                     chart_t.addGraph(graph);
+
+                     chart_t.write("timbre_histogram");
+                  });
+               </script>
             </td>
          </tr>
       </tbody>
    </table>
-   <h2>
-      相似音樂
-   </h2>
-   <table class="table table-bordered table-striped">
-        <thead>
-           <tr>
-              <th>
-               排名
-              </th>
-              <th>
-               song_id
-              </th>
-              <th>
-               藝人
-              </th>
-              <th>
-               歌名
-              </th>
-              <th>
-               相似度
-              </th>
-           </tr>
-        </thead>
-        <tbody>
-   <?php
-      $similar_song = shell_exec("python26 ".SITE_ROOT."/p-library/model/music_feature/similar_music_model.py ".$_GET['song_id']." ".$model_id);
-      $similar_song_array = explode(",", $similar_song);
-      $rank = 0;
-      foreach ($similar_song_array as $skey => $svalue) {
-         $rank++;
-         $similar_song_value_array = explode(":", $svalue);
-         $similar_song_obj = new LMSong($similar_song_value_array[0]);
-         $artist_obj = new LMPerformer($similar_song_obj->performer_id);
-         ?>
-         <tr>
-            <td>
-            <?php echo $rank; ?>
-            </td>
-            <td>
-               <a href="<?=SITE_HOST?>/music/song/index.php?song_id=<?=$similar_song_obj->getId()?>">
-                  <?php echo $similar_song_obj->getId(); ?>
-               </a>
-            </td>
-            <td>
-               <?php echo $artist_obj->name; ?>
-            </td>
-            <td>
-               <a href="<?=SITE_HOST?>/music/song/index.php?song_id=<?=$similar_song_obj->getId()?>">
-                  <?php echo $similar_song_obj->title; ?>
-               </a>
-            </td>
-            <td>
-               <?php echo $similar_song_value_array[1]; ?>
-            </td>
-         </tr>
-         <?php
-         unset($similar_song_obj);
-         unset($artist_obj);
-      }
-   ?>
-      </tbody>
-   </table>
-   <?php
-      unset($music_feature_obj);
-   }
-   ?>
+   <hr />
    <h2>
       相似歌詞
    </h2>
@@ -342,6 +475,73 @@ if (!empty($_GET['song_id'])) {
         ?>
         </tbody>
    </table>
+   <hr />
+   <h2>
+      相似音樂
+   </h2>
+   <table class="table table-bordered table-striped">
+        <thead>
+           <tr>
+              <th>
+               排名
+              </th>
+              <th>
+               song_id
+              </th>
+              <th>
+               藝人
+              </th>
+              <th>
+               歌名
+              </th>
+              <th>
+               相似度
+              </th>
+           </tr>
+        </thead>
+        <tbody>
+   <?php
+      $similar_song = shell_exec("python26 ".SITE_ROOT."/p-library/model/music_feature/similar_music_model.py ".$_GET['song_id']." ".$model_id);
+      $similar_song_array = explode(",", $similar_song);
+      $rank = 0;
+      foreach ($similar_song_array as $skey => $svalue) {
+         $rank++;
+         $similar_song_value_array = explode(":", $svalue);
+         $similar_song_obj = new LMSong($similar_song_value_array[0]);
+         $artist_obj = new LMPerformer($similar_song_obj->performer_id);
+         ?>
+         <tr>
+            <td>
+            <?php echo $rank; ?>
+            </td>
+            <td>
+               <a href="<?=SITE_HOST?>/music/song/index.php?song_id=<?=$similar_song_obj->getId()?>">
+                  <?php echo $similar_song_obj->getId(); ?>
+               </a>
+            </td>
+            <td>
+               <?php echo $artist_obj->name; ?>
+            </td>
+            <td>
+               <a href="<?=SITE_HOST?>/music/song/index.php?song_id=<?=$similar_song_obj->getId()?>">
+                  <?php echo $similar_song_obj->title; ?>
+               </a>
+            </td>
+            <td>
+               <?php echo $similar_song_value_array[1]; ?>
+            </td>
+         </tr>
+         <?php
+         unset($similar_song_obj);
+         unset($artist_obj);
+      }
+   ?>
+      </tbody>
+   </table>
+   <?php
+      unset($music_feature_obj);
+   }
+   ?>
 </div>
 <?php
    unset($song_obj);
