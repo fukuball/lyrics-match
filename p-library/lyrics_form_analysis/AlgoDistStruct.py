@@ -293,58 +293,44 @@ class AlgoDistStruct(AlgoSequence):
 		# 計算 字句 所有可以對應樂句的 cost (Step Pattern 走 Row 的方向)
 		phraseStart = nowCoor[1]
 		phraseEnd = nowCoor[1] - lyricsRange
+		phraseList = []
+		sentenceList = [self.__seqI[nowCoor[0]]]
 		noteCount = 0
 
 		for phraseIdx in range(phraseStart, phraseEnd, -1):
 			noteCount += self.__seqJ[phraseIdx]
+			phraseList.append(self.__seqJ[phraseIdx])
 			prev = (nowCoor[0] - 1, phraseIdx - 1)
-
-			isSatisfy = noteCount >= self.__seqI[nowCoor[0]]
 			totalCost = self.__INF
 
-			if self.__tableAccu[prev] != self.__INF and isSatisfy:
-				#totalCost = self.__tableAccu[prev] + pow(self.__BASE, countDiff)
-				#totalCost = self.__tableAccu[prev] + log(countDiff + 1, 2)
-				localCost = self.__sigmoid((float(noteCount) / self.__seqI[nowCoor[0]]) - 1) + \
-						self.__sigmoid((phraseStart - phraseIdx)) - 1
-				#localCost *= (phraseStart - phraseIdx + 1)
-
-				totalCost = self.__tableAccu[prev] + localCost
-
-				#totalCost = self.__tableAccu[prev] + noteCount - self.__seqI[nowCoor[0]]
+			if self.__tableAccu[prev] != self.__INF and noteCount >= self.__seqI[nowCoor[0]]:
+				totalCost = self.__tableAccu[prev] + self.__localCost(sentenceList, phraseList)
 					
-				pathCosts.append({"prev": prev, "cost": totalCost})
+			pathCosts.append({"prev": prev, "cost": totalCost})
 
 
 
 		# 計算 樂句 所有可以對應字句的 cost (Step Pattern 走 Column 的方向)
 		sentenceStart = nowCoor[0]
 		sentenceEnd = nowCoor[0] - melodyRange
+		phraseList = [self.__seqJ[nowCoor[1]]]
+		sentenceList = []
 		wordCount = 0
 
 		for sentenceIdx in range(sentenceStart, sentenceEnd, -1):
 			wordCount += self.__seqI[sentenceIdx]
+			sentenceList.append(self.__seqI[sentenceIdx])
 			prev = (sentenceIdx - 1, nowCoor[1] - 1)
-
-			#isSatisfy = wordCount >= ceil(((self.__seqJ[nowCoor[1]] - 1) / float(self.__MAXNOTE)) + 1) 
-			isSatisfy = wordCount >= ceil(self.__seqJ[nowCoor[1]] / float(self.__MAXNOTE)) 
 			totalCost = self.__INF
 
-			if self.__tableAccu[prev] != self.__INF and isSatisfy:
-				#totalCost = self.__tableAccu[prev] + pow(self.__BASE, countDiff)
-				#totalCost = self.__tableAccu[prev] + log(countDiff + 1, 2)
-				localCost = self.__sigmoid((float(self.__seqJ[nowCoor[1]]) / wordCount) - 1) + \
-						self.__sigmoid((sentenceStart - sentenceIdx)) - 1
-				#localCost *= (sentenceStart - sentenceIdx + 1)
-
-				totalCost = self.__tableAccu[prev] + localCost
-
-				#totalCost = self.__tableAccu[prev] + self.__seqJ[nowCoor[1]] - wordCount
+			if self.__tableAccu[prev] != self.__INF and wordCount >= ceil(self.__seqJ[nowCoor[1]] / float(self.__MAXNOTE)):
+				totalCost = self.__tableAccu[prev] + self.__localCost(sentenceList, phraseList)
 
 					
 			pathCosts.append({"prev": prev, "cost": totalCost})
 
 
+		# 如果目前的樂句與子句都對不起來的情況
 		if pathCosts == []:
 			pathCosts.append({"prev": None, "cost": self.__INF})
 
@@ -352,8 +338,19 @@ class AlgoDistStruct(AlgoSequence):
 		return pathCosts
 
 
-	def __sigmoid(self, x):
-		return 1 / (1 + exp(-x))
+	def __sigmoid(self, t):
+		return 1 / (1 + exp(-t))
+
+
+	def __gompertz(self, t):
+		pass
+
+
+	def __localCost(self, sentenceList, phraseList):
+		noteWordRate = sum(phraseList) / float(sum(sentenceList))
+		mergeCount = len(sentenceList) + len(phraseList) - 2
+		localCost = self.__sigmoid(noteWordRate - 1) + self.__sigmoid(mergeCount) - 1
+		return localCost
 
 
 
