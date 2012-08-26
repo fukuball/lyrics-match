@@ -7,6 +7,8 @@ from math import exp
 from math import ceil
 from numpy import argmin
 from numpy import insert
+from numpy import sin
+from numpy import pi
 from copy import deepcopy
 
 class AlgoDistStruct(AlgoSequence):
@@ -341,8 +343,8 @@ class AlgoDistStruct(AlgoSequence):
 		return pathCosts
 
 
-	def __sigmoid(self, t):
-		return (1 / (1 + exp(-t)) - 0.5) * 2
+	def __sigmoid(self, t, limitT):
+		return (1 / (1 + exp(-t * 5 / limitT)) - 0.5) * 2
 
 
 	def __ellipse(self, t, limitT):
@@ -358,6 +360,14 @@ class AlgoDistStruct(AlgoSequence):
 			return 1.0
 		else:
 			return t / limitT
+	
+
+	def __sine(self, t, limitT):
+
+		if t > limitT:
+			return 1.0
+		else:
+			return sin(2*pi*t / (limitT * 4))
 
 
 
@@ -368,7 +378,12 @@ class AlgoDistStruct(AlgoSequence):
 		#localCost = (self.__sigmoid(noteWordRate - 1) + self.__sigmoid(mergeCount)) / 2.0
 		#localCost = (self.__ellipse(noteWordRate - 1, self.__MAXNOTE) + self.__ellipse(mergeCount, 4.5)) / 2.0
 		#localCost = (self.__linear(noteWordRate - 1, self.__MAXNOTE) + self.__linear(mergeCount, 4.5)) / 2.0
-		localCost = (self.__linear(noteWordRate - 1, self.__MAXNOTE) + self.__sigmoid(mergeCount)) / 2.0
+		#localCost = (self.__linear(noteWordRate - 1, self.__MAXNOTE) + self.__sigmoid(mergeCount)) / 2.0
+		#localCost = (self.__ellipse(noteWordRate - 1, self.__MAXNOTE) + self.__sigmoid(mergeCount)) / 2.0
+		localCost = (self.__sigmoid(noteWordRate - 1, self.__MAXNOTE) + self.__sine(mergeCount, 4.5)) / 2.0
+
+		#print self.__sigmoid(noteWordRate - 1, self.__MAXNOTE)
+		#print self.__sine(mergeCount, 4.5)
 		return localCost
 
 
