@@ -343,11 +343,18 @@ class AlgoDistStruct(AlgoSequence):
 
 
 	def __ellipse(self, t, limitT):
+
 		if t > limitT:
 			return 1.0
 		else:
 			return 1 - ((t - limitT) ** 2 * (1 / limitT) ** 2)
 		
+	def __linear(self, t, limitT):
+
+		if t > limitT:
+			return 1.0
+		else:
+			return t / limitT
 
 
 
@@ -356,7 +363,8 @@ class AlgoDistStruct(AlgoSequence):
 		noteWordRate = sum(phraseList) / float(sum(sentenceList))
 		mergeCount = len(sentenceList) + len(phraseList) - 2
 		#localCost = self.__sigmoid(noteWordRate - 1) + self.__sigmoid(mergeCount) - 1
-		localCost = (self.__ellipse(noteWordRate - 1, self.__MAXNOTE) + self.__ellipse(mergeCount, 4.5)) / 2.0
+		#localCost = (self.__ellipse(noteWordRate - 1, self.__MAXNOTE) + self.__ellipse(mergeCount, 4.5)) / 2.0
+		localCost = (self.__linear(noteWordRate - 1, self.__MAXNOTE) + self.__linear(mergeCount, 4.5)) / 2.0
 		return localCost
 
 
