@@ -35,6 +35,9 @@ class AlgoDistStruct(AlgoSequence):
 		# Cost 的 base
 		self.__BASE = 1.5
 
+		# 合併次數邊界
+		self.__LIMITMERGE = 4.5
+
 	
 	def __varInit(self):
 		from numpy import zeros
@@ -339,7 +342,7 @@ class AlgoDistStruct(AlgoSequence):
 
 
 	def __sigmoid(self, t):
-		return 1 / (1 + exp(-t))
+		return (1 / (1 + exp(-t)) - 0.5) * 2
 
 
 	def __ellipse(self, t, limitT):
@@ -362,9 +365,10 @@ class AlgoDistStruct(AlgoSequence):
 	def __localCost(self, sentenceList, phraseList):
 		noteWordRate = sum(phraseList) / float(sum(sentenceList))
 		mergeCount = len(sentenceList) + len(phraseList) - 2
-		#localCost = self.__sigmoid(noteWordRate - 1) + self.__sigmoid(mergeCount) - 1
+		#localCost = (self.__sigmoid(noteWordRate - 1) + self.__sigmoid(mergeCount)) / 2.0
 		#localCost = (self.__ellipse(noteWordRate - 1, self.__MAXNOTE) + self.__ellipse(mergeCount, 4.5)) / 2.0
-		localCost = (self.__linear(noteWordRate - 1, self.__MAXNOTE) + self.__linear(mergeCount, 4.5)) / 2.0
+		#localCost = (self.__linear(noteWordRate - 1, self.__MAXNOTE) + self.__linear(mergeCount, 4.5)) / 2.0
+		localCost = (self.__linear(noteWordRate - 1, self.__MAXNOTE) + self.__sigmoid(mergeCount)) / 2.0
 		return localCost
 
 

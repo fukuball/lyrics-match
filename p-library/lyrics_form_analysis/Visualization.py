@@ -17,7 +17,7 @@ class Visualization:
 		y2 = numpy.sqrt(1 - (t - t[-1])**2 * (1 / t[-1] ** 2))
 
 
-		y3 = 1 / (1 + numpy.exp(-t))
+		y3 = (1 / (1 + numpy.exp(-t))  - 0.5) * 2
 		
 
 
