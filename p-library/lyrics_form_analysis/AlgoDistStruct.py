@@ -342,14 +342,21 @@ class AlgoDistStruct(AlgoSequence):
 		return 1 / (1 + exp(-t))
 
 
-	def __gompertz(self, t):
-		pass
+	def __ellipse(self, t, limitT):
+		if t > limitT:
+			return 1.0
+		else:
+			return 1 - ((t - limitT) ** 2 * (1 / limitT) ** 2)
+		
+
+
 
 
 	def __localCost(self, sentenceList, phraseList):
 		noteWordRate = sum(phraseList) / float(sum(sentenceList))
 		mergeCount = len(sentenceList) + len(phraseList) - 2
-		localCost = self.__sigmoid(noteWordRate - 1) + self.__sigmoid(mergeCount) - 1
+		#localCost = self.__sigmoid(noteWordRate - 1) + self.__sigmoid(mergeCount) - 1
+		localCost = (self.__ellipse(noteWordRate - 1, self.__MAXNOTE) + self.__ellipse(mergeCount, 4.5)) / 2.0
 		return localCost
 
 

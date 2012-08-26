@@ -7,6 +7,25 @@ class Visualization:
 	def __init__(self):
 		self.__axisMax = 30.0
 	
+	def drawMergeCurve(self):
+		t = numpy.arange(0.0, 5, 0.01)
+		maxMerge = t[-1]
+
+		y = numpy.sin(2*numpy.pi*t/(t[-1] * 4))
+		y1 = t / t[-1]
+
+		y2 = numpy.sqrt(1 - (t - t[-1])**2 * (1 / t[-1] ** 2))
+
+
+		y3 = 1 / (1 + numpy.exp(-t))
+		
+
+
+		pylab.plot(t, y)
+		pylab.plot(t, y1)
+		pylab.plot(t, y2)
+		pylab.plot(t, y3)
+		pylab.show()
 
 
 	def drawGompertz(self, a, b, c):
@@ -127,4 +146,6 @@ class Visualization:
 		
 
 if __name__ == "__main__":
-	Visualization().drawGompertz(1, -10, -0.8)
+	#Visualization().drawGompertz(1, -10, -0.8)
+	Visualization().drawMergeCurve()
+	
