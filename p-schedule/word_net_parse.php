@@ -85,17 +85,17 @@ foreach ($query_result as $query_result_data) {
 
          $word_net_string = ',';
 
-         //if (!empty($word_net_link)) {
-         //   foreach ($word_net_link as $word_net) {
-         //
-         //      $word_net_content = $word_net->content;
-         //
-         //      $nums = array("1", "2", "3", "4", "5", "6", "7", "8", "9", "0");
-         //      $word_net_content = str_replace($nums, "", $word_net_content);
-         //
-         //      $word_net_string = $word_net_string.$word_net_content.',';
-         //   }
-         //}
+         if (!empty($word_net_link)) {
+            foreach ($word_net_link as $word_net) {
+
+               $word_net_content = $word_net->content;
+
+               $nums = array("1", "2", "3", "4", "5", "6", "7", "8", "9", "0");
+               $word_net_content = str_replace($nums, "", $word_net_content);
+
+               $word_net_string = $word_net_string.$word_net_content.',';
+            }
+         }
 
          echo "word_net: ".$word_net_string." \n";
 
