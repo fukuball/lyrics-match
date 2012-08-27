@@ -15,7 +15,7 @@
 require_once dirname(dirname(__FILE__))."/p-config/application-setter.php";
 
 $db_obj = LMDBAccess::getInstance();
-$select_sql = "SELECT id,term FROM lyrics_term_unique WHERE pass_to_word_net='0'";
+$select_sql = "SELECT id,term FROM lyrics_term_unique WHERE id=17";
 
 $query_result = $db_obj->selectCommand($select_sql);
 
@@ -60,6 +60,7 @@ foreach ($query_result as $query_result_data) {
 
       $table = $wordnet_page_dom->query->results->body->table;
 
+      $result_num = 0;
       if (is_array($table[0]->tr)) {
          $result_num = $table[0]->tr[0]->td->p->font[1]->content;
       } else {
@@ -78,17 +79,19 @@ foreach ($query_result as $query_result_data) {
          $word_net_link = $table[1]->tr->td->table->tr[2]->td->table->tr[2]->td[2]->p->a;
          $word_net_string = ',';
 
-         if (!empty($word_net_link)) {
-            foreach ($word_net_link as $word_net) {
+         print_r($wordnet_page_dom->query->results->body);
 
-               $word_net_content = $word_net->content;
-
-               $nums = array("1", "2", "3", "4", "5", "6", "7", "8", "9", "0");
-               $word_net_content = str_replace($nums, "", $word_net_content);
-
-               $word_net_string = $word_net_string.$word_net_content.',';
-            }
-         }
+         //if (!empty($word_net_link)) {
+         //   foreach ($word_net_link as $word_net) {
+         //
+         //      $word_net_content = $word_net->content;
+         //
+         //      $nums = array("1", "2", "3", "4", "5", "6", "7", "8", "9", "0");
+         //      $word_net_content = str_replace($nums, "", $word_net_content);
+         //
+         //      $word_net_string = $word_net_string.$word_net_content.',';
+         //   }
+         //}
 
          echo "word_net: ".$word_net_string." \n";
 
