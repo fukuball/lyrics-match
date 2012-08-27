@@ -23,6 +23,8 @@ foreach ($query_result as $query_result_data) {
 
    $unique_term_id = $query_result_data['id'];
    $unique_term = $query_result_data['term'];
+   echo "unique_term_id: ".$unique_term_id." \n";
+   echo "unique_term: ".$unique_term." \n";
 
    $select_sql2 = "SELECT id,word_net FROM lyrics_term_unique WHERE word_net LIKE '%,$unique_term,%' ORDER BY id LIMIT 1";
 
@@ -77,7 +79,7 @@ foreach ($query_result as $query_result_data) {
             }
          }
 
-         echo $word_net_string;
+         echo "word_net: ".$word_net_string." \n";
 
          if ($word_net_string!=',') {
             $update_sql = "UPDATE ".
@@ -90,6 +92,13 @@ foreach ($query_result as $query_result_data) {
             $query_result3 = $db_obj->updateCommand($update_sql);
 
             echo "unique_term: $unique_term_id $unique_term , get word_net: $word_net_string \n";
+         } else {
+            $update_sql = "UPDATE ".
+                          "lyrics_term_unique ".
+                          "SET pass_to_word_net='1' ".
+                          "WHERE ".
+                          "id='$unique_term_id' ".
+                          "LIMIT 1";
          }
 
       }
