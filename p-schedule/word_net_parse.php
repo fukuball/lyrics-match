@@ -14,7 +14,7 @@
 
 require_once dirname(dirname(__FILE__))."/p-config/application-setter.php";
 
-$link = 'http://sarasti.cs.nccu.edu.tw/lyrics-match/p-schedule/word_net_crawler.php?word='.$_GET['word'];
+$link = 'http://sarasti.cs.nccu.edu.tw/lyrics-match/p-schedule/word_net_crawler.php?word='.$argv[1];
 
 $db_obj = LMDBAccess::getInstance();
 
