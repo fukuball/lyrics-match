@@ -125,6 +125,16 @@ foreach ($query_result as $query_result_data) {
 
          }
 
+      } else {
+
+         $update_sql = "UPDATE ".
+                       "lyrics_term_unique ".
+                       "SET pass_to_word_net='1' ".
+                       "WHERE ".
+                       "id='$unique_term_id' ".
+                       "LIMIT 1";
+         $query_result3 = $db_obj->updateCommand($update_sql);
+
       }
 
       sleep(1);
