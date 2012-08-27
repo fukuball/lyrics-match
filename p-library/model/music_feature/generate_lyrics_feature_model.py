@@ -93,9 +93,9 @@ A_bar_string = json.dumps(A_bar_list)
 
 print "matrix dump"
 
-f = open('lyrics-model-10.txt', 'w')
-f.write(A_bar_string)
-f.close()
+#f = open('lyrics-model-10.txt', 'w')
+#f.write(A_bar_string)
+#f.close()
 
 #cur = db.cursor()
 #try:
