@@ -29,7 +29,7 @@ foreach ($query_result as $query_result_data) {
    $query_result2 = $db_obj->selectCommand($select_sql2);
 
    $get_word_net = 0;
-   foreach ($select_sql2 as $query_result_data2) {
+   foreach ($query_result2 as $query_result_data2) {
       $get_word_net = 1;
       $word_net = $query_result_data2['word_net'];
 
@@ -64,14 +64,17 @@ foreach ($query_result as $query_result_data) {
          echo "result_num: ".$result_num." \n";
          $word_net_link = $table[1]->tr->td->table->tr[2]->td->table->tr[2]->td[2]->p->a;
          $word_net_string = ',';
-         foreach ($word_net_link as $word_net) {
 
-            $word_net_content = $word_net->content;
+         if (!empty($word_net_link)) {
+            foreach ($word_net_link as $word_net) {
 
-            $nums = array("1", "2", "3", "4", "5", "6", "7", "8", "9", "0");
-            $word_net_content = str_replace($nums, "", $word_net_content);
+               $word_net_content = $word_net->content;
 
-            $word_net_string = $word_net_string.$word_net_content.',';
+               $nums = array("1", "2", "3", "4", "5", "6", "7", "8", "9", "0");
+               $word_net_content = str_replace($nums, "", $word_net_content);
+
+               $word_net_string = $word_net_string.$word_net_content.',';
+            }
          }
 
          echo $word_net_string;
