@@ -16,7 +16,7 @@ require_once dirname(dirname(__FILE__))."/p-config/application-setter.php";
 
 $db_obj = LMDBAccess::getInstance();
 
-$select_sql = "SELECT id FROM song WHERE lyric!='' AND have_english='0' ORDER BY id";
+$select_sql = "SELECT id FROM song WHERE lyric!='' ORDER BY id";
 
 $query_result = $db_obj->selectCommand($select_sql);
 $document_num = 0;
@@ -29,8 +29,10 @@ foreach ($query_result as $query_result_data) {
 
    $term_vector_string = '';
    $term_vector_readable_string = '';
-   foreach ($query_result2 as $query_result_data2) {
+   $not_all_zero = 0;
 
+   foreach ($query_result2 as $query_result_data2) {
+      $not_all_zero = $not_all_zero+$query_result_data2['tfidf'];
       $term_vector_string = $term_vector_string.$query_result_data2['tfidf'].',';
       $term_vector_readable_string = $term_vector_readable_string.$query_result_data2['term'].',';
 
@@ -39,6 +41,11 @@ foreach ($query_result as $query_result_data) {
    $term_vector_string = substr ($term_vector_string, 0, -1);
    $term_vector_readable_string = substr ($term_vector_readable_string, 0, -1);
 
+   if ($not_all_zero>0) {
+      $term_vector_string = $term_vector_string
+   } else {
+      $term_vector_string = '';
+   }
    $insert_sql = "INSERT INTO lyrics_feature (song_id,lyrics_term_vector,lyrics_term_vector_readable,create_time,modify_time) VALUES ('".addslashes($song_id)."', '".addslashes($term_vector_string)."', '".addslashes($term_vector_readable_string)."', NOW(), NOW())";
    $query_result3 = $db_obj->insertCommand($insert_sql);
    echo $song_id." lyrics feature \n";

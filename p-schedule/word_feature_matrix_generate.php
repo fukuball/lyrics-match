@@ -20,7 +20,7 @@ $row_song_id = "";
 $lyrics_feature = "";
 $matirx = "[";
 
-$select_sql = "SELECT song_id,lyrics_term_vector,lyrics_term_vector_readable FROM lyrics_feature ORDER BY song_id";
+$select_sql = "SELECT song_id,lyrics_term_vector,lyrics_term_vector_readable FROM lyrics_feature AND term_vector_string!='' ORDER BY song_id";
 
 $query_result = $db_obj->selectCommand($select_sql);
 
