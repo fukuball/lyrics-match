@@ -79,7 +79,7 @@ foreach ($query_result as $query_result_data) {
          $word_net_link = $table[1]->tr->td->table->tr[2]->td->table->tr[2]->td[2]->p->a;
          $word_net_string = ',';
 
-         print_r($table);
+         print_r($table[1]->tr[0]->td->table->tr[2]->td->table->tr[2]->td[2]->p->a);
 
          //if (!empty($word_net_link)) {
          //   foreach ($word_net_link as $word_net) {
