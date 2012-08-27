@@ -61,7 +61,7 @@ foreach ($query_result as $query_result_data) {
       $table = $wordnet_page_dom->query->results->body->table;
 
       $result_num = 0;
-      if (is_array($table[0]->tr)) {
+      if (!empty($table) && is_array($table[0]->tr)) {
          $result_num = $table[0]->tr[0]->td->p->font[1]->content;
       } else {
          $update_sql = "UPDATE ".
