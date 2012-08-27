@@ -137,7 +137,7 @@ foreach ($query_result as $query_result_data) {
 
       }
 
-      sleep(1);
+      //sleep(1);
    }
 
 }
