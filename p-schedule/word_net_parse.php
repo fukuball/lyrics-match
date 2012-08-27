@@ -14,7 +14,7 @@
 
 require_once dirname(dirname(__FILE__))."/p-config/application-setter.php";
 
-$word = '依然';
+$word = iconv("Big5", "UTF-8", '依然');
 $link = 'http://cwn.ling.sinica.edu.tw/_process.asp?inputword='.$word.'&radiobutton=1';
 
 $db_obj = LMDBAccess::getInstance();
