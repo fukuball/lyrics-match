@@ -28,11 +28,11 @@ curl_setopt($ch, CURLOPT_REFERER , 'http://www.google.com');
 $return_doc = curl_exec ($ch);
 curl_close($ch);
 
-$html = <<<HTML
-$html
-HTML;
+$utf8_html =  iconv("Big5", "UTF-8", $return_doc);
 
-$html = str_get_html($html);
-print_r($html);
+$html_parser = new simple_html_dom();
+// load the entire string containing everything user entered here
+$utf8_html_dom = $html_parser->load($utf8_html);
 
+print_r($utf8_html_dom);
 ?>
