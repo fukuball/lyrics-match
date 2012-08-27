@@ -42,7 +42,7 @@ foreach ($query_result as $query_result_data) {
    $term_vector_readable_string = substr ($term_vector_readable_string, 0, -1);
 
    if ($not_all_zero>0) {
-      $term_vector_string = $term_vector_string
+      $term_vector_string = $term_vector_string;
    } else {
       $term_vector_string = '';
    }
