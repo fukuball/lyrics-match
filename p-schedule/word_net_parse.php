@@ -25,13 +25,14 @@ $wordnet_page_html = file_get_contents('http://query.yahooapis.com/v1/public/yql
 $wordnet_page_dom = json_decode($wordnet_page_html);
 
 $table = $wordnet_page_dom->query->results->body->table;
-
 $result_num = $table[0]->tr[0]->td->p->font[1]->content;
 
-echo "result_num: ".$result_num." \n";
+if (is_int($result_num) && $result_num>0) {
+   echo "result_num: ".$result_num." \n";
 
 
-print_r($table);
+   print_r($table[1]->tr[0]->td);
+}
 
 
 ?>
