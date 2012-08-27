@@ -15,7 +15,7 @@
 require_once dirname(dirname(__FILE__))."/p-config/application-setter.php";
 
 $db_obj = LMDBAccess::getInstance();
-$select_sql = "SELECT id,term FROM lyrics_term_unique WHERE id=17";
+$select_sql = "SELECT id,term FROM lyrics_term_unique WHERE pass_to_word_net=0";
 
 $query_result = $db_obj->selectCommand($select_sql);
 
@@ -76,10 +76,14 @@ foreach ($query_result as $query_result_data) {
       if (is_numeric($result_num) && $result_num>0) {
 
          echo "result_num: ".$result_num." \n";
-         $word_net_link = $table[1]->tr->td->table->tr[2]->td->table->tr[2]->td[2]->p->a;
-         $word_net_string = ',';
 
-         print_r($table[1]->tr[0]->td->table->tr[2]->td->table->tr[2]->td[2]->p->a);
+         if (is_array($table[1]->tr)) {
+            $word_net_link = $table[1]->tr[0]->td->table->tr[2]->td->table->tr[2]->td[2]->p->a;
+         } else {
+            $word_net_link = $table[1]->tr->td->table->tr[2]->td->table->tr[2]->td[2]->p->a;
+         }
+
+         $word_net_string = ',';
 
          //if (!empty($word_net_link)) {
          //   foreach ($word_net_link as $word_net) {
