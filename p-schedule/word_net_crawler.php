@@ -21,14 +21,14 @@ $word_net_link = 'http://cwn.ling.sinica.edu.tw/_process.asp';
 $inputword = $word;
 $radiobutton = 1;
 
-//$ch = curl_init();
-//curl_setopt($ch, CURLOPT_URL, $word_net_link);
-//curl_setopt($ch, CURLOPT_POST, 1);
-//curl_setopt($ch, CURLOPT_POSTFIELDS, 'inputword='.$inputword.'&radiobutton='.$radiobutton);
-//curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-//curl_setopt($ch, CURLOPT_REFERER , 'http://www.google.com');
-//$return_doc = curl_exec ($ch);
-//curl_close($ch);
+$ch = curl_init();
+curl_setopt($ch, CURLOPT_URL, $word_net_link);
+curl_setopt($ch, CURLOPT_POST, 1);
+curl_setopt($ch, CURLOPT_POSTFIELDS, 'inputword='.$inputword.'&radiobutton='.$radiobutton);
+curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+curl_setopt($ch, CURLOPT_REFERER , 'http://www.google.com');
+$return_doc = curl_exec ($ch);
+curl_close($ch);
 
 echo iconv("Big5", "UTF-8", $return_doc);
 
