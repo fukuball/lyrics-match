@@ -62,6 +62,14 @@ foreach ($query_result as $query_result_data) {
 
       if (is_array($table[0]->tr)) {
          $result_num = $table[0]->tr[0]->td->p->font[1]->content;
+      } else {
+         $update_sql = "UPDATE ".
+                       "lyrics_term_unique ".
+                       "SET pass_to_word_net='1' ".
+                       "WHERE ".
+                       "id='$unique_term_id' ".
+                       "LIMIT 1";
+         $query_result3 = $db_obj->updateCommand($update_sql);
       }
 
       if (is_numeric($result_num) && $result_num>0) {
