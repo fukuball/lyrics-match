@@ -29,10 +29,5 @@ $return_doc = curl_exec ($ch);
 curl_close($ch);
 
 $utf8_html =  iconv("Big5", "UTF-8", $return_doc);
-
-$html_parser = new simple_html_dom();
-// load the entire string containing everything user entered here
-$utf8_html_dom = $html_parser->load($utf8_html);
-
-print_r($utf8_html_dom);
+echo $utf8_html;
 ?>
