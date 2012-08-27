@@ -27,7 +27,8 @@ curl_setopt($ch, CURLOPT_POSTFIELDS, 'inputword='.$inputword.'&radiobutton='.$ra
 curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
 curl_setopt($ch, CURLOPT_REFERER , 'http://www.google.com');
 $return_doc = curl_exec ($ch);
+curl_close($ch);
 
-echo $return_doc;
+echo iconv("Big5", "UTF-8", $return_doc);
 
 ?>
