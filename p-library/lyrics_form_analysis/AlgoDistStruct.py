@@ -9,6 +9,7 @@ from numpy import argmin
 from numpy import insert
 from numpy import sin
 from numpy import pi
+from numpy import sqrt
 from copy import deepcopy
 
 class AlgoDistStruct(AlgoSequence):
@@ -354,10 +355,16 @@ class AlgoDistStruct(AlgoSequence):
 			return 0.0
 		else:
 			# sigmoid
-			return (1 / (1 + exp(-(float(t) - limit) * 6 / limit))) * 2
+			#return (1 / (1 + exp(-(float(t) - limit) * 5 / limit))) * 2
 			
 			#linear
 			#return float(t) / limit
+
+			# sine
+			return sin((2 * pi * (t  / (limit * 4))) + 3 *pi / 2 ) + 1.0
+
+			#ellipse
+			#return -1 * sqrt(1 - ((t ** 2) / limit ** 2)) + 1
 
 
 	def __mergeKernel(self, t, limit):
@@ -366,17 +373,17 @@ class AlgoDistStruct(AlgoSequence):
 			return 1.0
 		else:
 			#sigmoid
-			return (1 / (1 + exp(-float(t) * 5 / limit)) - 0.5) * 2
-
-
-			#sine
-			#return sin(2*pi*t / (limit * 4))
+			#return (1 / (1 + exp(-float(t) * 5 / limit)) - 0.5) * 2
 
 			#linear
 			#return float(t) / limit
 
+			#sine
+			return sin(2 * pi * t / (limit * 4))
+
+
 			#ellipse
-			#return 1 - ((t - limit) ** 2 * (1 / limit) ** 2)
+			#return sqrt(1 - ((t - limit) ** 2 / limit ** 2))
 
 
 	def __localCost(self, sentenceList, phraseList):
@@ -391,8 +398,8 @@ class AlgoDistStruct(AlgoSequence):
 		#localCost = 0.6 * self.__singKernel(noteWordRate, self.__MAXNOTE) + 0.4 * self.__mergeKernel(mergeCount, self.__MERGELIMIT)
 		localCost = 0.0 * self.__singKernel(noteWordRate, self.__MAXNOTE) + 1.0 * self.__mergeKernel(mergeCount, self.__MERGELIMIT)
 
-		#print self.__singKernel(noteWordRate, self.__MAXNOTE)
-		#print self.__mergeKernel(mergeCount, self.__MERGELIMIT)
+		print self.__singKernel(noteWordRate, self.__MAXNOTE)
+		print self.__mergeKernel(mergeCount, self.__MERGELIMIT)
 		return localCost
 
 

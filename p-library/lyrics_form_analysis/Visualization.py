@@ -9,34 +9,42 @@ class Visualization:
 	
 	def drawMergeCurve(self):
 
-		t = numpy.arange(0.0, 3, 0.01)
-		maxMerge = t[-1]
 
-		#y = numpy.sin(2*numpy.pi*t/(t[-1] * 4))
-		y1 = t / t[-1]
+		t = numpy.arange(0.0, 5, 0.01)
+		limit = t[-1]
+		#limit = 3
 
-		#y2 = numpy.sqrt(1 - (t - t[-1])**2 * (1 / t[-1] ** 2))
+		linear = map(lambda value: value > limit and 1.0 or value / limit, t)
+
+		# sine function
+		mergeSine = map(lambda value: value > limit and 1.0 or numpy.sin(2 * numpy.pi * value / (limit * 4)), t)
+		singSine = map(lambda value: value > limit and 1.0 or numpy.sin((2 * numpy.pi * (value  / (limit * 4))) + 3 * numpy.pi / 2 ) + 1.0, t)
+
+		# sigmoid function
+		highValue = 5
+		mergeSigmoid = map(lambda value: value > limit and 1.0 or (1 / (1 + numpy.exp(-value * highValue  / limit))  - 0.5) * 2, t)
+		singSigmoid = map(lambda value: value > limit and 1.0 or (1 / (1 + numpy.exp(-(value - limit) * highValue / limit))) * 2, t)
+
+		# ellipse
+		import cmath
+		mergeEllipse = map(lambda value: value > limit and 1.0 or numpy.sqrt(1 - ((value - limit) ** 2 / limit ** 2)), t)
+		singEllipse = map(lambda value: value > limit and 1.0 or -1 * numpy.sqrt(1 - ((value ** 2) / limit ** 2)) + 1, t)
 
 
-		#y3 = (1 / (1 + numpy.exp(-t * 5 / t[-1]))  - 0.5) * 2
+
+
 		
-		#y4 = (1 / (1 + numpy.exp(-((t * 5 / t[-1]) - 5 )) / t[-1]))
-		y6 = (1 / (1 + numpy.exp(-(t-t[-1]) * 6 / t[-1]))) * 2
-		#y7 = (1 / (1 + numpy.exp(-(t - t[-1]) * 6 / t[-1]))) * 2
-		y5 = (1 / (1 + numpy.exp(-(t-t[-1]) * 5 / t[-1]))) * 2
-
 
 		
-
-
-		#pylab.plot(t, y)
-		pylab.plot(t, y1)
-		#pylab.plot(t, y2)
-		#pylab.plot(t, y3)
-		#pylab.plot(t, y4)
-		#pylab.plot(t, y5)
-		pylab.plot(t, y6)
-		#pylab.plot(t, y7)
+		pylab.plot(t, linear)
+		pylab.plot(t, mergeSine)
+		pylab.plot(t, singSine)
+		pylab.plot(t, mergeSigmoid)
+		pylab.plot(t, singSigmoid)
+		pylab.plot(t, mergeEllipse)
+		pylab.plot(t, singEllipse)
+		pylab.xlabel("t")
+		pylab.ylabel("cost")
 		pylab.show()
 
 
