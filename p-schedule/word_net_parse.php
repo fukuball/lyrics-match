@@ -15,7 +15,7 @@
 require_once dirname(dirname(__FILE__))."/p-config/application-setter.php";
 
 $db_obj = LMDBAccess::getInstance();
-$select_sql = "SELECT id,term FROM lyrics_term_unique WHERE pass_to_word_net='0' LIMIT 1";
+$select_sql = "SELECT id,term FROM lyrics_term_unique WHERE pass_to_word_net='0'";
 
 $query_result = $db_obj->selectCommand($select_sql);
 
