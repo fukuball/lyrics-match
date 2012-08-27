@@ -15,9 +15,9 @@
 require_once dirname(dirname(__FILE__))."/p-config/application-setter.php";
 
 $word_net_link = 'http://cwn.ling.sinica.edu.tw/_process.asp';
-$db_obj = LMDBAccess::getInstance();
 
-$inputword = '一一';
+$inputword = '依然';
+$inputword = iconv("UTF-8", "Big5", $inputword);
 $radiobutton = 1;
 
 $ch = curl_init();
@@ -29,6 +29,6 @@ curl_setopt($ch, CURLOPT_REFERER , 'http://www.google.com');
 $return_doc = curl_exec ($ch);
 curl_close($ch);
 
-echo iconv("Big5", "UTF-8", $return_doc);
-
+$utf8_html =  iconv("Big5", "UTF-8", $return_doc);
+echo $utf8_html;
 ?>
