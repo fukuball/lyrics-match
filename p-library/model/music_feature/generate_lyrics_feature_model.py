@@ -73,7 +73,7 @@ print lyrics_feature_s
 
 # 降維
 for s_index, s_item in enumerate(lyrics_feature_s) :
-   if (s_item<100) :
+   if (s_item<300) :
       lyrics_feature_s[s_index] = 0.0
 
 print "dedimenstion performed"
@@ -93,20 +93,20 @@ A_bar_string = json.dumps(A_bar_list)
 
 print "matrix dump"
 
-#f = open('lyrics-model-10.txt', 'w')
-#f.write(A_bar_string)
-#f.close()
+f = open('lyrics-model-11.txt', 'w')
+f.write(A_bar_string)
+f.close()
 
-#cur = db.cursor()
-#try:
-#   cur.execute("""INSERT INTO lyrics_feature_matrix (matrix, row_song_id, column_lyrics_feature, type, create_time, modify_time) VALUES (%s, %s, %s, %s, %s, %s)""",("lyrics-model-10.txt", row_song_id, column_lyrics_feature, "model", create_time, modify_time))
-#   db.commit()
-#   print "success"
-#except mysql.Error, e:
-#   db.rollback()
-#   print "An error has been passed. %s" %e
-#
-#print "save in db"
+cur = db.cursor()
+try:
+   cur.execute("""INSERT INTO lyrics_feature_matrix (matrix, row_song_id, column_lyrics_feature, type, create_time, modify_time) VALUES (%s, %s, %s, %s, %s, %s)""",("lyrics-model-11.txt", row_song_id, column_lyrics_feature, "model", create_time, modify_time))
+   db.commit()
+   print "success"
+except mysql.Error, e:
+   db.rollback()
+   print "An error has been passed. %s" %e
+
+print "save in db"
 
 
 cur.close()
