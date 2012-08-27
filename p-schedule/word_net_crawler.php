@@ -14,11 +14,9 @@
 
 require_once dirname(dirname(__FILE__))."/p-config/application-setter.php";
 
-$word = $_GET['word'];
-
 $word_net_link = 'http://cwn.ling.sinica.edu.tw/_process.asp';
 
-$inputword = $word;
+$inputword = '一一';
 $radiobutton = 1;
 
 $ch = curl_init();
