@@ -80,7 +80,7 @@ print "dedimenstion performed"
 
 # lyrics feature model matrix
 lyrics_feature_s = np.diag(lyrics_feature_s)
-#print lyrics_feature_s
+print lyrics_feature_s
 
 A_bar_lyrics_feature_matrix = np.dot(lyrics_feature_U,np.dot(lyrics_feature_s,lyrics_feature_V))
 #print A_bar_lyrics_feature_matrix
