@@ -69,7 +69,7 @@ print( "matrix shape --> %d rows x %d columns" % A_lyrics_feature_matrix.shape )
 lyrics_feature_U,lyrics_feature_s,lyrics_feature_V = np.linalg.svd(A_lyrics_feature_matrix, full_matrices=False)
 
 print "SVD performed"
-#print lyrics_feature_s
+print lyrics_feature_s
 
 # 降維
 for s_index, s_item in enumerate(lyrics_feature_s) :
@@ -97,16 +97,16 @@ f = open('lyrics-model-10.txt', 'w')
 f.write(A_bar_string)
 f.close()
 
-cur = db.cursor()
-try:
-   cur.execute("""INSERT INTO lyrics_feature_matrix (matrix, row_song_id, column_lyrics_feature, type, create_time, modify_time) VALUES (%s, %s, %s, %s, %s, %s)""",("lyrics-model-10.txt", row_song_id, column_lyrics_feature, "model", create_time, modify_time))
-   db.commit()
-   print "success"
-except mysql.Error, e:
-   db.rollback()
-   print "An error has been passed. %s" %e
-
-print "save in db"
+#cur = db.cursor()
+#try:
+#   cur.execute("""INSERT INTO lyrics_feature_matrix (matrix, row_song_id, column_lyrics_feature, type, create_time, modify_time) VALUES (%s, %s, %s, %s, %s, %s)""",("lyrics-model-10.txt", row_song_id, column_lyrics_feature, "model", create_time, modify_time))
+#   db.commit()
+#   print "success"
+#except mysql.Error, e:
+#   db.rollback()
+#   print "An error has been passed. %s" %e
+#
+#print "save in db"
 
 
 cur.close()

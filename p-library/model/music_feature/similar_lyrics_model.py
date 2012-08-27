@@ -40,7 +40,7 @@ cur.execute("SET CHARACTER_SET_CLIENT=UTF8")
 cur.execute("SET CHARACTER_SET_RESULTS=UTF8")
 db.commit()
 
-model_id = 9
+model_id = 11
 
 cur.execute("""SELECT * FROM lyrics_feature_matrix WHERE id=%s""", (model_id))
 
@@ -73,7 +73,7 @@ if (has_model_data=="true") :
    normalize_range = similar_music_model.getA().ptp(axis=0)
    similar_music_model_normalized = (similar_music_model.getA() - normalize_min) / normalize_range
 
-   cur.execute("""SELECT id FROM song WHERE lyric!='' AND have_english='0' AND id!='340'""")
+   cur.execute("""SELECT song_id FROM lyrics_feature WHERE lyrics_term_vector!='' AND song_id!='340'""")
 
    for row in cur.fetchall() :
 
