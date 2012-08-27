@@ -41,7 +41,7 @@ cur.execute("SET CHARACTER_SET_CLIENT=UTF8")
 cur.execute("SET CHARACTER_SET_RESULTS=UTF8")
 db.commit()
 
-cur.execute("SELECT * FROM lyrics_feature_matrix WHERE id=8")
+cur.execute("SELECT * FROM lyrics_feature_matrix WHERE id=10")
 
 
 lyrics_feature_matrix = ""
@@ -93,13 +93,13 @@ A_bar_string = json.dumps(A_bar_list)
 
 print "matrix dump"
 
-f = open('lyrics-model-8.txt', 'w')
+f = open('lyrics-model-10.txt', 'w')
 f.write(A_bar_string)
 f.close()
 
 cur = db.cursor()
 try:
-   cur.execute("""INSERT INTO lyrics_feature_matrix (matrix, row_song_id, column_lyrics_feature, type, create_time, modify_time) VALUES (%s, %s, %s, %s, %s, %s)""",("lyrics-model-8.txt", row_song_id, column_lyrics_feature, "model", create_time, modify_time))
+   cur.execute("""INSERT INTO lyrics_feature_matrix (matrix, row_song_id, column_lyrics_feature, type, create_time, modify_time) VALUES (%s, %s, %s, %s, %s, %s)""",("lyrics-model-10.txt", row_song_id, column_lyrics_feature, "model", create_time, modify_time))
    db.commit()
    print "success"
 except mysql.Error, e:
