@@ -38,7 +38,7 @@ class AlgoDistStruct(AlgoSequence):
 		self.__BASE = 1.5
 
 		# 合併次數邊界
-		self.__LIMITMERGE = 4.5
+		self.__MERGELIMIT = 4.5
 
 	
 	def __varInit(self):
@@ -343,33 +343,40 @@ class AlgoDistStruct(AlgoSequence):
 		return pathCosts
 
 
-	def __sigmoid(self, t, limitT):
-		return (1 / (1 + exp(-t * 5 / limitT)) - 0.5) * 2
 
 
-	def __ellipse(self, t, limitT):
 
-		if t > limitT:
+	def __singKernel(self, t, limit):
+
+		if t > limit:
+			return 1.0
+		elif t == 1.0:
+			return 0.0
+		else:
+			# sigmoid
+			return (1 / (1 + exp(-(float(t) - limit) * 6 / limit))) * 2
+			
+			#linear
+			#return float(t) / limit
+
+
+	def __mergeKernel(self, t, limit):
+
+		if t > limit:
 			return 1.0
 		else:
-			return 1 - ((t - limitT) ** 2 * (1 / limitT) ** 2)
-		
-	def __linear(self, t, limitT):
-
-		if t > limitT:
-			return 1.0
-		else:
-			return t / limitT
-	
-
-	def __sine(self, t, limitT):
-
-		if t > limitT:
-			return 1.0
-		else:
-			return sin(2*pi*t / (limitT * 4))
+			#sigmoid
+			return (1 / (1 + exp(-float(t) * 5 / limit)) - 0.5) * 2
 
 
+			#sine
+			#return sin(2*pi*t / (limit * 4))
+
+			#linear
+			#return float(t) / limit
+
+			#ellipse
+			#return 1 - ((t - limit) ** 2 * (1 / limit) ** 2)
 
 
 	def __localCost(self, sentenceList, phraseList):
@@ -380,10 +387,11 @@ class AlgoDistStruct(AlgoSequence):
 		#localCost = (self.__linear(noteWordRate - 1, self.__MAXNOTE) + self.__linear(mergeCount, 4.5)) / 2.0
 		#localCost = (self.__linear(noteWordRate - 1, self.__MAXNOTE) + self.__sigmoid(mergeCount)) / 2.0
 		#localCost = (self.__ellipse(noteWordRate - 1, self.__MAXNOTE) + self.__sigmoid(mergeCount)) / 2.0
-		localCost = (self.__sigmoid(noteWordRate - 1, self.__MAXNOTE) + self.__sine(mergeCount, 4.5)) / 2.0
+		#localCost = (self.__sigmoid(noteWordRate - 1, self.__MAXNOTE) + self.__sine(mergeCount, 4.5)) / 2.0
+		localCost = 0.6 * self.__singKernel(noteWordRate, self.__MAXNOTE) + 0.4 * self.__mergeKernel(mergeCount, self.__MERGELIMIT)
 
-		#print self.__sigmoid(noteWordRate - 1, self.__MAXNOTE)
-		#print self.__sine(mergeCount, 4.5)
+		#print self.__singKernel(noteWordRate, self.__MAXNOTE)
+		#print self.__mergeKernel(mergeCount, self.__MERGELIMIT)
 		return localCost
 
 
@@ -391,18 +399,17 @@ class AlgoDistStruct(AlgoSequence):
 if __name__ == "__main__":
 	from DistPitch import DistPitch
 	from LocalConstraint import *
-
-
 	from random import randint
 
 	#sentenceSeq  = [4, 7, 1, 3]
 	#sentenceSeq  = [8]
-	sentenceSeq = [2, 4]
+	sentenceSeq = [4, 13]
 	#sentenceSeq = [3, 4, 5]
 	#phraseSeq = [3, 5, 2, 5, 1, 4]
 	#phraseSeq = [3, 2, 5]
-	#phraseSeq = [8]
-	phraseSeq = [16]
+	phraseSeq = [18]
+	#phraseSeq = [2, 3, 2, 3, 6]
+	#phraseSeq = [2, 2, 1, 5, 6]
 	#phraseSeq = [2, 3, 4]
 
 

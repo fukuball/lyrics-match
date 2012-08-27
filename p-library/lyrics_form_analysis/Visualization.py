@@ -9,25 +9,34 @@ class Visualization:
 	
 	def drawMergeCurve(self):
 
-		t = numpy.arange(0.0, 5, 0.01)
+		t = numpy.arange(0.0, 3, 0.01)
 		maxMerge = t[-1]
 
-		y = numpy.sin(2*numpy.pi*t/(t[-1] * 4))
+		#y = numpy.sin(2*numpy.pi*t/(t[-1] * 4))
 		y1 = t / t[-1]
 
-		y2 = numpy.sqrt(1 - (t - t[-1])**2 * (1 / t[-1] ** 2))
+		#y2 = numpy.sqrt(1 - (t - t[-1])**2 * (1 / t[-1] ** 2))
 
 
-		y3 = (1 / (1 + numpy.exp(-t * 6 / 3))  - 0.5) * 2
+		#y3 = (1 / (1 + numpy.exp(-t * 5 / t[-1]))  - 0.5) * 2
+		
+		#y4 = (1 / (1 + numpy.exp(-((t * 5 / t[-1]) - 5 )) / t[-1]))
+		y6 = (1 / (1 + numpy.exp(-(t-t[-1]) * 6 / t[-1]))) * 2
+		#y7 = (1 / (1 + numpy.exp(-(t - t[-1]) * 6 / t[-1]))) * 2
+		y5 = (1 / (1 + numpy.exp(-(t-t[-1]) * 5 / t[-1]))) * 2
 
 
 		
 
 
-		pylab.plot(t, y)
+		#pylab.plot(t, y)
 		pylab.plot(t, y1)
-		pylab.plot(t, y2)
-		pylab.plot(t, y3)
+		#pylab.plot(t, y2)
+		#pylab.plot(t, y3)
+		#pylab.plot(t, y4)
+		#pylab.plot(t, y5)
+		pylab.plot(t, y6)
+		#pylab.plot(t, y7)
 		pylab.show()
 
 
