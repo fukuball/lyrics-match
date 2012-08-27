@@ -31,7 +31,7 @@ if (is_numeric($result_num) && $result_num>0) {
    echo "result_num: ".$result_num." \n";
 
 
-   print_r($table[1]->tr[0]->td);
+   print_r($table[1]->tr->td);
 }
 
 
