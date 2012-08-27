@@ -30,7 +30,7 @@ $result_num = $table[0]->tr[0]->td->p->font[1]->content;
 if (is_numeric($result_num) && $result_num>0) {
 
    echo "result_num: ".$result_num." \n";
-   print_r($table[1]->tr->td->table->tr[2]->td->table->tr[2]);
+   print_r($table[1]->tr->td->table->tr[2]->td->table->tr[2]->td[2]->p->a);
 
 }
 
