@@ -59,8 +59,10 @@ foreach ($query_result as $query_result_data) {
       $wordnet_page_dom = json_decode($wordnet_page_html);
 
       $table = $wordnet_page_dom->query->results->body->table;
-      var_dump($table);
-      $result_num = $table[0]->tr[0]->td->p->font[1]->content;
+
+      if (is_array($table[0]->tr)) {
+         $result_num = $table[0]->tr[0]->td->p->font[1]->content;
+      }
 
       if (is_numeric($result_num) && $result_num>0) {
 
