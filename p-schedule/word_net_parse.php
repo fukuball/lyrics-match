@@ -99,6 +99,7 @@ foreach ($query_result as $query_result_data) {
                           "WHERE ".
                           "id='$unique_term_id' ".
                           "LIMIT 1";
+            $query_result3 = $db_obj->updateCommand($update_sql);
          }
 
       }
