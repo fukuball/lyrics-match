@@ -26,6 +26,10 @@ if (!empty($_GET['song_id'])) {
    if (!empty($_GET['model_id'])) {
       $model_id = $_GET['model_id'];
    }
+   $lmodel_id = 10;
+   if (!empty($_GET['lmodel_id'])) {
+      $lmodel_id = $_GET['lmodel_id'];
+   }
    $song_obj = new LMSong($_GET['song_id']);
    $disc_obj = new LMDisc($song_obj->disc_id);
    $performer_obj = new LMPerformer($song_obj->performer_id);
@@ -232,7 +236,7 @@ if (!empty($_GET['song_id'])) {
 
          $db_obj = LMDBAccess::getInstance();
 
-         $select_sql = "SELECT similar_song_id,similar FROM similar_song WHERE song_id='".$_GET['song_id']."' AND model='lyrics-model-10.txt' ORDER BY similar DESC";
+         $select_sql = "SELECT similar_song_id,similar FROM similar_song WHERE song_id='".$_GET['song_id']."' AND model='lyrics-model-".$lmodel_id.".txt' ORDER BY similar DESC";
 
          $query_result = $db_obj->selectCommand($select_sql);
 
