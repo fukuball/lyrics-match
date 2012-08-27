@@ -31,9 +31,18 @@ if (is_numeric($result_num) && $result_num>0) {
 
    echo "result_num: ".$result_num." \n";
    $word_net_link = $table[1]->tr->td->table->tr[2]->td->table->tr[2]->td[2]->p->a;
+   $word_net_string = ',';
    foreach ($word_net_link as $word_net) {
-      echo $word_net->content;
+
+      $word_net_content = $word_net->content;
+
+      $nums = array("1", "2", "3", "4", "5", "6", "7", "8", "9", "0");
+      $word_net_content = str_replace($nums, "", $word_net_content);
+
+      $word_net_string = $word_net_string.$word_net_content.',';
    }
+
+   echo $word_net_string;
 
 }
 
