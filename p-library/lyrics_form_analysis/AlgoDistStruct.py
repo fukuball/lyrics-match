@@ -389,14 +389,8 @@ class AlgoDistStruct(AlgoSequence):
 	def __localCost(self, sentenceList, phraseList):
 		noteWordRate = sum(phraseList) / float(sum(sentenceList))
 		mergeCount = len(sentenceList) + len(phraseList) - 2
-		#localCost = (self.__sigmoid(noteWordRate - 1) + self.__sigmoid(mergeCount)) / 2.0
-		#localCost = (self.__ellipse(noteWordRate - 1, self.__MAXNOTE) + self.__ellipse(mergeCount, 4.5)) / 2.0
-		#localCost = (self.__linear(noteWordRate - 1, self.__MAXNOTE) + self.__linear(mergeCount, 4.5)) / 2.0
-		#localCost = (self.__linear(noteWordRate - 1, self.__MAXNOTE) + self.__sigmoid(mergeCount)) / 2.0
-		#localCost = (self.__ellipse(noteWordRate - 1, self.__MAXNOTE) + self.__sigmoid(mergeCount)) / 2.0
-		#localCost = (self.__sigmoid(noteWordRate - 1, self.__MAXNOTE) + self.__sine(mergeCount, 4.5)) / 2.0
-		#localCost = 0.6 * self.__singKernel(noteWordRate, self.__MAXNOTE) + 0.4 * self.__mergeKernel(mergeCount, self.__MERGELIMIT)
-		localCost = 0.0 * self.__singKernel(noteWordRate, self.__MAXNOTE) + 1.0 * self.__mergeKernel(mergeCount, self.__MERGELIMIT)
+		localCost = 0.6 * self.__singKernel(noteWordRate, self.__MAXNOTE) + 0.4 * self.__mergeKernel(mergeCount, self.__MERGELIMIT)
+		#localCost = 0.0 * self.__singKernel(noteWordRate, self.__MAXNOTE) + 1.0 * self.__mergeKernel(mergeCount, self.__MERGELIMIT)
 
 		#print self.__singKernel(noteWordRate, self.__MAXNOTE)
 		#print self.__mergeKernel(mergeCount, self.__MERGELIMIT)
