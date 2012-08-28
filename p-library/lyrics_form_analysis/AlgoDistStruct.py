@@ -14,7 +14,7 @@ from copy import deepcopy
 
 class AlgoDistStruct(AlgoSequence):
 	
-	def __init__(self, pitchToneType = PitchToneType()):
+	def __init__(self, pitchToneType = PitchToneType(), singWeight = 0.6, mergeWeight = 0.4):
 		self.__pitchToneType = pitchToneType
 
 		"""
@@ -40,6 +40,11 @@ class AlgoDistStruct(AlgoSequence):
 
 		# 合併次數邊界
 		self.__MERGELIMIT = 4.5
+
+
+		# 權重參數
+		self.__SINGWEIGHT = singRate
+		self.__MERGEWEIGHT = mergeRate
 
 	
 	def __varInit(self):
@@ -389,8 +394,8 @@ class AlgoDistStruct(AlgoSequence):
 	def __localCost(self, sentenceList, phraseList):
 		noteWordRate = sum(phraseList) / float(sum(sentenceList))
 		mergeCount = len(sentenceList) + len(phraseList) - 2
-		localCost = 0.6 * self.__singKernel(noteWordRate, self.__MAXNOTE) + 0.4 * self.__mergeKernel(mergeCount, self.__MERGELIMIT)
-		#localCost = 0.0 * self.__singKernel(noteWordRate, self.__MAXNOTE) + 1.0 * self.__mergeKernel(mergeCount, self.__MERGELIMIT)
+		localCost = self.__SINGWEIGHT * self.__singKernel(noteWordRate, self.__MAXNOTE) + \
+					self.__MERGEWEIGHT * self.__mergeKernel(mergeCount, self.__MERGELIMIT)
 
 		#print self.__singKernel(noteWordRate, self.__MAXNOTE)
 		#print self.__mergeKernel(mergeCount, self.__MERGELIMIT)
