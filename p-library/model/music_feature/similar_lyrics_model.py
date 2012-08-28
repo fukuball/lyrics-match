@@ -40,7 +40,7 @@ cur.execute("SET CHARACTER_SET_CLIENT=UTF8")
 cur.execute("SET CHARACTER_SET_RESULTS=UTF8")
 db.commit()
 
-model_id = 11
+model_id = 14
 
 cur.execute("""SELECT * FROM lyrics_feature_matrix WHERE id=%s""", (model_id))
 
