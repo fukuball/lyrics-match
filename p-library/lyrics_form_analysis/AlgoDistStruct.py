@@ -43,8 +43,8 @@ class AlgoDistStruct(AlgoSequence):
 
 
 		# 權重參數
-		self.__SINGWEIGHT = singRate
-		self.__MERGEWEIGHT = mergeRate
+		self.__SINGWEIGHT = singWeight
+		self.__MERGEWEIGHT = mergeWeight
 
 	
 	def __varInit(self):
