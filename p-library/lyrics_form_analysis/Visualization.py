@@ -10,7 +10,7 @@ class Visualization:
 	def drawMergeCurve(self):
 
 
-		t = numpy.arange(0.0, 5, 0.01)
+		t = numpy.arange(0.0, 3, 0.01)
 		limit = t[-1]
 		#limit = 3
 
@@ -30,21 +30,31 @@ class Visualization:
 		mergeEllipse = map(lambda value: value > limit and 1.0 or numpy.sqrt(1 - ((value - limit) ** 2 / limit ** 2)), t)
 		singEllipse = map(lambda value: value > limit and 1.0 or -1 * numpy.sqrt(1 - ((value ** 2) / limit ** 2)) + 1, t)
 
-
-
-
 		
 
+
+		fig1 = pylab.figure()
+		fig = fig1.add_subplot(111)
+
+		fig.plot(t, linear, color = "r", linewidth=1)
+		#fig.plot(t, mergeSine, color = "y", linewidth=2)
+		fig.plot(t, singSine, color = "y", linewidth=2)
+		#fig.plot(t, mergeSigmoid, color = "c")
+		#fig.plot(t, singSigmoid, color = "c")
+		#fig.plot(t, mergeEllipse, color = "g")
+		#fig.plot(t, singEllipse, color = "g")
+
+		#leg = fig.legend(("linear", "merge sine", "sing sine", "merge sigmoid", "sing sigmoid", "merge ellipse", "sing ellipse"), "upper left", shadow=True)
+
 		
-		pylab.plot(t, linear)
-		pylab.plot(t, mergeSine)
-		pylab.plot(t, singSine)
-		pylab.plot(t, mergeSigmoid)
-		pylab.plot(t, singSigmoid)
-		pylab.plot(t, mergeEllipse)
-		pylab.plot(t, singEllipse)
-		pylab.xlabel("t")
-		pylab.ylabel("cost")
+		#for t in leg.get_texts():
+		#	t.set_fontsize("small")
+
+		
+		fig.grid(True)
+		fig.set_title("Local Function Curves")
+		fig.set_xlabel("t")
+		fig.set_ylabel("cost")
 		pylab.show()
 
 
