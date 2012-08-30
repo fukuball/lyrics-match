@@ -32,8 +32,6 @@ class DistNote(SimElement):
 		#		labelDist * self.__labelRate
 		distance = norm((pitchDist, durationDist, labelDist)) / norm((1, 1, 1))
 
-		print distance
-		
 		return distance
 
 		
