@@ -2,6 +2,7 @@
 from AlgoSequence import AlgoSequence
 from LocalConstraint import StepType1
 from numpy import zeros
+from numpy import argmin
 from numpy import insert
 
 class AlgoDistDTW(AlgoSequence):
@@ -135,7 +136,8 @@ class AlgoDistDTW(AlgoSequence):
 			# 回朔排比的最佳對應路徑
 			self.__pathIdxList = []
 			backStartCoor = (self.__tableAccu.shape[0] - 1, self.__tableAccu.shape[1] - 1)
-			self.__backTracking(backStartCoor, self.__pathIdxList)
+			#self.__backTracking(backStartCoor, self.__pathIdxList)
+			self.__backTracking(backStartCoor)
 			self.__pathLength = len(self.__pathIdxList)
 			self.__similarity = self.__distance / self.__pathLength
 			
@@ -229,13 +231,19 @@ class AlgoDistDTW(AlgoSequence):
 			for j in range(startJ, self.__tableAccu.shape[1]):
 				nowCoor = (i, j)
 				pathCosts = self.__stepPathCost(nowCoor)
-				self.__tableAccu[nowCoor] = min(map(lambda pathCost: pathCost["cost"], pathCosts))
+
+				minIdx = argmin([pathCost["cost"] for pathCost in pathCosts])
+
+				self.__tablePrev[nowCoor] = pathCosts[minIdx]["pathNum"]
+				self.__tableAccu[nowCoor] = pathCosts[minIdx]["cost"]
+				#self.__tableAccu[nowCoor] = min(map(lambda pathCost: pathCost["cost"], pathCosts))
 
 
 		#print "AlgoDTW: Accumulate Matrix:\n %s " % repr(self.__tableAccu)
 
 
-	def __backTracking(self, nowCoor, pathIdxList):
+	#def __backTracking(self, nowCoor, pathIdxList):
+	def __backTracking(self, nowCoor):
 		"""
 		描述：回朔兩條序列經過DTW後，排比的對應位置
 		輸入：目前的原點座標，要記錄路徑的 list
@@ -248,14 +256,24 @@ class AlgoDistDTW(AlgoSequence):
 		if nowCoor == self.__STOPCOOR:
 			return
 		else:
-			pathIdxList.insert(0, nowCoor)
+			self.__pathIdxList.insert(0, nowCoor)
 
 			# 先檢查目前的做標是否超過計算邊界
 			# 利用 nowCoor 與 self.__STOPCOOR 兩個座標做比較
 			isOutList = map(lambda pair: pair[0] < pair[1], zip(nowCoor, self.__STOPCOOR))
 
 			if True not in isOutList:
+				comeStepPatternIdx = self.__tablePrev[nowCoor]
+				comePath = self.__stepType.stepPattern[comeStepPatternIdx]
+				absoluteComePath = map(lambda coor: (coor[0] + nowCoor[0], coor[1] + nowCoor[1]), comePath)
+				self.__pathIdxList = absoluteComePath[1:] + self.__pathIdxList
 
+				prevStartCoor = absoluteComePath[0]
+
+				#return  self.__backTracking(prevStartCoor, pathIdxList)
+				return  self.__backTracking(prevStartCoor)
+
+				"""
 				# 計算目前座標是從哪裡來
 				pathCost = self.__stepPathCost(nowCoor)
 
@@ -277,6 +295,7 @@ class AlgoDistDTW(AlgoSequence):
 						prevStartCoor = tuple(map(sum, zip(nowCoor, comePath[0]))) # [0]表示起始點
 
 						return  self.__backTracking(prevStartCoor, pathIdxList)
+						"""
 
 		
 
@@ -291,8 +310,15 @@ class AlgoDistDTW(AlgoSequence):
 		pathCosts = []
 
 		for i in range(len(self.__stepType.stepPattern)):
+
+			# 計算此 Step Path 的絕對座標
 			absoluteStepPath = map(lambda coor: (coor[0] + nowCoor[0], coor[1] + nowCoor[1]) ,self.__stepType.stepPattern[i])
+
+			# 起始點 Cost 從 Accumulate Cost Table 取得
 			pathCost = self.__tableAccu[absoluteStepPath.pop(0)]
+
+			# 中途座標的 Cost 從 Local Cost Table 取得並且加上 now Coor
+			# 將中途座標的 Local Cost 與 Weight Vector 相乘後累加至 pathCost
 			absoluteStepPath.append(nowCoor)
 			pathCost += self.__stepType.weightVec[i] * sum(map(lambda coor: self.__tableLocal[coor], absoluteStepPath))
 
