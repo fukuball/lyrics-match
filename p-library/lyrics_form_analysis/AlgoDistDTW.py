@@ -265,10 +265,14 @@ class AlgoDistDTW(AlgoSequence):
 			if True not in isOutList:
 				comeStepPatternIdx = self.__tablePrev[nowCoor]
 				comePath = self.__stepType.stepPattern[comeStepPatternIdx]
-				absoluteComePath = map(lambda coor: (coor[0] + nowCoor[0], coor[1] + nowCoor[1]), comePath)
-				self.__pathIdxList = absoluteComePath[1:] + self.__pathIdxList
+				#absoluteComePath = map(lambda coor: (coor[0] + nowCoor[0], coor[1] + nowCoor[1]), comePath)
+				#self.__pathIdxList = absoluteComePath[1:] + self.__pathIdxList
 
-				prevStartCoor = absoluteComePath[0]
+				for i in range(len(comePath) - 1, 0, -1):
+					prevCoor = (nowCoor[0] + comePath[i][0], nowCoor[1] + comePath[i][1])
+					self.__pathIdxList.insert(0, prevCoor)
+
+				prevStartCoor = (nowCoor[0] + comePath[0][0], nowCoor[1] + comePath[0][1])
 
 				#return  self.__backTracking(prevStartCoor, pathIdxList)
 				return  self.__backTracking(prevStartCoor)
