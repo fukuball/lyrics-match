@@ -232,7 +232,8 @@ class AlgoDistDTW(AlgoSequence):
 				nowCoor = (i, j)
 				pathCosts = self.__stepPathCost(nowCoor)
 
-				minIdx = argmin([pathCost["cost"] for pathCost in pathCosts])
+				#minIdx = argmin([pathCost["cost"] for pathCost in pathCosts])
+				minIdx = argmin(map(lambda pathCost: pathCost["cost"], pathCosts))
 
 				self.__tablePrev[nowCoor] = pathCosts[minIdx]["pathNum"]
 				self.__tableAccu[nowCoor] = pathCosts[minIdx]["cost"]
