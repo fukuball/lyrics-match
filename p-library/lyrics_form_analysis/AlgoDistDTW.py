@@ -61,6 +61,10 @@ class AlgoDistDTW(AlgoSequence):
 		self.__tableLocal = None
 
 
+		# Backtracking Table
+		self.__tablePrev = None
+
+
 		# 記錄回朔路徑的 index
 		self.__pathIdxList = None
 
@@ -110,6 +114,8 @@ class AlgoDistDTW(AlgoSequence):
 		# 產生 Accumulate Cost Table 和 Local Cost Table
 		self.__tableAccu = zeros([len(self.__seqI), len(self.__seqJ)], float)
 		self.__tableLocal = zeros(self.__tableAccu.shape, float)
+
+		self.__tablePrev = zeros(self.__tableAccu.shape, tuple)
 
 
 		# 初始化 Accumulate Cost Table 和 Local Cost Table
@@ -162,6 +168,10 @@ class AlgoDistDTW(AlgoSequence):
 		# 目的是要避免在利用 Step Pattern 計算 Accumulate Cost Table 時，出現 Index Out Of Bound
 		self.__tableLocal = self.__tableAugment(self.__tableLocal)
 		self.__tableAccu = self.__tableAugment(self.__tableAccu)
+
+		self.__tablePrev = self.__tableAugment(self.__tablePrev)
+
+
 
 
 		# Accumulate Cost Table 初始化
@@ -281,12 +291,21 @@ class AlgoDistDTW(AlgoSequence):
 		pathCosts = []
 
 		for i in range(len(self.__stepType.stepPattern)):
+			absoluteStepPath = map(lambda coor: (coor[0] + nowCoor[0], coor[1] + nowCoor[1]) ,self.__stepType.stepPattern[i])
+			pathCost = self.__tableAccu[absoluteStepPath.pop(0)]
+			absoluteStepPath.append(nowCoor)
+			pathCost += self.__stepType.weightVec[i] * sum(map(lambda coor: self.__tableLocal[coor], absoluteStepPath))
+
+
+			"""
 			# 取出 Step Path
 			stepPath = self.__stepType.stepPattern[i]
 
 
+
 			# 計算此 Step Path 起始點的絕對座標
 			prevStartCoor = tuple(map(sum, zip(stepPath[0], nowCoor)))
+
 
 
 			# 開始計算此 Step Path 到 目前原點的 Cost
@@ -306,6 +325,9 @@ class AlgoDistDTW(AlgoSequence):
 
 			# 加上目前原點座標的 Local Cost
 			pathCost += self.__stepType.weightVec[i] * self.__tableLocal[nowCoor]
+			print pathCost
+			print
+			"""
 			pathCosts.append({"pathNum": i, "cost": pathCost})
 
 		return pathCosts
