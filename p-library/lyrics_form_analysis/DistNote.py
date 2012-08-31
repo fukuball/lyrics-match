@@ -3,6 +3,7 @@ from SimElement import SimElement
 from DistPitch import DistPitch
 from DistDuration import DistDuration
 from numpy.linalg import norm
+from math import sqrt
 
 class DistNote(SimElement):
 	def __init__(self, pitchRate = 0.2, durationRate = 0.3, labelRate = 0.5):
@@ -30,9 +31,11 @@ class DistNote(SimElement):
 		#distance = pitchDist * self.__pitchRate + \
 		#		durationDist * self.__durationRate + \
 		#		labelDist * self.__labelRate
-		distance = norm((pitchDist, durationDist, labelDist)) / norm((1, 1, 1))
+		#distance1 = norm((pitchDist, durationDist, labelDist)) / norm((1, 1, 1))
+		distance = sqrt(pitchDist ** 2 + durationDist ** 2 + labelDist **2) / sqrt(3)
 
 		return distance
+
 
 		
 	

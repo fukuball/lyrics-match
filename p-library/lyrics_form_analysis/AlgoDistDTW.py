@@ -317,26 +317,27 @@ class AlgoDistDTW(AlgoSequence):
 
 if __name__ == "__main__":
 	from DistPitch import DistPitch
+	from DistEuclidean import DistEuclidean
 	from LocalConstraint import *
 
 
 
-	seq1  = [1,1,1, 1, 2, 4]
+	#seq1  = [1,1,1, 1, 2, 4]
 	#seq1 = [4, 3, 3, 1, 3, 1, 4 ,1]
 	#seq1 = [3, 2, 3, 2, 2, 1, 2, 1, 1, 2, 4, 4, 4]
 	#seq1 = [3, 3, 4, 2, 2, 1, 2, 1]
-	#seq1 = [1,1,1,1,1,1]
+	seq1 = [62, 69, 65, 64]
 
 	#seq2 = [4, 3, 2, 1]
 	#seq2 = [4, 3, 3, 1, 3, 1, 4 ,1]
-	seq2 = [5,1, 4]
+	#seq2 = [5,1, 4]
 	#seq2 = [5, 1, 9, 3, 10]
-	#seq2 = [1,1,1,1,1,1]
+	seq2 = [62, 65, 65, 69, 65, 65, 64, 64]
 
 	print "Main: seq1 = %d" % len(seq1)
 	print "Main: seq2 = %d" % len(seq2)
 
-	dtw = AlgoDistDTW(DistPitch(), StepType2())
+	dtw = AlgoDistDTW(DistEuclidean(), StepType3())
 	#dtw = AlgoDistDTW(DistPitch(), PitchToneType())
 	
 
