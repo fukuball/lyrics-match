@@ -232,12 +232,11 @@ class AlgoDistDTW(AlgoSequence):
 				nowCoor = (i, j)
 				pathCosts = self.__stepPathCost(nowCoor)
 
-				#minIdx = argmin([pathCost["cost"] for pathCost in pathCosts])
-				minIdx = argmin(map(lambda pathCost: pathCost["cost"], pathCosts))
+				#minIdx = argmin(map(lambda pathCost: pathCost["cost"], pathCosts))
+				#self.__tablePrev[nowCoor] = pathCosts[minIdx]["pathNum"]
+				#self.__tableAccu[nowCoor] = pathCosts[minIdx]["cost"]
 
-				self.__tablePrev[nowCoor] = pathCosts[minIdx]["pathNum"]
-				self.__tableAccu[nowCoor] = pathCosts[minIdx]["cost"]
-				#self.__tableAccu[nowCoor] = min(map(lambda pathCost: pathCost["cost"], pathCosts))
+				self.__tableAccu[nowCoor] = min(map(lambda pathCost: pathCost["cost"], pathCosts))
 
 
 		#print "AlgoDTW: Accumulate Matrix:\n %s " % repr(self.__tableAccu)
@@ -264,6 +263,7 @@ class AlgoDistDTW(AlgoSequence):
 			isOutList = map(lambda pair: pair[0] < pair[1], zip(nowCoor, self.__STOPCOOR))
 
 			if True not in isOutList:
+				"""
 				comeStepPatternIdx = self.__tablePrev[nowCoor]
 				comePath = self.__stepType.stepPattern[comeStepPatternIdx]
 				#absoluteComePath = map(lambda coor: (coor[0] + nowCoor[0], coor[1] + nowCoor[1]), comePath)
@@ -277,8 +277,8 @@ class AlgoDistDTW(AlgoSequence):
 
 				#return  self.__backTracking(prevStartCoor, pathIdxList)
 				return  self.__backTracking(prevStartCoor)
-
 				"""
+
 				# 計算目前座標是從哪裡來
 				pathCost = self.__stepPathCost(nowCoor)
 
@@ -293,14 +293,13 @@ class AlgoDistDTW(AlgoSequence):
 						# 加入此路徑的中途座標點
 						for i in range(len(comePath) - 1, 0, -1):
 							prevCoor = tuple(map(sum, zip(nowCoor, comePath[i])))
-							pathIdxList.insert(0, prevCoor)
+							self.__pathIdxList.insert(0, prevCoor)
 
 
 						# 計算前一個起始的座標位置
 						prevStartCoor = tuple(map(sum, zip(nowCoor, comePath[0]))) # [0]表示起始點
 
-						return  self.__backTracking(prevStartCoor, pathIdxList)
-						"""
+						return  self.__backTracking(prevStartCoor)
 
 		
 
