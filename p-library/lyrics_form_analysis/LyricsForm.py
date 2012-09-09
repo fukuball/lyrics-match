@@ -35,15 +35,21 @@ class LyricsForm:
 		計算 SSM 中所有的 Block Family
 		"""
 		startTime = time.time()
-		self.__allFamilyM = self.__allBlockFamily(SSM)
+		(self.__allFamilyM, cohesionM) = self.__allBlockFamily(SSM)
 		endTime = time.time()
 		print "LyricsForm: Family Matrix Construction Time = %.2fsec" % (endTime - startTime)
 
-		self.__allFamilyM = numpy.insert(self.__allFamilyM, 0, 0, axis = 0)
+	
+		"""
+		產生 Cohesion Matrix
+		"""
+		#self.__viz.grayMatrix(cohesionM, "Cohesion Matrix")
+
 
 		"""
 		Block Family Combination
 		"""
+		self.__allFamilyM = numpy.insert(self.__allFamilyM, 0, 0, axis = 0)
 		startTime = time.time()
 		ff = FormFinder(self.__allFamilyM, self.__TOPK)
 		combineList = ff.computing()
@@ -217,10 +223,16 @@ class LyricsForm:
 
 
 		"""
+		Cohesion Matrix
+		"""
+		cohesionM = numpy.ones(M.shape, float)
+
+
+		"""
 		計算所有的 Parent Block (start line & size) 的 Children
 		"""
-		for size in range(4, len(M) / 2 + 1):
-			for start in range(4, M.shape[0] - size):
+		for size in range(2, len(M) / 2 + 1):
+			for start in range(0, M.shape[0] - size):
 
 				"""
 				建立 SSM 的 Corridor(廊道) Matrix 
@@ -287,24 +299,32 @@ class LyricsForm:
 					familyM[size - 1][start] = {"graph": familyGraph, "family": blockFamily, 
 								"cohesion": familyCohesion, "coverage": familyCoverage}
 
+
+					cohesionM[size - 1, start] = familyCohesion
+				else:
+					cohesionM[size - 1, start] = 0.0
+
+
+
 				
 
 				"""
 				視覺化檢查工具
 				"""
-				self.__viz.grayMatrix(corridorM, "Row Mask SSM: start= " + str(start) + " size= " + str(size))
+				#self.__viz.grayMatrix(corridorM, "Row Mask SSM: start= " + str(start) + " size= " + str(size))
 
-				pathMask = cf.getPathMask()
-				familyMask = cf.getFamilyMask()
+				#pathMask = cf.getPathMask()
+				#familyMask = cf.getFamilyMask()
 
-				corridorM[start: start + size, start + size: M.shape[1] ] = pathMask
-				self.__viz.grayMatrix(corridorM, "Path Mask")
+				#corridorM[start: start + size, start + size: M.shape[1] ] = pathMask
+				#self.__viz.grayMatrix(corridorM, "Path Mask")
 
-				corridorM[start: start + size, start + size: M.shape[1] ] = familyMask
-				self.__viz.grayMatrix(corridorM, "Family Mask")
+				#corridorM[start: start + size, start + size: M.shape[1] ] = familyMask
+				#self.__viz.grayMatrix(corridorM, "Family Mask")
 
 
-		return familyM
+
+		return familyM, cohesionM
 
 
 

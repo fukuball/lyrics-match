@@ -188,14 +188,14 @@ class FormFinder:
 
 		cohesionList = map(lambda item: item["cohesion"], infoList)
 		coverageList = map(lambda item: item["coverage"], infoList)
-		blockLenList = map(lambda item: item["family"][0][1] - item["family"][0][0] + 1, infoList)
+		#blockLenList = map(lambda item: item["family"][0][1] - item["family"][0][0] + 1, infoList)
 
 		totalCoverage = sum(coverageList)
-		totalBlockLen = sum(blockLenList)
+		#totalBlockLen = sum(blockLenList)
 
 		
-		precision = sum(cohesionList) / len(combineList)
-		#precision = sum(map(lambda cohesion, coverage: cohesion * coverage / totalCoverage, cohesionList, coverageList))
+		#precision = sum(cohesionList) / len(combineList)
+		precision = sum(map(lambda cohesion, coverage: cohesion * coverage / float(totalCoverage), cohesionList, coverageList))
 		#precision = sum(map(lambda cohesion, blockLen: cohesion * blockLen / totalBlockLen, cohesionList, blockLenList))
 		
 		#denomi = self.__coverState(form)
