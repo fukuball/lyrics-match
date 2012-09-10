@@ -134,8 +134,16 @@ class FromDB(LyricsInput):
 				for word in wordList:
 					# 將聲母、韻母轉換成對應的 id
 					print "|" + word["word"] + "|" + word["consonant"] + "|" + word["vowel"] + "|"
-					conId = [con["id"] for con in conList if con["consonant"] == word["consonant"]][0]
-					vowelId = [vowel["id"] for vowel in vowelList if vowel["vowel"] == word["vowel"]][0]
+					#conId = [con["id"] for con in conList if con["consonant"] == word["consonant"]][0]
+					matchId = [con["id"] for con in conList if con["consonant"] == word["consonant"]]
+					if matchId != []:
+						conId = matchId[0]
+
+					#vowelId = [vowel["id"] for vowel in vowelList if vowel["vowel"] == word["vowel"]][0]
+					matchId = [vowel["id"] for vowel in vowelList if vowel["vowel"] == word["vowel"]][0]
+					if matchId != []:
+						vowelId = matchId[0]
+
 					pinyinLine.append((conId, vowelId))
 
 				print 
