@@ -70,7 +70,8 @@ print( "matrix shape --> %d rows x %d columns" % A_lyrics_feature_matrix.shape )
 
 # SVD decomposition
 #lyrics_feature_U,lyrics_feature_s,lyrics_feature_V = np.linalg.svd(A_lyrics_feature_matrix, full_matrices=False)
-lyrics_feature_U,lyrics_feature_s,lyrics_feature_V = sparsesvd(sparse.csc_matrix(A_lyrics_feature_matrix.getA()), 913)
+A_lyrics_feature_matrix = sparse.csc_matrix(A_lyrics_feature_matrix.getA());
+lyrics_feature_U,lyrics_feature_s,lyrics_feature_V = sparsesvd(A_lyrics_feature_matrix, 913)
 
 print "SSVD performed"
 #print lyrics_feature_s
@@ -86,7 +87,7 @@ print "dedimenstion performed"
 lyrics_feature_s = np.diag(lyrics_feature_s)
 #print lyrics_feature_s
 
-A_bar_lyrics_feature_matrix = np.dot(lyrics_feature_U,np.dot(lyrics_feature_s,lyrics_feature_V))
+A_bar_lyrics_feature_matrix = numpy.allclose(A_lyrics_feature_matrix, numpy.dot(lyrics_feature_U.T, numpy.dot(numpy.diag(lyrics_feature_s), lyrics_feature_V)))
 print A_bar_lyrics_feature_matrix
 print( "matrix shape --> %d rows x %d columns" % A_bar_lyrics_feature_matrix.shape )
 

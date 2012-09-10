@@ -62,7 +62,7 @@ for row in cur.fetchall() :
 A_lyrics_feature_matrix = np.matrix(json.loads(lyrics_feature_matrix))
 
 print "matrix formed"
-#print A_lyrics_feature_matrix
+print A_lyrics_feature_matrix
 print( "matrix shape --> %d rows x %d columns" % A_lyrics_feature_matrix.shape )
 
 # SVD decomposition
@@ -80,35 +80,35 @@ print "dedimenstion performed"
 
 # lyrics feature model matrix
 lyrics_feature_s = np.diag(lyrics_feature_s)
-#print lyrics_feature_s
+print lyrics_feature_s
 
-A_bar_lyrics_feature_matrix = np.dot(lyrics_feature_U,np.dot(lyrics_feature_s,lyrics_feature_V))
-#print A_bar_lyrics_feature_matrix
-print( "matrix shape --> %d rows x %d columns" % A_bar_lyrics_feature_matrix.shape )
-
-print "reform matrix"
-
-A_bar_list = A_bar_lyrics_feature_matrix.tolist()
-A_bar_string = json.dumps(A_bar_list)
-
-print "matrix dump"
-
-file_name = 'lyrics-model-12.txt'
-f = open(file_name, 'w')
-f.write(A_bar_string)
-f.close()
-
-cur = db.cursor()
-try:
-   cur.execute("""INSERT INTO lyrics_feature_matrix (matrix, row_song_id, column_lyrics_feature, type, create_time, modify_time) VALUES (%s, %s, %s, %s, %s, %s)""",(file_name, row_song_id, column_lyrics_feature, "model", create_time, modify_time))
-   db.commit()
-   print "success"
-except mysql.Error, e:
-   db.rollback()
-   print "An error has been passed. %s" %e
-
-print "save in db"
-
-
-cur.close()
-db.close()
+#A_bar_lyrics_feature_matrix = np.dot(lyrics_feature_U,np.dot(lyrics_feature_s,lyrics_feature_V))
+##print A_bar_lyrics_feature_matrix
+#print( "matrix shape --> %d rows x %d columns" % A_bar_lyrics_feature_matrix.shape )
+#
+#print "reform matrix"
+#
+#A_bar_list = A_bar_lyrics_feature_matrix.tolist()
+#A_bar_string = json.dumps(A_bar_list)
+#
+#print "matrix dump"
+#
+#file_name = 'lyrics-model-12.txt'
+#f = open(file_name, 'w')
+#f.write(A_bar_string)
+#f.close()
+#
+#cur = db.cursor()
+#try:
+#   cur.execute("""INSERT INTO lyrics_feature_matrix (matrix, row_song_id, column_lyrics_feature, type, create_time, modify_time) VALUES (%s, %s, %s, %s, %s, %s)""",(file_name, row_song_id, column_lyrics_feature, "model", create_time, modify_time))
+#   db.commit()
+#   print "success"
+#except mysql.Error, e:
+#   db.rollback()
+#   print "An error has been passed. %s" %e
+#
+#print "save in db"
+#
+#
+#cur.close()
+#db.close()
