@@ -70,7 +70,7 @@ print( "matrix shape --> %d rows x %d columns" % A_lyrics_feature_matrix.shape )
 
 # SVD decomposition
 #lyrics_feature_U,lyrics_feature_s,lyrics_feature_V = np.linalg.svd(A_lyrics_feature_matrix, full_matrices=False)
-lyrics_feature_U,lyrics_feature_s,lyrics_feature_V = sparsesvd(sparse.csr_matrix(A_lyrics_feature_matrix), 913)
+lyrics_feature_U,lyrics_feature_s,lyrics_feature_V = sparsesvd(sparse.csr_matrix(A_lyrics_feature_matrix.getA()), 913)
 
 print "SSVD performed"
 print lyrics_feature_s
