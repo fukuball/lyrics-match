@@ -18,12 +18,13 @@ class LyricsForm:
 		self.__ssm = SSMOperation()
 
 		self.__LENRATE = 6 / 7.0
-		self.__TOPK = 5
+		self.__TOPK = 1
 	
 
 
 
-	def formAnalysis(self, SSM, isViz = False):
+	def formAnalysis(self, SSM, isViz = False, topk = 5):
+		self.__TOPK = topk
 
 		"""
 		視覺化Matrix
