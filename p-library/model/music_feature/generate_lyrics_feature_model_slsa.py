@@ -19,6 +19,7 @@ import numpy as np
 import MySQLdb as mysql
 import json
 import scipy.sparse
+from scipy import sparse
 from sparsesvd import sparsesvd
 np.set_printoptions(threshold=np.nan)
 
