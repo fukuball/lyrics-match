@@ -1,0 +1,1 @@
+java -jar CKIPClient.jar ckipsocket.properties test/in test/out

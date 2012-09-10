@@ -1,0 +1,2 @@
+　行政院(N)　主計長(N)　石素梅(N)　今天(N)　在(P)　立法院(N)　表示(Vt)　、(PAUSECATEGORY)　因為(C)　去年(N)　公務人員(N)　已經(ADV)　調整(Vt)　過(ASP)　薪資(N)　、(PAUSECATEGORY)　所以(C)　今年(N)　沒有(ADV)　再(ADV)　加薪(Vi)　的(T)　計畫(N)　了(T)　；(SEMICOLONCATEGORY)　面對(Vt)　物價(N)　上漲(Vi)　、(PAUSECATEGORY)　希望(Vt)　全(DET)　國(N)　公務員(N)　共體時艱(Vi)　。(PERIODCATEGORY)
+　
