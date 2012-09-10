@@ -136,11 +136,15 @@ class FromDB(LyricsInput):
 					print "|" + word["word"] + "|" + word["consonant"] + "|" + word["vowel"] + "|"
 					#conId = [con["id"] for con in conList if con["consonant"] == word["consonant"]][0]
 					matchId = [con["id"] for con in conList if con["consonant"] == word["consonant"]]
+					print "conid", matchId
 					if matchId != []:
 						conId = matchId[0]
 
 					#vowelId = [vowel["id"] for vowel in vowelList if vowel["vowel"] == word["vowel"]][0]
-					matchId = [vowel["id"] for vowel in vowelList if vowel["vowel"] == word["vowel"]][0]
+
+					matchId = [vowel["id"] for vowel in vowelList if vowel["vowel"] == word["vowel"]]
+					print "vowelid", matchId
+
 					if matchId != []:
 						vowelId = matchId[0]
 
