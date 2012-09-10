@@ -131,6 +131,7 @@ class FromDB(LyricsInput):
 
 
 				# 拼音
+				print wordList
 				for word in wordList:
 					# 將聲母、韻母轉換成對應的 id
 					conId = [con["id"] for con in conList if con["consonant"] == word["consonant"]][0]
