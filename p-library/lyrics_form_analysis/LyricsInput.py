@@ -131,12 +131,13 @@ class FromDB(LyricsInput):
 
 
 				# 拼音
-				print wordList
 				for word in wordList:
 					# 將聲母、韻母轉換成對應的 id
+					print word,
 					conId = [con["id"] for con in conList if con["consonant"] == word["consonant"]][0]
 					vowelId = [vowel["id"] for vowel in vowelList if vowel["vowel"] == word["vowel"]][0]
 					pinyinLine.append((conId, vowelId))
+				print 
 
 				pinyinLine.append('') #空字串表示分隔符號
 
