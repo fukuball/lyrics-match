@@ -87,7 +87,7 @@ print "dedimenstion performed"
 lyrics_feature_s = np.diag(lyrics_feature_s)
 #print lyrics_feature_s
 
-A_bar_lyrics_feature_matrix = numpy.allclose(A_lyrics_feature_matrix, numpy.dot(lyrics_feature_U.T, numpy.dot(numpy.diag(lyrics_feature_s), lyrics_feature_V)))
+A_bar_lyrics_feature_matrix = np.allclose(A_lyrics_feature_matrix, np.dot(lyrics_feature_U.T, np.dot(numpy.diag(lyrics_feature_s), lyrics_feature_V)))
 print A_bar_lyrics_feature_matrix
 print( "matrix shape --> %d rows x %d columns" % A_bar_lyrics_feature_matrix.shape )
 
