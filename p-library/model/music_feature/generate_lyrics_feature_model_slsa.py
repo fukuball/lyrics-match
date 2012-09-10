@@ -73,7 +73,7 @@ print( "matrix shape --> %d rows x %d columns" % A_lyrics_feature_matrix.shape )
 lyrics_feature_U,lyrics_feature_s,lyrics_feature_V = sparsesvd(sparse.csc_matrix(A_lyrics_feature_matrix.getA()), 913)
 
 print "SSVD performed"
-print lyrics_feature_s
+#print lyrics_feature_s
 
 # 降維
 for s_index, s_item in enumerate(lyrics_feature_s) :
@@ -84,19 +84,19 @@ print "dedimenstion performed"
 
 # lyrics feature model matrix
 lyrics_feature_s = np.diag(lyrics_feature_s)
-print lyrics_feature_s
+#print lyrics_feature_s
 
-#A_bar_lyrics_feature_matrix = np.dot(lyrics_feature_U,np.dot(lyrics_feature_s,lyrics_feature_V))
-##print A_bar_lyrics_feature_matrix
-#print( "matrix shape --> %d rows x %d columns" % A_bar_lyrics_feature_matrix.shape )
-#
-#print "reform matrix"
-#
-#A_bar_list = A_bar_lyrics_feature_matrix.tolist()
-#A_bar_string = json.dumps(A_bar_list)
-#
-#print "matrix dump"
-#
+A_bar_lyrics_feature_matrix = np.dot(lyrics_feature_U,np.dot(lyrics_feature_s,lyrics_feature_V))
+print A_bar_lyrics_feature_matrix
+print( "matrix shape --> %d rows x %d columns" % A_bar_lyrics_feature_matrix.shape )
+
+print "reform matrix"
+
+A_bar_list = A_bar_lyrics_feature_matrix.tolist()
+A_bar_string = json.dumps(A_bar_list)
+
+print "matrix dump"
+
 #file_name = 'lyrics-model-13.txt'
 #f = open(file_name, 'w')
 #f.write(A_bar_string)
