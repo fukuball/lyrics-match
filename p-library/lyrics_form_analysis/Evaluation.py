@@ -86,6 +86,9 @@ class Evaluation:
 		eKind = len(estimate)
 		tKind = len(truth)
 
+		print "estimate group", eKind
+		print "truth group", tKind
+
 		over = 1 - (self.__condEntropy(estimate, truth, float(lineNum)) / log(eKind, 2))
 		under = 1 - (self.__condEntropy(truth, estimate, float(lineNum)) / log(tKind, 2))
 
@@ -113,9 +116,6 @@ class Evaluation:
 		Marginal Probability Vector
 		"""
 		mpVector = sum(jpMatrix)
-
-
-
 		tempMatrix = jpMatrix / mpVector
 
 

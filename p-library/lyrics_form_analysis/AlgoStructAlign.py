@@ -1,6 +1,9 @@
 # -*- coding: utf-8 -*-
 
 from AlgoSequence import AlgoSequence
+from numpy import zeros
+from numpy import argmax
+from numpy import argmin
 
 class AlgoStructAlign(AlgoSequence):
 
@@ -8,6 +11,24 @@ class AlgoStructAlign(AlgoSequence):
 
 		# 記錄 similarity object
 		self.__simObject = simObject
+
+
+		# 記錄 similarity object 的 class 名稱
+		self.__simObjName = self.__simObject.__class__.__name__
+
+		self.__limitValueFunc = lambda x, y: max(x, y)
+		self.__limitIdxFunc = lambda values: argmax(values)
+
+		#負無限大
+		self.__INF = -1e6
+
+
+		if "dist" in self.__simObject.__class__.__name__.lower():
+			self.__limitValueFunc = lambda x, y: min(x, y)
+			self.__limitIdxFunc = lambda values: argmin(values)
+			self.__INF = 1e6
+
+
 
 		# 記錄是否要考慮韻腳
 		self.__isRhyme = isRhyme
@@ -54,12 +75,13 @@ class AlgoStructAlign(AlgoSequence):
 		self.__GAP = '-'
 
 
-		#負無限大
-		self.__MINUSINF = -1e6
 
 
 		# 兩字注音match的最大相似度
 		self.__MAXPINYIN = 1.0
+
+
+
 	
 
 
@@ -144,7 +166,6 @@ class AlgoStructAlign(AlgoSequence):
 
 		
 		# 產生 Score Table、Gap Table 以及 Local Similarity Table，三個 table shape 一樣
-		from numpy import zeros
 		self.__tableS = zeros([self.__rowLen, self.__colLen], float)
 		self.__tableG = zeros(self.__tableS.shape, float)
 		self.__tableL = zeros(self.__tableS.shape, float)
@@ -216,11 +237,20 @@ class AlgoStructAlign(AlgoSequence):
 		初始化 Score Table
 		"""
 		for i in range(1, self.__rowLen):
-			self.__tableS[i][0] = self.__MINUSINF
+			self.__tableS[i][0] = self.__INF
 
 
 		for j in range(1, self.__colLen):
-			self.__tableS[0][j] = self.__POPEN + (j - 1) * self.__PEXT
+			#self.__tableS[0][j] = self.__POPEN + (j - 1) * self.__PEXT
+
+			if self.__seqJ[j - 1] == self.__GAP or self.__seqJ[j - 1] == self.__SPACE:
+				self.__tableS[0][j] = self.__tableS[0][j - 1] + self.__POPEN
+			else:
+				if self.__seqJ[j] == self.__SPACE:
+					self.__tableS[0][j] = self.__tableS[0][j - 1] + self.__PCROSS
+				else:
+					self.__tableS[0][j] = self.__tableS[0][j - 1] + self.__PEXT
+
 
 
 
@@ -236,7 +266,7 @@ class AlgoStructAlign(AlgoSequence):
 		for j in range(self.__colLen):
 			if j == 0 or j in spaceIdxList:
 				for i in range(self.__rowLen):
-					self.__tableG[i][j] = self.__MINUSINF
+					self.__tableG[i][j] = self.__INF
 
 
 		"""
@@ -305,13 +335,18 @@ class AlgoStructAlign(AlgoSequence):
 
 				# 兩序列中的元素對應到的情況
 				else:
-					self.__tableG[i][j] = max(self.__tableS[i][j - 1] + self.__POPEN,
-								self.__tableG[i][j - 1] + self.__PEXT)
+					#self.__tableG[i][j] = max(self.__tableS[i][j - 1] + self.__POPEN,
+					#							self.__tableG[i][j - 1] + self.__PEXT)
+
+					self.__tableG[i][j] = self.__limitValueFunc(self.__tableS[i][j - 1] + self.__POPEN,
+																self.__tableG[i][j - 1] + self.__PEXT)
 
 
-					self.__tableS[i][j] = max(self.__tableS[i - 1][j - 1] + self.__tableL[i][j],
-									self.__tableG[i][j] )
+					#self.__tableS[i][j] = max(self.__tableS[i - 1][j - 1] + self.__tableL[i][j],
+					#							self.__tableG[i][j])
 
+					self.__tableS[i][j] = self.__limitValueFunc(self.__tableS[i - 1][j - 1] + self.__tableL[i][j],
+																self.__tableG[i][j])
 
 
 	def __backTracking(self):
@@ -320,26 +355,29 @@ class AlgoStructAlign(AlgoSequence):
 		輸入：result list，通常是空串列 []
 		輸出：無，直接修改輸入的 result list，將排比的路徑用 index tuple 一一加入 result list 中
 		"""
-		from numpy import argmax
 		
 		def trackTableG(i, j):
 			#print "G", i,j
+			#raw_input()
 			path = None
 
 			compareList = [self.__tableG[i][j - 1] + self.__PEXT, self.__tableS[i][j - 1] + self.__POPEN]
-			maxIdx = argmax(compareList)
+			#maxIdx = argmax(compareList)
+			limitIdx = self.__limitIdxFunc(compareList)
 
-			if maxIdx == 0:
+			if limitIdx == 0:
 				path = trackTableG(i, j - 1)
 			else:
 				path = trackTableS(i, j - 1)
 
 			path.append( (0, j) )
+
 			return path
 
 
 		def trackTableS(i, j):
 			#print "S", i, j
+			#raw_input()
 			path = None
 
 			# 回朔的結束情況
@@ -368,11 +406,12 @@ class AlgoStructAlign(AlgoSequence):
 			# 兩序列中的元素對應到的情況
 			else:
 				compareList = [self.__tableG[i][j], self.__tableS[i - 1][j - 1] + self.__tableL[i][j] ]
-				maxIdx = argmax(compareList)
+				#maxIdx = argmax(compareList)
+				limitIdx = self.__limitIdxFunc(compareList)
 
 
 				#if self.__tableS[i][j] == self.__tableG[i][j]:
-				if maxIdx == 0:
+				if limitIdx == 0:
 					path = trackTableG(i, j)
 
 				#elif self.__tableS[i][j] == self.__tableS[i - 1][j - 1] + self.__tableL[i][j]:
@@ -401,6 +440,7 @@ if __name__ == "__main__":
 	from SimPOS import SimPOS
 	from InputProcess import Pinyin2Tuple
 	from LyricsInput import FromFile
+	from DistEuclidean import DistEuclidean
 
 	reload(sys)
 	sys.setdefaultencoding('utf-8')
@@ -431,9 +471,13 @@ if __name__ == "__main__":
 
 	seq1 = "N,Vt,,Vt,POST".split(",")
 	seq2 = "N,Vt,POST".split(",")
+	#seq1 = [4, '', 3]
+	#seq2 = [9, '', 4, '', 3, '', 1]
 
 	simObject = SimPOS()
-	simObject = AlgoStructAlign(simObject, -0.5)
+	#simObject = DistEuclidean()
+	#simObject = AlgoStructAlign(simObject, 3)
+	simObject = AlgoStructAlign(simObject, -1.0)
 
 	print simObject.similarity(seq1, seq2)
 
