@@ -15,6 +15,47 @@ class Evaluation:
 		pass
 
 
+	def fscore(self, estimate, truth):
+		eBoundarySet = self.__boundary(estimate)
+		tBoundarySet = self.__boundary(truth)
+
+		interLen = float(len(eBoundarySet & tBoundarySet))
+
+		"""
+		Precision
+		"""
+		precision = interLen / len(eBoundarySet)
+
+
+		"""
+		Recall
+		"""
+		recall = interLen / len(tBoundarySet)
+
+
+		"""
+		f-score
+		"""
+		f = 2 * precision * recall / (precision + recall)
+
+
+		return (precision, recall, f)
+
+		
+			
+
+	def __boundary(self, form):
+		boundary = set()
+
+		for group in form:
+			groupBoundary = set([block[0] for block in group["group"] if block[0] != 1])
+			boundary = set.union(boundary, groupBoundary)
+
+		return boundary
+
+
+
+
 	def pairwiseFScore(self, estimate, truth):
 		eSet = self.__pairwiseSetGen(estimate)
 		tSet = self.__pairwiseSetGen(truth)
@@ -201,18 +242,18 @@ class Evaluation:
 
 if __name__ == "__main__":
 
-	estimate = [{'group': [[11, 14], [20, 23], [27, 30]], 'label': 'chorus'}, 
-				{'group': [[6, 10], [15, 19]], 'label': 'verse'}, 
-				{'group': [[1, 5]], 'label': 'intro'}, 
-				{'group': [[24, 26]], 'label': 'bridge'}]
+	estimate = [{'group': [[1, 6], [11, 16]], 'label': 'chorus'}, 
+				{'group': [[7, 8], [9, 10], [17, 18], [19, 20], [21, 22]], 'label': 'verse'}, 
+				{'group': [[23, 23]], 'label': 'outro'}]
 
 
-	truth = [{'group': [[24, 26]], 'label': 'bridge'}, 
-			 {'group': [[1, 5], [6, 10], [15, 19]], 'label': 'verse'}, 
-			 {'group': [[11, 14], [20, 23], [27, 30]], 'label': 'chorus'}]
+	truth = [{'group': [[1, 6], [11, 16]], 'label': 'chorus'}, 
+				{'group': [[7, 10], [17, 20], [21, 22]], 'label': 'verse'}, 
+				{'group': [[23, 23]], 'label': 'outro'}]
 
 	eva = Evaluation()
-	print eva.labelRecover(estimate, truth, 30)
+	#print eva.labelRecover(estimate, truth, 30)
+	print eva.fscore(estimate, estimate)
 
 
 
