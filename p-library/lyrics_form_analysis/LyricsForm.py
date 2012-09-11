@@ -110,11 +110,11 @@ class LyricsForm:
 				長度較長的family
 				"""
 				maxLength = max(lengthList)
-				cohesionIdxList = []
 
-				for i in range(len(remainFamilyIdx)):
-					if lengthList[remainFamilyIdx[i]] != maxLength:
-						remainFamilyIdx.pop(i)
+				for familyIdx in remainFamilyIdx:
+					if lengthList[familyIdx] != maxLength:
+						remainFamilyIdx.remove(familyIdx)
+
 
 
 				"""
@@ -122,9 +122,9 @@ class LyricsForm:
 				"""
 				maxCohesion = max(cohesionList)
 
-				for i in range(len(remainFamilyIdx)):
-					if cohesionList[remainFamilyIdx[i]] != maxCohesion:
-						remainFamilyIdx.pop(i)
+				for familyIdx in remainFamilyIdx:
+					if cohesionList[familyIdx] != maxCohesion:
+						remainFamilyIdx.remove(familyIdx)
 
 
 				"""
@@ -133,9 +133,7 @@ class LyricsForm:
 				maxStart = 0
 				chorusIdx = None
 
-				for i in range(len(remainFamilyIdx)):
-					familyIdx = remainFamilyIdx[i]
-
+				for familyIdx in remainFamilyIdx:
 					"""
 					family 中第一個block的start line 最小的
 					"""
