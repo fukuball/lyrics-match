@@ -117,7 +117,8 @@ class LyricsForm:
 				內聚力較大的family
 				"""
 				maxCohesion = max(cohesionList)
-				remainFamilyIdx = [familyIdx for familyIdx in remainFamilyIdx if cohesionList[familyIdx] == maxCohesion]
+				error = 10e-5
+				remainFamilyIdx = [familyIdx for familyIdx in remainFamilyIdx if abs(cohesionList[familyIdx] - maxCohesion) < error]
 				print remainFamilyIdx
 
 
