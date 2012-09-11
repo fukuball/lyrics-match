@@ -104,6 +104,8 @@ class LyricsForm:
 				判斷副歌
 				"""
 				remainFamilyIdx = range(len(familyList))
+				print "original", remainFamilyIdx
+
 
 				"""
 				長度較長的family
@@ -116,8 +118,9 @@ class LyricsForm:
 				"""
 				內聚力較大的family
 				"""
-				maxCohesion = max(cohesionList)
+				maxCohesion = max(map(lambda idx: cohesionList[idx], remainFamilyIdx))
 				error = 10e-5
+
 				remainFamilyIdx = [familyIdx for familyIdx in remainFamilyIdx if abs(cohesionList[familyIdx] - maxCohesion) < error]
 				print remainFamilyIdx
 
