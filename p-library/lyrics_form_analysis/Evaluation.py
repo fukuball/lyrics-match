@@ -78,8 +78,6 @@ class Evaluation:
 
 
 	def labelRecover(self, estimate, truth, lineNum):
-		print "estiamte", estimate
-		print "truth", truth
 		estimateLabel = self.__fillLabel(estimate, lineNum)
 		truthLabel = self.__fillLabel(truth, lineNum)
 
@@ -123,6 +121,9 @@ class Evaluation:
 
 
 	def NCE(self, estimate, truth, lineNum):
+		print "estiamte", estimate
+		print "truth", truth
+
 		"""
 		Normalized Conditional Entropy
 		"""
@@ -200,16 +201,18 @@ class Evaluation:
 
 if __name__ == "__main__":
 
-	estimate = [{"group": [[1, 4], [7, 10]], "label": "verse"},
-				{"group": [[5, 6], [11, 12], [13, 14]], "label": "chorus"}]
+	estimate = [{'group': [[11, 14], [20, 23], [27, 30]], 'label': 'chorus'}, 
+				{'group': [[6, 10], [15, 19]], 'label': 'verse'}, 
+				{'group': [[1, 5]], 'label': 'intro'}, 
+				{'group': [[24, 26]], 'label': 'bridge'}]
 
 
-	truth = [{"group": [[1, 3], [7, 9]], "label": "verse"},
-			{"group": [[4, 6], [10, 12]], "label": "chorus"},
-			{"group": [[13, 14]], "label": "outro"}]
+	truth = [{'group': [[24, 26]], 'label': 'bridge'}, 
+			 {'group': [[1, 5], [6, 10], [15, 19]], 'label': 'verse'}, 
+			 {'group': [[11, 14], [20, 23], [27, 30]], 'label': 'chorus'}]
 
 	eva = Evaluation()
-	print eva.labelRecover(estimate, truth, 14)
+	print eva.labelRecover(estimate, truth, 30)
 
 
 

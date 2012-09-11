@@ -103,10 +103,10 @@ class LyricsForm:
 				"""
 
 				"""
-				內聚力較小的family
+				內聚力較大的family
 				"""
 				maxCohesion = max(cohesionList)
-				tempList = []
+				lengthList = []
 
 
 				"""
@@ -114,10 +114,26 @@ class LyricsForm:
 				"""
 				for i in range(len(cohesionList)):
 					if cohesionList[i] == maxCohesion:
-						tempList.append((i, len(familyList[i])))
+						lengthList.append((i, len(familyList[i])))
 				
-				idx = numpy.argmax(map(lambda pair: pair[1], tempList))
-				chorusIdx = tempList[idx][0]
+				maxLength = max(lengthList)
+				minStart = lineNum + 1
+				chorusIdx = None
+
+				for i in range(len(lengthList)):
+					if lengthList[i][1] == maxLength:
+						familyIdx = lengthList[i][0]
+
+						"""
+						family 中第一個block的start line
+						"""
+						if familyList[familyIdx][0][0] < minStart:
+							chorusIdx = familyIdx
+							minStart = familyList[familyIdx][0][0]
+
+
+				#idx = numpy.argmax(map(lambda pair: pair[1], tempList))
+				#chorusIdx = tempList[idx][0]
 				chorus = {"label": "chorus", "group": familyList[chorusIdx]}
 				form.append(chorus)
 
