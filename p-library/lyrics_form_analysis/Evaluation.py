@@ -42,9 +42,8 @@ class Evaluation:
 		f = 2 * precision * recall / (precision + recall)
 
 		return f
-		
-		
-	
+
+
 	def __pairwiseSetGen(self, form):
 		"""
 		產生group內兩兩關連的pair
@@ -75,6 +74,47 @@ class Evaluation:
 					
 		
 		return linePairSet
+
+
+
+	def labelRecover(self, estimate, truth, lineNum):
+		estimateLabel = self.__fillLabel(estimate, lineNum)
+		truthLabel = self.__fillLabel(truth, lineNum)
+
+		if '' in estimateLabel or '' in truthLabel:
+			print "Not fulfill"
+
+		recoverCount = 0.0
+		print estimateLabel
+		print truthLabel
+
+		for i in range(lineNum):
+			if estimateLabel[i] == truthLabel[i]:
+				recoverCount += 1
+
+
+		recoverRate = recoverCount / lineNum
+		return recoverRate
+
+
+
+	
+
+	def __fillLabel(self, form, lineNum):
+		labelList = [''] * lineNum
+
+		for group in form:
+			family = group["group"] 
+			label = group["label"]
+
+			for block in family:
+				start = block[0] - 1
+				end = block[1]
+		
+				for i in range(start, end):
+					labelList[i] = label
+	
+		return labelList
 				
 
 
@@ -152,3 +192,26 @@ class Evaluation:
 
 
 		return rangeSet
+
+
+
+if __name__ == "__main__":
+
+	estimate = [{"group": [[1, 4], [7, 10]], "label": "verse"},
+				{"group": [[5, 6], [11, 12], [13, 14]], "label": "chorus"}]
+
+
+	truth = [{"group": [[1, 3], [7, 9]], "label": "verse"},
+			{"group": [[4, 6], [10, 12]], "label": "chorus"},
+			{"group": [[13, 14]], "label": "outro"}]
+
+	eva = Evaluation()
+	print eva.labelRecover(estimate, truth, 14)
+
+
+
+
+
+
+
+
