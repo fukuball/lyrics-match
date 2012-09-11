@@ -112,11 +112,12 @@ class LyricsForm:
 				"""
 				長度較長的family
 				"""
-				for i in range(len(cohesionList)):
-					if cohesionList[i] == maxCohesion:
-						lengthList.append((i, len(familyList[i])))
+				for familyIdx in range(len(cohesionList)):
+					if cohesionList[familyIdx] == maxCohesion:
+						lengthList.append((familyIdx, len(familyList[familyIdx])))
 				
-				maxLength = max(lengthList)
+
+				maxLength = max(map(lambda length: length[1], lengthList))
 				minStart = lineNum + 1
 				chorusIdx = None
 
@@ -125,7 +126,7 @@ class LyricsForm:
 						familyIdx = lengthList[i][0]
 
 						"""
-						family 中第一個block的start line
+						family 中第一個block的start line 最小的
 						"""
 						if familyList[familyIdx][0][0] < minStart:
 							chorusIdx = familyIdx
