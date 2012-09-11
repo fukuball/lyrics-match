@@ -112,7 +112,7 @@ class LyricsForm:
 				maxLength = max(lengthList)
 
 				for familyIdx in remainFamilyIdx:
-					if lengthList[familyIdx] != maxLength:
+					if lengthList[familyIdx] < maxLength:
 						remainFamilyIdx.remove(familyIdx)
 
 
@@ -123,7 +123,7 @@ class LyricsForm:
 				maxCohesion = max(cohesionList)
 
 				for familyIdx in remainFamilyIdx:
-					if cohesionList[familyIdx] != maxCohesion:
+					if cohesionList[familyIdx] < maxCohesion:
 						remainFamilyIdx.remove(familyIdx)
 
 
