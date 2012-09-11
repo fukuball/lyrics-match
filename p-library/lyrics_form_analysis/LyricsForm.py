@@ -120,7 +120,8 @@ class LyricsForm:
 				判斷主歌
 				"""
 				for i in range(len(familyList)):
-					verse = {"label": "verse" + str(i + 1), "group": familyList[i]}
+					#verse = {"label": "verse" + str(i + 1), "group": familyList[i]}
+					verse = {"label": "verse", "group": familyList[i]}
 					form.append(verse)
 
 
