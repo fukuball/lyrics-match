@@ -166,13 +166,13 @@ class LyricsForm:
 					"""
 					加入前段
 					"""
-					if remainBlocks[0][0] == 1:
+					if len(remainBlocks) > 0 and remainBlocks[0][0] == 1:
 						form.append({"label": "intro", "group": [remainBlocks.pop(0)]})
 
 					"""
 					加入尾聲
 					"""
-					if remainBlocks[-1][1] == lineNum:
+					if len(remainBlocks) > 0 and remainBlocks[-1][1] == lineNum:
 						form.append({"label": "outro", "group": [remainBlocks.pop(-1)]})
 
 					"""
