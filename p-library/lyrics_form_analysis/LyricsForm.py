@@ -103,28 +103,22 @@ class LyricsForm:
 				"""
 				判斷副歌
 				"""
-		
-				
 				remainFamilyIdx = range(len(familyList))
+
 				"""
 				長度較長的family
 				"""
 				maxLength = max(lengthList)
-
-				for familyIdx in remainFamilyIdx:
-					if lengthList[familyIdx] < maxLength:
-						remainFamilyIdx.remove(familyIdx)
-
+				remainFamilyIdx = [familyIdx for familyIdx in remainFamilyIdx if lengthList[familyIdx] == maxLength]
+				print remainFamilyIdx
 
 
 				"""
 				內聚力較大的family
 				"""
 				maxCohesion = max(cohesionList)
-
-				for familyIdx in remainFamilyIdx:
-					if cohesionList[familyIdx] < maxCohesion:
-						remainFamilyIdx.remove(familyIdx)
+				remainFamilyIdx = [familyIdx for familyIdx in remainFamilyIdx if cohesionList[familyIdx] == maxCohesion]
+				print remainFamilyIdx
 
 
 				"""
