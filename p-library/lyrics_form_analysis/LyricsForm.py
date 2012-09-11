@@ -82,6 +82,7 @@ class LyricsForm:
 			familyList = []
 			cohesionList = []
 			lengthList = []
+			startList = []
 
 			for coor in combine["coors"]:
 				cohesion = self.__allFamilyM[coor[0]][coor[1]]["cohesion"]
@@ -92,6 +93,7 @@ class LyricsForm:
 				familyList.append(lineNumFamily)
 				cohesionList.append(cohesion)
 				lengthList.append(len(lineNumFamily))
+				startList.append(lineNumFamily[0][0])
 
 				for block in lineNumFamily:
 					start = block[0]
@@ -104,45 +106,49 @@ class LyricsForm:
 				判斷副歌
 				"""
 				remainFamilyIdx = range(len(familyList))
-				print "original", remainFamilyIdx
 
+				if len(remainFamilyIdx) != 2:
+					print "family number != 2"
+					exit()
+
+				vote = [0, 0]
+				vote[numpy.argmax(cohesionList)] += 1
+				vote[numpy.argmax(lengthList)] += 1
+				vote[numpy.argmax(startList)] += 1
+				chorusIdx = numpy.argmax(vote)
+				
 
 				"""
 				長度較長的family
 				"""
-				maxLength = max(lengthList)
-				remainFamilyIdx = [familyIdx for familyIdx in remainFamilyIdx if lengthList[familyIdx] == maxLength]
-				print remainFamilyIdx
+				#maxLength = max(lengthList)
+				#remainFamilyIdx = [familyIdx for familyIdx in remainFamilyIdx if lengthList[familyIdx] == maxLength]
 
 
 				"""
 				內聚力較大的family
 				"""
-				maxCohesion = max(map(lambda idx: cohesionList[idx], remainFamilyIdx))
-				error = 10e-5
-
-				remainFamilyIdx = [familyIdx for familyIdx in remainFamilyIdx if abs(cohesionList[familyIdx] - maxCohesion) < error]
-				print remainFamilyIdx
+				#maxCohesion = max(map(lambda idx: cohesionList[idx], remainFamilyIdx))
+				#error = 10e-5
+				#remainFamilyIdx = [familyIdx for familyIdx in remainFamilyIdx if abs(cohesionList[familyIdx] - maxCohesion) < error]
 
 
 				"""
 				樣式段落位置較前面的 family
 				"""
-				maxStart = 0
-				chorusIdx = None
+				#maxStart = 0
+				#chorusIdx = None
 
-				for familyIdx in remainFamilyIdx:
-					"""
-					family 中第一個block的start line 最小的
-					"""
-					if familyList[familyIdx][0][0] > maxStart:
-						chorusIdx = familyIdx
-						maxStart = familyList[familyIdx][0][0]
+				#for familyIdx in remainFamilyIdx:
+				"""
+				family 中第一個block的start line 最小的
+				"""
+				#	if familyList[familyIdx][0][0] > maxStart:
+				#		chorusIdx = familyIdx
+				#		maxStart = familyList[familyIdx][0][0]
 
 
 
-				#idx = numpy.argmax(map(lambda pair: pair[1], tempList))
-				#chorusIdx = tempList[idx][0]
 				chorus = {"label": "chorus", "group": familyList[chorusIdx]}
 				form.append(chorus)
 
