@@ -118,7 +118,7 @@ class LyricsForm:
 				
 
 				maxLength = max(map(lambda length: length[1], lengthList))
-				minStart = lineNum + 1
+				maxStart = 0
 				chorusIdx = None
 
 				for i in range(len(lengthList)):
@@ -128,9 +128,9 @@ class LyricsForm:
 						"""
 						family 中第一個block的start line 最小的
 						"""
-						if familyList[familyIdx][0][0] < minStart:
+						if familyList[familyIdx][0][0] > maxStart:
 							chorusIdx = familyIdx
-							minStart = familyList[familyIdx][0][0]
+							maxStart = familyList[familyIdx][0][0]
 
 
 				#idx = numpy.argmax(map(lambda pair: pair[1], tempList))
