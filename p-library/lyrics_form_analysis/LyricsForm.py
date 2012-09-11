@@ -81,6 +81,7 @@ class LyricsForm:
 			form = []
 			familyList = []
 			cohesionList = []
+			lengthList = []
 
 			for coor in combine["coors"]:
 				cohesion = self.__allFamilyM[coor[0]][coor[1]]["cohesion"]
@@ -90,6 +91,7 @@ class LyricsForm:
 
 				familyList.append(lineNumFamily)
 				cohesionList.append(cohesion)
+				lengthList.append(len(lineNumFamily))
 
 				for block in lineNumFamily:
 					start = block[0]
@@ -101,36 +103,46 @@ class LyricsForm:
 				"""
 				判斷副歌
 				"""
+		
+				
+				remainFamilyIdx = range(len(familyList))
+				"""
+				長度較長的family
+				"""
+				maxLength = max(lengthList)
+				cohesionIdxList = []
+
+				for i in range(len(remainFamilyIdx)):
+					if lengthList[remainFamilyIdx[i]] != maxLength:
+						remainFamilyIdx.pop(i)
+
 
 				"""
 				內聚力較大的family
 				"""
 				maxCohesion = max(cohesionList)
-				lengthList = []
+
+				for i in range(len(remainFamilyIdx)):
+					if cohesionList[remainFamilyIdx[i]] != maxCohesion:
+						remainFamilyIdx.pop(i)
 
 
 				"""
-				長度較長的family
+				樣式段落位置較前面的 family
 				"""
-				for familyIdx in range(len(cohesionList)):
-					if cohesionList[familyIdx] == maxCohesion:
-						lengthList.append((familyIdx, len(familyList[familyIdx])))
-				
-
-				maxLength = max(map(lambda length: length[1], lengthList))
 				maxStart = 0
 				chorusIdx = None
 
-				for i in range(len(lengthList)):
-					if lengthList[i][1] == maxLength:
-						familyIdx = lengthList[i][0]
+				for i in range(len(remainFamilyIdx)):
+					familyIdx = remainFamilyIdx[i]
 
-						"""
-						family 中第一個block的start line 最小的
-						"""
-						if familyList[familyIdx][0][0] > maxStart:
-							chorusIdx = familyIdx
-							maxStart = familyList[familyIdx][0][0]
+					"""
+					family 中第一個block的start line 最小的
+					"""
+					if familyList[familyIdx][0][0] > maxStart:
+						chorusIdx = familyIdx
+						maxStart = familyList[familyIdx][0][0]
+
 
 
 				#idx = numpy.argmax(map(lambda pair: pair[1], tempList))
