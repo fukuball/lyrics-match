@@ -101,9 +101,17 @@ class LyricsForm:
 				"""
 				判斷副歌
 				"""
+
+				"""
+				內聚力較小的family
+				"""
 				maxCohesion = max(cohesionList)
 				tempList = []
 
+
+				"""
+				長度較長的family
+				"""
 				for i in range(len(cohesionList)):
 					if cohesionList[i] == maxCohesion:
 						tempList.append((i, len(familyList[i])))
@@ -130,7 +138,7 @@ class LyricsForm:
 				判斷前段、橋段與尾聲
 				"""
 				if len(lyricsLine) > 0:
-					lyricsLine = list(lyricsLine)
+					lyricsLine = sorted(list(lyricsLine))
 					prevLineNum = lyricsLine[0] - 1
 					block = []
 					remainBlocks = []
@@ -159,19 +167,20 @@ class LyricsForm:
 					加入前段
 					"""
 					if remainBlocks[0][0] == 1:
-						form.append({"label": "intro", "group": [remainBlocks[0]]})
-
-					"""
-					加入橋段
-					"""
-					if len(remainBlocks[1:-2]) > 0:
-						form.append({"label": "bridge", "group": remainBlocks[1:-2]})
+						form.append({"label": "intro", "group": [remainBlocks.pop(0)]})
 
 					"""
 					加入尾聲
 					"""
 					if remainBlocks[-1][1] == lineNum:
-						form.append({"label": "outro", "group": [remainBlocks[-1]]})
+						form.append({"label": "outro", "group": [remainBlocks.pop(-1)]})
+
+					"""
+					加入橋段
+					"""
+					if len(remainBlocks) > 0:
+						form.append({"label": "bridge", "group": remainBlocks})
+
 
 
 					
@@ -183,8 +192,6 @@ class LyricsForm:
 		return resultList
 
 			
-
-
 
 
 
