@@ -78,11 +78,14 @@ class Evaluation:
 
 
 	def labelRecover(self, estimate, truth, lineNum):
+		print "estiamte", estimate
+		print "truth", truth
 		estimateLabel = self.__fillLabel(estimate, lineNum)
 		truthLabel = self.__fillLabel(truth, lineNum)
 
 		if '' in estimateLabel or '' in truthLabel:
-			print "Not fulfill"
+			print "Not fulfill."
+			exit()
 
 		recoverCount = 0.0
 		print estimateLabel
