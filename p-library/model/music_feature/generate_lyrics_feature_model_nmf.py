@@ -70,7 +70,13 @@ print "matrix formed"
 print( "matrix shape --> %d rows x %d columns" % A_lyrics_feature_matrix.shape )
 
 # MF decomposition
-fctr = nimfa.mf(A_lyrics_feature_matrix, method = "nmf", max_iter = 30, rank = 100, update = 'divergence', objective = 'div')
+# Run LSNMF rank 3 algorithm
+# We don't specify any algorithm specific parameters. Defaults will be used.
+# We don't specify initialization method. Algorithm specific or random initialization will be used.
+# In LSNMF case, by default random is used.
+# Returned object is fitted factorization model. Through it user can access quality and performance measures.
+# The fctr_res's attribute `fit` contains all the attributes of the factorization.
+fctr = nimfa.mf(A_lyrics_feature_matrix, method = "lsnmf", max_iter = 10, rank = 100)
 fctr_res = nimfa.mf_run(fctr)
 
 # Basis matrix. It is sparse, as input V was sparse as well.
@@ -83,12 +89,14 @@ H = fctr_res.coef()
 print "Coef"
 print H
 
-# Return the loss function according to Kullback-Leibler divergence. By default Euclidean metric is used.
+# Print the loss function according to Kullback-Leibler divergence. By default Euclidean metric is used.
 print "Distance Kullback-Leibler: %5.3e" % fctr_res.distance(metric = "kl")
 # Compute generic set of measures to evaluate the quality of the factorization
 sm = fctr_res.summary()
-# Print sparseness (Hoyer, 2004) of basis and mixture matrix
-print "Sparseness Basis: %5.3f  Mixture: %5.3f" % (sm['sparseness'][0], sm['sparseness'][1])
+# Print residual sum of squares (Hutchins, 2008). Can be used for estimating optimal factorization rank.
+print "Rss: %8.3f" % sm['rss']
+# Print explained variance.
+print "Evar: %8.3f" % sm['evar']
 # Print actual number of iterations performed
 print "Iterations: %d" % sm['n_iter']
 
