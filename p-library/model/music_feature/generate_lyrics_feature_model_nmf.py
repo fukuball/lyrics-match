@@ -66,7 +66,7 @@ for row in cur.fetchall() :
 A_lyrics_feature_matrix = np.matrix(json.loads(lyrics_feature_matrix))
 
 print "matrix formed"
-print A_lyrics_feature_matrix
+#print A_lyrics_feature_matrix
 print( "matrix shape --> %d rows x %d columns" % A_lyrics_feature_matrix.shape )
 
 
@@ -77,7 +77,7 @@ print( "matrix shape --> %d rows x %d columns" % A_lyrics_feature_matrix.shape )
 # In LSNMF case, by default random is used.
 # Returned object is fitted factorization model. Through it user can access quality and performance measures.
 # The fctr_res's attribute `fit` contains all the attributes of the factorization.
-fctr = nimfa.mf(A_lyrics_feature_matrix, method = "lsnmf", max_iter = 10, rank = 3000)
+fctr = nimfa.mf(A_lyrics_feature_matrix, method = "lsnmf", max_iter = 10, rank = 20)
 fctr_res = nimfa.mf_run(fctr)
 
 # Basis matrix. It is sparse, as input V was sparse as well.
@@ -92,7 +92,7 @@ print H
 
 # Print estimate of target matrix V
 print "Estimate"
-A_bar_lyrics_feature_matrix = np.dot(W.todense(), H.todense())
+A_bar_lyrics_feature_matrix = np.dot(W, H)
 print A_bar_lyrics_feature_matrix
 print( "matrix shape --> %d rows x %d columns" % A_bar_lyrics_feature_matrix.shape )
 
