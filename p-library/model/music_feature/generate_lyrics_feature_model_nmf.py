@@ -66,8 +66,9 @@ for row in cur.fetchall() :
 A_lyrics_feature_matrix = np.matrix(json.loads(lyrics_feature_matrix))
 
 print "matrix formed"
-#print A_lyrics_feature_matrix
+print A_lyrics_feature_matrix
 print( "matrix shape --> %d rows x %d columns" % A_lyrics_feature_matrix.shape )
+
 
 # MF decomposition
 # Run LSNMF rank 3 algorithm
