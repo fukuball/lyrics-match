@@ -83,7 +83,10 @@ class Evaluation:
 		"""
 		Pairwise F score
 		"""
-		f = 2 * precision * recall / (precision + recall)
+		f = 0.0
+
+		if (precision + recall) > 0.0
+			f = 2 * precision * recall / (precision + recall)
 
 		return f
 
