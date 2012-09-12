@@ -76,7 +76,7 @@ print( "matrix shape --> %d rows x %d columns" % A_lyrics_feature_matrix.shape )
 # In LSNMF case, by default random is used.
 # Returned object is fitted factorization model. Through it user can access quality and performance measures.
 # The fctr_res's attribute `fit` contains all the attributes of the factorization.
-fctr = nimfa.mf(A_lyrics_feature_matrix, method = "lsnmf", max_iter = 10, rank = 100)
+fctr = nimfa.mf(A_lyrics_feature_matrix, method = "lsnmf", max_iter = 10, rank = 3000)
 fctr_res = nimfa.mf_run(fctr)
 
 # Basis matrix. It is sparse, as input V was sparse as well.
@@ -89,27 +89,16 @@ H = fctr_res.coef()
 print "Coef"
 print H
 
-# Print the loss function according to Kullback-Leibler divergence. By default Euclidean metric is used.
-print "Distance Kullback-Leibler: %5.3e" % fctr_res.distance(metric = "kl")
-# Compute generic set of measures to evaluate the quality of the factorization
-sm = fctr_res.summary()
-# Print residual sum of squares (Hutchins, 2008). Can be used for estimating optimal factorization rank.
-print "Rss: %8.3f" % sm['rss']
-# Print explained variance.
-print "Evar: %8.3f" % sm['evar']
-# Print actual number of iterations performed
-print "Iterations: %d" % sm['n_iter']
-
 # Print estimate of target matrix V
 print "Estimate"
 A_bar_lyrics_feature_matrix = np.dot(W.todense(), H.todense())
 print A_bar_lyrics_feature_matrix
 print( "matrix shape --> %d rows x %d columns" % A_bar_lyrics_feature_matrix.shape )
 
-A_bar_list = A_bar_lyrics_feature_matrix.tolist()
-A_bar_string = json.dumps(A_bar_list)
-
-print "matrix dump"
+#A_bar_list = A_bar_lyrics_feature_matrix.tolist()
+#A_bar_string = json.dumps(A_bar_list)
+#
+#print "matrix dump"
 
 #file_name = 'lyrics-model-13.txt'
 #f = open(file_name, 'w')
