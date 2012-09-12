@@ -36,7 +36,10 @@ class Evaluation:
 		"""
 		f-score
 		"""
-		f = 2 * precision * recall / (precision + recall)
+		f = 0.0
+
+		if (precision + recall) > 0:
+			f = 2 * precision * recall / (precision + recall)
 
 
 		return (precision, recall, f)
