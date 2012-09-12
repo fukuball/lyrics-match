@@ -7,7 +7,7 @@ from numpy import argmin
 
 class AlgoStructAlign(AlgoSequence):
 
-	def __init__(self, simObject, popen, isRhyme = False):
+	def __init__(self, simObject, pext, popen, pcross, isRhyme = False):
 
 		# 記錄 similarity object
 		self.__simObject = simObject
@@ -52,11 +52,13 @@ class AlgoStructAlign(AlgoSequence):
 
 
 		# Extension Penalty 的分數
-		self.__PEXT = 0.5 * self.__POPEN
+		#self.__PEXT = 0.5 * self.__POPEN
+		self.__PEXT = pext
 
 
 		# Cross Penalty 的分數
-		self.__PCROSS = 2 * self.__POPEN
+		#self.__PCROSS = 2 * self.__POPEN
+		self.__PCROSS = pcross
 		#self.__PCROSS = 0.0
 
 

@@ -115,31 +115,61 @@ class SimPinyin(SimElement):
 
 if __name__ == '__main__':
 	print "Expected Value Calculating"
+	import numpy
 
-	def Expectation(table):
-		expectation = 0.0
+	initProb = numpy.array([0.18776053, 0.04980676, 0.00999599, 0.03793007, 0.02044165, 0.08871517,
+					  0.03264648, 0.05342537, 0.04855195, 0.03786019, 0.02424559, 0.04881932,
+					  0.04894997, 0.03391952, 0.05510251, 0.04288553, 0.02065433, 0.06820364,
+					  0.02910382, 0.03762624, 0.01109585, 0.01225952])
+
+	finalProb = numpy.array([  5.49597122e-02,   1.03171372e-01,   6.48372082e-02,   1.82571126e-02,
+				   3.22575745e-02,   4.59390153e-03,   7.87951339e-02,   0.00000000e+00,
+				   5.38871942e-02,   2.55581347e-02,   3.36248071e-02,   2.14959348e-02,
+				   3.19233621e-02,   3.27801612e-02,   2.47955228e-02,   2.78885067e-02,
+				   2.37594643e-03,   6.08874251e-03,   8.81105453e-05,   1.97337239e-02,
+					0.00000000e+00,   2.15961985e-02,   2.92557393e-02,   4.36390263e-02,
+				   2.13804796e-02,   2.25806060e-02,   3.02492617e-02,   4.49059952e-03,
+					6.49526634e-02,   4.98280325e-03,   3.86410316e-02,   1.70022970e-02,
+				   7.11872440e-03,   9.34579439e-03,   2.35164007e-02,   6.88173742e-03,
+				   9.93522356e-03,   1.80170874e-03,   5.51754311e-03])
+			
+	
+
+	def expectArray(table, probTable):
 		size = len(table)
+		print size * size
+		valueList = []
 
 		for i in range(size):
 			for j in range(size):
 				if table[i][j] == 3.0:
-					expectation += table[j][i]
+					valueList.append(table[j][i] * probTable[i] * probTable[j])
 				else:
-					expectation += table[i][j]
+					valueList.append(table[i][j] * probTable[i] * probTable[j])
 
-		expectation /= pow(len(table), 2)
-		return expectation 
+
+		return numpy.array(valueList) 
 
 	p = SimPinyin()
 	initTable = p.getInitTable()
 	finalTable = p.getFinalTable()
-	InitExpected = Expectation(initTable)
-	finalExpected = Expectation(finalTable)
+	#InitExpected = Expectation(initTable)
+	#finalExpected = Expectation(finalTable)
 
 
-	print "Init Expected Value: %.2f" % InitExpected
-	print "Final Expected Value: %.2f" % finalExpected
-	print "Each Match Expected Value: %.2f" % (InitExpected + finalExpected)
+
+	initArray = expectArray(initTable, initProb)
+	finalArray = expectArray(finalTable, finalProb)
+
+	print len(initArray), len(finalArray)
+
+	initExpected = initArray.mean()
+	finalExpected = finalArray.mean()
+
+
+	print "Init Expected Value: %.4f" % initExpected
+	print "Final Expected Value: %.4f" % finalExpected
+	print "Each Match Expected Value: %.4f" % ((initExpected + finalExpected) / 2)
 
 	
 
