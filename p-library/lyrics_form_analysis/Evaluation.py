@@ -259,7 +259,15 @@ if __name__ == "__main__":
 
 	eva = Evaluation()
 	#print eva.labelRecover(estimate, truth, 30)
-	print eva.fscore(estimate, estimate)
+	#print eva.fscore(estimate, estimate)
+	estimate = [{'group': [[1, 2], [5, 6]], 'label': 'verse'},
+				{'group': [[3, 4]], 'label': 'chorus'}]
+
+	truth = [{'group': [[1, 1], [5, 5]], 'label': 'verse'},
+				{'group': [[2, 2], [6, 6]], 'label': 'chorus'},
+				{'group': [[3, 4]], 'label': 'chorus'}]
+				
+	print eva.NCE(estimate, truth, 6)
 
 
 

@@ -139,7 +139,8 @@ class AlgoDistDTW(AlgoSequence):
 			#self.__backTracking(backStartCoor, self.__pathIdxList)
 			self.__backTracking(backStartCoor)
 			self.__pathLength = len(self.__pathIdxList)
-			self.__similarity = self.__distance / self.__pathLength
+			#self.__similarity = self.__distance / self.__pathLength
+			self.__similarity = self.__distance / (len(self.__seqI) + len(self.__seqJ))
 			
 
 			# 將排比的路徑座標轉換成序列的 Index
