@@ -39,7 +39,7 @@ mm = gensim.corpora.MmCorpus('20120917_lyrics_tf.mm')
 lda = gensim.models.ldamodel.LdaModel(num_topics=20, id2word=id2word)
 lda.VAR_MAXITER = 50
 lda.VAR_THRESH = 0.0001
-lda.update(mm, chunksize=2000, passes=50, update_every=10)
+lda.update(mm, chunksize=1000, passes=30, update_every=10)
 
 lda.print_topics(20)
 
