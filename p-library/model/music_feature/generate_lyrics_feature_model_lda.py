@@ -44,25 +44,27 @@ lda.update(mm, chunksize=1000, decay=None, passes=100, update_every=1)
 lda.print_topics(20)
 
 corpus_lda = lda[mm]
-for doc in corpus_lda: # both bow->tfidf and tfidf->lsi transformations are actually executed here, on the fly
-   print doc
+#for doc in corpus_lda: # both bow->tfidf and tfidf->lsi transformations are actually executed here, on the fly
+#   print doc
+new_doc_list = corpus_lda[song_id]
+print new_doc_list
 
 index = similarities.MatrixSimilarity(lda[mm])
 index.save('20120917_lda.index')
 
-cur.execute("""SELECT ltt.*,ltu.id term_id FROM lyrics_term_tfidf ltt INNER JOIN lyrics_term_unique ltu ON (ltt.term=ltu.term) WHERE song_id=%s""", (song_id))
-
-term_id = ""
-tfidf = ""
-new_doc_list = list()
-
-for row in cur.fetchall() :
-   term_id = row[10]
-   tfidf = row[5]
-   the_tuple = (int(term_id), float(tfidf))
-   new_doc_list.append(the_tuple)
-
-print new_doc_list
+#cur.execute("""SELECT ltt.*,ltu.id term_id FROM lyrics_term_tfidf ltt INNER JOIN lyrics_term_unique ltu ON (ltt.term=ltu.term) WHERE song_id=%s""", (song_id))
+#
+#term_id = ""
+#tfidf = ""
+#new_doc_list = list()
+#
+#for row in cur.fetchall() :
+#   term_id = row[10]
+#   tfidf = row[5]
+#   the_tuple = (int(term_id), float(tfidf))
+#   new_doc_list.append(the_tuple)
+#
+#print new_doc_list
 
 print "similarity..."
 
