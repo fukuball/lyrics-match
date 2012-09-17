@@ -243,7 +243,7 @@ if (!empty($_GET['song_id'])) {
             echo $similar_lyrics;
             $similar_lyrics_array = explode(",", $similar_lyrics);
             $rank = 0;
-            foreach ($similar_lyrics as $skey => $svalue) {
+            foreach ($similar_lyrics_array as $skey => $svalue) {
                $rank++;
                $similar_song_value_array = explode(":", $svalue);
                $new_song_id = $similar_song_value_array[0];
