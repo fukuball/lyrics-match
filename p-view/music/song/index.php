@@ -209,11 +209,19 @@ if (!empty($_GET['song_id'])) {
             <td rowspan="1">LDA Value</td>
             <td colspan="2" width="800">
                <?php
+               $db_obj = LMDBAccess::getInstance();
+               $select_sql = "SELECT new_song_id FROM lyrics_term_tfidf_continue WHERE song_id = ".$_GET['song_id']." GROUP BY new_song_id LIMIT 1";
+
+               $query_result = $db_obj->selectCommand($select_sql);
+
+               foreach ($query_result as $query_result_data) {
+                  $lda_new_song_id = $query_result_data['new_song_id'];
+               }
+
                if ($_GET['lda_model']=='tf_lda') {
-                  $topic = shell_exec("python26 ".SITE_ROOT."/p-library/model/music_feature/lda_topic.py ".$_GET['song_id']." ".$_GET['lda_model']);
-                  echo "python26 ".SITE_ROOT."/p-library/model/music_feature/lda_topic.py ".$_GET['song_id']." ".$_GET['lda_model'];
+                  $topic = shell_exec("python26 ".SITE_ROOT."/p-library/model/music_feature/lda_topic.py ".$lda_new_song_id." ".$_GET['lda_model']);
                } else {
-                  $topic = shell_exec("python26 ".SITE_ROOT."/p-library/model/music_feature/lda_topic.py ".$_GET['song_id']." ".$_GET['lda_model']);
+                  $topic = shell_exec("python26 ".SITE_ROOT."/p-library/model/music_feature/lda_topic.py ".$lda_new_song_id." ".$_GET['lda_model']);
                }
                echo nl2br($topic);
                ?>
@@ -248,7 +256,7 @@ if (!empty($_GET['song_id'])) {
         <tbody>
         <?php
 
-         $db_obj = LMDBAccess::getInstance();
+
 
          if (isset($_GET['lda_model']) && !empty($_GET['lda_model'])) {
 

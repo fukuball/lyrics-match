@@ -28,12 +28,11 @@ db.commit()
 song_id = sys.argv[1];
 model = sys.argv[2];
 
-if (model=='tf_lda') {
+if model=='tf_lda' :
    lda = models.LsiModel.load('/var/www/html/lyrics-match/p-library/model/music_feature/20120917_tf_model.lda')
    index = similarities.MatrixSimilarity.load('/var/www/html/lyrics-match/p-library/model/music_feature/20120917_tf_lda.index')
-} else {
+else :
    lda = models.LsiModel.load('/var/www/html/lyrics-match/p-library/model/music_feature/20120917_model.lda')
    index = similarities.MatrixSimilarity.load('/var/www/html/lyrics-match/p-library/model/music_feature/20120917_lda.index')
-}
 
 lda.print_topics(20)
