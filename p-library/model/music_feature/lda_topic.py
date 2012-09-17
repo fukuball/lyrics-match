@@ -39,4 +39,5 @@ else :
 
 lda.print_topics(20)
 corpus_lda = lda[mm]
-print corpus_lda[int(song_id)]
+for doc in corpus_lda: # both bow->tfidf and tfidf->lsi transformations are actually executed here, on the fly
+   print doc
