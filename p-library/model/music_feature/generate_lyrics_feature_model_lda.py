@@ -17,7 +17,7 @@ db = mysql.connect(host    = CONST.DBHOST,
                    passwd  = CONST.DBPASS,
                    db      = CONST.DBNAME,
                    charset = 'UTF8')
-# 從資料庫抓資料
+
 cur = db.cursor()
 cur.execute("SET NAMES UTF8")
 cur.execute("SET CHARACTER_SET_CLIENT=UTF8")
