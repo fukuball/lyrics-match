@@ -36,42 +36,37 @@ mm = gensim.corpora.MmCorpus('20120917_lyrics_tfidf.mm')
 #print mm
 
 # extract 20 LDA topics, using 1 pass and updating once every 1 chunk (10,000 documents)
-lda = gensim.models.ldamodel.LdaModel(num_topics=20, id2word=id2word)
-lda.VAR_MAXITER = 100
+lda = gensim.models.ldamodel.LdaModel(num_topics=20)
+lda.VAR_MAXITER = 200
 lda.VAR_THRESH = 0.0001
-lda.update(mm, chunksize=1000, decay=None, passes=100, update_every=1)
+lda.update(mm, chunksize=1000, passes=200, update_every=1)
 
 lda.print_topics(20)
 
 corpus_lda = lda[mm]
-count = 0
 for doc in corpus_lda: # both bow->tfidf and tfidf->lsi transformations are actually executed here, on the fly
-   count = count+1
-   print count
    print doc
-new_doc_list = corpus_lda[int(song_id)]
-print new_doc_list
 
 index = similarities.MatrixSimilarity(lda[mm])
 index.save('20120917_lda.index')
 
-#cur.execute("""SELECT ltt.*,ltu.id term_id FROM lyrics_term_tfidf ltt INNER JOIN lyrics_term_unique ltu ON (ltt.term=ltu.term) WHERE song_id=%s""", (song_id))
-#
-#term_id = ""
-#tfidf = ""
-#new_doc_list = list()
-#
-#for row in cur.fetchall() :
-#   term_id = row[10]
-#   tfidf = row[5]
-#   the_tuple = (int(term_id), float(tfidf))
-#   new_doc_list.append(the_tuple)
-#
-#print new_doc_list
+cur.execute("""SELECT ltt.*,ltu.id term_id FROM lyrics_term_tfidf ltt INNER JOIN lyrics_term_unique ltu ON (ltt.term=ltu.term) WHERE song_id=%s""", (song_id))
 
-#print "similarity..."
-#
-#new_doc_lda = lda[new_doc_list]
-#sims = index[new_doc_lda]
-#sims = sorted(enumerate(sims), key=lambda item: -item[1])
-#print sims # print sorted (document number, similarity score) 2-tuples
+term_id = ""
+tfidf = ""
+new_doc_list = list()
+
+for row in cur.fetchall() :
+   term_id = row[10]
+   tfidf = row[5]
+   the_tuple = (int(term_id), float(tfidf))
+   new_doc_list.append(the_tuple)
+
+print new_doc_list
+
+print "similarity..."
+
+new_doc_lda = lda[new_doc_list]
+sims = index[new_doc_lda]
+sims = sorted(enumerate(sims), key=lambda item: -item[1])
+print sims # print sorted (document number, similarity score) 2-tuples
