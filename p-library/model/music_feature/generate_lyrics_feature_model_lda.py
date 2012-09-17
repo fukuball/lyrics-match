@@ -61,5 +61,6 @@ print new_doc_list
 print "similarity..."
 
 new_doc_lda = lda[new_doc_list]
+sims = index[new_doc_lda]
 sims = sorted(enumerate(sims), key=lambda item: -item[1])
 print sims # print sorted (document number, similarity score) 2-tuples
