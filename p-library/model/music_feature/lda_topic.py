@@ -37,11 +37,10 @@ else :
    lda = models.LsiModel.load('/var/www/html/lyrics-match/p-library/model/music_feature/20120917_model.lda')
    index = similarities.MatrixSimilarity.load('/var/www/html/lyrics-match/p-library/model/music_feature/20120917_lda.index')
 
-#lda.print_topics(20)
-lda.show_topics(topics=20, topn=10, log=False, formatted=True)
-#corpus_lda = lda[mm]
-#count = 0
-#for doc in corpus_lda: # both bow->tfidf and tfidf->lsi transformations are actually executed here, on the fly
-#   count = count+1
-#   if count==int(song_id):
-#      print doc
+lda.print_topics(20)
+corpus_lda = lda[mm]
+count = 0
+for doc in corpus_lda: # both bow->tfidf and tfidf->lsi transformations are actually executed here, on the fly
+   count = count+1
+   if count==int(song_id):
+      print doc
