@@ -41,7 +41,7 @@ $fh = fopen($word_id_file, 'w') or die("can't open file");
 $string_data = "%%MatrixMarket matrix coordinate real general\n";
 $string_data = $string_data."$doc_num $feature_num $none_zero_entry_num\n";
 
-$select_sql = "SELECT ltt.*,ltu.id term_id FROM lyrics_term_tfidf ltt INNER JOIN lyrics_term_unique ltu ON (ltt.term=ltu.term)";
+$select_sql = "SELECT ltt.*,ltu.id term_id FROM lyrics_term_tfidf ltt INNER JOIN lyrics_term_unique ltu ON (ltt.term=ltu.term) ORDER BY ltt.song_id";
 
 $query_result = $db_obj->selectCommand($select_sql);
 

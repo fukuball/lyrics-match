@@ -44,4 +44,10 @@ for row in cur.fetchall() :
 new_doc_lda = lda[new_doc_list]
 sims = index[new_doc_lda]
 sims = sorted(enumerate(sims), key=lambda item: -item[1])
-print sims # print sorted (document number, similarity score) 2-tuples
+
+similar_lyrics_string = ""
+for doc in sims:
+   similar_lyrics_string += str(doc[0])+":"+str(doc[1])+","
+
+similar_lyrics_string = similar_lyrics_string[:-1]
+print similar_lyrics_string
