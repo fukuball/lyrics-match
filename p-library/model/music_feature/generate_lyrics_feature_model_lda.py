@@ -44,16 +44,16 @@ for doc in corpus_lda: # both bow->tfidf and tfidf->lsi transformations are actu
 index = similarities.MatrixSimilarity(lda[mm])
 index.save('20120917_lda.index')
 
-cur.execute("""SELECT * FROM lyrics_term_tfidf_continue WHERE new_song_id=%s""", (1))
+cur.execute("""SELECT ltt.*,ltu.id term_id FROM lyrics_term_tfidf ltt INNER JOIN lyrics_term_unique ltu ON (ltt.term=ltu.term) WHERE song_id=%s""", (1))
 
-new_song_id = ""
+term_id = ""
 tfidf = ""
 new_doc_list = list()
 
 for row in cur.fetchall() :
-   new_song_id = row[2]
-   tfidf = row[6]
-   the_tuple = (int(new_song_id), float(tfidf))
+   term_id = row[10]
+   tfidf = row[5]
+   the_tuple = (int(term_id), float(tfidf))
    new_doc_list.append(the_tuple)
 
 print new_doc_list
