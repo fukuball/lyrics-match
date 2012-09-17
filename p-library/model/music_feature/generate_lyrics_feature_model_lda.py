@@ -25,6 +25,8 @@ cur.execute("SET CHARACTER_SET_CLIENT=UTF8")
 cur.execute("SET CHARACTER_SET_RESULTS=UTF8")
 db.commit()
 
+song_id = sys.argv[1];
+
 # load id->word mapping (the dictionary), one of the results of step 2 above
 id2word = gensim.corpora.Dictionary.load_from_text('20120917_lyrics_wordids.txt')
 #print id2word
@@ -34,7 +36,7 @@ mm = gensim.corpora.MmCorpus('20120917_lyrics_tfidf.mm')
 #print mm
 
 # extract 20 LDA topics, using 1 pass and updating once every 1 chunk (10,000 documents)
-lda = gensim.models.ldamodel.LdaModel(corpus=mm, id2word=id2word, num_topics=20, update_every=0, chunksize=1000, passes=20)
+lda = gensim.models.ldamodel.LdaModel(corpus=mm, id2word=id2word, num_topics=20, update_every=20, chunksize=1000, passes=20)
 lda.print_topics(20)
 
 corpus_lda = lda[mm]
@@ -44,7 +46,7 @@ for doc in corpus_lda: # both bow->tfidf and tfidf->lsi transformations are actu
 index = similarities.MatrixSimilarity(lda[mm])
 index.save('20120917_lda.index')
 
-cur.execute("""SELECT ltt.*,ltu.id term_id FROM lyrics_term_tfidf ltt INNER JOIN lyrics_term_unique ltu ON (ltt.term=ltu.term) WHERE song_id=%s""", (1))
+cur.execute("""SELECT ltt.*,ltu.id term_id FROM lyrics_term_tfidf ltt INNER JOIN lyrics_term_unique ltu ON (ltt.term=ltu.term) WHERE song_id=%s""", (song_id))
 
 term_id = ""
 tfidf = ""
