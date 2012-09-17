@@ -238,6 +238,7 @@ if (!empty($_GET['song_id'])) {
 
          if (isset($_GET['lda_model']) && !empty($_GET['lda_model'])) {
 
+            echo "python26 ".SITE_ROOT."/p-library/model/music_feature/similar_lyrics_model_lda.py ".$_GET['song_id'];
             $similar_lyrics = shell_exec("python26 ".SITE_ROOT."/p-library/model/music_feature/similar_lyrics_model_lda.py ".$_GET['song_id']);
             echo $similar_lyrics;
             $similar_lyrics_array = explode(",", $similar_lyrics);
