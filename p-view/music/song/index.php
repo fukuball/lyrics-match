@@ -204,6 +204,17 @@ if (!empty($_GET['song_id'])) {
                }
                ?>
             </td>
+            <td rowspan="1">LDA Value</td>
+            <td colspan="2" width="800">
+               <?php
+               if ($_GET['lda_model']=='tf_lda') {
+                  $topic = shell_exec("python26 ".SITE_ROOT."/p-library/model/music_feature/lda_topic.py ".$_GET['song_id']." ".$_GET['lda_model']);
+               } else {
+                  $topic = shell_exec("python26 ".SITE_ROOT."/p-library/model/music_feature/lda_topic.py ".$_GET['song_id']." ".$_GET['lda_model']);
+               }
+               echo $topic;
+               ?>
+            </td>
          </tr>
       </tbody>
    </table>
@@ -255,7 +266,6 @@ if (!empty($_GET['song_id'])) {
 
                $query_result = $db_obj->selectCommand($select_sql);
 
-               $rank = 0;
                foreach ($query_result as $query_result_data) {
 
                   $song_id = $query_result_data['song_id'];
@@ -280,7 +290,7 @@ if (!empty($_GET['song_id'])) {
                           </a>
                        </td>
                        <td>
-                          <?php echo $similar; ?>
+                          <?php echo $similar_song_value_array[1]; ?>
                        </td>
                     </tr>
                     <?php
