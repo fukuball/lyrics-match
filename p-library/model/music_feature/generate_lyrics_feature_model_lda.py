@@ -10,5 +10,5 @@ mm = gensim.corpora.MmCorpus('20120917_lyrics_tfidf.mm')
 print mm
 
 # extract 20 LDA topics, using 1 pass and updating once every 1 chunk (10,000 documents)
-lda = gensim.models.ldamodel.LdaModel(corpus=mm, id2word=id2word, num_topics=20, update_every=1, chunksize=10000, passes=1)
+lda = gensim.models.ldamodel.LdaModel(corpus=mm, id2word=id2word, num_topics=20, update_every=2, chunksize=1000, passes=2)
 lda.print_topics(20)
