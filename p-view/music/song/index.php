@@ -239,10 +239,10 @@ if (!empty($_GET['song_id'])) {
          if (isset($_GET['lda_model']) && !empty($_GET['lda_model'])) {
 
             $similar_lyrics = shell_exec("python26 ".SITE_ROOT."/p-library/model/music_feature/similar_lyrics_model_lda.py ".$_GET['song_id']." ");
-            echo $similar_lyrics;
+            //echo $similar_lyrics;
             $similar_lyrics_array = explode(",", $similar_lyrics);
             $rank = 0;
-            /*foreach ($similar_lyrics_array as $skey => $svalue) {
+            foreach ($similar_lyrics_array as $skey => $svalue) {
                $rank++;
                $similar_song_value_array = explode(":", $svalue);
                $new_song_id = $similar_song_value_array[0];
@@ -285,7 +285,7 @@ if (!empty($_GET['song_id'])) {
                   unset($artist_obj);
                }
 
-            }*/
+            }
 
          } else {
 

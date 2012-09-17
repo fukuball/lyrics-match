@@ -32,6 +32,9 @@ db_stage.py
 *.sql
 *.sqlite
 *.json
+*.mm
+*.txt
+*.npy
 
 # OS generated files #
 ######################
