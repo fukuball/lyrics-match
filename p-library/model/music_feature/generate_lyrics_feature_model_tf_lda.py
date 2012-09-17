@@ -32,7 +32,7 @@ id2word = gensim.corpora.Dictionary.load_from_text('20120917_lyrics_wordids.txt'
 #print id2word
 
 # load corpus iterator
-mm = gensim.corpora.MmCorpus('20120917_lyrics_tfidf.mm')
+mm = gensim.corpora.MmCorpus('20120917_lyrics_tf.mm')
 #print mm
 
 # extract 20 LDA topics, using 1 pass and updating once every 1 chunk (10,000 documents)
@@ -53,12 +53,12 @@ index.save('20120917_lda.index')
 cur.execute("""SELECT ltt.*,ltu.id term_id FROM lyrics_term_tfidf ltt INNER JOIN lyrics_term_unique ltu ON (ltt.term=ltu.term) WHERE song_id=%s""", (song_id))
 
 term_id = ""
-tfidf = ""
+tf = ""
 new_doc_list = list()
 
 for row in cur.fetchall() :
    term_id = row[10]
-   tfidf = row[5]
+   tf = row[4]
    the_tuple = (int(term_id), float(tfidf))
    new_doc_list.append(the_tuple)
 
