@@ -20,8 +20,8 @@ $select_sql = "SELECT *,COUNT(id) term_count FROM lyrics_term_remove_stop_word G
 
 $query_result = $db_obj->selectCommand($select_sql);
 
-$word_id_file = "/var/www/html/lyrics_match/p-library/model/music_feature/20120917_lyrics_wordids.txt";
-$fh = fopen($word_id_file, 'x+') or die("can't open file");
+$word_id_file = "/var/www/html/lyrics-match/p-library/model/music_feature/20120917_lyrics_wordids.txt";
+$fh = fopen($word_id_file, 'w') or die("can't open file");
 
 $count_id = 0;
 $string_data = '';
