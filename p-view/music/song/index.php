@@ -204,6 +204,8 @@ if (!empty($_GET['song_id'])) {
                }
                ?>
             </td>
+         </tr>
+         <tr>
             <td rowspan="1">LDA Value</td>
             <td colspan="2" width="800">
                <?php
