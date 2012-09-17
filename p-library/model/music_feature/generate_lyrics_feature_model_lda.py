@@ -44,9 +44,12 @@ lda.update(mm, chunksize=1000, decay=None, passes=100, update_every=1)
 lda.print_topics(20)
 
 corpus_lda = lda[mm]
-#for doc in corpus_lda: # both bow->tfidf and tfidf->lsi transformations are actually executed here, on the fly
-#   print doc
-new_doc_list = corpus_lda[song_id]
+count = 0;
+for doc in corpus_lda: # both bow->tfidf and tfidf->lsi transformations are actually executed here, on the fly
+   count++;
+   print count
+   print doc
+new_doc_list = corpus_lda[int(song_id)]
 print new_doc_list
 
 index = similarities.MatrixSimilarity(lda[mm])
@@ -66,9 +69,9 @@ index.save('20120917_lda.index')
 #
 #print new_doc_list
 
-print "similarity..."
-
-new_doc_lda = lda[new_doc_list]
-sims = index[new_doc_lda]
-sims = sorted(enumerate(sims), key=lambda item: -item[1])
-print sims # print sorted (document number, similarity score) 2-tuples
+#print "similarity..."
+#
+#new_doc_lda = lda[new_doc_list]
+#sims = index[new_doc_lda]
+#sims = sorted(enumerate(sims), key=lambda item: -item[1])
+#print sims # print sorted (document number, similarity score) 2-tuples
