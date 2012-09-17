@@ -27,8 +27,8 @@ db.commit()
 
 song_id = sys.argv[1];
 
-lda = models.LsiModel.load('20120917_model.lda')
-index = similarities.MatrixSimilarity.load('20120917_lda.index')
+lda = models.LsiModel.load('20120917_tf_model.lda')
+index = similarities.MatrixSimilarity.load('20120917_tf_lda.index')
 
 cur.execute("""SELECT ltt.*,ltu.id term_id FROM lyrics_term_tfidf ltt INNER JOIN lyrics_term_unique ltu ON (ltt.term=ltu.term) WHERE song_id=%s""", (song_id))
 
@@ -38,8 +38,8 @@ new_doc_list = list()
 
 for row in cur.fetchall() :
    term_id = row[10]
-   tfidf = row[5]
-   the_tuple = (int(term_id), float(tfidf))
+   tf = row[4]
+   the_tuple = (int(term_id), int(tf))
    new_doc_list.append(the_tuple)
 
 new_doc_lda = lda[new_doc_list]
