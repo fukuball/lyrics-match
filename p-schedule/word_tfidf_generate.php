@@ -48,7 +48,7 @@ $query_result = $db_obj->selectCommand($select_sql);
 foreach ($query_result as $query_result_data) {
 
    $doc_id = $query_result_data['song_id'];
-   $term_id = $query_result_data['term_id'];
+   $term_id = ($query_result_data['term_id']-1);
    $tfidf = $query_result_data['tfidf'];
 
    $string_data = $string_data."$doc_id\t$term_id\t$tfidf\n";
