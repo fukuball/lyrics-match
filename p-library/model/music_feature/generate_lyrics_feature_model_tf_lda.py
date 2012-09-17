@@ -48,7 +48,7 @@ for doc in corpus_lda: # both bow->tfidf and tfidf->lsi transformations are actu
    print doc
 
 index = similarities.MatrixSimilarity(lda[mm])
-index.save('20120917_lda.index')
+index.save('20120917_tf_lda.index')
 
 cur.execute("""SELECT ltt.*,ltu.id term_id FROM lyrics_term_tfidf ltt INNER JOIN lyrics_term_unique ltu ON (ltt.term=ltu.term) WHERE song_id=%s""", (song_id))
 
