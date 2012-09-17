@@ -27,8 +27,8 @@ db.commit()
 
 song_id = sys.argv[1];
 
-lda = models.LsiModel.load('20120917_tf_model.lda')
-index = similarities.MatrixSimilarity.load('20120917_tf_lda.index')
+lda = models.LsiModel.load('/var/www/html/lyrics-match/p-library/model/music_feature/20120917_tf_model.lda')
+index = similarities.MatrixSimilarity.load('/var/www/html/lyrics-match/p-library/model/music_feature/20120917_tf_lda.index')
 
 cur.execute("""SELECT ltt.*,ltu.id term_id FROM lyrics_term_tfidf ltt INNER JOIN lyrics_term_unique ltu ON (ltt.term=ltu.term) WHERE song_id=%s""", (song_id))
 
