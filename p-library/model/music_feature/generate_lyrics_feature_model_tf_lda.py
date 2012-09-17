@@ -59,7 +59,7 @@ new_doc_list = list()
 for row in cur.fetchall() :
    term_id = row[10]
    tf = row[4]
-   the_tuple = (int(term_id), float(tfidf))
+   the_tuple = (int(term_id), int(tf))
    new_doc_list.append(the_tuple)
 
 print new_doc_list
