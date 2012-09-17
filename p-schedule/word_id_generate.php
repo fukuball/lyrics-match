@@ -33,6 +33,7 @@ foreach ($query_result as $query_result_data) {
    $term_count = $query_result_data['term_count'];
 
    $string_data = $string_data."$count_id\t$term\t$term_count\n";
+   echo "$count_id\t$term\t$term_count\n";
 
 }// end foreach ($query_result as $query_result_data) {
 
