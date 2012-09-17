@@ -26,19 +26,20 @@ db.commit()
 
 # load id->word mapping (the dictionary), one of the results of step 2 above
 id2word = gensim.corpora.Dictionary.load_from_text('20120917_lyrics_wordids.txt')
-print id2word
+#print id2word
 
 # load corpus iterator
 mm = gensim.corpora.MmCorpus('20120917_lyrics_tfidf.mm')
-print mm
+#print mm
 
 # extract 20 LDA topics, using 1 pass and updating once every 1 chunk (10,000 documents)
 lda = gensim.models.ldamodel.LdaModel(corpus=mm, id2word=id2word, num_topics=20, update_every=0, chunksize=1000, passes=20)
 lda.print_topics(20)
-corpus_lda = lda[mm]
-for doc in corpus_lda: # both bow->tfidf and tfidf->lsi transformations are actually executed here, on the fly
-   print doc
 
+#corpus_lda = lda[mm]
+#for doc in corpus_lda: # both bow->tfidf and tfidf->lsi transformations are actually executed here, on the fly
+#   print doc
+#
 index = similarities.MatrixSimilarity(lda[mm])
 index.save('20120917_lda.index')
 
@@ -49,12 +50,12 @@ tfidf = ""
 new_doc_list = list()
 
 for row in cur.fetchall() :
-   new_song_id = row[2];
-   tfidf = row[6];
-   the_tuple = (int(new_song_id), float(tfidf));
+   new_song_id = row[2]
+   tfidf = row[6]
+   the_tuple = (int(new_song_id), float(tfidf))
    new_doc_list.append(the_tuple)
 
-print new_doc_list;
+print new_doc_list
 
 new_doc_lda = lda[new_doc_list]
 sims = index[new_doc_lda]
