@@ -238,7 +238,11 @@ if (!empty($_GET['song_id'])) {
 
          if (isset($_GET['lda_model']) && !empty($_GET['lda_model'])) {
 
-            $similar_lyrics = shell_exec("python26 ".SITE_ROOT."/p-library/model/music_feature/similar_lyrics_model_lda.py ".$_GET['song_id']." ");
+            if ($_GET['lda_model']=='tf_lda') {
+               $similar_lyrics = shell_exec("python26 ".SITE_ROOT."/p-library/model/music_feature/similar_lyrics_model_tf_lda.py ".$_GET['song_id']." ");
+            } else {
+               $similar_lyrics = shell_exec("python26 ".SITE_ROOT."/p-library/model/music_feature/similar_lyrics_model_lda.py ".$_GET['song_id']." ");
+            }
             //echo $similar_lyrics;
             $similar_lyrics_array = explode(",", $similar_lyrics);
             $rank = 0;
