@@ -44,9 +44,9 @@ lda.update(mm, chunksize=1000, decay=None, passes=100, update_every=1)
 lda.print_topics(20)
 
 corpus_lda = lda[mm]
-count = 0;
+count = 0
 for doc in corpus_lda: # both bow->tfidf and tfidf->lsi transformations are actually executed here, on the fly
-   count++;
+   count = count+1
    print count
    print doc
 new_doc_list = corpus_lda[int(song_id)]
