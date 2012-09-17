@@ -36,8 +36,9 @@ mm = gensim.corpora.MmCorpus('20120917_lyrics_tfidf.mm')
 #print mm
 
 # extract 20 LDA topics, using 1 pass and updating once every 1 chunk (10,000 documents)
-lda = gensim.models.ldamodel.LdaModel(corpus=mm, id2word=id2word, num_topics=10, update_every=30, chunksize=1000, passes=30)
-lda.print_topics(10)
+lda = gensim.models.ldamodel.LdaModel(corpus=mm, id2word=id2word, num_topics=20, update_every=100, chunksize=10000, passes=100)
+lda.VAR_MAXITER = 100;
+lda.print_topics(20)
 
 corpus_lda = lda[mm]
 for doc in corpus_lda: # both bow->tfidf and tfidf->lsi transformations are actually executed here, on the fly
