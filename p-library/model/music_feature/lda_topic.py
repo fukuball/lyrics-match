@@ -39,4 +39,5 @@ else :
 
 lda.print_topics(20)
 corpus_lda = lda[mm]
+print int(song_id)
 corpus_lda[0]
