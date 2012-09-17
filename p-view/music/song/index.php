@@ -211,10 +211,11 @@ if (!empty($_GET['song_id'])) {
                <?php
                if ($_GET['lda_model']=='tf_lda') {
                   $topic = shell_exec("python26 ".SITE_ROOT."/p-library/model/music_feature/lda_topic.py ".$_GET['song_id']." ".$_GET['lda_model']);
+                  echo "python26 ".SITE_ROOT."/p-library/model/music_feature/lda_topic.py ".$_GET['song_id']." ".$_GET['lda_model'];
                } else {
                   $topic = shell_exec("python26 ".SITE_ROOT."/p-library/model/music_feature/lda_topic.py ".$_GET['song_id']." ".$_GET['lda_model']);
                }
-               echo $topic;
+               echo nl2br($topic);
                ?>
             </td>
          </tr>
