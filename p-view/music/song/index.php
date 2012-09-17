@@ -236,45 +236,102 @@ if (!empty($_GET['song_id'])) {
 
          $db_obj = LMDBAccess::getInstance();
 
-         $select_sql = "SELECT similar_song_id,similar FROM similar_song WHERE song_id='".$_GET['song_id']."' AND model='lyrics-model-".$lmodel_id.".txt' ORDER BY similar DESC";
+         if (isset($_GET['lda_model']) && !empty($_GET['lda_model'])) {
 
-         $query_result = $db_obj->selectCommand($select_sql);
+            $similar_lyrics = shell_exec("python26 ".SITE_ROOT."/p-library/model/music_feature/similar_lyrics_model_lda.py ".$_GET['song_id']);
+            $similar_lyrics_array = explode(",", $similar_lyrics);
+            $rank = 0;
+            foreach ($similar_lyrics as $skey => $svalue) {
+               $rank++;
+               $similar_song_value_array = explode(":", $svalue);
+               $new_song_id = $similar_song_value_array[0];
 
-         $rank = 0;
-         foreach ($query_result as $query_result_data) {
-            $rank++;
-            $similar_song_id = $query_result_data['similar_song_id'];
-            $similar = $query_result_data['similar'];
+               $select_sql = "SELECT song_id FROM lyrics_term_tfidf_continue WHERE new_song_id = $new_song_id GROUP BY song_id LIMIT 1";
 
-            $similar_song_obj = new LMSong($similar_song_id);
-            $artist_obj = new LMPerformer($similar_song_obj->performer_id);
-           ?>
-           <tr>
-              <td>
-              <?php echo $rank; ?>
-              </td>
-              <td>
-                 <a href="<?=SITE_HOST?>/music/song/index.php?song_id=<?=$similar_song_obj->getId()?>">
-                    <?php echo $similar_song_obj->getId(); ?>
-                 </a>
-              </td>
-              <td>
-                 <?php echo $artist_obj->name; ?>
-              </td>
-              <td>
-                 <a href="<?=SITE_HOST?>/music/song/index.php?song_id=<?=$similar_song_obj->getId()?>">
-                    <?php echo $similar_song_obj->title; ?>
-                 </a>
-              </td>
-              <td>
-                 <?php echo $similar; ?>
-              </td>
-           </tr>
-           <?php
+               $query_result = $db_obj->selectCommand($select_sql);
 
-            unset($similar_song_obj);
-            unset($artist_obj);
+               $rank = 0;
+               foreach ($query_result as $query_result_data) {
+
+                  $song_id = $query_result_data['song_id'];
+                  $similar_song_obj = new LMSong($song_id);
+                  $artist_obj = new LMPerformer($similar_song_obj->performer_id);
+                  ?>
+                    <tr>
+                       <td>
+                       <?php echo $rank; ?>
+                       </td>
+                       <td>
+                          <a href="<?=SITE_HOST?>/music/song/index.php?song_id=<?=$similar_song_obj->getId()?>">
+                             <?php echo $similar_song_obj->getId(); ?>
+                          </a>
+                       </td>
+                       <td>
+                          <?php echo $artist_obj->name; ?>
+                       </td>
+                       <td>
+                          <a href="<?=SITE_HOST?>/music/song/index.php?song_id=<?=$similar_song_obj->getId()?>">
+                             <?php echo $similar_song_obj->title; ?>
+                          </a>
+                       </td>
+                       <td>
+                          <?php echo $similar; ?>
+                       </td>
+                    </tr>
+                    <?php
+
+                  unset($similar_song_obj);
+                  unset($artist_obj);
+               }
+
+
+
+            }
+
+         } else {
+
+            $select_sql = "SELECT similar_song_id,similar FROM similar_song WHERE song_id='".$_GET['song_id']."' AND model='lyrics-model-".$lmodel_id.".txt' ORDER BY similar DESC";
+
+            $query_result = $db_obj->selectCommand($select_sql);
+
+            $rank = 0;
+            foreach ($query_result as $query_result_data) {
+               $rank++;
+               $similar_song_id = $query_result_data['similar_song_id'];
+               $similar = $query_result_data['similar'];
+
+               $similar_song_obj = new LMSong($similar_song_id);
+               $artist_obj = new LMPerformer($similar_song_obj->performer_id);
+              ?>
+              <tr>
+                 <td>
+                 <?php echo $rank; ?>
+                 </td>
+                 <td>
+                    <a href="<?=SITE_HOST?>/music/song/index.php?song_id=<?=$similar_song_obj->getId()?>">
+                       <?php echo $similar_song_obj->getId(); ?>
+                    </a>
+                 </td>
+                 <td>
+                    <?php echo $artist_obj->name; ?>
+                 </td>
+                 <td>
+                    <a href="<?=SITE_HOST?>/music/song/index.php?song_id=<?=$similar_song_obj->getId()?>">
+                       <?php echo $similar_song_obj->title; ?>
+                    </a>
+                 </td>
+                 <td>
+                    <?php echo $similar; ?>
+                 </td>
+              </tr>
+              <?php
+
+               unset($similar_song_obj);
+               unset($artist_obj);
+            }
+
          }
+
         ?>
         </tbody>
    </table>
