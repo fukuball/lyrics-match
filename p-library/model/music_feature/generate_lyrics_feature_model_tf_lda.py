@@ -40,8 +40,8 @@ lda = gensim.models.ldamodel.LdaModel(num_topics=20, id2word=id2word)
 lda.VAR_MAXITER = 50
 lda.VAR_THRESH = 0.0001
 lda.update(mm, chunksize=1000, passes=30, update_every=10)
-
 lda.print_topics(20)
+lda.save('20120917_tf_model.lda') # same for tfidf, lda, ...
 
 corpus_lda = lda[mm]
 for doc in corpus_lda: # both bow->tfidf and tfidf->lsi transformations are actually executed here, on the fly
