@@ -35,7 +35,7 @@ foreach ($query_result as $query_result_data) {
 }
 
 
-$word_id_file = "/var/www/html/lyrics-match/p-library/model/music_feature/20120917_lyrics_tfidf.mm";
+$word_id_file = "/var/www/html/lyrics-match/p-library/model/music_feature/20120917_lyrics_tf.mm";
 $fh = fopen($word_id_file, 'w') or die("can't open file");
 
 $string_data = "%%MatrixMarket matrix coordinate real general\n";
@@ -60,11 +60,11 @@ foreach ($query_result as $query_result_data) {
    $pos = $query_result_data['pos'];
    $tf = $query_result_data['tf'];
 
-   $string_data = $string_data."$new_song_id\t$term_id\t$tfidf\n";
-   echo "$new_song_id\t$term_id\t$tfidf\n";
+   $string_data = $string_data."$new_song_id\t$term_id\t$tf\n";
+   echo "$new_song_id\t$term_id\t$tf\n";
 
-   $insert_sql = "INSERT INTO lyrics_term_tfidf_continue (song_id,new_song_id,term,pos,tf,tfidf,create_time,modify_time) VALUES ('".addslashes($song_id)."', '".addslashes($new_song_id)."', '".addslashes($term)."', '".addslashes($pos)."', '".addslashes($tf)."', '".addslashes($tfidf)."', NOW(), NOW())";
-   $query_result3 = $db_obj->insertCommand($insert_sql);
+   //$insert_sql = "INSERT INTO lyrics_term_tfidf_continue (song_id,new_song_id,term,pos,tf,tfidf,create_time,modify_time) VALUES ('".addslashes($song_id)."', '".addslashes($new_song_id)."', '".addslashes($term)."', '".addslashes($pos)."', '".addslashes($tf)."', '".addslashes($tfidf)."', NOW(), NOW())";
+   //$query_result3 = $db_obj->insertCommand($insert_sql);
 
 }// end foreach ($query_result as $query_result_data) {
 
