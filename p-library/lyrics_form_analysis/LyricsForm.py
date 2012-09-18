@@ -304,8 +304,6 @@ class LyricsForm:
 				"""
 				blockFamily = cf.children(childrenMatrix, lenT = lenT, simT = simT)
 
-				if size == 2 and start == 0:
-					print blockFamily
 
 				
 				"""

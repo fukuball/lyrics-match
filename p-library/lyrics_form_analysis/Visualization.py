@@ -10,7 +10,7 @@ class Visualization:
 	def drawMergeCurve(self):
 
 
-		t = numpy.arange(0.0, 3, 0.01)
+		t = numpy.arange(0.0, 5, 0.01)
 		limit = t[-1]
 		#limit = 3
 
@@ -37,8 +37,8 @@ class Visualization:
 		fig = fig1.add_subplot(111)
 
 		fig.plot(t, linear, color = "r", linewidth=1)
-		#fig.plot(t, mergeSine, color = "y", linewidth=2)
-		fig.plot(t, singSine, color = "y", linewidth=2)
+		fig.plot(t, mergeSine, color = "black", linewidth=3)
+		#fig.plot(t, singSine, color = "black", linewidth=3)
 		#fig.plot(t, mergeSigmoid, color = "c")
 		#fig.plot(t, singSigmoid, color = "c")
 		#fig.plot(t, mergeEllipse, color = "g")

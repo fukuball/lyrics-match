@@ -155,8 +155,10 @@ class AlgoDistStruct(AlgoSequence):
 			self.__pathIdxList = []
 			backStartCoor = (self.__tableAccu.shape[0] - 1, self.__tableAccu.shape[1] - 1)
 			depth = self.__backTracking(backStartCoor, self.__pathIdxList)
-			self.__pathLength = len(self.__pathIdxList)
-			self.__similarity = self.__distance / depth
+			#self.__pathLength = len(self.__pathIdxList)
+			#self.__similarity = self.__distance / depth
+			denom = min(len(self.__seqI), len(self.__seqJ))
+			self.__similarity = self.__distance / denom
 
 			
 
