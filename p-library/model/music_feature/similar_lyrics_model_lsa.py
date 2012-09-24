@@ -27,24 +27,8 @@ db.commit()
 
 song_id = sys.argv[1];
 
-# load id->word mapping (the dictionary), one of the results of step 2 above
-id2word = gensim.corpora.Dictionary.load_from_text('20120924_lyrics_wordids_ch.txt')
-#print id2word
-
-# load corpus iterator
-mm = gensim.corpora.MmCorpus('20120924_lyrics_tfidf_ch.mm')
-#print mm
-
-lsi = gensim.models.lsimodel.LsiModel(corpus=mm, id2word=id2word, num_topics=100)
-lsi.print_topics(100)
-lsi.save('20120924_ch_model.lsi')
-
-#corpus_lsi = lsi[mm]
-#for doc in corpus_lsi:
-#   print doc
-
-index = similarities.MatrixSimilarity(lsi[mm])
-index.save('20120924_ch_lsi.index')
+lsi = models.LsiModel.load('/var/www/html/lyrics-match/p-library/model/music_feature/20120924_ch_model.lsi')
+index = similarities.MatrixSimilarity.load('/var/www/html/lyrics-match/p-library/model/music_feature/20120924_ch_lsi.index')
 
 cur.execute("""SELECT ltt.*,ltu.id term_id FROM lyrics_term_tfidf_ch ltt INNER JOIN lyrics_term_unique_ch ltu ON (ltt.term=ltu.term) WHERE song_id=%s""", (song_id))
 
@@ -58,11 +42,13 @@ for row in cur.fetchall() :
    the_tuple = (int(term_id), float(tfidf))
    new_doc_list.append(the_tuple)
 
-print new_doc_list
-
-print "similarity..."
-
 new_doc_lsi = lsi[new_doc_list]
 sims = index[new_doc_lsi]
 sims = sorted(enumerate(sims), key=lambda item: -item[1])
-print sims # print sorted (document number, similarity score) 2-tuples
+
+similar_lyrics_string = ""
+for doc in sims:
+   similar_lyrics_string += str(doc[0])+":"+str(doc[1])+","
+
+similar_lyrics_string = similar_lyrics_string[:-1]
+print similar_lyrics_string

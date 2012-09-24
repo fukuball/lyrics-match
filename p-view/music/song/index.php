@@ -210,7 +210,7 @@ if (!empty($_GET['song_id'])) {
             <td colspan="2" width="800">
                <?php
                $db_obj = LMDBAccess::getInstance();
-               $select_sql = "SELECT new_song_id FROM lyrics_term_tfidf_continue WHERE song_id = ".$_GET['song_id']." GROUP BY new_song_id LIMIT 1";
+               /*$select_sql = "SELECT new_song_id FROM lyrics_term_tfidf_continue WHERE song_id = ".$_GET['song_id']." GROUP BY new_song_id LIMIT 1";
 
                $query_result = $db_obj->selectCommand($select_sql);
 
@@ -276,7 +276,7 @@ if (!empty($_GET['song_id'])) {
                   </pre>
                   <?php
                   echo nl2br($topic);
-               }
+               }*/
 
                ?>
             </td>
@@ -316,6 +316,8 @@ if (!empty($_GET['song_id'])) {
 
             if ($_GET['lda_model']=='tf_lda') {
                $similar_lyrics = shell_exec("python26 ".SITE_ROOT."/p-library/model/music_feature/similar_lyrics_model_tf_lda.py ".$_GET['song_id']." ");
+            } else if ($_GET['lda_model']=='lsi') {
+               $similar_lyrics = shell_exec("python26 ".SITE_ROOT."/p-library/model/music_feature/similar_lyrics_model_lsa.py ".$_GET['song_id']." ");
             } else {
                $similar_lyrics = shell_exec("python26 ".SITE_ROOT."/p-library/model/music_feature/similar_lyrics_model_lda.py ".$_GET['song_id']." ");
             }
