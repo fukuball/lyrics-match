@@ -22,7 +22,7 @@ $query_result = $db_obj->selectCommand($select_sql);
 $document_num = 0;
 foreach ($query_result as $query_result_data) {
 
-   $song_id = $query_result_data['id'];
+   $song_id = $query_result_data['song_id'];
    $select_sql = "SELECT ltu.*,IF(ltt.tfidf IS NULL, 0, ltt.tfidf) tfidf FROM lyrics_term_unique_ch ltu LEFT JOIN lyrics_term_tfidf_ch ltt ON (ltu.term=ltt.term AND ltt.song_id='$song_id')";
 
    $query_result2 = $db_obj->selectCommand($select_sql);
