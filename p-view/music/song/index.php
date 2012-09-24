@@ -329,7 +329,11 @@ if (!empty($_GET['song_id'])) {
                $similar_song_value_array = explode(":", $svalue);
                $new_song_id = $similar_song_value_array[0];
 
-               $select_sql = "SELECT song_id FROM lyrics_term_tfidf_continue WHERE new_song_id = $new_song_id GROUP BY song_id LIMIT 1";
+               if ($_GET['lda_model']=='lsi') {
+                  $select_sql = "SELECT song_id FROM lyrics_term_tfidf_continue_ch WHERE new_song_id = $new_song_id GROUP BY song_id LIMIT 1";
+               } else {
+                  $select_sql = "SELECT song_id FROM lyrics_term_tfidf_continue WHERE new_song_id = $new_song_id GROUP BY song_id LIMIT 1";
+               }
 
                $query_result = $db_obj->selectCommand($select_sql);
 
