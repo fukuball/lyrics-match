@@ -35,7 +35,7 @@ foreach ($query_result as $query_result_data) {
 }
 
 
-$word_id_file = "/var/www/html/lyrics-match/p-library/model/music_feature/20120917_lyrics_tf.mm";
+$word_id_file = "/var/www/html/lyrics-match/p-library/model/music_feature/20120924_lyrics_tf_ch.mm";
 $fh = fopen($word_id_file, 'w') or die("can't open file");
 
 $string_data = "%%MatrixMarket matrix coordinate real general\n";
