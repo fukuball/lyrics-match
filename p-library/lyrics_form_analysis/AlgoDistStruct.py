@@ -368,7 +368,8 @@ class AlgoDistStruct(AlgoSequence):
 			#return float(t) / limit
 
 			# sine
-			return sin((2 * pi * (t  / (limit * 4))) + 3 *pi / 2 ) + 1.0
+			#return sin((2 * pi * (t  / (limit * 4))) + 3 *pi / 2 ) + 1.0
+			return sin(2 * pi * t / (limit * 4))
 
 			#ellipse
 			#return -1 * sqrt(1 - ((t ** 2) / limit ** 2)) + 1
