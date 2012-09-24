@@ -41,7 +41,7 @@ cur.execute("SET CHARACTER_SET_CLIENT=UTF8")
 cur.execute("SET CHARACTER_SET_RESULTS=UTF8")
 db.commit()
 
-cur.execute("SELECT * FROM lyrics_feature_matrix WHERE id=12")
+cur.execute("SELECT * FROM lyrics_feature_matrix WHERE id=15")
 
 
 lyrics_feature_matrix = ""
@@ -93,7 +93,7 @@ A_bar_string = json.dumps(A_bar_list)
 
 print "matrix dump"
 
-file_name = 'lyrics-model-12.txt'
+file_name = 'lyrics-model-15.txt'
 f = open(file_name, 'w')
 f.write(A_bar_string)
 f.close()
