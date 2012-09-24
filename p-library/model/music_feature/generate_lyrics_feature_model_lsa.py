@@ -41,7 +41,7 @@ lsi.save('20120924_ch_model.lsi')
 
 corpus_lsi = lsi[mm]
 for doc in corpus_lsi:
-   print doc
+   #print doc
 
 index = similarities.MatrixSimilarity(lsi[mm])
 index.save('20120924_ch_lsi.index')
