@@ -36,7 +36,7 @@ mm = gensim.corpora.MmCorpus('20120924_lyrics_tfidf_ch.mm')
 #print mm
 
 lsi = gensim.models.lsimodel.LsiModel(corpus=mm, id2word=id2word, num_topics=100)
-lsi.print_topics(100)
+lsi.print_topics(10)
 lsi.save('20120924_ch_model.lsi')
 
 #corpus_lsi = lsi[mm]
