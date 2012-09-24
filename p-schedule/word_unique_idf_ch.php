@@ -16,7 +16,7 @@ require_once dirname(dirname(__FILE__))."/p-config/application-setter.php";
 
 $db_obj = LMDBAccess::getInstance();
 
-$select_sql = "SELECT COUNT(id) document_num FROM song WHERE lyric!=''";
+$select_sql = "SELECT count(song_id) document_num FROM (SELECT * FROM lyrics_term_remove_stop_word_ch GROUP BY song_id) as a";
 
 $query_result = $db_obj->selectCommand($select_sql);
 $document_num = 0;
