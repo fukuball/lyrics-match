@@ -29,7 +29,7 @@ foreach ($query_result as $query_result_data) {
    $offset = $query_result_data['offset'];
    $length = $query_result_data['length'];
 
-   $insert_sql = "INSERT INTO lyrics_term_remove_stop_word＿ch (song_id,term,pos,offset,length,create_time,modify_time) VALUES ('".addslashes($song_id)."', '".addslashes($term)."', '".addslashes($pos)."', '$offset', '$length', NOW(), NOW())";
+   $insert_sql = "INSERT INTO lyrics_term_remove_stop_word_ch (song_id,term,pos,offset,length,create_time,modify_time) VALUES ('".addslashes($song_id)."', '".addslashes($term)."', '".addslashes($pos)."', '$offset', '$length', NOW(), NOW())";
    $query_result3 = $db_obj->insertCommand($insert_sql);
 
    echo $term." added. \n";
