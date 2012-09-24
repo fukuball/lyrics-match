@@ -1,6 +1,6 @@
 <?php
 /**
- * word_unique_idf.php
+ * word_unique.php
  *
  * PHP version 5
  *
@@ -16,35 +16,30 @@ require_once dirname(dirname(__FILE__))."/p-config/application-setter.php";
 
 $db_obj = LMDBAccess::getInstance();
 
-$select_sql = "SELECT count(song_id) document_num FROM (SELECT * FROM lyrics_term_remove_stop_word_ch GROUP BY song_id) as a";
+$select_sql = "SELECT *,COUNT(id) term_count FROM lyrics_term_remove_stop_word_ch GROUP BY term ORDER BY term";
 
 $query_result = $db_obj->selectCommand($select_sql);
-$document_num = 0;
-foreach ($query_result as $query_result_data) {
-   $document_num = $query_result_data['document_num'];
-}
 
-$select_sql = "SELECT a.term,COUNT(a.song_id) df, ltu.id FROM (SELECT ltrsw.* FROM lyrics_term_remove_stop_word_ch ltrsw GROUP BY ltrsw.term, ltrsw.song_id) as a INNER JOIN lyrics_term_unique_ch ltu ON (a.term=ltu.term) GROUP BY a.term";
+$word_id_file = "/var/www/html/lyrics-match/p-library/model/music_feature/20120924_lyrics_wordids_ch.txt";
+$fh = fopen($word_id_file, 'w') or die("can't open file");
 
-$query_result = $db_obj->selectCommand($select_sql);
+$count_id = 0;
+$string_data = '';
 foreach ($query_result as $query_result_data) {
 
-   $term_id = $query_result_data['id'];
+   $count_id++;
+
    $term = $query_result_data['term'];
-   $document_frequncy = $query_result_data['df'];
+   $pos = $query_result_data['pos'];
+   $term_count = $query_result_data['term_count'];
 
-   $idf = log(($document_num/(1+$document_frequncy)));
+   $string_data = $string_data."$count_id\t$term\t$term_count\n";
+   echo "$count_id\t$term\t$term_count\n";
 
-   $update_sql = "UPDATE ".
-                 "lyrics_term_unique_ch ".
-                 "SET idf='$idf' ".
-                 "WHERE ".
-                 "id='$term_id' ".
-                 "LIMIT 1";
-   $query_result3 = $db_obj->insertCommand($update_sql);
-   echo $term." idf:".$idf." \n";
-}
+}// end foreach ($query_result as $query_result_data) {
 
+fwrite($fh, $string_data);
+fclose($fh);
 
 require_once SITE_ROOT."/p-config/application-unsetter.php";
 
