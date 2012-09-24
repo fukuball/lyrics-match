@@ -158,18 +158,48 @@ if __name__ == '__main__':
 
 
 
-	initArray = expectArray(initTable, initProb)
-	finalArray = expectArray(finalTable, finalProb)
+	#initArray = expectArray(initTable, initProb)
+	#finalArray = expectArray(finalTable, finalProb)
 
-	print len(initArray), len(finalArray)
+	#print len(initArray), len(finalArray)
 
-	initExpected = initArray.mean()
-	finalExpected = finalArray.mean()
+	#initExpected = initArray.mean()
+	#finalExpected = finalArray.mean()
 
 
-	print "Init Expected Value: %.4f" % initExpected
-	print "Final Expected Value: %.4f" % finalExpected
-	print "Each Match Expected Value: %.4f" % ((initExpected + finalExpected) / 2)
+	#print "Init Expected Value: %.4f" % initExpected
+	#print "Final Expected Value: %.4f" % finalExpected
+	#print "Each Match Expected Value: %.4f" % ((initExpected + finalExpected) / 2)
+
+
+
+	fp = open("d://table.htm", "w")
+
+	html="<table border=1>"
+	
+	for row in initTable:
+		html += "<tr>"
+		for item in row:
+			if item != 3.0:
+				html +=  "<td>" + str(item) + "</td>"
+			else:
+				html +=  "<td>" + '' + "</td>"
+
+	html+="</table>"
+
+	html+="<table border=1>"
+	
+	for row in finalTable:
+		html += "<tr>"
+		for item in row:
+			if item != 3.0:
+				html +=  "<td>" + str(item) + "</td>"
+			else:
+				html +=  "<td>" + '' + "</td>"
+
+	html+="</table>"
+	fp.write(html)
+	fp.close()
 
 	
 

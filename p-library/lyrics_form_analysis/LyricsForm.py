@@ -272,7 +272,7 @@ class LyricsForm:
 		計算所有的 Parent Block (start line & size) 的 Children
 		"""
 		for size in range(2, len(M) / 2 + 1):
-			for start in range(0, M.shape[0] - size):
+			for start in range(11, M.shape[0] - size):
 
 				"""
 				建立 SSM 的 Corridor(廊道) Matrix 
@@ -352,16 +352,16 @@ class LyricsForm:
 				"""
 				視覺化檢查工具
 				"""
-				#self.__viz.grayMatrix(corridorM, "Row Mask SSM: start= " + str(start) + " size= " + str(size))
+				self.__viz.grayMatrix(corridorM, "Row Mask SSM: start= " + str(start) + " size= " + str(size))
 
-				#pathMask = cf.getPathMask()
-				#familyMask = cf.getFamilyMask()
+				pathMask = cf.getPathMask()
+				familyMask = cf.getFamilyMask()
 
-				#corridorM[start: start + size, start + size: M.shape[1] ] = pathMask
-				#self.__viz.grayMatrix(corridorM, "Path Mask")
+				corridorM[start: start + size, start + size: M.shape[1] ] = pathMask
+				self.__viz.grayMatrix(corridorM, "Path Mask")
 
-				#corridorM[start: start + size, start + size: M.shape[1] ] = familyMask
-				#self.__viz.grayMatrix(corridorM, "Family Mask")
+				corridorM[start: start + size, start + size: M.shape[1] ] = familyMask
+				self.__viz.grayMatrix(corridorM, "Family Mask")
 
 
 
