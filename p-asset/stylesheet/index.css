@@ -107,6 +107,10 @@ ul.nav {
 }
 
 /* overwrite box style */
+.modal.fade.in {
+   margin-top: 80px;
+}
+
 #p-modal-block {
    width: 100%;
    position: fixed;
