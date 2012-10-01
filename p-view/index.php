@@ -42,7 +42,7 @@
                </tr>
             </table>
          </li>
-         <li>
+         <li style="list-style-type:none;">
             <table>
                <tr width="600px">
                   <td width="400px">
@@ -54,7 +54,7 @@
                </tr>
             </table>
          </li>
-         <li>
+         <li style="list-style-type:none;">
             <table>
                <tr width="600px">
                   <td width="400px">
@@ -66,7 +66,7 @@
                </tr>
             </table>
          </li>
-         <li>
+         <li style="list-style-type:none;">
             <table>
                <tr width="600px">
                   <td width="400px">
@@ -78,7 +78,7 @@
                </tr>
             </table>
          </li>
-         <li>
+         <li style="list-style-type:none;">
             <table>
                <tr width="600px">
                   <td width="400px">
@@ -100,7 +100,7 @@
          推薦結果：
       </h4>
       <ul>
-         <li>
+         <li style="list-style-type:none;">
             <table>
                <tr width="600px">
                   <td width="400px">
@@ -112,7 +112,7 @@
                </tr>
             </table>
          </li>
-         <li>
+         <li style="list-style-type:none;">
             <table>
                <tr width="600px">
                   <td width="400px">
@@ -124,7 +124,7 @@
                </tr>
             </table>
          </li>
-         <li>
+         <li style="list-style-type:none;">
             <table>
                <tr width="600px">
                   <td width="400px">
@@ -136,7 +136,7 @@
                </tr>
             </table>
          </li>
-         <li>
+         <li style="list-style-type:none;">
             <table>
                <tr width="600px">
                   <td width="400px">
@@ -148,7 +148,7 @@
                </tr>
             </table>
          </li>
-         <li>
+         <li style="list-style-type:none;">
             <table>
                <tr width="600px">
                   <td width="400px">
@@ -170,7 +170,7 @@
          推薦結果：
       </h4>
       <ul>
-         <li>
+         <li style="list-style-type:none;">
             <table>
                <tr width="600px">
                   <td width="400px">
@@ -182,7 +182,7 @@
                </tr>
             </table>
          </li>
-         <li>
+         <li style="list-style-type:none;">
             <table>
                <tr width="600px">
                   <td width="400px">
@@ -194,7 +194,7 @@
                </tr>
             </table>
          </li>
-         <li>
+         <li style="list-style-type:none;">
             <table>
                <tr width="600px">
                   <td width="400px">
@@ -206,7 +206,7 @@
                </tr>
             </table>
          </li>
-         <li>
+         <li style="list-style-type:none;">
             <table>
                <tr width="600px">
                   <td width="400px">
@@ -218,7 +218,7 @@
                </tr>
             </table>
          </li>
-         <li>
+         <li style="list-style-type:none;">
             <table>
                <tr width="600px">
                   <td width="400px">
@@ -240,7 +240,7 @@
          推薦結果：
       </h4>
       <ul>
-         <li>
+         <li style="list-style-type:none;">
             <table>
                <tr width="600px">
                   <td width="400px">
@@ -252,7 +252,7 @@
                </tr>
             </table>
          </li>
-         <li>
+         <li style="list-style-type:none;">
             <table>
                <tr width="600px">
                   <td width="400px">
