@@ -23,6 +23,78 @@
 <hr />
 <div id="accordion" style="width: 800px; margin: 10px auto;">
    <h3>
+      <a href="#">恰似你的溫柔 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;原唱：鄧麗君 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<button class="r-link" data-song-id="1093_1093">查詢原曲試聽</button></a>
+   </h3>
+   <div>
+      <h4>
+         歌詞配對結果：
+      </h4>
+      <ul>
+         <li style="list-style-type:none;">
+            <table>
+               <tr width="600px">
+                  <td width="400px">
+                     <a class="r-link" data-song-id="1093_1093">1. <sapn style="font-size:12px;">恰似你的溫柔</span></a>
+                  </td>
+                  <td width="200px">
+                     <button style="color:black;font-weight:normal;" class="r-link" data-song-id="1093_1093">歌詞與試聽</button>
+                  </td>
+               </tr>
+            </table>
+         </li>
+         <li style="list-style-type:none;">
+            <table>
+               <tr width="600px">
+                  <td width="400px">
+                     <a class="r-link" data-song-id="1093_454">2. <sapn style="font-size:12px;">翅膀</span></a>
+                  </td>
+                  <td width="200px">
+                     <button style="color:black;font-weight:normal;" class="r-link" data-song-id="1093_454">歌詞與試聽</button>
+                  </td>
+               </tr>
+            </table>
+         </li>
+         <li style="list-style-type:none;">
+            <table>
+               <tr width="600px">
+                  <td width="400px">
+                     <a class="r-link" data-song-id="1093_775">3. <sapn style="font-size:12px;">心愛的再會啦</span></a>
+                  </td>
+                  <td width="200px">
+                     <button style="color:black;font-weight:normal;" class="r-link" data-song-id="1093_775">歌詞與試聽</button>
+                  </td>
+               </tr>
+            </table>
+         </li>
+         <li style="list-style-type:none;">
+            <table>
+               <tr width="600px">
+                  <td width="400px">
+                     <a class="r-link" data-song-id="1093_605">4. <sapn style="font-size:12px;">梨渦淺笑</span></a>
+                  </td>
+                  <td width="200px">
+                     <button style="color:black;font-weight:normal;" class="r-link" data-song-id="1093_605">歌詞與試聽</button>
+                  </td>
+               </tr>
+            </table>
+         </li>
+         <li style="list-style-type:none;">
+            <table>
+               <tr width="600px">
+                  <td width="400px">
+                     <a class="r-link" data-song-id="1093_699">5. <sapn style="font-size:12px;">貝多芬與我</span></a>
+                  </td>
+                  <td width="200px">
+                     <button style="color:black;font-weight:normal;" class="r-link" data-song-id="1093_699">歌詞與試聽</button>
+                  </td>
+               </tr>
+            </table>
+         </li>
+      </ul>
+   </div>
+
+
+   <h3>
       <a href="#">情非得已 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;原唱：庾澄慶 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<button class="r-link" data-song-id="921_921">查詢原曲試聽</button></a>
    </h3>
    <div>
