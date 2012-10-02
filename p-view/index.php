@@ -420,26 +420,31 @@
                   $( "#accordion" ).accordion( "option", "active", 0);
                   $( "#1093_h" ).css('display', 'block');
                   $( "#1093_d" ).css('display', 'block');
+                  $( "#1093_d" ).css('height', '150px');
                   break;
                case '921_921.mp3':
                   $( "#accordion" ).accordion( "option", "active", 1);
                   $( "#921_h" ).css('display', 'block');
                   $( "#921_d" ).css('display', 'block');
+                  $( "#921_d" ).css('height', '150px');
                   break;
                case '922_922.mp3':
                   $( "#accordion" ).accordion( "option", "active", 2);
                   $( "#922_h" ).css('display', 'block');
                   $( "#922_d" ).css('display', 'block');
+                  $( "#922_d" ).css('height', '150px');
                   break;
                case '924_924.mp3':
                   $( "#accordion" ).accordion( "option", "active", 3);
                   $( "#924_h" ).css('display', 'block');
                   $( "#924_d" ).css('display', 'block');
+                  $( "#924_d" ).css('height', '150px');
                   break;
                case '1_1.mp3':
                   $( "#accordion" ).accordion( "option", "active", 4);
                   $( "#1_h" ).css('display', 'block');
                   $( "#1_d" ).css('display', 'block');
+                  $( "#1_d" ).css('height', '150px');
                   break;
                }
 
