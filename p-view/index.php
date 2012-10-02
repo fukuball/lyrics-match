@@ -2,7 +2,7 @@
    <h1>再三推詞(舊曲新詞)- Lyrics Recommendation By Song</h1>
 </div>
 <br class="clearboth" />
-<!--<div id="midi-upload-block" class="row well" style="width: 400px; margin: 10px auto;">
+<div id="midi-upload-block" class="row well" style="width: 400px; margin: 10px auto;">
    <div style="width: 120px; margin: 0px auto;">
       <a id="pick-midi-file">
          <button type="submit" class="btn btn-primary start">
@@ -13,7 +13,7 @@
          </button>
       </a>
    </div>
-</div>-->
+</div>
 <div style="width:470px;margin: 10px auto;">
    <div class="progress progress-success progress-striped margin-all hide" style="width: 450px;">
       <div class="bar" style="width: 0%"></div>

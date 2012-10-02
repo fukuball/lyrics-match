@@ -49,10 +49,7 @@ $message = "我發現「".$r_title."」歌詞可以配唱「".$song_o_obj->title
          </p>
       </div>
       <hr/>
-      <h4 style="margin-bottom:10px;">
-         歌詞
-      </h4>
-      <p style="width:480px;height:220px;overflow:auto;text-align:center;line-height:25px;">
+      <p style="width:480px;height:230px;overflow:auto;text-align:center;line-height:25px;">
          <?=nl2br($r_lyric)?>
       </p>
    </div>
