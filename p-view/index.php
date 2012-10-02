@@ -402,7 +402,7 @@
          FileUploaded: function(up, file, resp) {
 
             var responseText = $.parseJSON(resp.response);
-            console.log(file);
+            console.log(file.name);
             if(responseText.response.status.code==0){
 
                $('#system-message').html('完成');
@@ -411,6 +411,7 @@
             } else {
                $('#system-message').fadeOut();
                $('.progress .bar').css('width' , '0%');
+               $( "#accordion" ).accordion( "option", "active", 5 );
                /*$.ajax({
                   url: '<?=SITE_HOST?>/ajax-action/box-action/alert-no-licence',
                   type: "GET",
