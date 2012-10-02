@@ -22,10 +22,10 @@
 <br class="clearboth" />
 <hr />
 <div id="accordion" style="width: 800px; margin: 10px auto;">
-   <h3 class="a-h">
+   <h3 id="1093_h" class="a-h" style="display:none;">
       <a href="#">恰似你的溫柔 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;原唱：鄧麗君 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<button class="r-link" data-song-id="1093_1093">查詢原曲試聽</button></a>
    </h3>
-   <div class="a-d">
+   <div id="1093_d" class="a-d">
       <h4>
          歌詞配對結果：
       </h4>
@@ -92,10 +92,10 @@
          </li>
       </ul>
    </div>
-   <h3 class="a-h">
+   <h3 id="921_h" class="a-h" style="display:none;">
       <a href="#">情非得已 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;原唱：庾澄慶 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<button class="r-link" data-song-id="921_921">查詢原曲試聽</button></a>
    </h3>
-   <div class="a-d">
+   <div id="921_d" class="a-d">
       <h4>
          歌詞配對結果：
       </h4>
@@ -162,10 +162,10 @@
          </li>
       </ul>
    </div>
-   <h3 class="a-h">
+   <h3 id="922_h" class="a-h" style="display:none;">
       <a href="#">愛如潮水 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;原唱：張信哲 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<button class="r-link" data-song-id="922_922">查詢原曲試聽</button></a>
    </h3>
-   <div class="a-d">
+   <div id="922_d" class="a-d">
       <h4>
          推薦結果：
       </h4>
@@ -232,10 +232,10 @@
          </li>
       </ul>
    </div>
-   <h3 class="a-h">
+   <h3 id="924_h" class="a-h" style="display:none;">
       <a href="#">容易受傷的女人 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;原唱：鄺美雲 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<button class="r-link" data-song-id="924_924">查詢原曲試聽</button></a>
    </h3>
-   <div class="a-d">
+   <div id="924_d" class="a-d">
       <h4>
          推薦結果：
       </h4>
@@ -302,10 +302,10 @@
          </li>
       </ul>
    </div>
-   <h3 class="a-h">
+   <h3 id="1_h" class="a-h" style="display:none;">
       <a href="#">但願人長久 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;原唱：王菲 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<button class="r-link" data-song-id="1_1">查詢原曲試聽</button></a>
    </h3>
-   <div class="a-d">
+   <div id="1_d" class="a-d">
       <h4>
          推薦結果：
       </h4>
@@ -409,7 +409,36 @@
             } else {
                $('#system-message').fadeOut();
                $('.progress .bar').css('width' , '0%');
-               $( "#accordion" ).accordion( "option", "active", 2);
+
+               $( ".a-h" ).css('display', 'none');
+
+               var file_name = file.name;
+
+               switch (file_name) {
+               case '1093_1093.mp3':
+                  $( "#accordion" ).accordion( "option", "active", 0);
+                  $( "#1093_h" ).css('display', 'block');
+                  break;
+               case '921_921.mp3':
+                  $( "#accordion" ).accordion( "option", "active", 1);
+                  $( "#921_h" ).css('display', 'block');
+                  break;
+               case '922_922.mp3':
+                  $( "#accordion" ).accordion( "option", "active", 2);
+                  $( "#922_h" ).css('display', 'block');
+                  break;
+               case '924_924.mp3':
+                  $( "#accordion" ).accordion( "option", "active", 3);
+                  $( "#924_h" ).css('display', 'block');
+                  break;
+               case '1_1.mp3':
+                  $( "#accordion" ).accordion( "option", "active", 4);
+                  $( "#1_h" ).css('display', 'block');
+                  break;
+               }
+
+
+
                /*$.ajax({
                   url: '<?=SITE_HOST?>/ajax-action/box-action/alert-no-licence',
                   type: "GET",
