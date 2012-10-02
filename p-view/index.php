@@ -446,21 +446,24 @@
                   $( "#1_d" ).css('display', 'block');
                   $( "#1_d" ).css('height', '150px');
                   break;
+               default:
+                  $.ajax({
+                     url: '<?=SITE_HOST?>/ajax-action/box-action/alert-no-licence',
+                     type: "GET",
+                     data: {},
+                     dataType: "html",
+                     beforeSend: function( xhr ) {
+                     },
+                     success: function( html_block ) {
+                        $('#p-modal-block').html(html_block);
+                     }
+                  });
+                  break;
                }
 
 
 
-               /*$.ajax({
-                  url: '<?=SITE_HOST?>/ajax-action/box-action/alert-no-licence',
-                  type: "GET",
-                  data: {},
-                  dataType: "html",
-                  beforeSend: function( xhr ) {
-                  },
-                  success: function( html_block ) {
-                     $('#p-modal-block').html(html_block);
-                  }
-               });*/
+               /**/
 
             }
 
