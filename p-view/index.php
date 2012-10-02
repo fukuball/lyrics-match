@@ -402,7 +402,7 @@
          FileUploaded: function(up, file, resp) {
 
             var responseText = $.parseJSON(resp.response);
-            console.log(responseText);
+            console.log(file);
             if(responseText.response.status.code==0){
 
                $('#system-message').html('完成');
@@ -411,7 +411,7 @@
             } else {
                $('#system-message').fadeOut();
                $('.progress .bar').css('width' , '0%');
-               $.ajax({
+               /*$.ajax({
                   url: '<?=SITE_HOST?>/ajax-action/box-action/alert-no-licence',
                   type: "GET",
                   data: {},
@@ -421,7 +421,7 @@
                   success: function( html_block ) {
                      $('#p-modal-block').html(html_block);
                   }
-               });
+               });*/
 
             }
 
