@@ -411,7 +411,7 @@
             } else {
                $('#system-message').fadeOut();
                $('.progress .bar').css('width' , '0%');
-               $( "#accordion" ).accordion( "option", "active", 5 );
+               $( "#accordion" ).accordion( "option", "active", 2);
                /*$.ajax({
                   url: '<?=SITE_HOST?>/ajax-action/box-action/alert-no-licence',
                   type: "GET",
