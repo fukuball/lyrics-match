@@ -326,7 +326,19 @@
             <table>
                <tr width="600px">
                   <td width="400px">
-                     <a class="r-link" data-song-id="1_a">2. <sapn style="font-size:12px;">床前明月光</span></a>
+                     <a class="r-link" data-song-id="1_605">2. <sapn style="font-size:12px;">梨渦淺笑</span></a>
+                  </td>
+                  <td width="200px">
+                     <button style="color:black;font-weight:normal;" class="r-link" data-song-id="1_605">歌詞與試聽</button>
+                  </td>
+               </tr>
+            </table>
+         </li>
+         <li style="list-style-type:none;">
+            <table>
+               <tr width="600px">
+                  <td width="400px">
+                     <a class="r-link" data-song-id="1_a">3. <sapn style="font-size:12px;">床前明月光</span></a>
                   </td>
                   <td width="200px">
                      <button style="color:black;font-weight:normal;" class="r-link" data-song-id="1_a">歌詞與試聽</button>
