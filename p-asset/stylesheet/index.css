@@ -107,9 +107,14 @@ ul.nav {
 }
 
 /* overwrite box style */
+.modal.fade.in {
+   margin-top: 80px;
+}
+
 #p-modal-block {
    width: 100%;
    position: fixed;
+   z-index: 1050;
 }
 #p-modal-block .modal {
    background-color: transparent;
@@ -118,6 +123,7 @@ ul.nav {
    margin-left: auto;
    margin-right: auto;
    position: relative;
+   z-index: 1060;
 }
 #p-modal-block .modal-header {
    background-color: #2C2C2C;

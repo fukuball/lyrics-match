@@ -19,7 +19,7 @@ $short_url_json = json_decode(shell_exec("curl https://www.googleapis.com/urlsho
 $message = "我發現「".$r_title."」歌詞可以配唱「".$song_o_obj->title."」歌曲，你覺得好聽嗎？ 連結：".$short_url_json->id;
 //$message = "連結：".$url;
 ?>
-<div id="p-modal" class="modal hide fade" style="width:<?php echo htmlspecialchars($size); ?>;display: none; ">
+<div id="p-modal" class="modal hide fade" style="height:500px;width:<?php echo htmlspecialchars($size); ?>;display: none;overflow:none;">
    <div class="modal-header">
       <h3>
          <?=$r_title?>
@@ -49,10 +49,7 @@ $message = "我發現「".$r_title."」歌詞可以配唱「".$song_o_obj->title
          </p>
       </div>
       <hr/>
-      <h4 style="margin-bottom:10px;">
-         歌詞
-      </h4>
-      <p style="width:480px;height:150px;overflow:auto;text-align:center;line-height:25px;">
+      <p style="width:480px;height:270px;overflow:auto;text-align:center;line-height:25px;">
          <?=nl2br($r_lyric)?>
       </p>
    </div>
