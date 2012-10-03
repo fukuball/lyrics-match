@@ -153,6 +153,10 @@ if __name__ == '__main__':
 	p = SimPinyin()
 	initTable = p.getInitTable()
 	finalTable = p.getFinalTable()
+
+	print p.similarity((14, 17), (20, 14))
+	#print initTable[14][20]
+	#print finalTable[4][14]
 	#InitExpected = Expectation(initTable)
 	#finalExpected = Expectation(finalTable)
 
