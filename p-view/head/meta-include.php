@@ -1,7 +1,7 @@
 <?php
 /**
  * meta-include.php is head include meta
- * 
+ *
  * PHP version 5
  *
  * @category PHP
@@ -12,7 +12,7 @@
  * @link     http://sarasti.cs.nccu.edu.tw
  */
  // hard code
- 
+
 $og_title = $page_title;
 $og_type = "website";
 $og_url = $current_page_full_url;
@@ -20,35 +20,35 @@ $og_image = SITE_HOST."/p-asset/image/index-touch-icon.png";
 $og_description = "http://sarasti.cs.nccu.edu.tw/lyrics-match Lyrics Match Project";
 
 if (!empty($item_obj)) {
-   
+
    $this_item_class_name = get_class($item_obj);
-   
+
    switch ($this_item_class_name) {
-      
+
    default:
-   
+
       $og_title = $page_title;
       $og_type = "website";
       $og_url = $current_page_full_url;
       $og_image = "http://sarasti.cs.nccu.edu.tw/p-asset/image/index-touch-icon.png";
       $og_description = "http://sarasti.cs.nccu.edu.tw/lyrics-match Lyrics Match Project";
-   
+
       break;
 
    }
-   
+
    if (empty($og_image)) {
-      
+
       $og_image = "http://sarasti.cs.nccu.edu.tw/p-asset/image/index-touch-icon.png";
-      
+
    }
-   
+
    $og_description = strip_tags($og_description);
    $og_description = str_replace("\n", "", $og_description);
    $og_description = str_replace("\r", "", $og_description);
    $og_description = str_replace('&nbsp;', ' ', $og_description);
    $og_description = htmlspecialchars($og_description);
-   
+
 }
 
 ?>
@@ -67,3 +67,4 @@ if (!empty($item_obj)) {
 <meta property="og:image" content="<?php echo $og_image; ?>" />
 <meta property="og:description" content="<?php echo $og_description; ?>" />
 <meta property="og:site_name" content="Lyrics Match" />
+<meta name="google-translate-customization" content="aa06528560b8f7b7-dfeb3f2197b0f51f-g6bc2f26f2442e58f-24"></meta>
