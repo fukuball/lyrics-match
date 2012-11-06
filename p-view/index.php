@@ -326,7 +326,19 @@
             <table>
                <tr width="600px">
                   <td width="400px">
-                     <a class="r-link" data-song-id="1_a">2. <sapn style="font-size:12px;">床前明月光</span></a>
+                     <a class="r-link" data-song-id="1_605">2. <sapn style="font-size:12px;">梨渦淺笑</span></a>
+                  </td>
+                  <td width="200px">
+                     <button style="color:black;font-weight:normal;" class="r-link" data-song-id="1_605">歌詞與試聽</button>
+                  </td>
+               </tr>
+            </table>
+         </li>
+         <li style="list-style-type:none;">
+            <table>
+               <tr width="600px">
+                  <td width="400px">
+                     <a class="r-link" data-song-id="1_a">3. <sapn style="font-size:12px;">床前明月光</span></a>
                   </td>
                   <td width="200px">
                      <button style="color:black;font-weight:normal;" class="r-link" data-song-id="1_a">歌詞與試聽</button>
@@ -416,30 +428,35 @@
                var file_name = file.name;
 
                switch (file_name) {
+               case '1093_1093.mid':
                case '1093_1093.mp3':
                   $( "#accordion" ).accordion( "option", "active", 0);
                   $( "#1093_h" ).css('display', 'block');
                   $( "#1093_d" ).css('display', 'block');
                   $( "#1093_d" ).css('height', '150px');
                   break;
+               case '921_921.mid':
                case '921_921.mp3':
                   $( "#accordion" ).accordion( "option", "active", 1);
                   $( "#921_h" ).css('display', 'block');
                   $( "#921_d" ).css('display', 'block');
                   $( "#921_d" ).css('height', '150px');
                   break;
+               case '922_922.mid':
                case '922_922.mp3':
                   $( "#accordion" ).accordion( "option", "active", 2);
                   $( "#922_h" ).css('display', 'block');
                   $( "#922_d" ).css('display', 'block');
                   $( "#922_d" ).css('height', '150px');
                   break;
+               case '924_924.mid':
                case '924_924.mp3':
                   $( "#accordion" ).accordion( "option", "active", 3);
                   $( "#924_h" ).css('display', 'block');
                   $( "#924_d" ).css('display', 'block');
                   $( "#924_d" ).css('height', '150px');
                   break;
+               case '1_1.mid':
                case '1_1.mp3':
                   $( "#accordion" ).accordion( "option", "active", 4);
                   $( "#1_h" ).css('display', 'block');
