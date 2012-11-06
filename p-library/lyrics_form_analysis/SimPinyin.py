@@ -154,7 +154,7 @@ if __name__ == '__main__':
 	initTable = p.getInitTable()
 	finalTable = p.getFinalTable()
 
-	print p.similarity((14, 17), (20, 14))
+	print p.similarity((12, 25), (8, 14))
 	#print initTable[14][20]
 	#print finalTable[4][14]
 	#InitExpected = Expectation(initTable)
