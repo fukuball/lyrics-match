@@ -50,7 +50,7 @@ class PronMapper:
 		pronTag = root.find(xpath)
 
 		if pronTag.text != None:
-			pronList = pronTag.text.split(sep)
+			pronList = pronTag.text.split(" ")
 			# Vowel Stress Extraction
 			vowelStressList = [pron[-1] for pron in pronList if pron[-1].isdigit()]
 			#print vowelStressList
