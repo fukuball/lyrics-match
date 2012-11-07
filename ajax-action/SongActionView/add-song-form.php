@@ -119,6 +119,14 @@
             <input type="checkbox" id="have-english" name="have_english" value="1">
          </div>
       </div>
+      <div class="control-group">
+         <label class="control-label" for="only-english">
+            只包含英文
+         </label>
+         <div class="controls">
+            <input type="checkbox" id="only-english" name="only_english" value="1">
+         </div>
+      </div>
       <div class="form-actions">
          <button type="submit" class="btn btn-primary">
             儲存歌曲
