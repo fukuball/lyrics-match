@@ -49,13 +49,14 @@ class PronMapper:
 		xpath = ".//tt"
 		pronTag = root.find(xpath)
 
-		sep = " "
-		pronList = pronTag.text.split(sep)
-
-		# Vowel Stress Extraction
-		vowelStressList = [pron[-1] for pron in pronList if pron[-1].isdigit()]
-		#print vowelStressList
-		return vowelStressList
+		if pronTag.text != None:
+			pronList = pronTag.text.split(sep)
+			# Vowel Stress Extraction
+			vowelStressList = [pron[-1] for pron in pronList if pron[-1].isdigit()]
+			#print vowelStressList
+			return vowelStressList
+		else:
+			return  None
 
 
 
@@ -64,7 +65,7 @@ if __name__ == "__main__":
 	import sys
 	reload(sys)
 	sys.setdefaultencoding('utf-8')
-	term = 'ours'
+	term = 'colitas'
 	print 'term:' + term
 
 	test = PronMapper().mapping(term)
