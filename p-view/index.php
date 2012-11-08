@@ -348,6 +348,65 @@
          </li>
       </ul>
    </div>
+   <!-- Hey Jude -->
+   <h3 id="1157_h" class="a-h" style="display:none;">
+      <a href="#">Hey Jude &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Singer：Beatles &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<button class="r-link" data-song-id="heyjude">查詢原曲試聽</button></a>
+   </h3>
+   <div id="1157_d" class="a-d" style="display:none;">
+      <h4>
+         推薦結果：
+      </h4>
+      <ul>
+         <li style="list-style-type:none;">
+            <table>
+               <tr width="600px">
+                  <td width="400px">
+                     <a class="r-link" data-song-id="1157_1157">1. <sapn style="font-size:12px;">Hey Jude</span></a>
+                  </td>
+                  <td width="200px">
+                     <button style="color:black;font-weight:normal;" class="r-link" data-song-id="1157_1157">歌詞與試聽</button>
+                  </td>
+               </tr>
+            </table>
+         </li>
+         <li style="list-style-type:none;">
+            <table>
+               <tr width="600px">
+                  <td width="400px">
+                     <a class="r-link" data-song-id="1157_1106">2. <sapn style="font-size:12px;">Yesterday</span></a>
+                  </td>
+                  <td width="200px">
+                     <button style="color:black;font-weight:normal;" class="r-link" data-song-id="1157_1106">歌詞與試聽</button>
+                  </td>
+               </tr>
+            </table>
+         </li>
+         <li style="list-style-type:none;">
+            <table>
+               <tr width="600px">
+                  <td width="400px">
+                     <a class="r-link" data-song-id="1157_1159">3. <sapn style="font-size:12px;">Over The Rainbow</span></a>
+                  </td>
+                  <td width="200px">
+                     <button style="color:black;font-weight:normal;" class="r-link" data-song-id="1157_1159">歌詞與試聽</button>
+                  </td>
+               </tr>
+            </table>
+         </li>
+         <li style="list-style-type:none;">
+            <table>
+               <tr width="600px">
+                  <td width="400px">
+                     <a class="r-link" data-song-id="1157_1160">3. <sapn style="font-size:12px;">Blue Moon</span></a>
+                  </td>
+                  <td width="200px">
+                     <button style="color:black;font-weight:normal;" class="r-link" data-song-id="1157_1160">歌詞與試聽</button>
+                  </td>
+               </tr>
+            </table>
+         </li>
+      </ul>
+   </div>
 </div>
 <br class="clearboth" />
 <hr />
@@ -462,6 +521,13 @@
                   $( "#1_h" ).css('display', 'block');
                   $( "#1_d" ).css('display', 'block');
                   $( "#1_d" ).css('height', '150px');
+                  break;
+               case '1157_1157.mid':
+               case '1157_1157.mp3':
+                  $( "#accordion" ).accordion( "option", "active", 5);
+                  $( "#1157_h" ).css('display', 'block');
+                  $( "#1157_d" ).css('display', 'block');
+                  $( "#1157_d" ).css('height', '150px');
                   break;
                default:
                   $.ajax({
