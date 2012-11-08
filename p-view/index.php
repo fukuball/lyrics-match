@@ -1,5 +1,5 @@
 <div class="page-header align-center" style="padding-top: 28px;padding-bottom: 28px;background-color: whiteSmoke; margin: 0px auto 18px auto;">
-   <h1>再三推詞(舊曲新詞)- Lyrics Recommendation By Song</h1>
+   <h1>再三推詞(舊曲新詞)- Lyrics Recommendation By Melody</h1>
 </div>
 <br class="clearboth" />
 <div id="midi-upload-block" class="row well" style="width: 400px; margin: 10px auto;">
