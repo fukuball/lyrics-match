@@ -1,5 +1,5 @@
 <div class="page-header align-center" style="padding-top: 28px;padding-bottom: 28px;background-color: whiteSmoke; margin: 0px auto 18px auto;">
-   <h1>再三推詞(舊曲新詞)- Lyrics Recommendation By Melody</h1>
+   <h1>Sing My Story - Lyrics Recommendation By Melody</h1>
 </div>
 <br class="clearboth" />
 <div id="midi-upload-block" class="row well" style="width: 400px; margin: 10px auto;">
@@ -8,7 +8,7 @@
          <button type="submit" class="btn btn-primary start">
             <i class="icon-upload icon-white"></i>
             <span>
-               開始上傳歌曲
+               Upload Song Melody
             </span>
          </button>
       </a>
@@ -350,11 +350,11 @@
    </div>
    <!-- Hey Jude -->
    <h3 id="1157_h" class="a-h" style="display:none;">
-      <a href="#">Hey Jude &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Singer：Beatles &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<button class="r-link" data-song-id="heyjude">查詢原曲試聽</button></a>
+      <a href="#">Hey Jude &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Singer：Beatles &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<button class="r-link" data-song-id="1157_1157">Original Melody</button></a>
    </h3>
    <div id="1157_d" class="a-d" style="display:none;">
       <h4>
-         推薦結果：
+         Lyrics Recommendation List:
       </h4>
       <ul>
          <li style="list-style-type:none;">
@@ -364,7 +364,7 @@
                      <a class="r-link" data-song-id="1157_1157">1. <sapn style="font-size:12px;">Hey Jude</span></a>
                   </td>
                   <td width="200px">
-                     <button style="color:black;font-weight:normal;" class="r-link" data-song-id="1157_1157">歌詞與試聽</button>
+                     <button style="color:black;font-weight:normal;" class="r-link" data-song-id="1157_1157">Lyric &amp; Listen</button>
                   </td>
                </tr>
             </table>
@@ -376,7 +376,7 @@
                      <a class="r-link" data-song-id="1157_1106">2. <sapn style="font-size:12px;">Yesterday</span></a>
                   </td>
                   <td width="200px">
-                     <button style="color:black;font-weight:normal;" class="r-link" data-song-id="1157_1106">歌詞與試聽</button>
+                     <button style="color:black;font-weight:normal;" class="r-link" data-song-id="1157_1106">Lyric &amp; Listen</button>
                   </td>
                </tr>
             </table>
@@ -388,7 +388,7 @@
                      <a class="r-link" data-song-id="1157_1159">3. <sapn style="font-size:12px;">Over The Rainbow</span></a>
                   </td>
                   <td width="200px">
-                     <button style="color:black;font-weight:normal;" class="r-link" data-song-id="1157_1159">歌詞與試聽</button>
+                     <button style="color:black;font-weight:normal;" class="r-link" data-song-id="1157_1159">Lyric &amp; Listen</button>
                   </td>
                </tr>
             </table>
@@ -400,7 +400,7 @@
                      <a class="r-link" data-song-id="1157_1160">4. <sapn style="font-size:12px;">Blue Moon</span></a>
                   </td>
                   <td width="200px">
-                     <button style="color:black;font-weight:normal;" class="r-link" data-song-id="1157_1160">歌詞與試聽</button>
+                     <button style="color:black;font-weight:normal;" class="r-link" data-song-id="1157_1160">Lyric &amp; Listen</button>
                   </td>
                </tr>
             </table>
@@ -409,9 +409,11 @@
    </div>
 </div>
 <br class="clearboth" />
+<div id="lyrics_recommend_block" style="width: 800px; margin: 10px auto;">
+</div>
 <hr />
 <div style="width: 800px; margin: 20px auto;">
-   <img width="800" src="<?=SITE_HOST?>/p-asset/image/ui-icon/banner.png" />
+   <img width="800" src="<?=SITE_HOST?>/p-asset/image/ui-icon/banner2.png" />
 </div>
 <br class="clearboth" />
 <script>
@@ -420,12 +422,12 @@
       $( "#accordion" ).accordion();
    });
 
-   $('.r-link').on('click', function () {
+   $('.r-link').live('click', function () {
 
       $.ajax({
          url: '<?=SITE_HOST?>/ajax-action/box-action/r-song-box',
          type: "GET",
-         data: {song_id: $(this).attr("data-song-id")},
+         data: {song_id: $(this).attr("data-song-id"), mp3_path: $(this).attr("data-path"), has_file: $(this).attr("data-has-file")},
          dataType: "html",
          beforeSend: function( xhr ) {
          },
@@ -441,7 +443,7 @@
       browse_button : 'pick-midi-file',
       container: 'midi-upload-block',
       max_file_size : '100mb',
-      chunk_size : '1mb',
+      chunk_size : '200kb',
       url : '<?=SITE_HOST?>/ajax-action/user-action/user-upload',
       flash_swf_url : '<?=SITE_HOST?>/p-library/plupload/js/plupload.flash.swf',
       silverlight_xap_url : '<?=SITE_HOST?>/p-library/plupload/js/plupload.silverlight.xap',
@@ -454,10 +456,11 @@
          FilesAdded: function(up, files) {
             $('.progress').removeClass('hide');
             up.start();
-            $('#system-message').html('處理中...');
+            $('#system-message').html('Processing...');
             $('#system-message').show();
          },
          BeforeUpload: function (up, file) {
+            $('#lyrics_recommend_block').empty();
          },
          UploadProgress: function(up, file) {
             $('.progress .bar').css('width' , file.percent+'%');
@@ -530,17 +533,97 @@
                   $( "#1157_d" ).css('height', '150px');
                   break;
                default:
+
+
                   $.ajax({
-                     url: '<?=SITE_HOST?>/ajax-action/box-action/alert-no-licence',
+                     url: '<?=SITE_HOST?>/p-data/chinese_midi/mapping.json',
                      type: "GET",
                      data: {},
-                     dataType: "html",
+                     dataType: "json",
                      beforeSend: function( xhr ) {
+
                      },
-                     success: function( html_block ) {
-                        $('#p-modal-block').html(html_block);
+                     success: function( json_file ) {
+
+                        var has_data = false;
+                        jQuery.each(json_file, function(i, midi_item) {
+
+                          if (midi_item.midi_name==file_name) {
+
+                              has_data = true;
+
+                              var result_path = midi_item.result;
+
+                              result_path = result_path.replace('./', "<?=SITE_HOST?>/p-data/chinese_midi/");
+
+                              $('#lyrics_recommend_block').append('<h3 class="a-h" style="font-size: 2em;">'+midi_item.midi_name+' </h3>');
+
+                              $.ajax({
+                                 url: result_path,
+                                 type: "GET",
+                                 data: {},
+                                 dataType: "json",
+                                 beforeSend: function( xhr ) {
+                                 },
+                                 success: function( result_json_file ) {
+
+                                    var result_wrap = '<div class="a-d"><h4>Recommended Results:</h4><ul>';
+
+                                    var rank = 1;
+                                    jQuery.each(result_json_file, function(i, result_item) {
+
+                                       var has_file = result_item.has_mp3;
+                                       var mp3_path = '<?=SITE_HOST?>/p-data/chinese_midi/可截取出主旋律/'+midi_item.midi_name+'/'+result_item.id+'.mp3';
+
+                                       //console.log(mp3_path);
+
+                                       item_template = '<li style="list-style-type:none;">'+
+                                                         '<table>'+
+                                                            '<tr width="600px">'+
+                                                               '<td width="400px">'+
+                                                                  '<a class="r-link" data-song-id="_'+result_item.id+'" data-path="'+mp3_path+'" data-has-file="'+has_file+'">'+rank+'. <sapn style="font-size:12px;">'+result_item.title+'</span></a>'+
+                                                               '</td>'+
+                                                               '<td width="200px">'+
+                                                                  '<button style="color:black;font-weight:normal;" class="r-link" data-song-id="_'+result_item.id+'" data-path="'+mp3_path+'" data-has-file="'+has_file+'" >歌詞與試聽</button>'+
+                                                               '</td>'+
+                                                            '</tr>'+
+                                                         '</table>'+
+                                                       '</li>';
+                                       result_wrap = result_wrap+item_template;
+                                       rank++;
+
+                                    });
+
+                                    result_wrap = result_wrap+'</ul></div>';
+
+                                    $('#lyrics_recommend_block').append(result_wrap);
+
+                                    $( "#lyrics_recommend_block" ).accordion();
+                                 }
+                              });
+
+                          }
+
+                        });
+
+                        if (!has_data) {
+                           $.ajax({
+                              url: '<?=SITE_HOST?>/ajax-action/box-action/alert-no-licence',
+                              type: "GET",
+                              data: {},
+                              dataType: "html",
+                              beforeSend: function( xhr ) {
+                              },
+                              success: function( html_block ) {
+                                 $('#p-modal-block').html(html_block);
+                              }
+                           });
+                        }
+
                      }
                   });
+
+
                   break;
                }
 

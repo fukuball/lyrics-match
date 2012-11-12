@@ -12,11 +12,20 @@
  * @link     http://sarasti.cs.nccu.edu.tw
  */
 
+if ($original_song_id) {
 
-$url = "http://sarasti.cs.nccu.edu.tw/lyrics-match/p-data/demo/".$song_id.".mp3";
+   $url = "http://sarasti.cs.nccu.edu.tw/lyrics-match/p-data/demo/".$song_id.".mp3";
+   $has_file = true;
+
+} else {
+
+   $mp3_path = $_GET['mp3_path'];
+   $url = $mp3_path;
+   $has_file = $_GET['has_file'];
+}
 
 $short_url_json = json_decode(shell_exec("curl https://www.googleapis.com/urlshortener/v1/url -H 'Content-Type: application/json' -d "."'{".'"longUrl"'.": ".'"'.$url.'"'."}'"));
-$message = "我發現「".$r_title."」歌詞可以配唱「".$song_o_obj->title."」歌曲，你覺得好聽嗎？ 連結：".$short_url_json->id;
+$message = "新詞配舊曲連結：".$short_url_json->id;
 //$message = "連結：".$url;
 ?>
 <div id="p-modal" class="modal hide fade" style="height:500px;width:<?php echo htmlspecialchars($size); ?>;display: none;overflow:none;">
@@ -26,8 +35,11 @@ $message = "我發現「".$r_title."」歌詞可以配唱「".$song_o_obj->title
       </h3>
    </div>
    <div class="modal-body">
+      <?php
+      if ($has_file) {
+      ?>
       <h4 style="margin-bottom:10px;">
-         音樂合成試聽
+         Music synthesizer audition
       </h4>
       <div class="row">
          <p id="audioplayer" class="pull-left">Load Song</p>
@@ -43,11 +55,16 @@ $message = "我發現「".$r_title."」歌詞可以配唱「".$song_o_obj->title
             <button id="send-sms-btn" data-message="<?=$message?>" class="btn btn-primary">
                <i class="icon-share icon-white"></i>
                <span>
-                  簡訊分享
+                  SMS Share
                </span>
             </button>
          </p>
       </div>
+      <?php
+      } else {
+         echo '<br/><br/><br/>';
+      }
+      ?>
       <hr/>
       <p style="width:480px;height:270px;overflow:auto;text-align:center;line-height:25px;">
          <?=nl2br($r_lyric)?>
@@ -55,7 +72,7 @@ $message = "我發現「".$r_title."」歌詞可以配唱「".$song_o_obj->title
    </div>
    <div class="modal-footer align-center">
       <button id="alert-licence-close" type="button" class="btn" data-dismiss="modal">
-         關閉
+         Close
       </button>
    </div>
 </div>
