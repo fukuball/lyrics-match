@@ -38,7 +38,7 @@
 
 # 華語流行音樂之詞式分析與詞曲結構搭配之排比與同步 作者：范斯越
 
-![ScreenShot](https://github.com/fukuball/lyrics-match/blob/master/p-asset/image/lyrics-match-screenshot.png)
+![ScreenShot](https://raw.github.com/fukuball/lyrics-match/master/p-asset/image/lyrics-match-screenshot.png)
 
 ## 摘要
 
