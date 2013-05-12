@@ -24,9 +24,71 @@
 使用者要對一首歌曲配詞時，可以將音樂midi上傳到本系統，系統分析歌曲的音樂結構後，會比對現有的流行音樂歌詞，並分析計算與上傳音樂的結構符合的流行音樂歌詞，最後將比對結果最佳的數首歌詞推薦給使用者。
 (5)  虛擬歌手試唱
 系統針對使用者的查詢所回傳的結果，除了依照推薦分數排名的歌詞(或歌曲)之外，還提供虛擬歌手模擬人聲試唱，讓使用者試聽系統推薦的詞曲之效果。我們利用YAMAHA所開發的語音合成軟體VOCALOID。輸入旋律(MIDI)與歌詞，VOCALOID可以合成人聲的歌聲。其中，「初音未來」是目前非常熱門的虛擬歌手。本系統將推薦的歌詞與詞曲結構對應的結果，輸出成「初音未來」合成軟體支援的格式，將配唱結果由「初音未來」演唱，讓使用者可以聆聽各推薦歌詞實際配唱時帶來的感覺，將推薦結果用更直覺的方式呈現給使用者。
-系統架構如下所示
 
+# 華語流行音樂之詞式分析與詞曲結構搭配之排比與同步 作者：范斯越
 
-## 資源連結
+![ScreenShot](https://raw.github.com/fukuball/cfa/master/p-asset/image/cfa-head-photo.png)
 
-## Contact
+## 摘要
+
+目前大部分的聽眾主要是透過歌詞與樂曲的搭配來了解音樂所要表達的內容，因此歌詞創作在目前的音樂工業是很重要的一環。一般流行音樂創作是由作曲人與作詞人共同完成，然而有另一種方式是將既有的詩詞做為歌詞，接著重新譜曲的方式產生新的流行音樂。這種創作方式是讓舊有的詞或曲注入新的生命力，得以流傳到現在。因此本研究希望可以為一首旋律推薦適合配唱的歌詞，以對數位音樂達到舊曲新詞的加值應用。本論文包括兩個部分，分別為：(1)自動分析歌詞的詞式，找出每個段落的位置與其段落的標籤；(2)詞曲結構搭配，找出相符合結構的詞與曲，並且同步每個漢字與音符。
+
+本論文的第一部分為詞式分析，首先將歌詞擷取四個面向的特徵值，分別為(1)句字數結構；(2)拼音結構；(3)詞性；(4)聲調音高。第二步驟，利用這四種特徵值分別建立詞行的自相似度矩陣(Self Similarity Matrix)，並且利用這四個特徵的自相似度矩陣產生一個線性組合自相似度矩陣。第三步驟，建立在自相似度矩陣上我們做段落分群以及家族(Family)組合找出最佳的分段方式，最後將找出的分段方式利用我們整理出來的規則讓電腦自動標記段落標籤。第二部分為詞曲結構搭配，首先我們將主旋律的樂句以及歌詞的詞句做第一層粗略的對應，第二步驟，將對應好的樂句與詞句做第二層漢字與音符細部的對應，最後整合兩層對應的成本當做詞曲搭配的分數。
+
+我們以KKBOX音樂網站當做歌詞來源，並且請專家標記華語流行歌詞資料庫的詞式。實驗顯示詞式分析的Pairwise f-score準確率達到0.83，標籤回復準確率達到0.78。詞曲結構搭配中，查詢的歌曲其原本搭配的歌詞，推薦排名皆為第一名。
+
+## Abstract
+
+Nowadays, lots of pop music audiences understand the content of music via lyrics and melody collocation. In general, a Chinese pop music is produced by composer and lyricist cooperatively. However, another producing manner is composing new melody with ancient poetry. Therefore, we want to recommend present lyrics for a melody and then achieving value-added application for digital music. This thesis includes two subjects. The first subject is lyrics form analysis. This subject is finding the block of verse, chorus, etc., in lyrics. The second subject is structure alignment between lyrics and melody. We utilize the result of lyrics form analysis and then employ a 2-tier alignment to recommend present lyrics which is suitable for singing.
+
+In lyrics form analysis, the first step, we investigate four types of feature from lyrics: (1) Word Count Structure; (2) Pinyin Structure; (3) Part of Speech Structure; (4) Word Tone Pitch. For the second step, we utilize these four types of feature to construct a SSM(Self Similarity Matrix), and blend these four types of SSM to produce a linear combination SSM. The third step is clustering blocks and finding the best Family combination based on SSM. Finally, a rule-based technique is employed to label blocks of lyrics. For the second subject, the first step is aligning music phrases and lyrics sentences roughly. The second step is aligning a word and a note for corresponding phrase and sentence. Finally, we integrated the cost of two-level alignment regarded as the lyrics and melody collocation score.
+
+We collect lyrics from KKBOX, a music web site, and invite experts label ground truth of lyrics form. The experimental result of lyrics form analysis shows that the proposed method achieves the Pairwise f-score of 0.83, and the Label Recovering Ratio of 0.78. The experiment of structure alignment between lyrics and melody shows that the original lyrics of query melodies are ranked number one.
+
+## Reference
+
+01. F. Bronson, The Billboard Book of Number One Hits, Billboard Books, 1997.
+02. M. Cooper, and J. Foote, “Summarizing Popular Music via Structural Similarity Analysis,” Proc. of IEEE Workshop on Applications of Signal Processing to Audio and Acoustics, 2003.
+03. J. Foote, “Visualizing Music and Audio Using Self-Similarity,” Proc. of ACM International Conference on Multimedia, 1999.
+04. J. Foote, “Automatic Audio Segmentation Using a Measure of Audio Novelty,”. Proc. of IEEE International Conference on Multimedia and Expo, 2001.
+05. H. Fujihara, M. Goto, J. Ogata, K. Komatani, T. Ogata, and H. G. Okuno, “Automatic Synchronization between Lyrics and Music CD Recordings Based on Viterbi Alignment of Segregated Vocal Signals,” Proc. of IEEE International Symposium on Multimedia, 2006.
+06. S. Fukayama, K. Nakatsuma, S. S. Nagoya, Y. Yonebayashi, T. H. Kim, S. W. Qin, T. Nakano, T. Nishimoto, and S. Sagayama, “Orpheus: Automatic Composition System Considering Prosody of Japanese Lyrics,” Proc. of International Conference on Entertainment Computing, 2009.
+07. S. Fukayama, K. Nakatsuma, S. Sako, T. Nishimoto, and S. Sagayama, “Automatic Song Composition from the Lyrics Exploiting Prosody of Japanese Language,” Proc. of Conference on Sound and Music Computing, 2010.
+08. D. Iskandar, Y. Wang, M. Y. Kan, and H. Li, “Syllabic Level Automatic Synchronization of Music Signals and Text Lyrics,” Proc. of ACM International Conference on Multimedia, 2006.
+09. M. Y. Kan, Y. Wang, D. Iskandar, T. L. Nwe, and A. Shenoy, ”LyricAlly: Automatic Synchronization of Textual Lyrics to Acoustic Music Signals,” IEEE Transactions on Audio, Speech and Language Processing, Vol. 16, No. 2, 2008.
+10. T. Kitahara, S. Fukayama, S. Sagayama, H. Katayose, and N. Nagata, “An Interactive Music Composition System based on Autonomous Maintenance of Musical Consistency,” Proc. of Conference on Sound and Music Computing, 2011.
+11. K. Lee, and M. Cremer, “Segmentation-based Lyrics-Audio Alignment Using Dynamic Programming,” Proc. of International Conference on Music Information Retrieval, 2008.
+12. M. Levy, and M. Sandler, “Structural Segmentation of Musical Audio by Constrained Clustering,” IEEE Transactions on Audio, Speech, and Language Processing, Vol. 16, No. 2, 2008.
+13. H. Lukashevich, “Towards Quantitative Measures of Evaluating Song Segmentation,” Proc. of International Society for Music Information Retrieval, 2008.
+14. N. C. Maddage, and K. C. Sim, “Word Level Automatic Alignment of Music and Lyrics Using Vocal Synthesis,” ACM Transactions on Multimedia Computing, Communications and Applications, Vol. 6, No. 3, 2010.
+15. M. Mauch, H. Fujihara, and M. Goto, “Lyrics-to-Audio Alignment and Phrase-level Segmentation Using Incomplete Internet-style Chord Annotations,” Proc. of Conference on Sound and Music Computing, 2010.
+16. A. Mesaros, and T. Virtanen, “Automatic Alignment of Music Audio and Lyrics,” Proc. of International Conference on Digital Audio Effects, 2008.
+17. M. Mueller, P. Grosche, and N. Jianq, “A Segment-Based Fitness Measure for Capturing Repetitive Structures of Music Recordings,” Proc. of International Society for Music Information Retrieval, 2011.
+18. M. Mueller, and F. Kurth, “Towards Structural Analysis of Audio Recordings in the Presence of Musical Variations,” EURASIP Journal on Advances in Signal Processing, 2007.
+19. M. Mueller, and F. Kurth, “Enhancing Similarity Matrices for Music Audio Analysis,” Acoustics, Speech and Signal Processing, 2006.
+20. E. Nichols, D. Morris, S. Basu, and C. Raphael, “Relationships between Lyrics and Melody in Popular Music,” Proc. of International Society for Music Information Retrieval, 2009.
+21. H. R. G. Oliveira, F. A. Cardoso, and F. C. Pereira, “Tra-la-Lyrics: An Approach to Generate Text Based on Rhythm,” Proc. of International Joint Workshop on Computational Creativity, 2007.
+22. J. Paulus, and A. Klapuri, “Music Structure Analysis using a Probabilistic Fitness Measure and a Greedy Search Algorithm,” IEEE Transactions on Audio, Speech, and Language Processing, Vol. 17, No. 6, 2009.
+23. J. Paulus, M. Muller, and A. Klapuri, “Audio-Based Music Structure Analysis,” Proc. of International Society for Music Information Retrieval, 2010.
+24. G. Peeters, “Sequence Representation of Music Structure Using Higher-order Similarity Matrix and Maximum-likelihood Approach,” Proc. of International Society for Music Information Retrieval, 2007.
+25. S. Qin, S. Fukayama, T. Nishimoto, and S. Sagayama, “Lexical Tones Learning with Automatic Music Composition System Considering Prosody of Mandarin Chinese,” Proc. of Second Language Studies: Acquisition, Learning, Education and Technology, 2010.
+26. A. Ramakrishnan A, and S. L. Devi, “An Alternate Approach Towards Meaningful Lyric Generation in Tamil,” Proc. of NAACL HLT Second Workshop on Computational Approaches to Linguistic Creativity, 2010.
+27. A. Ramakrishnan A, S. Kuppan, and S. L. Devi, “Automatic Generation of Tamil Lyrics for Melodies,” Proc. of Workshop on Computational Approaches to Linguistic Creativity, 2009.
+28. H. Sakoe, and S. Chiba, “Dynamic Programming Algorithm Optimization for Spoken Word Recognition,” IEEE Transactions on Acoustics, Speech, and Signal Processing, Nr. 1, p. 43-49, 1987.
+29. Y. Wang, M. Y. Kan, T. L. Nwe, A. Shenoy, and J. Yin, “LyricAlly:Automatic Synchronization of Acoustic Musical Signals and Textual Lyrics,” Proc. of ACM International Conference on Multimedia, 2004.
+30. C. H. Wong, W. M. Szeto, and K. H. Wong, “Automatic Lyrics Alignment for Cantonese Popular Music,” Multimedia Systems, Vol. 12, No. 4-5, 2007.
+31. S. Yu, J. Hong, and C. C. J. Kuo, “Similarity Matrix Processing for Music Structure Analysis,” Proc. of the 1st ACM Workshop on Audio and Music Computing Multimedia, 2006.
+32. 楊蔭瀏、孫從音、陳幼韓、何為與李殿魁，語言與音樂，丹青圖書有限公司，1986。
+33. 謝峰賜，簡易詞曲創作入門，新鳴遠出版有限公司，1993。
+34. 陳建銘，國語流行歌曲中的編曲工作，國立台灣大學音樂研究所碩士論文，2002。
+35. 徐富美與高林傳，歌詞聲調與旋律聲調相諧和的電腦檢測，世界華語文教學研討會論文集，2003。
+36. 黃志華，粵語歌詞創作談，三聯出版社，2003。
+37. 楊漢倫，粵語流行曲導論，香港特別行政區政府教育局，2009。
+38. 張嘉惠、李淑瑩、林書彥、黃嘉毅與陳志銘，以最佳化及機率分佈判斷漢字聲符之研究，自然語言與語音處理研討會論文集(ROCLING)，2010。
+39. 胡又天，流行詞話，第三期，2011。
+40. 陳富容，現代華語流行歌詞格律初探，逢甲人文社會學報，第22期，第75-100頁，2011。
+41. 樂句(Phrase)，http://en.wikipedia.org/wiki/Phrase_(music)
+
+## License
+
+All rights reserved.
