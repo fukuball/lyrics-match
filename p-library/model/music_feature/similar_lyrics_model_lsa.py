@@ -5,7 +5,7 @@ import sys
 import numpy as np
 import MySQLdb as mysql
 import json
-sys.path.append("/var/www/html/lyrics-match/p-library/model")
+sys.path.append("/Users/Fukuball/localhost/lyrics-match/p-library/model")
 import ImportPath
 ImportPath.Import()
 
@@ -27,8 +27,8 @@ db.commit()
 
 song_id = sys.argv[1];
 
-lsi = models.LsiModel.load('/var/www/html/lyrics-match/p-library/model/music_feature/20120924_ch_model.lsi')
-index = similarities.MatrixSimilarity.load('/var/www/html/lyrics-match/p-library/model/music_feature/20120924_ch_lsi.index')
+lsi = models.LsiModel.load('/Users/Fukuball/localhost/lyrics-match/p-library/model/music_feature/20120924_ch_model.lsi')
+index = similarities.MatrixSimilarity.load('/Users/Fukuball/localhost/lyrics-match/p-library/model/music_feature/20120924_ch_lsi.index')
 
 cur.execute("""SELECT ltt.*,ltu.id term_id FROM lyrics_term_tfidf_ch ltt INNER JOIN lyrics_term_unique_ch ltu ON (ltt.term=ltu.term) WHERE song_id=%s""", (song_id))
 

@@ -1,4 +1,4 @@
-#!/usr/bin/python26
+#!/usr/bin/python
 # -*- coding:utf-8 -*-
 #
 # generate_music_feature_model.py to generate music feature model
@@ -20,7 +20,7 @@ import MySQLdb as mysql
 import json
 np.set_printoptions(threshold=np.nan)
 
-sys.path.append("/var/www/html/lyrics-match/p-library/model")
+sys.path.append("/Users/Fukuball/localhost/lyrics-match/p-library/model")
 import ImportPath
 ImportPath.Import()
 

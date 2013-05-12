@@ -5,7 +5,7 @@ import sys
 import numpy as np
 import MySQLdb as mysql
 import json
-sys.path.append("/var/www/html/lyrics-match/p-library/model")
+sys.path.append("/Users/Fukuball/localhost/lyrics-match/p-library/model")
 import ImportPath
 ImportPath.Import()
 
@@ -29,13 +29,13 @@ song_id = sys.argv[1];
 model = sys.argv[2];
 
 if model=='tf_lda' :
-   mm = gensim.corpora.MmCorpus('/var/www/html/lyrics-match/p-library/model/music_feature/20120917_lyrics_tf.mm')
-   lda = models.LsiModel.load('/var/www/html/lyrics-match/p-library/model/music_feature/20120917_tf_model.lda')
-   index = similarities.MatrixSimilarity.load('/var/www/html/lyrics-match/p-library/model/music_feature/20120917_tf_lda.index')
+   mm = gensim.corpora.MmCorpus('/Users/Fukuball/localhost/lyrics-match/p-library/model/music_feature/20120917_lyrics_tf.mm')
+   lda = models.LsiModel.load('/Users/Fukuball/localhost/lyrics-match/p-library/model/music_feature/20120917_tf_model.lda')
+   index = similarities.MatrixSimilarity.load('/Users/Fukuball/localhost/lyrics-match/p-library/model/music_feature/20120917_tf_lda.index')
 else :
-   mm = gensim.corpora.MmCorpus('/var/www/html/lyrics-match/p-library/model/music_feature/20120917_lyrics_tfidf.mm')
-   lda = models.LsiModel.load('/var/www/html/lyrics-match/p-library/model/music_feature/20120917_model.lda')
-   index = similarities.MatrixSimilarity.load('/var/www/html/lyrics-match/p-library/model/music_feature/20120917_lda.index')
+   mm = gensim.corpora.MmCorpus('/Users/Fukuball/localhost/lyrics-match/p-library/model/music_feature/20120917_lyrics_tfidf.mm')
+   lda = models.LsiModel.load('/Users/Fukuball/localhost/lyrics-match/p-library/model/music_feature/20120917_model.lda')
+   index = similarities.MatrixSimilarity.load('/Users/Fukuball/localhost/lyrics-match/p-library/model/music_feature/20120917_lda.index')
 
 lda.print_topics(20,50)
 corpus_lda = lda[mm]

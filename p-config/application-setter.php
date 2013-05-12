@@ -19,15 +19,15 @@ ini_set('error_log', dirname(__FILE__) . '/error.log');
 error_reporting(E_ERROR | E_WARNING | E_PARSE);
 
 // path and url constant define
-define("SITE_ROOT", "/var/www/html/lyrics-match");
-define("SITE_HOST", "http://sarasti.cs.nccu.edu.tw/lyrics-match");
-define("SITE_DOMAIN", "sarasti.cs.nccu.edu.tw");
-define("DATA_ROOT", "/var/www/html/lyrics-data");
-define("DATA_HOST", "http://sarasti.cs.nccu.edu.tw/lyrics-data");
-define("MIDI_ROOT", "/var/www/html/lyrics-match/p-data/midi/all");
-define("MIDI_HOST", "http://sarasti.cs.nccu.edu.tw/lyrics-match/p-data/midi/all");
-define("AUDIO_ROOT", "/var/www/html/lyrics-match/p-data/mp3");
-define("AUDIO_HOST", "http://sarasti.cs.nccu.edu.tw/lyrics-match/p-data/mp3");
+define("SITE_ROOT", "/Users/Fukuball/localhost/lyrics-match");
+define("SITE_HOST", "http://127.0.0.1/lyrics-match");
+define("SITE_DOMAIN", "127.0.0.1");
+//define("DATA_ROOT", "/Users/Fukuball/localhost/lyrics-data");
+//define("DATA_HOST", "http://127.0.0.1/lyrics-data");
+define("MIDI_ROOT", SITE_ROOT."/p-data/midi/all");
+define("MIDI_HOST", SITE_HOST."/p-data/midi/all");
+define("AUDIO_ROOT", SITE_ROOT."/p-data/mp3");
+define("AUDIO_HOST", SITE_HOST."/p-data/mp3");
 define("ECHONEST_KEY", "LSPUPAL5CD1NGVRUL");
 // facebook constant define
 define("FB_APP_ID", "");

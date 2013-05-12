@@ -1,4 +1,4 @@
-#!/usr/bin/python26
+#!/usr/bin/python
 # -*- coding:utf-8 -*-
 #
 # audio_word_kmeans.py
@@ -24,7 +24,7 @@ except ImportError:
     import simplejson as json
 np.set_printoptions(threshold=np.nan)
 
-sys.path.append("/var/www/html/lyrics-match/p-library/model")
+sys.path.append("/Users/Fukuball/localhost/lyrics-match/p-library/model")
 import ImportPath
 ImportPath.Import()
 

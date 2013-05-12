@@ -219,10 +219,10 @@ if (!empty($_GET['song_id'])) {
                }
 
                if ($_GET['lda_model']=='tf_lda') {
-                  $topic = shell_exec("python26 ".SITE_ROOT."/p-library/model/music_feature/lda_topic.py ".$lda_new_song_id." ".$_GET['lda_model']);
+                  $topic = shell_exec("python ".SITE_ROOT."/p-library/model/music_feature/lda_topic.py ".$lda_new_song_id." ".$_GET['lda_model']);
                   ?>
                   <pre>
-2012-09-18 00:40:29,687 : INFO : initializing corpus reader from /var/www/html/lyrics-match/p-library/model/music_feature/20120917_lyrics_tf.mm
+2012-09-18 00:40:29,687 : INFO : initializing corpus reader from /Users/Fukuball/localhost/lyrics-match/p-library/model/music_feature/20120917_lyrics_tf.mm
 2012-09-18 00:40:29,687 : INFO : accepted corpus with 913 documents, 12684 features, 60108 non-zero entries
 2012-09-18 00:40:29,738 : INFO : topic #0: 0.060*愚笨 + 0.017*冇掂過 + 0.015*惱河 + 0.011*徹底 + 0.011*厲害 + 0.011*亮麗 + 0.010*誤解 + 0.008*超過 + 0.008*不被 + 0.007*邂逅 + 0.007*沒收 + 0.006*真理 + 0.006*卸便 + 0.006*永生 + 0.005*奸黨 + 0.005*眉飛色舞 + 0.005*感激 + 0.005*現代化 + 0.005*赤道 + 0.004*回想起 + 0.004*替身 + 0.004*寂寂寞寞 + 0.004*不肯短痛 + 0.004*時鐘 + 0.004*不易 + 0.004*過冷 + 0.004*手震 + 0.003*商量 + 0.003*不曾 + 0.003*不冀盼 + 0.003*忘掉 + 0.003*世情 + 0.003*俯瞰 + 0.003*放晴 + 0.003*傷害 + 0.003*溫暖 + 0.003*職業 + 0.003*天黑 + 0.003*沏 + 0.003*顯眼 + 0.003*己經 + 0.003*聽聽話話 + 0.003*勇敢 + 0.003*無比 + 0.003*已然 + 0.003*還要 + 0.003*未了 + 0.003*想見 + 0.002*主題歌 + 0.002*不回頭
 2012-09-18 00:40:29,745 : INFO : topic #1: 0.020*愚笨 + 0.011*惱河 + 0.007*徹底 + 0.006*沒收 + 0.006*不被 + 0.005*亮麗 + 0.005*冇掂過 + 0.005*幸 + 0.005*厲害 + 0.004*不心痛 + 0.004*愛恨 + 0.004*赤道 + 0.004*交響 + 0.004*木馬 + 0.004*卸便 + 0.004*難度 + 0.004*沏 + 0.004*邂逅 + 0.004*手震 + 0.004*誤解 + 0.004*僅有 + 0.004*替身 + 0.004*眉飛色舞 + 0.003*一概 + 0.003*視野 + 0.003*話風 + 0.003*侶 + 0.003*曹魏 + 0.003*導致 + 0.003*介紹 + 0.003*從來 + 0.003*開張 + 0.003*俯瞰 + 0.002*當兵 + 0.002*世一 + 0.002*情事 + 0.002*奸黨 + 0.002*己經 + 0.002*戀情 + 0.002*職業 + 0.002*真實 + 0.002*玩耍 + 0.002*天生 + 0.002*不答應 + 0.002*沒趣 + 0.002*放過 + 0.002*領會 + 0.002*辦不到 + 0.002*狀況 + 0.002*洶湧
@@ -248,10 +248,10 @@ if (!empty($_GET['song_id'])) {
                   <?php
                   echo nl2br($topic);
                } else {
-                  $topic = shell_exec("python26 ".SITE_ROOT."/p-library/model/music_feature/lda_topic.py ".$lda_new_song_id." ".$_GET['lda_model']);
+                  $topic = shell_exec("python ".SITE_ROOT."/p-library/model/music_feature/lda_topic.py ".$lda_new_song_id." ".$_GET['lda_model']);
                   ?>
                   <pre>
-2012-09-18 00:38:56,976 : INFO : initializing corpus reader from /var/www/html/lyrics-match/p-library/model/music_feature/20120917_lyrics_tfidf.mm
+2012-09-18 00:38:56,976 : INFO : initializing corpus reader from /Users/Fukuball/localhost/lyrics-match/p-library/model/music_feature/20120917_lyrics_tfidf.mm
 2012-09-18 00:38:56,976 : INFO : accepted corpus with 913 documents, 12684 features, 60108 non-zero entries
 2012-09-18 00:38:57,034 : INFO : topic #0: 0.005*命途 + 0.003*冇掂過 + 0.003*超過 + 0.003*沏 + 0.003*徹底 + 0.003*惱河 + 0.003*邂逅 + 0.003*己經 + 0.003*歲數 + 0.003*愚笨 + 0.003*介紹 + 0.003*不走開 + 0.002*稻穗 + 0.002*內情 + 0.002*俠客 + 0.002*三言兩語 + 0.002*錨 + 0.002*顛倒 + 0.002*示好 + 0.002*一段 + 0.002*幸 + 0.002*誤解 + 0.002*多麼 + 0.002*離場 + 0.002*恐 + 0.002*趣 + 0.002*守信 + 0.002*抬頭 + 0.002*兵荒馬亂 + 0.002*身過 + 0.002*未曾 + 0.002*最好 + 0.002*理 + 0.002*替身 + 0.002*厲害 + 0.002*不快 + 0.002*曹魏 + 0.002*壓軸 + 0.002*曬傷 + 0.002*逃跑 + 0.002*生根 + 0.002*捨得 + 0.002*從來 + 0.002*相親相愛 + 0.002*心軟 + 0.002*做主 + 0.002*多餘 + 0.002*碰 + 0.002*羅 + 0.002*忽隱
 2012-09-18 00:38:57,037 : INFO : topic #1: 0.015*甲老 + 0.015*奮鬥 + 0.007*用錯 + 0.006*各自 + 0.005*奸黨 + 0.003*孤兒仔 + 0.003*天黑 + 0.003*矜貴 + 0.003*離歌 + 0.003*亮麗 + 0.003*知足常樂 + 0.003*代誌 + 0.003*木馬 + 0.003*沒有聲 + 0.003*一段 + 0.003*黐身 + 0.003*悽慘 + 0.002*揭開 + 0.002*冇掂過 + 0.002*多麼 + 0.002*厲害 + 0.002*擇日 + 0.002*交響 + 0.002*刀鋒 + 0.002*隨手 + 0.002*不叫 + 0.002*徹底 + 0.002*不確定 + 0.002*卸便 + 0.002*離難捨 + 0.002*得分 + 0.002*心急 + 0.002*愚笨 + 0.002*沒收 + 0.002*敢死隊 + 0.002*你們 + 0.002*更換 + 0.002*趕 + 0.002*痴 + 0.002*從不 + 0.002*既是 + 0.002*所謂 + 0.002*曹魏 + 0.002*跪拜 + 0.002*赤道 + 0.002*取捨 + 0.002*遠離 + 0.002*橋段 + 0.002*大驚小怪 + 0.002*跳陣舞
@@ -315,11 +315,11 @@ if (!empty($_GET['song_id'])) {
          if (isset($_GET['lda_model']) && !empty($_GET['lda_model'])) {
 
             if ($_GET['lda_model']=='tf_lda') {
-               $similar_lyrics = shell_exec("python26 ".SITE_ROOT."/p-library/model/music_feature/similar_lyrics_model_tf_lda.py ".$_GET['song_id']." ");
+               $similar_lyrics = shell_exec("python ".SITE_ROOT."/p-library/model/music_feature/similar_lyrics_model_tf_lda.py ".$_GET['song_id']." ");
             } else if ($_GET['lda_model']=='lsi') {
-               $similar_lyrics = shell_exec("python26 ".SITE_ROOT."/p-library/model/music_feature/similar_lyrics_model_lsa.py ".$_GET['song_id']." ");
+               $similar_lyrics = shell_exec("python ".SITE_ROOT."/p-library/model/music_feature/similar_lyrics_model_lsa.py ".$_GET['song_id']." ");
             } else {
-               $similar_lyrics = shell_exec("python26 ".SITE_ROOT."/p-library/model/music_feature/similar_lyrics_model_lda.py ".$_GET['song_id']." ");
+               $similar_lyrics = shell_exec("python ".SITE_ROOT."/p-library/model/music_feature/similar_lyrics_model_lda.py ".$_GET['song_id']." ");
             }
             //echo $similar_lyrics;
             $similar_lyrics_array = explode(",", $similar_lyrics);
@@ -621,7 +621,7 @@ if (!empty($_GET['song_id'])) {
       </tbody>
    </table>
    <hr />
-   <h2>
+   <!--<h2>
       相似音樂
    </h2>
    <table class="table table-bordered table-striped">
@@ -646,7 +646,8 @@ if (!empty($_GET['song_id'])) {
         </thead>
         <tbody>
    <?php
-      $similar_song = shell_exec("python26 ".SITE_ROOT."/p-library/model/music_feature/similar_music_model.py ".$_GET['song_id']." ".$model_id);
+      /*$cmd = "python ".SITE_ROOT."/p-library/model/music_feature/similar_music_model.py ".$_GET['song_id']." ".$model_id;
+      $similar_song = shell_exec($cmd);
       $similar_song_array = explode(",", $similar_song);
       $rank = 0;
       foreach ($similar_song_array as $skey => $svalue) {
@@ -679,10 +680,10 @@ if (!empty($_GET['song_id'])) {
          <?php
          unset($similar_song_obj);
          unset($artist_obj);
-      }
+      }*/
    ?>
       </tbody>
-   </table>
+   </table>-->
    <?php
       unset($music_feature_obj);
    }

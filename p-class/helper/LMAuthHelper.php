@@ -115,7 +115,7 @@ class LMAuthHelper
 
       default:
 
-         $cookie_domain = ".cs.nccu.edu.tw";
+         $cookie_domain = SITE_DOMAIN;
 
          break;
       }

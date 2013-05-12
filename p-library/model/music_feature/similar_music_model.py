@@ -1,4 +1,4 @@
-#!/usr/bin/python26
+#!/usr/bin/python
 # -*- coding:utf-8 -*-
 #
 # similar_music_model.py to get similar song id
@@ -19,7 +19,7 @@ import numpy as np
 import MySQLdb as mysql
 import json
 
-sys.path.append("/var/www/html/lyrics-match/p-library/model")
+sys.path.append("/Users/Fukuball/localhost/lyrics-match/p-library/model")
 import ImportPath
 ImportPath.Import()
 
@@ -27,10 +27,12 @@ import db_stage
 CONST = db_stage._Const()
 
 # connect to db
-db = mysql.connect(host    = CONST.DBHOST,
-                   user    = CONST.DBUSER,
-                   passwd  = CONST.DBPASS,
-                   db      = CONST.DBNAME)
+db = mysql.connect(unix_socket = '/Applications/XAMPP/xamppfiles/var/mysql/mysql.sock',
+                   host        = CONST.DBHOST,
+                   user        = CONST.DBUSER,
+                   passwd      = CONST.DBPASS,
+                   db          = CONST.DBNAME,
+                   charset     = 'UTF8')
 
 song_id = sys.argv[1];
 model_id = sys.argv[2];

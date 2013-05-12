@@ -1,18 +1,12 @@
-　詞(N)　是(Vt)　最(ADV)　小(Vi)　有(Vt)　意義(N)　且(C)　可以(ADV)　自由(Vi)　使用(Vt)　的(T)　語言(N)　單位(N)　。(PERIODCATEGORY)
-　
-　任何(DET)　語言(N)　處理(Vt)　的(T)　系統(N)　都(ADV)　必須(ADV)　先(ADV)　能(ADV)　分辨(Vt)　文本(N)　中(POST)　的(T)　詞(N)　才(ADV)　能(ADV)　進行(Vt)　進一步(A)　的(T)　處理(Nv)　，(COMMACATEGORY)
-　
-　例如(P)　機器(N)　翻譯(N)　、(PAUSECATEGORY)　語言(N)　分析(N)　、(PAUSECATEGORY)　語言(N)　了解(Nv)　、(PAUSECATEGORY)　資訊(N)　抽取(Vt)　。(PERIODCATEGORY)
-　
-　因此(C)　中文(N)　自動(Vi)　分詞(N)　的(T)　工作(N)　成(Vt)　了(ASP)　語言(N)　處理(Vt)　不可或缺(A)　的(T)　技術(N)　。(PERIODCATEGORY)
-　
-　基本(N)　上(N)　自動(Vi)　分詞(N)　多(ADV)　利用(Vt)　詞典(N)　中(POST)　收錄(Vt)　的(T)　詞(N)　和(C)　文本(N)　做(Vt)　比對(Vt)　，(COMMACATEGORY)
-　
-　找出(Vt)　可能(ADV)　包含(Vt)　的(T)　詞(N)　，(COMMACATEGORY)
-　
-　由於(C)　存在(Nv)　歧義(N)　的(T)　切分(Vt)　結果(N)　，(COMMACATEGORY)
-　
-　因此(C)　多數(DET)　的(T)　中文(N)　分詞(N)　程式(N)　多(ADV)　討論(Vt)　如何(ADV)　解決(Vt)　分詞(N)　歧義(N)　的(T)　問題(N)　，(COMMACATEGORY)
-　
-　而(C)　較少(ADV)　討論(Vt)　如何(ADV)　處理(Vt)　詞典(N)　中(POST)　未(ADV)　收錄(Vt)　的(T)　詞(N)　出現(Vi)　的(T)　問題(N)　（(PARENTHESISCATEGORY)　新(Vi)　詞(N)　如何(ADV)　辨認(Vt)　）(PARENTHESISCATEGORY)　。(PERIODCATEGORY)
-　
+
+
+
+
+?@?(QUESTIONCATEGORY)?@??(N)?@??(FW)?@?(b)?@??(FW)?@??(FW)?@?(QUESTIONCATEGORY)?@??(FW)?@?(QUESTIONCATEGORY)?@?(b)?@??(FW)?@?(QUESTIONCATEGORY)?@?(QUESTIONCATEGORY)?@??(N)?@??(FW)?@?(b)?@??(FW)?@??(FW)?@中?(b)?@??(FW)?@?(QUESTIONCATEGORY)?@??(FW)?@?(QUESTIONCATEGORY)?@?(b)?@??(FW)?@?(QUESTIONCATEGORY)?@?(QUESTIONCATEGORY)?@??(FW)?@??(FW)?@?(QUESTIONCATEGORY)?@??(FW)?@?(QUESTIONCATEGORY)?@?(b)?@??(FW)?@?(QUESTIONCATEGORY)
+?@
+
+?@?(QUESTIONCATEGORY)?@??(N)?@??(FW)?@?(b)?@??(FW)?@??(FW)?@歧義(b)?@?(QUESTIONCATEGORY)?@??(FW)?@?(QUESTIONCATEGORY)?@?(QUESTIONCATEGORY)?@??(FW)?@?(QUESTIONCATEGORY)?@?(QUESTIONCATEGORY)?@??(FW)?@?(QUESTIONCATEGORY)
+?@
+?@?(QUESTIONCATEGORY)?@??(FW)?@???(b)?@??(FW)?@??(FW)?@?(QUESTIONCATEGORY)?@??(FW)?@??(N)?@?(QUESTIONCATEGORY)?@??(FW)?@?(QUESTIONCATEGORY)?@?(b)?@??(FW)?@?(QUESTIONCATEGORY)?@?(Vt)?@??(FW)?@?(QUESTIONCATEGORY)?@?(b)?@??(FW)?@?(QUESTIONCATEGORY)?@?(b)?@??(FW)?@?(QUESTIONCATEGORY)?@?(b)?@?(QUESTIONCATEGORY)?@??(Vt)?@?(QUESTIONCATEGORY)?@??(FW)?@?(QUESTIONCATEGORY)?@歧義(b)?@?(QUESTIONCATEGORY)?@??(FW)?@?(QUESTIONCATEGORY)?@?(b)?@??(FW)?@?(QUESTIONCATEGORY)
+?@
+

@@ -5,7 +5,7 @@ import sys
 import numpy as np
 import MySQLdb as mysql
 import json
-sys.path.append("/var/www/html/lyrics-match/p-library/model")
+sys.path.append("/Users/Fukuball/localhost/lyrics-match/p-library/model")
 import ImportPath
 ImportPath.Import()
 

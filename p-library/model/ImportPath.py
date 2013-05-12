@@ -14,4 +14,4 @@
 
 def Import():
    import sys
-   sys.path.append("/var/www/html/lyrics-match/p-config")
+   sys.path.append("/Users/Fukuball/localhost/lyrics-match/p-config")

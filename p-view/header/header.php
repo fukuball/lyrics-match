@@ -37,27 +37,27 @@ case (preg_match('/music\/.*/', $current_page_path_url) ? true : false) :
 <header id="top-bar" class="navbar navbar-fixed-top">
    <div class="navbar-inner">
       <div class="container">
-         <a id="p-collapse-btn" class="btn btn-navbar" title="導覽列">
+         <a id="p-collapse-btn" class="btn btn-navbar">
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
          </a>
          <div id="logo">
-            <a class="brand" href="<?=SITE_HOST?>/" title="Lyrics Match">再三推詞</a>
+            <a class="brand" href="<?=SITE_HOST?>/">再三推詞</a>
          </div>
          <div id="p-nav-collapse" class="nav-collapse">
             <nav>
                <ul class="nav">
                   <li class="divider-vertical"></li>
                   <li id="header-home-tab" class="main-nav<?php echo $home_header_active; ?>">
-                     <a href="<?=SITE_HOST?>/" title="首頁">
-                        首頁
+                     <a href="<?=SITE_HOST?>/">
+                        Home
                      </a>
                   </li>
                   <li class="divider-vertical"></li>
                   <li id="header-music-tab" class="main-nav<?php echo $music_header_active; ?>">
-                     <a href="<?=SITE_HOST?>/music/" title="音樂">
-                        音樂
+                     <a href="<?=SITE_HOST?>/music/">
+                        Music
                      </a>
                   </li>
                   <li class="divider-vertical"></li>
@@ -72,16 +72,16 @@ case (preg_match('/music\/.*/', $current_page_path_url) ? true : false) :
                if (LMAuthHelper::isLogin()) {
                ?>
                <li>
-                  <a id="header-logout" title="登出">
-                     登出
+                  <a id="header-logout">
+                     logout
                   </a>
                </li>
                <?php
                } else {// end if (IndievoxAuthHelper::isLogin())
                ?>
                <li>
-                  <a id="header-login" title="登入">
-                     登入
+                  <a id="header-login">
+                     login
                   </a>
                </li>
                <?php
@@ -100,7 +100,7 @@ case (preg_match('/music\/.*/', $current_page_path_url) ? true : false) :
    });
 </script>
 <div class="align-center">
-   <span id="system-message"> 處理中 ... </span>
+   <span id="system-message"> Processing ... </span>
 </div>
 <div id="p-modal-block">
 </div>

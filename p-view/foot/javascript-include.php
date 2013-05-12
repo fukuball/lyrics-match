@@ -19,13 +19,13 @@
             data: {offset : song_offset, length : $("#song-show-more > a").attr("data-length"), song_list_type : $("#song-show-more > a").attr("data-list-type")},
             dataType: "html",
             beforeSend: function( xhr ) {
-               $('#system-message').html('處理中...');
+               $('#system-message').html('Processing...');
                $('#system-message').show();
                $(window).off('scroll.song_show_more');
             },
             success: function( html_block ) {
                $('#song-list-tbody').append(html_block);
-               $('#system-message').html('完成');
+               $('#system-message').html('Complete');
                $('#system-message').fadeOut();
                $(window).on('scroll.song_show_more', function(){
                   if ($(window).scrollTop() == $(document).height() - $(window).height()) {

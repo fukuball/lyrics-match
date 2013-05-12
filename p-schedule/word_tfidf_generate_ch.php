@@ -35,8 +35,8 @@ foreach ($query_result as $query_result_data) {
 }
 
 
-$word_id_file = "/var/www/html/lyrics-match/p-library/model/music_feature/20120924_lyrics_tfidf_ch.mm";
-$word_id_file_tf = "/var/www/html/lyrics-match/p-library/model/music_feature/20120924_lyrics_tf_ch.mm";
+$word_id_file = "/Users/Fukuball/localhost/lyrics-match/p-library/model/music_feature/20120924_lyrics_tfidf_ch.mm";
+$word_id_file_tf = "/Users/Fukuball/localhost/lyrics-match/p-library/model/music_feature/20120924_lyrics_tf_ch.mm";
 $fh = fopen($word_id_file, 'w') or die("can't open file");
 $fh_tf = fopen($word_id_file_tf, 'w') or die("can't open file");
 

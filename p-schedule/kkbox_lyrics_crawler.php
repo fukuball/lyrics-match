@@ -216,7 +216,7 @@ foreach ($query_result as $query_result_data) {
             if (empty($song_id)) {
 
                $song_id = $song_god_obj->getMaxId()+1;
-               $new_midi_path = "/var/www/html/lyrics-match/p-data/midi/all/".$song_id.".mid";
+               $new_midi_path = "/Users/Fukuball/localhost/lyrics-match/p-data/midi/all/".$song_id.".mid";
 
                if (!copy($midi_path, $new_midi_path)) {
 

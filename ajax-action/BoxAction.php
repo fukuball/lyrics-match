@@ -130,33 +130,33 @@ class BoxAction extends LMRESTControl implements LMRESTfulInterface
 
          break;
 
-         case 'r-song-box':
+      case 'r-song-box':
 
-            $size = $_GET['size'];
-            if (empty($size)) {
-               $size = "500px";
-            }
-            $song_id = $_GET['song_id'];
+         $size = $_GET['size'];
+         if (empty($size)) {
+            $size = "500px";
+         }
+         $song_id = $_GET['song_id'];
 
-            $song_id_array = explode('_', $song_id);
-            $original_song_id = $song_id_array[0];
-            //$song_o_obj = new LMSong($song_id_array[0]);
-            if ($song_id_array[1]=='a') {
-               $r_title = "靜夜思";
-               $r_lyric = "床前明月光<br/>疑是地上霜<br/>舉頭望明月<br/>低頭思故鄉";
-            } else {
-               $song_r_obj = new LMSong($song_id_array[1]);
-               $r_title = $song_r_obj->title;
-               $r_lyric = $song_r_obj->lyric;
-            }
+         $song_id_array = explode('_', $song_id);
+         $original_song_id = $song_id_array[0];
+         //$song_o_obj = new LMSong($song_id_array[0]);
+         if ($song_id_array[1]=='a') {
+            $r_title = "靜夜思";
+            $r_lyric = "床前明月光<br/>疑是地上霜<br/>舉頭望明月<br/>低頭思故鄉";
+         } else {
+            $song_r_obj = new LMSong($song_id_array[1]);
+            $r_title = $song_r_obj->title;
+            $r_lyric = $song_r_obj->lyric;
+         }
 
 
-            include SITE_ROOT.'/ajax-action/BoxActionView/r-song-box.php';
+         include SITE_ROOT.'/ajax-action/BoxActionView/r-song-box.php';
 
-            //unset($song_o_obj);
-            unset($song_r_obj);
+         //unset($song_o_obj);
+         unset($song_r_obj);
 
-            break;
+         break;
 
       case 'send-sms-box':
 
